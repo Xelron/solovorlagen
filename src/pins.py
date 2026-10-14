@@ -27,6 +27,20 @@ P=[
 ("Das Selbstständigen-Paket","5 Excel-Vorlagen zum halben Preis","Cockpit · Rechnungen · Stundensatz · Fahrtenbuch · AfA","img/bundle-01.jpg","paket.html","Excel-Vorlagen für Selbstständige",
  "Alle 5 Solovorlagen in einem Paket für 35 € statt 70 €: Umsatzgrenzen-Ampel, Rechnungs-Generator, Stundensatz-Rechner, Fahrtenbuch und AfA-Rechner. Für Kleinunternehmer und Freelancer in Deutschland.","excel vorlagen selbstständige, kleinunternehmer paket, buchhaltung vorlagen, freelancer tools, gründer"),
 ]
+P2=[
+("Rechnung als Kleinunternehmer?","Diesen Satz brauchst du","Hinweis-Text zum Kopieren – kostenlos","quote","rechnungstext-kleinunternehmer.html","Kleinunternehmer Tipps",
+ "Jede Kleinunternehmer-Rechnung braucht einen Hinweis auf § 19 UStG, z. B. „Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.“ Drei Formulierungen zum Kopieren plus Pflichtangaben-Check nach § 34a UStDV – kostenlos und ohne Anmeldung.","rechnung kleinunternehmer, paragraph 19 ustg, rechnung schreiben, kleinunternehmerregelung, selbstständig"),
+("Pflichtangaben-Check","für Kleinunternehmer-Rechnungen","Fehlt etwas? Der Generator zeigt es sofort","checks","rechnungstext-kleinunternehmer.html","Kleinunternehmer Tipps",
+ "Name, Anschrift, Steuernummer, Datum, Leistung, Betrag und § 19-Hinweis: Der kostenlose Rechnungstext-Generator prüft deine Kleinunternehmer-Rechnung nach § 34a UStDV und erstellt den fertigen Text. Rechnungsnummer? Nicht Pflicht – aber empfohlen.","rechnung pflichtangaben, kleinunternehmer rechnung vorlage, rechnungsnummer, gründer tipps, freelancer"),
+("Laptop gekauft?","Sofort absetzen – egal wie teuer","Computer & Software: Nutzungsdauer 1 Jahr","laptop","gwg-rechner.html","Selbstständig: Preise & Geld",
+ "Laptop, PC, Monitor, Drucker oder Software kannst du als Selbstständiger im Jahr der Anschaffung komplett absetzen – dank 1 Jahr Nutzungsdauer. Der kostenlose GWG-Rechner zeigt dir, was du 2026 sofort absetzen darfst.","laptop absetzen, computer abschreibung, gwg, steuern sparen selbstständig, betriebsausgaben"),
+("GWG-Grenze 2026","Was darfst du sofort absetzen?","Kostenloser Rechner – auch für Kleinunternehmer","tiers","gwg-rechner.html","Selbstständig: Preise & Geld",
+ "Bis 250 € sofort, bis 800 € als GWG, bis 1.000 € im Sammelposten, darüber Abschreibung: Der kostenlose GWG-Rechner 2026 sagt dir in Sekunden, wie du eine Anschaffung absetzt – mit Abschreibungsplan.","gwg grenze 2026, geringwertige wirtschaftsgüter, sammelposten, afa, abschreibung selbstständige"),
+("Fahrtkosten 2026","0,30 € je km Dienstfahrt","Kostenloser Rechner für Selbstständige","km","fahrtkosten-rechner.html","Selbstständig: Preise & Geld",
+ "Fahrten zum Kunden mit dem Privatauto? 0,30 € je gefahrenem Kilometer sind Betriebsausgabe. 250 km im Monat ergeben 900 € im Jahr. Der kostenlose Fahrtkosten-Rechner 2026 rechnet es für dich aus.","fahrtkosten absetzen, kilometerpauschale 2026, dienstfahrt, selbstständig steuern, betriebsausgaben"),
+("Entfernungspauschale 2026","Jetzt 0,38 € ab dem 1. Kilometer","Was sich für Selbstständige ändert",None,"fahrtkosten-rechner.html","Selbstständig: Preise & Geld",
+ "Seit 2026 gilt die Entfernungspauschale von 0,38 € schon ab dem ersten Kilometer. Für Selbstständige zählt sie beim Weg zur eigenen Betriebsstätte – alle anderen betrieblichen Fahrten laufen mit 0,30 € je km. Kostenloser Rechner.","entfernungspauschale 2026, pendlerpauschale, fahrtkosten, selbstständig, steuern 2026"),
+]
 CSS="""*{box-sizing:border-box}body{margin:0;width:1000px;height:1500px;font-family:'DejaVu Sans',Arial,sans-serif}
 .p{width:1000px;height:1500px;padding:80px 72px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
 .serif{font-family:'DejaVu Serif',Georgia,serif;font-weight:700}.brand{font-size:30px;letter-spacing:.06em}
@@ -43,6 +57,16 @@ def render(i,t):
         mid='<div>'+"".join(f'<div class=light style="background:{b};color:{c}"><span class=dot style="background:{d}"></span>{l}</div>' for b,c,d,l in [("#D4EDDA","#0F5132","#198754","Im grünen Bereich"),("#FFF3CD","#664D03","#E0A800","Grenze bald erreicht"),("#F8D7DA","#842029","#B02A37","Grenze überschritten")])+'</div>'
     elif extra=="rate":
         mid=f'<div style="background:rgba(255,255,255,.12);border-radius:28px;padding:40px"><div style="font-size:30px;color:{mut};font-weight:700">DEIN STUNDENSATZ</div><div class=serif style="font-size:150px;color:{fg};line-height:1.1">65 €</div><div style="font-size:32px;color:{mut}">Tagessatz ≈ 520 €</div></div>'
+    elif extra=="quote":
+        mid=f'<div style="background:#fff;border-radius:28px;padding:44px;border-left:16px solid {acc}"><div class=serif style="font-size:52px;line-height:1.25;color:#1F3A5F">„Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.“</div><div style="margin-top:22px;font-size:30px;color:#5A6573;font-weight:700">KOPIEREN · EINFÜGEN · FERTIG</div></div>'
+    elif extra=="checks":
+        mid='<div style="background:#fff;border-radius:28px;padding:34px 40px">'+"".join(f'<div style="display:flex;gap:22px;align-items:center;font-size:36px;color:#1B2430;padding:10px 0"><span style="width:46px;height:46px;border-radius:50%;background:{b};color:{c};display:inline-flex;align-items:center;justify-content:center;font-weight:700">{m}</span>{l}</div>' for b,c,m,l in [("#D4EDDA","#0F5132","✓","Name & Anschrift"),("#D4EDDA","#0F5132","✓","Steuernummer"),("#D4EDDA","#0F5132","✓","Datum & Leistung"),("#FFF3CD","#664D03","!","Hinweis § 19 UStG"),("#E3E8EE","#5A6573","–","Rechnungsnummer (optional)")])+'</div>'
+    elif extra=="laptop":
+        mid=f'<div style="background:rgba(255,255,255,.12);border-radius:28px;padding:40px"><div style="font-size:30px;color:{mut};font-weight:700">LAPTOP FÜR 1.499 €</div><div class=serif style="font-size:130px;color:{fg};line-height:1.1">100 %</div><div style="font-size:34px;color:{mut}">im Anschaffungsjahr absetzbar</div></div>'
+    elif extra=="tiers":
+        mid='<div>'+"".join(f'<div class=light style="background:{b};color:{c};justify-content:space-between"><span>{l}</span><span>{r}</span></div>' for b,c,l,r in [("#D4EDDA","#0F5132","bis 250 €","sofort"),("#D4EDDA","#0F5132","bis 800 €","sofort (GWG)"),("#FFF3CD","#664D03","bis 1.000 €","Sammelposten"),("#F8D7DA","#842029","darüber","Abschreibung")])+'<div style="font-size:26px;color:#5A6573;margin-top:6px">Beträge netto · Stand 2026</div></div>'
+    elif extra=="km":
+        mid=f'<div style="background:rgba(255,255,255,.12);border-radius:28px;padding:40px"><div style="font-size:30px;color:{mut};font-weight:700">250 KM IM MONAT</div><div class=serif style="font-size:150px;color:{fg};line-height:1.1">900 €</div><div style="font-size:34px;color:{mut}">Betriebsausgaben im Jahr</div></div>'
     elif extra and extra.startswith("img/"):
         mid=f'<div class=img style="height:620px"><img src="data:image/jpeg;base64,{base64.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","docs")+"/"+extra,"rb").read()).decode()}" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>'
     else:
@@ -51,20 +75,23 @@ def render(i,t):
 <h1 class=serif style="color:{fg};{'font-size:70px' if (len(title)>30 or max(len(w) for w in title.split())>13) else ''}">{title}</h1><div class="h2 serif" style="color:{acc if bg!='#F6F7F4' else '#2E7D6B'}">{h2}</div><div class=sub style="color:{mut}">{sub}</div></div>
 {mid}<div class=url style="color:{fg}">solovorlagen.de</div></div>"""
     return h
+import sys
+BATCH=int(sys.argv[1]) if len(sys.argv)>1 else 2
+LST,OFF,START,CSVN={1:(P,0,datetime.date(2026,10,16),"pinterest-pins.csv"),2:(P2,12,datetime.date(2026,10,17),"pinterest-pins-2.csv")}[BATCH]
+ROOT=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..")
 with sync_playwright() as p:
     b=p.chromium.launch(); pg=b.new_page(viewport={'width':1000,'height':1500})
-    for i,t in enumerate(P):
-        pg.set_content(f"<html><head><meta charset=utf-8><style>{CSS}</style></head><body>{render(i,t)}</body></html>")
+    for i,t in enumerate(LST):
+        pg.set_content(f"<html><head><meta charset=utf-8><style>{CSS}</style></head><body>{render(i+OFF,t)}</body></html>")
         pg.wait_for_timeout(150)
-        pg.screenshot(path=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","docs","pins")+f"/pin-{i+1:02d}.jpg",type="jpeg",quality=85)
-        print(i+1, pg.evaluate("document.querySelector('.p').scrollHeight"))
+        pg.screenshot(path=os.path.join(ROOT,"docs","pins",f"pin-{i+1+OFF:02d}.jpg"),type="jpeg",quality=85)
+        print(i+1+OFF, pg.evaluate("document.querySelector('.p').scrollHeight"))
     b.close()
-start=datetime.date(2026,10,16)
-with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","pinterest-pins.csv"),"w",newline="",encoding="utf-8") as f:
+with open(os.path.join(ROOT,CSVN),"w",newline="",encoding="utf-8") as f:
     w=csv.writer(f); w.writerow(["Title","Media URL","Pinterest board","Thumbnail","Description","Link","Publish date","Keywords"])
-    for i,t in enumerate(P):
+    for i,t in enumerate(LST):
         title,h2,sub,extra,link,board,desc,kw=t
-        d=start+datetime.timedelta(days=2*i)
+        d=START+datetime.timedelta(days=2*i)
         h2c=h2.replace('-regelung','regelung').replace('Entfernungs-pauschale','Entfernungspauschale'); full=title+' – '+h2c if len(title+' – '+h2c)<=100 else title
-        w.writerow([full,f"{B}pins/pin-{i+1:02d}.jpg",board,"",desc[:500],B+link,f"{d.isoformat()}T07:00:00",kw])
-print(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","pinterest-pins.csv")).read()[:600])
+        w.writerow([full,f"{B}pins/pin-{i+1+OFF:02d}.jpg",board,"",desc[:500],B+link,f"{d.isoformat()}T07:00:00",kw])
+print(open(os.path.join(ROOT,CSVN)).read())

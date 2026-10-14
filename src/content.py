@@ -258,6 +258,8 @@ ss_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 ss_head=EXTRA_CSS+ld(article_ld("Stundensatz berechnen als Selbstständiger: Formel, Beispiel und typische Fehler",ss_desc,ss_url))+ld(faq_ld(SS_FAQ))+ld(crumbs([("Solovorlagen","https://solovorlagen.de/"),("Ratgeber","https://solovorlagen.de/ratgeber.html"),("Stundensatz berechnen","https://solovorlagen.de/stundensatz-berechnen.html")]))
 page("Stundensatz berechnen als Selbstständiger: Formel + Beispiel (2026) | Solovorlagen",ss_desc,ss_body,"stundensatz-berechnen.html",ss_head)
 
+exec(open(os.path.join(HERE,"tools.py")).read())
+
 # ---------------- Ratgeber-Übersicht ----------------
 rg_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><div class="article">
 <h1 class="serif">Ratgeber für Selbstständige und Kleinunternehmer</h1>
@@ -265,12 +267,14 @@ rg_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><div 
 <div class="grid2">
 <a class="pcard" href="kleinunternehmerregelung-grenzen.html"><div class="pbody"><h3>Kleinunternehmerregelung 2026: Die Umsatzgrenzen einfach erklärt</h3><p>25.000 € und 100.000 €, was beim Überschreiten passiert, Gründungsjahr, Rechnung und Beispiele.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 <a class="pcard" href="stundensatz-berechnen.html"><div class="pbody"><h3>Stundensatz berechnen als Selbstständiger</h3><p>Formel, Rechenbeispiel, abrechenbare Stunden und die 5 häufigsten Fehler.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
-<a class="pcard" href="grenzen-check.html"><div class="pbody"><h3>Kostenloser Umsatzgrenzen-Check</h3><p>In 30 Sekunden prüfen, ob du 2026 und im Folgejahr Kleinunternehmer bist.</p><div class="prow"><span class="more">Zum Rechner →</span></div></div></a>
-</div></div></div>"""
-page("Ratgeber für Selbstständige & Kleinunternehmer | Solovorlagen","Ratgeber für Selbstständige: Kleinunternehmerregelung 2026, Stundensatz berechnen und kostenloser Umsatzgrenzen-Check.",rg_body,"ratgeber.html",EXTRA_CSS)
+</div>
+<h2 class="serif" id="rechner">Kostenlose Rechner</h2>
+<div class="grid2">{rc_cards}</div>
+</div></div>"""
+page("Ratgeber für Selbstständige & Kleinunternehmer | Solovorlagen","Ratgeber für Selbstständige: Kleinunternehmerregelung 2026, Stundensatz berechnen und kostenlose Rechner – Umsatzgrenzen-Check, Rechnungstext, GWG und Fahrtkosten.",rg_body,"ratgeber.html",EXTRA_CSS)
 
 # ---------------- sitemap, robots, llms.txt ----------------
-urls=["","grenzen-check.html","kleinunternehmerregelung-grenzen.html","stundensatz-berechnen.html","ratgeber.html","paket.html","cockpit.html","rechnung.html","stundensatz.html","fahrtenbuch.html","afa.html","impressum.html","datenschutz.html"]
+urls=["","rechner.html","grenzen-check.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html","kleinunternehmerregelung-grenzen.html","stundensatz-berechnen.html","ratgeber.html","paket.html","cockpit.html","rechnung.html","stundensatz.html","fahrtenbuch.html","afa.html","impressum.html","datenschutz.html"]
 open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>https://solovorlagen.de/{u}</loc><lastmod>{ISO}</lastmod></url>\n" for u in urls)+"</urlset>\n")
 open(os.path.join(OUT,"robots.txt"),"w").write("User-agent: *\nAllow: /\n\nSitemap: https://solovorlagen.de/sitemap.xml\n")
 open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
@@ -282,6 +286,9 @@ open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 
 ## Werkzeuge
 - [Umsatzgrenzen-Check 2026](https://solovorlagen.de/grenzen-check.html): kostenloser Online-Rechner zur Kleinunternehmergrenze.
+- [Rechnungstext-Generator für Kleinunternehmer](https://solovorlagen.de/rechnungstext-kleinunternehmer.html): Hinweis nach § 19 UStG zum Kopieren, Pflichtangaben nach § 34a UStDV (Rechnungsnummer nicht Pflicht), Kleinbetragsrechnung bis 250 €.
+- [GWG-Rechner 2026](https://solovorlagen.de/gwg-rechner.html): Sofortabzug bis 250 €/800 € netto, Sammelposten 250,01–1.000 € (5 × 20 %), Computer/Software Nutzungsdauer 1 Jahr, lineare AfA monatsgenau; Kleinunternehmer setzen brutto ab, Grenze gilt netto.
+- [Fahrtkosten-Rechner 2026](https://solovorlagen.de/fahrtkosten-rechner.html): betriebliche Fahrten 0,30 €/km (Motorrad 0,20 €), Entfernungspauschale 0,38 € ab dem 1. km, Höchstbetrag 4.500 € (nicht bei eigenem Pkw).
 
 ## Vorlagen
 - [Kleinunternehmer-Cockpit](https://solovorlagen.de/cockpit.html), [Rechnungs-Generator](https://solovorlagen.de/rechnung.html), [Stundensatz-Rechner](https://solovorlagen.de/stundensatz.html), [Fahrtenbuch](https://solovorlagen.de/fahrtenbuch.html), [AfA-Rechner](https://solovorlagen.de/afa.html), [Paket](https://solovorlagen.de/paket.html)

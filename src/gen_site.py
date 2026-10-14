@@ -11,18 +11,19 @@ dict(slug="paket",name="Selbstständigen-Paket",short="Alle 5 Vorlagen zum halbe
  feats=[]),
 dict(slug="cockpit",name="Kleinunternehmer-Cockpit",short="Umsatzgrenzen-Ampel, Einnahmen, Ausgaben, EÜR",price="19 €",img="produkt.jpg",shots=["cockpit.jpg","euer.jpg","monate.jpg"],
  eyebrow="Excel-Vorlage zum Download · für Kleinunternehmer",h1="Weißt du, wie nah du an der Umsatzgrenze bist?",
- lead="Seit 2025 endet die Kleinunternehmerregelung sofort, wenn du im laufenden Jahr 100.000 € überschreitest – und ab 25.000 € im Vorjahr fällt sie im Folgejahr weg. Das Cockpit zeigt dir mit einer Ampel, wo du stehst. Dazu Einnahmen, Ausgaben, EÜR-Übersicht und Steuerrücklage.",
+ lead="Seit 2025 endet die Kleinunternehmerregelung sofort, wenn du im laufenden Jahr 100.000 € überschreitest – und wer in einem Jahr mehr als 25.000 € Umsatz macht, ist im Folgejahr kein Kleinunternehmer mehr. Das Cockpit zeigt dir mit einer Ampel, wo du stehst, auch im Gründungsjahr. Dazu Einnahmen, Ausgaben, EÜR-Übersicht und Steuerrücklage.",
  content="5 verknüpfte Tabellenblätter: Start (Einstellungen & Anleitung), Cockpit mit Umsatzgrenzen-Ampel, EÜR-Übersicht, Einnahmen, Ausgaben",
- feats=[("Umsatzgrenzen-Ampel","Zeigt, wie viel der 100.000-€-Grenze ausgeschöpft ist, rechnet aufs Jahr hoch und warnt vor der 25.000-€-Grenze fürs Folgejahr."),
+ feats=[("Umsatzgrenzen-Ampel","Zeigt, wie viel der 100.000-€-Grenze ausgeschöpft ist, rechnet aufs Jahr hoch und warnt vor der 25.000-€-Grenze fürs Folgejahr. Mit dem Schalter „Tätigkeit in diesem Jahr begonnen“ prüft die Ampel im Gründungsjahr die 25.000-€-Grenze, die dann sofort gilt."),
+ ("Einnahmen nach Zahlungsdatum","Für die Umsatzgrenzen zählt, wann das Geld eingeht. Deshalb erfasst du Einnahmen mit dem Zahlungsdatum."),
  ("Cockpit mit Monatsübersicht","Einnahmen, Ausgaben, Gewinn und kumulierter Umsatz für jeden Monat, dazu ein Diagramm."),
- ("EÜR-Übersicht","Summen nach 17 Kategorien – die Grundlage für die Anlage EÜR in ELSTER."),
- ("Steuerrücklage","Legt automatisch einen Anteil deines Gewinns als Rücklage beiseite.")]),
+ ("EÜR-Übersicht","Summen nach 20 Kategorien (5 Einnahmen, 15 Ausgaben) – die Grundlage für die Anlage EÜR in ELSTER."),
+ ("Steuerrücklage","Berechnet, welchen Anteil deines Gewinns du für die Steuer zurücklegen solltest.")]),
 dict(slug="rechnung",name="Rechnungs-Generator",short="Rechnungen mit Pflichtangaben, offene Posten, Mahnung",price="15 €",img="rechnung-01.jpg",shots=["rechnung-02.jpg","rechnung-03.jpg"],
- eyebrow="Excel-Vorlage zum Download · für Kleinunternehmer",h1="Rechnungen ohne Formfehler – und immer wissen, wer noch zahlen muss",
- lead="Der Rechnungs-Generator erstellt Rechnungen mit allen Pflichtangaben für Kleinunternehmer und dem Hinweis nach § 19 UStG, vergibt fortlaufende Nummern und behält deine offenen Rechnungen im Blick. Für Säumige gibt es eine fertige Zahlungserinnerung.",
+ eyebrow="Excel-Vorlage zum Download · für Kleinunternehmer",h1="Rechnungen mit allen Pflichtangaben nach § 34a UStDV – und immer wissen, wer noch zahlen muss",
+ lead="Der Rechnungs-Generator erstellt Rechnungen mit allen Pflichtangaben für Kleinunternehmer und dem Hinweis „Steuerfreie Kleinunternehmerleistung gemäß § 19 Abs. 1 UStG.“, zeigt die nächste freie Rechnungsnummer an, markiert doppelte und behält deine offenen Rechnungen im Blick. Für Säumige gibt es eine fertige Zahlungserinnerung.",
  content="6 Tabellenblätter: Start, Kunden, Rechnungsbuch, Positionen, Rechnung (druckfertig), Zahlungserinnerung",
- feats=[("Alle Pflichtangaben","Nach § 34a UStDV für Kleinunternehmer inklusive § 19-Hinweis – plus Rechnungsnummer und Leistungszeitraum."),
- ("Fortlaufende Nummern","Die nächste freie Nummer wird angezeigt, doppelte Nummern werden markiert."),
+ feats=[("Alle Pflichtangaben","Nach § 34a UStDV für Kleinunternehmer inklusive Hinweis „Steuerfreie Kleinunternehmerleistung gemäß § 19 Abs. 1 UStG.“ – plus Rechnungsnummer und Leistungszeitraum."),
+ ("Rechnungsnummern im Blick","Die nächste freie Nummer wird angezeigt, doppelte Nummern werden markiert."),
  ("Rechnungsbuch","Status Offen, Überfällig oder Bezahlt automatisch – mit Summe der offenen Posten."),
  ("Zahlungserinnerung","Überfällige Rechnung auswählen – der freundliche Brief mit neuer Frist ist fertig.")]),
 dict(slug="stundensatz",name="Stundensatz-Rechner",short="Was du verlangen musst, damit es reicht",price="12 €",img="stundensatz-01.jpg",shots=["stundensatz-02.jpg","stundensatz-03.jpg"],
@@ -30,23 +31,26 @@ dict(slug="stundensatz",name="Stundensatz-Rechner",short="Was du verlangen musst
  lead="Viele Selbstständige rechnen zu niedrig, weil sie Krankenversicherung, Altersvorsorge, Urlaub, Krankheit und unbezahlte Arbeitszeit vergessen. Der Stundensatz-Rechner nimmt alles mit und zeigt dir deinen realistischen Stunden- und Tagessatz.",
  content="4 Tabellenblätter: Start, Rechner, Szenarien, Projekt-Kalkulation",
  feats=[("Realistischer Stundensatz","Mit Versicherungen, Altersvorsorge, Betriebskosten, Steuern und Puffer."),
+ ("Gesetzlich oder privat versichert","Krankenversicherung wählbar: Bei gesetzlicher KV wird der Beitrag automatisch aus dem Gewinn berechnet, bei privater KV trägst du deinen Monatsbeitrag ein."),
  ("Echte Arbeitszeit","Urlaub, Feiertage, Krankheit, Fortbildung und der Anteil abrechenbarer Stunden."),
  ("Wohin dein Geld geht","Aufschlüsselung jeder Stunde – du siehst, warum der Satz so hoch sein muss."),
  ("Szenarien & Angebote","Stundensatz für verschiedene Ziele vergleichen und Projektpreise kalkulieren.")]),
-dict(slug="fahrtenbuch",name="Fahrtenbuch & Fahrtkosten-Rechner",short="Fahrtkosten automatisch, Sätze 2026",price="12 €",img="fahrten-01.jpg",shots=["fahrten-02.jpg","fahrten-03.jpg"],
+dict(slug="fahrtenbuch",name="Fahrtenbuch & Fahrtkosten-Rechner",short="Fahrtkosten-Nachweis fürs Privatfahrzeug, Sätze 2026",price="12 €",img="fahrten-01.jpg",shots=["fahrten-02.jpg","fahrten-03.jpg"],
  eyebrow="Excel-Vorlage zum Download · Stand 2026",h1="Jede betriebliche Fahrt zählt – wenn du sie sauber aufschreibst",
- lead="Mit dem Privatauto zum Kunden oder ins Büro? Das Fahrtenbuch erfasst alle nötigen Angaben, rechnet mit 0,30 € pro km für Dienstfahrten und der Entfernungspauschale von 0,38 € und warnt bei Lücken im km-Stand.",
+ lead="Mit dem Privatauto zum Kunden oder ins Büro? Die Vorlage ist ein Fahrtkosten-Nachweis für betriebliche Fahrten mit deinem Privatfahrzeug: Sie erfasst alle nötigen Angaben, rechnet mit 0,30 € pro km für betriebliche Fahrten und der Entfernungspauschale von 0,38 € je vollem Entfernungskilometer und warnt bei Lücken im km-Stand. Sie ist kein Fahrtenbuch für Firmenwagen als Alternative zur 1-%-Regel. Gilt nur, solange du das Fahrzeug höchstens zu 50 % betrieblich nutzt – darüber gehört es zum Betriebsvermögen.",
  content="3 Tabellenblätter: Start (Einstellungen), Fahrten, Auswertung",
  feats=[("Alle Angaben","Datum, Start, Ziel, Zweck, km-Stand und Kennzeichen."),
- ("Richtige Sätze 2026","0,30 €/km für Dienstfahrten, 0,38 € Entfernungspauschale – automatisch nur einmal pro Tag."),
+ ("Richtige Sätze 2026","0,30 €/km für betriebliche Fahrten, 0,38 € Entfernungspauschale für volle Kilometer – automatisch nur einmal pro Tag."),
+ ("Privatfahrzeug, nicht Firmenwagen","Für Fahrzeuge im Privatvermögen. Bei mehr als 50 % betrieblicher Nutzung gehört das Fahrzeug zum Betriebsvermögen – dann gelten die tatsächlichen Kosten statt der Pauschalen."),
  ("Automatische Prüfung","Warnt bei Lücken zum letzten km-Stand und unlogischen Werten."),
  ("Fertig für die EÜR","Monatsübersicht und Gesamtbetrag der Fahrtkosten.")]),
 dict(slug="afa",name="Anlagenverzeichnis & AfA-Rechner",short="Sofort absetzen oder abschreiben?",price="12 €",img="afa-01.jpg",shots=["afa-02.jpg","afa-03.jpg"],
  eyebrow="Excel-Vorlage zum Download · Stand 2026",h1="Sofort absetzen oder abschreiben? Die Vorlage rechnet es aus",
- lead="Laptop, Schreibtisch, Kamera: Das Anlagenverzeichnis entscheidet anhand der aktuellen Grenzen automatisch zwischen Sofortabzug, GWG, Sammelposten und Abschreibung – und rechnet monatsgenau inklusive Restbuchwert.",
+ lead="Laptop, Schreibtisch, Kamera: Das Anlagenverzeichnis ordnet jede Anschaffung anhand der aktuellen Grenzen ein – Sofortabzug, GWG oder Abschreibung – und rechnet monatsgenau inklusive Restbuchwert. Den Sammelposten wählst du je Anschaffung in der Spalte »Methode« – die Übersicht prüft, ob du ihn im Jahr einheitlich nutzt. Für Kleinunternehmer prüft die Vorlage die Grenzen netto und schreibt den Bruttobetrag ab.",
  content="4 Tabellenblätter: Start, Anlagen, Übersicht, Kategorien",
- feats=[("Automatische Entscheidung","Sofortabzug bis 250 €, GWG bis 800 €, Sammelposten oder lineare AfA."),
- ("1-Jahres-Regel","Für Computerhardware und Software."),
+ feats=[("Einordnung nach den Grenzen","Sofortabzug bis 250 €, GWG bis 800 € oder lineare AfA (Grenzen netto). Den Sammelposten wählst du je Anschaffung in der Spalte »Methode«."),
+ ("Kleinunternehmer-Schalter","Grenzen werden netto geprüft, abgeschrieben wird der Bruttobetrag, weil Kleinunternehmer keine Vorsteuer abziehen (§ 9b EStG)."),
+ ("1-Jahres-Regel","Für Computerhardware und Software (BMF-Schreiben vom 22.02.2022)."),
  ("Monatsgenaue AfA","Abschreibung und Restbuchwert zum 31.12. für jedes Wirtschaftsgut."),
  ("Prüfungen","Warnt bei unzulässigem Sammelposten oder fehlender Nutzungsdauer.")]),
 ]
@@ -117,7 +121,7 @@ idx=f"""<div class="wrap hero">
 </div>
 <section class="band" id="vorlagen"><div class="wrap">
 <h2 class="serif">Die Vorlagen</h2>
-<p class="sub2">Jede Vorlage löst ein konkretes Problem – und rechnet alles Wichtige automatisch.</p>
+<p class="sub2">Jede Vorlage löst ein konkretes Problem – und rechnet das Wichtigste automatisch.</p>
 <div class="pgrid">{''.join(card(p) for p in singles)}
 <a class="pcard pbundle" href="paket.html"><div class="pbody"><p class="eyebrow" style="color:#cfe0f0">Alle 5 zusammen</p><h3 style="color:#fff;font-size:24px;hyphens:auto;overflow-wrap:break-word">Selbstständigen-Paket</h3>
 <p style="color:#dbe6f0">Alle Vorlagen in einem Download – du sparst die Hälfte.</p><div class="prow"><span class="price" style="color:#fff">35 € <s style="font-size:16px;opacity:.7">70 €</s></span><span class="more" style="color:#fff">Ansehen →</span></div></div></a>
@@ -127,7 +131,7 @@ idx=f"""<div class="wrap hero">
 <div class="grid3">
 <div class="feat"><h3>Echte Probleme</h3><p>Jede Vorlage beantwortet eine Frage, die sich Selbstständige wirklich stellen – vom Stundensatz bis zur Abschreibung.</p></div>
 <div class="feat"><h3>Sofort einsatzbereit</h3><p>Gelbe Felder ausfüllen, fertig. Jede Vorlage hat ein Startblatt mit Anleitung und Beispielwerten.</p></div>
-<div class="feat"><h3>Kein Abo</h3><p>Einmal kaufen, dauerhaft nutzen. Deine Daten bleiben auf deinem Rechner.</p></div>
+<div class="feat"><h3>Kein Abo</h3><p>Einmal kaufen, dauerhaft nutzen. Deine Daten bleiben in deiner eigenen Datei.</p></div>
 </div></div></section>
 {FAQ}"""
 page("Solovorlagen – Excel-Vorlagen für Selbstständige & Kleinunternehmer","Excel-Vorlagen für Kleinunternehmer und Freelancer: Umsatzgrenzen-Ampel, Rechnungs-Generator, Stundensatz-Rechner, Fahrtenbuch, AfA-Rechner. Sofort-Download, kein Abo.",idx,"index.html")
@@ -172,7 +176,8 @@ for p in P:
 <p class="note">Sichere Zahlung und Rechnung über Digistore24. Preis inkl. gesetzlicher MwSt., sofern anfallend.</p>
 {'' if p['slug']=='paket' else '<p class="note"><a href="paket.html">Alle 5 Vorlagen im Paket für 35 € statt 70 € →</a></p>'}
 </div></section>"""
-    page(f"{p['name']} – Excel-Vorlage | Solovorlagen",p["lead"][:155],body,f"{p['slug']}.html")
+    md=p["lead"] if len(p["lead"])<=158 else p["lead"][:155].rsplit(" ",1)[0]+" …"
+    page(f"{p['name']} – Excel-Vorlage | Solovorlagen",md,body,f"{p['slug']}.html")
 print("ok", DS)
 
 exec(open(os.path.join(HERE,"content.py")).read())

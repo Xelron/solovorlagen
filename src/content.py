@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Zusatzseiten: Grenzen-Check, Ratgeber. Wird aus gen_site.py per exec ausgeführt (page, html, json, os, OUT verfügbar).
 import json as _json
-STAND="14.10.2026"; ISO="2026-10-14"
+STAND="15.10.2026"; ISO="2026-10-15"
 AUTHOR={"@type":"Person","name":"Felix Merklinger-Lötzsch","url":"https://solovorlagen.de/impressum.html"}
 PUB={"@type":"Organization","name":"Solovorlagen","url":"https://solovorlagen.de/","logo":"https://solovorlagen.de/img/logo.png"}
 def ld(obj): return '<script type="application/ld+json">'+_json.dumps(obj,ensure_ascii=False)+'</script>'
@@ -46,7 +46,7 @@ CHECK_FAQ=[
 ("Was passiert, wenn ich mehr als 25.000 Euro Umsatz im Jahr mache?","Im laufenden Jahr bleibst du Kleinunternehmer, solange du unter 100.000 Euro bleibst. Im Folgejahr ist die Kleinunternehmerregelung dann aber nicht mehr möglich, weil der Vorjahresumsatz über 25.000 Euro lag."),
 ("Was gilt im Gründungsjahr?","Im Jahr der Gründung gilt die Grenze von 25.000 Euro für das laufende Jahr. Eine Hochrechnung auf ein volles Jahr findet nicht mehr statt. Wird die Grenze überschritten, ist schon dieser Umsatz regelbesteuert."),
 ("Zählen die Grenzen brutto oder netto?","Seit 2025 werden die Grenzen mit dem Nettoumsatz verglichen, also ohne Umsatzsteuer. Für Kleinunternehmer entspricht das in der Regel dem Rechnungsbetrag, weil sie keine Umsatzsteuer ausweisen."),
-("Welcher Umsatz zählt für die Grenzen?","Maßgeblich ist der Gesamtumsatz nach vereinnahmten Entgelten, also das tatsächlich eingenommene Geld. Umsätze aus dem Verkauf von Anlagevermögen zählen nicht mit.")]
+("Welcher Umsatz zählt für die Grenzen?","Maßgeblich ist der Gesamtumsatz nach § 19 Abs. 2 UStG: die Summe deiner im Inland steuerbaren Umsätze nach vereinnahmten Entgelten, also das tatsächlich eingenommene Geld. Leistungen, die im Ausland steuerbar sind (z. B. viele Dienstleistungen an Unternehmen im Ausland), zählen nicht mit. Ebenfalls nicht mitgezählt werden Umsätze aus dem Verkauf von Anlagevermögen sowie bestimmte steuerfreie Umsätze: solche nach § 4 Nr. 8 Buchst. i, Nr. 9 Buchst. b und Nr. 11 bis 29 UStG (z. B. Heilbehandlungen oder Unterrichtsleistungen) und Finanz- und Grundstücksumsätze nach § 4 Nr. 8 Buchst. a bis h, Nr. 9 Buchst. a und Nr. 10 UStG, wenn sie nur Hilfsumsätze sind.")]
 check_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:24px">
 <p class="eyebrow">Kostenloser Rechner · Stand 2026</p>
 <h1 class="serif">Umsatzgrenzen-Check für Kleinunternehmer 2026</h1>
@@ -54,13 +54,14 @@ check_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:24px">
 </div>
 <div class="wrap" style="padding-bottom:56px"><div class="split">
 <div><form class="calc" id="calc" onsubmit="return false">
-<label for="vj">Umsatz im Vorjahr 2025 (netto, €)</label>
-<input type="text" id="vj" inputmode="decimal" placeholder="z. B. 18000" autocomplete="off">
+<div id="vjw"><label for="vj">Umsatz im Vorjahr <span id="vjy">2025</span> (netto, €)</label>
+<input type="text" id="vj" inputmode="decimal" placeholder="z. B. 18000" autocomplete="off"></div>
 <label for="lj">Umsatz bisher in diesem Jahr (netto, €)</label>
 <input type="text" id="lj" inputmode="decimal" placeholder="z. B. 14500" autocomplete="off">
 <label for="st">Stand (Datum)</label>
 <input type="date" id="st">
 <label class="chk"><input type="checkbox" id="gr"> Ich habe meine Tätigkeit in diesem Jahr begonnen</label>
+<div id="gdw" style="display:none"><label for="gd">Gründungsdatum (Beginn der Tätigkeit)</label><input type="date" id="gd"></div>
 <p class="hint">Netto = ohne Umsatzsteuer. Als Kleinunternehmer ist das meist dein Rechnungsbetrag. Die Daten bleiben in deinem Browser und werden nirgends gespeichert.</p>
 <div class="res" id="res" aria-live="polite"></div>
 </form></div>
@@ -71,7 +72,7 @@ check_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:24px">
 <tr><td>Laufendes Jahr</td><td>100.000&nbsp;€</td><td>Regelung endet sofort</td></tr>
 <tr><td>Gründungsjahr</td><td>25.000&nbsp;€</td><td>Regelung endet sofort</td></tr>
 <tr><td>Ausblick Folgejahr</td><td>25.000&nbsp;€</td><td>Folgejahr kein Kleinunternehmer</td></tr></table></div>
-<p class="note">Die Hochrechnung aufs Jahr ist eine einfache Schätzung: bisheriger Umsatz ÷ vergangene Tage × 365.</p>
+<p class="note">Die Hochrechnung aufs Jahr ist eine einfache Schätzung: bisheriger Umsatz ÷ vergangene Tage × Tage im Jahr. Im Gründungsjahr wird ab dem Gründungsdatum gerechnet: Umsatz ÷ Tage seit Gründung × Tage von der Gründung bis 31.12.</p>
 <div class="cta"><h3>Das ganze Jahr im Blick behalten</h3><p>Das Kleinunternehmer-Cockpit rechnet die Ampel automatisch mit jeder Einnahme mit – dazu Ausgaben, Gewinn, EÜR-Übersicht und Steuerrücklage.</p><a class="btn" href="cockpit.html">Zum Cockpit (19 €)</a></div>
 </div></div></div>
 <section class="band"><div class="wrap faq">
@@ -85,28 +86,40 @@ check_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:24px">
 var $=function(i){{return document.getElementById(i)}};
 var fmt=function(n){{return n.toLocaleString('de-DE',{{maximumFractionDigits:0}})+' €'}};
 var num=function(v){{v=(v||'').replace(/\\s|€/g,'');if(v.indexOf(',')>-1)v=v.replace(/\\./g,'').replace(',','.');else if((v.match(/\\./g)||[]).length>1||/\\.\\d{{3}}$/.test(v))v=v.replace(/\\./g,'');var n=parseFloat(v);return isNaN(n)?null:n}};
-var t=new Date();$('st').value=t.toISOString().slice(0,10);
+var iso=function(d){{return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}};
+var pd=function(v){{var m=/^(\\d{{4}})-(\\d{{2}})-(\\d{{2}})$/.exec(v||'');return m?new Date(+m[1],+m[2]-1,+m[3]):null}};
+var t=new Date();t=new Date(t.getFullYear(),t.getMonth(),t.getDate());$('st').value=iso(t);
 function light(c,h,s){{return '<div class="light '+c+'">'+h+(s?'<small>'+s+'</small>':'')+'</div>'}}
 function run(){{
- var vj=num($('vj').value),lj=num($('lj').value),gr=$('gr').checked,d=new Date($('st').value||t);
- if(gr){{$('vj').disabled=true}}else{{$('vj').disabled=false}}
+ var vj=num($('vj').value),lj=num($('lj').value),gr=$('gr').checked,d=pd($('st').value)||t,Y=d.getFullYear();
+ $('vjy').textContent=Y-1;$('vjw').style.display=gr?'none':'block';$('gdw').style.display=gr?'block':'none';
+ if((lj!==null&&lj<0)||(!gr&&vj!==null&&vj<0)){{$('res').innerHTML=light('y','Eingabe prüfen','Umsätze können nicht negativ sein.');return}}
  if(lj===null||(!gr&&vj===null)){{$('res').innerHTML='<p class="hint">Trag oben deine Umsätze ein – das Ergebnis erscheint sofort.</p>';return}}
- var start=new Date(d.getFullYear(),0,1),days=Math.max(1,Math.round((d-start)/864e5)+1),proj=lj/days*365;
- var lim=gr?25000:100000,pct=Math.min(100,lj/lim*100),out='';
+ var start=new Date(Y,0,1),end=new Date(Y,11,31),dd=function(a,b){{return Math.round((b-a)/864e5)}},gd=null,warn='';
+ if(gr){{gd=pd($('gd').value);
+  if(gd&&gd.getFullYear()!==Y){{warn=light('y','Gründungsdatum prüfen','Das Gründungsdatum liegt nicht im Jahr '+Y+'. Dann ist '+Y+' nicht dein Gründungsjahr – nimm das Häkchen heraus und gib deinen Vorjahresumsatz an.');gd=null}}
+  else if(gd&&gd>d){{warn=light('y','Gründungsdatum prüfen','Das Gründungsdatum liegt nach dem Stand-Datum.');gd=null}}
+  if(gd)start=gd}}
+ var days=Math.max(1,dd(start,d)+1),total=dd(start,end)+1,proj=lj/days*total,noproj=gr&&!gd;
+ var lim=gr?25000:100000,pct=Math.min(100,lj/lim*100),out=warn;
  if(!gr&&vj>25000){{out+=light('r','Dieses Jahr kein Kleinunternehmer','Dein Vorjahresumsatz lag über 25.000 €. Die Kleinunternehmerregelung ist in diesem Jahr nicht anwendbar – du musst Umsatzsteuer ausweisen.')}}
  else if(lj>lim){{out+=light('r','Grenze überschritten – Regelung endet sofort','Bereits der Umsatz, mit dem die Grenze von '+fmt(lim)+' überschritten wurde, ist umsatzsteuerpflichtig. Sprich zeitnah mit einer Steuerberatung.')}}
  else if(pct>=80){{out+=light('y','Achtung: Grenze bald erreicht',fmt(lj)+' von '+fmt(lim)+' ausgeschöpft. Noch '+fmt(lim-lj)+' Spielraum.')}}
  else{{out+=light('g','Im grünen Bereich',fmt(lj)+' von '+fmt(lim)+' ausgeschöpft. Noch '+fmt(lim-lj)+' Spielraum.')}}
  if(!(!gr&&vj>25000)){{
   if(lj>25000)out+=light('r','Folgejahr: kein Kleinunternehmer','Du liegst dieses Jahr schon über 25.000 €. Im nächsten Jahr gilt die Regelbesteuerung – Preise und Rechnungen rechtzeitig umstellen.');
+  else if(noproj)out+=light('y','Hochrechnung: Gründungsdatum fehlt','Trag oben dein Gründungsdatum ein – dann rechnet der Check ab diesem Tag bis zum 31.12. hoch.');
+  else if(gr&&days<45)out+=light('g','Ausblick: noch zu früh für eine Hochrechnung','Prüfe deinen Stand im Laufe des Jahres erneut. Im Gründungsjahr endet die Regelung sofort, sobald dein Umsatz 25.000 € überschreitet.');
+  else if(gr&&proj>25000)out+=light('y','Ausblick: 25.000 € könnten dieses Jahr überschritten werden','Hochgerechnet ab deinem Gründungsdatum bis zum 31.12. kommst du auf etwa '+fmt(proj)+'. Im Gründungsjahr endet die Regelung sofort mit dem Umsatz, der 25.000 € überschreitet – und im Folgejahr bist du dann auch kein Kleinunternehmer.');
+  else if(gr)out+=light('g','Ausblick: voraussichtlich unter 25.000 €','Hochgerechnet ab deinem Gründungsdatum bis zum 31.12. etwa '+fmt(proj)+' – unter 25.000 €. Dann bist du voraussichtlich auch nächstes Jahr Kleinunternehmer.');
   else if(days<45)out+=light('g','Folgejahr: noch zu früh für eine Hochrechnung','Prüfe deinen Stand im Laufe des Jahres erneut – entscheidend ist, ob du am Jahresende über 25.000 € liegst.');
   else if(proj>25000)out+=light('y','Folgejahr: Grenze im Blick behalten','Hochgerechnet kommst du auf etwa '+fmt(proj)+'. Liegt dein Jahresumsatz am Ende über 25.000 €, bist du nächstes Jahr kein Kleinunternehmer.');
   else out+=light('g','Folgejahr: voraussichtlich weiter Kleinunternehmer','Hochgerechnet etwa '+fmt(proj)+' – unter 25.000 €.');
  }}
- out+='<div class="kpis"><div class="kpi"><span>Ausgeschöpft</span><b>'+pct.toFixed(1).replace('.',',')+' %</b></div><div class="kpi"><span>Hochrechnung Jahr</span><b>'+fmt(proj)+'</b></div><div class="kpi"><span>Maßgebliche Grenze</span><b>'+fmt(lim)+'</b></div></div><div class="bar" aria-hidden="true"><i style="width:'+pct+'%"></i></div>';
+ out+='<div class="kpis"><div class="kpi"><span>Ausgeschöpft</span><b>'+pct.toFixed(1).replace('.',',')+' %</b></div><div class="kpi"><span>Hochrechnung bis 31.12.</span><b>'+(noproj?'–':fmt(proj))+'</b></div><div class="kpi"><span>Maßgebliche Grenze</span><b>'+fmt(lim)+'</b></div></div><div class="bar" aria-hidden="true"><i style="width:'+pct+'%"></i></div>';
  $('res').innerHTML=out;
 }}
-['vj','lj','st','gr'].forEach(function(i){{$(i).addEventListener('input',run);$(i).addEventListener('change',run)}});run();
+['vj','lj','st','gr','gd'].forEach(function(i){{$(i).addEventListener('input',run);$(i).addEventListener('change',run)}});run();
 }})();
 </script>"""
 check_head=EXTRA_CSS+ld({"@context":"https://schema.org","@type":"WebApplication","name":"Umsatzgrenzen-Check für Kleinunternehmer 2026","url":"https://solovorlagen.de/grenzen-check.html",
@@ -121,7 +134,7 @@ KU_FAQ=[
 ("Endet die Kleinunternehmerregelung sofort, wenn ich 100.000 Euro überschreite?","Ja. Seit 2025 endet die Regelung im laufenden Jahr sofort. Schon der Umsatz, mit dem die 100.000-Euro-Grenze überschritten wird, unterliegt der Regelbesteuerung."),
 ("Bin ich nächstes Jahr noch Kleinunternehmer, wenn ich dieses Jahr 30.000 Euro Umsatz mache?","Nein. Für das Folgejahr ist die Kleinunternehmerregelung nur möglich, wenn der Vorjahresumsatz höchstens 25.000 Euro betrug. Bei 30.000 Euro giltst du im nächsten Jahr als Regelunternehmer."),
 ("Wird im Gründungsjahr der Umsatz hochgerechnet?","Nein. Im Gründungsjahr gilt eine Grenze von 25.000 Euro für den tatsächlichen Umsatz des laufenden Jahres. Eine Hochrechnung auf ein volles Kalenderjahr findet nicht mehr statt."),
-("Welcher Satz muss als Kleinunternehmer auf die Rechnung?","Ein Hinweis auf die Steuerbefreiung, zum Beispiel „Steuerfrei nach § 19 Abs. 1 UStG (Kleinunternehmerregelung)“ oder „Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.“ Außerdem verlangt § 34a UStDV Name und Anschrift beider Seiten, Steuernummer oder USt-IdNr., Ausstellungsdatum, Art und Umfang der Leistung und den Gesamtbetrag. Rechnungsnummer und Leistungszeitraum sind nicht vorgeschrieben, aber empfehlenswert."),
+("Welcher Satz muss als Kleinunternehmer auf die Rechnung?","Ein Hinweis darauf, dass die Steuerbefreiung für Kleinunternehmer gilt, zum Beispiel „Steuerfreie Kleinunternehmerleistung gemäß § 19 Abs. 1 UStG.“ Verbreitet ist auch „Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.“ Außerdem verlangt § 34a UStDV Name und Anschrift beider Seiten, Steuernummer oder USt-IdNr., Ausstellungsdatum, Art und Umfang der Leistung und den Gesamtbetrag. Rechnungsnummer und Leistungszeitraum sind nicht vorgeschrieben, aber empfehlenswert."),
 ("Müssen Kleinunternehmer E-Rechnungen ausstellen?","Nein. Kleinunternehmer müssen E-Rechnungen seit 2025 empfangen können, dürfen aber weiterhin Rechnungen als PDF oder auf Papier ausstellen."),
 ("Muss ich als Kleinunternehmer eine Umsatzsteuererklärung abgeben?","Seit 2025 in der Regel nicht mehr, sondern nur noch, wenn das Finanzamt dazu auffordert. Die Einkommensteuererklärung mit Einnahmen-Überschuss-Rechnung bleibt Pflicht."),
 ("Wie lange bin ich gebunden, wenn ich auf die Kleinunternehmerregelung verzichte?","Wer freiwillig zur Regelbesteuerung wechselt, ist daran für mindestens fünf Kalenderjahre gebunden.")]
@@ -159,9 +172,12 @@ ku_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 <p>Wer seine Tätigkeit im laufenden Jahr neu aufnimmt, hat noch keinen Vorjahresumsatz. Dann gilt: Der Umsatz im Gründungsjahr darf <strong>25.000 €</strong> nicht überschreiten. Eine Hochrechnung auf ein volles Jahr findet nicht mehr statt – es zählt der tatsächliche Umsatz. Wird die Grenze überschritten, endet die Regelung ebenfalls sofort.</p>
 
 <h2 class="serif" id="umsatz">Welcher Umsatz zählt für die Grenzen?</h2>
+<p>Maßgeblich ist der <strong>Gesamtumsatz</strong> nach § 19 Abs. 2 UStG:</p>
 <ul><li><strong>Gesamtumsatz nach vereinnahmten Entgelten:</strong> Maßgeblich ist das Geld, das tatsächlich eingegangen ist.</li>
-<li><strong>Netto:</strong> ohne Umsatzsteuer. Als Kleinunternehmer ist das in der Regel dein Rechnungsbetrag. Bestimmte steuerfreie Hilfsumsätze werden nicht mitgezählt.</li>
+<li><strong>Netto:</strong> ohne Umsatzsteuer. Als Kleinunternehmer ist das in der Regel dein Rechnungsbetrag.</li>
+<li><strong>Nur im Inland steuerbare Umsätze:</strong> Leistungen, deren Leistungsort im Ausland liegt – etwa viele Dienstleistungen an Unternehmen in anderen Ländern –, zählen nicht mit.</li>
 <li><strong>Nicht mitgezählt</strong> werden Umsätze aus dem Verkauf von Anlagevermögen, etwa der Verkauf deines alten Firmen-Laptops.</li>
+<li><strong>Bestimmte steuerfreie Umsätze</strong> werden abgezogen: Umsätze nach § 4 Nr. 8 Buchst. i, Nr. 9 Buchst. b und Nr. 11 bis 29 UStG (z. B. Heilbehandlungen, bestimmte Unterrichtsleistungen) sowie Finanz- und Grundstücksumsätze nach § 4 Nr. 8 Buchst. a bis h, Nr. 9 Buchst. a und Nr. 10 UStG, wenn sie nur Hilfsumsätze sind.</li>
 <li><strong>Alle Tätigkeiten zusammen:</strong> Die Grenze gilt pro Person, nicht pro Betrieb. Wer mehrere Gewerbe oder ein Gewerbe und eine freiberufliche Tätigkeit hat, rechnet die Umsätze zusammen.</li></ul>
 
 <h2 class="serif" id="beispiele">Drei Rechenbeispiele</h2>
@@ -172,7 +188,7 @@ ku_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 
 <h2 class="serif" id="rechnung">Rechnung, E-Rechnung und Steuererklärung</h2>
 <h3>Was muss auf die Rechnung?</h3>
-<p>Kleinunternehmer-Rechnungen müssen nach § 34a UStDV mindestens enthalten: den vollständigen Namen und die Anschrift von dir und deinem Kunden, deine Steuernummer oder USt-IdNr., das Ausstellungsdatum, Menge und Art der Lieferung bzw. Art und Umfang der Leistung, den Gesamtbetrag und einen Hinweis auf die Steuerbefreiung für Kleinunternehmer, z. B. <em>„Steuerfrei nach § 19 Abs. 1 UStG (Kleinunternehmerregelung)“</em> oder <em>„Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.“</em> Rechnungsnummer und Leistungszeitraum sind für Kleinunternehmer nicht vorgeschrieben, für die eigene Buchhaltung aber sehr empfehlenswert.</p>
+<p>Kleinunternehmer-Rechnungen müssen nach § 34a UStDV mindestens enthalten: den vollständigen Namen und die Anschrift von dir und deinem Kunden, deine Steuernummer oder USt-IdNr., das Ausstellungsdatum, Menge und Art der Lieferung bzw. Art und Umfang der Leistung, den Gesamtbetrag und einen Hinweis darauf, dass die Steuerbefreiung für Kleinunternehmer gilt, z. B. <em>„Steuerfreie Kleinunternehmerleistung gemäß § 19 Abs. 1 UStG.“</em> Verbreitet ist auch <em>„Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.“</em> Fertige Formulierungen zum Kopieren gibt es im <a href="rechnungstext-kleinunternehmer.html">Rechnungstext-Generator</a>. Rechnungsnummer und Leistungszeitraum sind für Kleinunternehmer nicht vorgeschrieben, für die eigene Buchhaltung aber sehr empfehlenswert.</p>
 <h3>Muss ich E-Rechnungen ausstellen?</h3>
 <p>Nein. Kleinunternehmer müssen E-Rechnungen seit 2025 <strong>empfangen</strong> können, dürfen aber weiterhin PDF- oder Papierrechnungen <strong>ausstellen</strong>.</p>
 <h3>Muss ich eine Umsatzsteuererklärung abgeben?</h3>
@@ -197,13 +213,13 @@ page("Kleinunternehmerregelung 2026: Umsatzgrenzen 25.000 € und 100.000 € ei
 SS_FAQ=[
 ("Wie berechne ich meinen Stundensatz als Selbstständiger?","Addiere deinen privaten Bedarf (Wunsch-Netto, Kranken- und Pflegeversicherung, Altersvorsorge, Versicherungen), rechne die Einkommensteuer hinzu, addiere die Betriebskosten und einen Puffer. Teile die Summe durch die Zahl der Stunden, die du im Jahr tatsächlich abrechnen kannst."),
 ("Wie viele Stunden kann ich als Selbstständiger im Jahr abrechnen?","Deutlich weniger als ein Angestellter arbeitet. Nach Abzug von Urlaub, Feiertagen, Krankheit und Fortbildung bleiben oft rund 200 bis 210 Arbeitstage. Davon ist nur ein Teil abrechenbar, weil Akquise, Verwaltung und Buchhaltung nicht bezahlt werden. Mit 8 Stunden pro Tag und 60 Prozent abrechenbarer Zeit sind das etwa 1.000 Stunden im Jahr."),
-("Welcher Stundensatz ist für 2.500 Euro netto im Monat nötig?","Mit typischen Annahmen – 450 Euro Kranken- und Pflegeversicherung, 400 Euro Altersvorsorge und Versicherungen, 250 Euro laufende Kosten, 1.500 Euro Anschaffungen pro Jahr, 25 Prozent Steuerquote, 10 Prozent Puffer und 984 abrechenbaren Stunden – liegt der Stundensatz bei rund 65 Euro. Mit eigenen Werten kann das Ergebnis deutlich abweichen."),
+("Welcher Stundensatz ist für 2.500 Euro netto im Monat nötig?","Mit typischen Annahmen für privat Versicherte – 450 Euro private Kranken- und Pflegeversicherung, 400 Euro Altersvorsorge und Versicherungen, 250 Euro laufende Kosten, 1.500 Euro Anschaffungen pro Jahr, 25 Prozent Steuerquote, 10 Prozent Puffer und 984 abrechenbaren Stunden – liegt der Stundensatz bei rund 65 Euro. Wer freiwillig gesetzlich versichert ist, zahlt rund 21 Prozent vom Gewinn für Kranken- und Pflegeversicherung; mit sonst gleichen Annahmen (kinderlos) sind dann rund 77 Euro nötig. Mit eigenen Werten kann das Ergebnis deutlich abweichen."),
 ("Warum ist der Stundensatz von Selbstständigen so viel höher als ein Angestellten-Stundenlohn?","Selbstständige zahlen Kranken- und Pflegeversicherung und Altersvorsorge allein, bekommen keinen bezahlten Urlaub und keine Lohnfortzahlung bei Krankheit, tragen eigene Betriebskosten und können nur einen Teil ihrer Arbeitszeit abrechnen."),
-("Wie rechne ich vom Stundensatz auf den Tagessatz um?","Tagessatz = Stundensatz × abrechenbare Stunden pro Tag. Bei 65 Euro und 8 Stunden sind das 520 Euro pro Tag."),
-("Was hat der Stundensatz mit der Kleinunternehmerregelung zu tun?","Wer seinen Stundensatz realistisch kalkuliert, kommt oft auf einen Jahresumsatz über 25.000 Euro. Dann ist man im Folgejahr kein Kleinunternehmer mehr und muss Umsatzsteuer zusätzlich zum Preis berechnen.")]
+("Wie rechne ich vom Stundensatz auf den Tagessatz um?","Tagessatz = Stundensatz × Arbeitsstunden pro Tag. Bei 65 Euro und 8 Stunden sind das 520 Euro pro abgerechnetem Tag. Unbezahlte Zeit für Akquise und Verwaltung steckt bereits im Stundensatz."),
+("Was hat der Stundensatz mit der Kleinunternehmerregelung zu tun?","Wer seinen Stundensatz realistisch kalkuliert, kommt oft auf einen Jahresumsatz über 25.000 Euro. Dann ist man im Folgejahr kein Kleinunternehmer mehr und muss Umsatzsteuer zusätzlich zum Preis berechnen. Im Gründungsjahr endet die Regelung sogar sofort, sobald 25.000 Euro überschritten sind, und in jedem Jahr sofort ab 100.000 Euro.")]
 ss_url="https://solovorlagen.de/stundensatz-berechnen.html"
-ss_desc="Stundensatz berechnen als Selbstständiger: Formel, Schritt-für-Schritt-Anleitung mit Rechenbeispiel (2.500 € netto ≈ 65 € pro Stunde), typische Fehler und Tagessatz."
-rows=[("Wunsch-Nettoeinkommen","2.500 € / Monat","30.000 €"),("Kranken- und Pflegeversicherung","450 € / Monat","5.400 €"),("Altersvorsorge und Versicherungen","400 € / Monat","4.800 €"),
+ss_desc="Stundensatz berechnen als Selbstständiger: Formel, Schritt-für-Schritt-Anleitung mit Rechenbeispiel (2.500 € netto ≈ 65 € pro Stunde, privat versichert), gesetzliche KV, typische Fehler und Tagessatz."
+rows=[("Wunsch-Nettoeinkommen","2.500 € / Monat","30.000 €"),("Kranken- und Pflegeversicherung (Annahme: privat versichert)","450 € / Monat","5.400 €"),("Altersvorsorge und Versicherungen","400 € / Monat","4.800 €"),
 ("= Privatbedarf","","40.200 €"),("Einkommensteuer (Annahme 25 % auf den Gewinn)","40.200 € ÷ 0,75 − 40.200 €","13.400 €"),("= nötiger Gewinn","","53.600 €"),
 ("Betriebskosten","250 € / Monat + 1.500 € Anschaffungen","4.500 €"),("Puffer 10 %","","5.810 €"),("= Umsatzziel pro Jahr","","63.910 €")]
 tbl1="".join(f"<tr><td>{'<strong>'+a+'</strong>' if a.startswith('=') else a}</td><td>{b}</td><td>{'<strong>'+c+'</strong>' if a.startswith('=') else c}</td></tr>" for a,b,c in rows)
@@ -211,7 +227,7 @@ ss_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 <p class="eyebrow"><a href="ratgeber.html">Ratgeber</a> · Preise & Kalkulation</p>
 <h1 class="serif">Stundensatz berechnen als Selbstständiger: Formel, Beispiel und typische Fehler</h1>
 {BYLINE}
-<div class="answer"><p><strong>Die Antwort in Kürze:</strong> Stundensatz = (Privatbedarf ÷ (1 − Steuerquote) + Betriebskosten) × (1 + Puffer) ÷ abrechenbare Stunden pro Jahr. Für <strong>2.500 € netto im Monat</strong> kommt man mit typischen Annahmen auf rund <strong>65 € pro Stunde</strong> bzw. 520 € pro Tag – weil Versicherungen, Steuern, Urlaub, Krankheit und unbezahlte Arbeitszeit mitbezahlt werden müssen.</p></div>
+<div class="answer"><p><strong>Die Antwort in Kürze:</strong> Stundensatz = (Privatbedarf ÷ (1 − Steuerquote) + Betriebskosten) × (1 + Puffer) ÷ abrechenbare Stunden pro Jahr. Für <strong>2.500 € netto im Monat</strong> kommt man mit typischen Annahmen (privat krankenversichert) auf rund <strong>65 € pro Stunde</strong> bzw. 520 € pro 8-Stunden-Tag – weil Versicherungen, Steuern, Urlaub, Krankheit und unbezahlte Arbeitszeit mitbezahlt werden müssen.</p></div>
 <nav class="toc" aria-label="Inhalt"><strong>Inhalt</strong><ol>
 <li><a href="#formel">Die Formel</a></li><li><a href="#schritte">Schritt für Schritt mit Beispiel</a></li><li><a href="#stunden">Wie viele Stunden kann ich abrechnen?</a></li>
 <li><a href="#fehler">Die 5 häufigsten Fehler</a></li><li><a href="#tagessatz">Tagessatz und Projektpreis</a></li><li><a href="#ku">Stundensatz und Kleinunternehmerregelung</a></li><li><a href="#faq">Häufige Fragen</a></li></ol></nav>
@@ -225,11 +241,13 @@ ss_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 <li><strong>Puffer:</strong> für Auftragsflauten, Zahlungsausfälle und Unvorhergesehenes</li></ol>
 
 <h2 class="serif" id="schritte">Schritt für Schritt: Rechenbeispiel für 2.500 € netto</h2>
-<p><strong>Schritt 1 – Umsatzziel ermitteln:</strong></p>
+<p><strong>Schritt 1 – Umsatzziel ermitteln</strong> (Beispiel: privat krankenversichert mit 450 € Monatsbeitrag):</p>
 <div class="tblwrap"><table class="tbl"><tr><th>Posten</th><th>Annahme</th><th>pro Jahr</th></tr>{tbl1}</table></div>
 <p><strong>Schritt 2 – abrechenbare Stunden ermitteln:</strong> 52 Wochen × 5 Tage = 260 Tage, abzüglich 30 Urlaubstage, 10 Feiertage, 10 Krankheitstage und 5 Fortbildungstage = <strong>205 Arbeitstage</strong>. Bei 8 Stunden pro Tag und 60 % abrechenbarer Zeit sind das <strong>984 Stunden</strong> im Jahr.</p>
 <p><strong>Schritt 3 – teilen:</strong> 63.910 € ÷ 984 Stunden = <strong>64,95 € pro Stunde</strong>. Ohne Puffer wären es 59,04 €.</p>
 <p>Die Steuerquote von 25 % ist eine grobe Annahme. Die tatsächliche Einkommensteuer hängt von deinem gesamten Einkommen und deinen Abzügen ab – Beiträge zur Kranken- und Altersvorsorge mindern sie zum Teil. Die Rechnung ist daher bewusst vorsichtig.</p>
+<h3>Was ändert sich bei gesetzlicher Krankenversicherung?</h3>
+<p>Die 450 € im Beispiel sind eine Annahme für eine private Krankenversicherung. Wer <strong>freiwillig gesetzlich versichert</strong> ist, zahlt keinen festen Betrag, sondern einen Prozentsatz vom Gewinn: 2026 rund <strong>21 %</strong> (ermäßigter Beitragssatz 14,0 % ohne Krankengeld bzw. 14,6 % mit Krankengeld, dazu der kassenindividuelle Zusatzbeitrag, im Durchschnitt 2,9 %, und die Pflegeversicherung mit 3,6 % bzw. 4,2 % für Kinderlose). Beitragspflichtig ist der Gewinn bis zur Beitragsbemessungsgrenze von 5.812,50 € im Monat; für sehr kleine Gewinne gilt ein Mindestbeitrag. Mit sonst gleichen Annahmen (kinderlos, durchschnittlicher Zusatzbeitrag) ergibt das im Beispiel rund <strong>1.135 € im Monat statt 450 €</strong> – der nötige Stundensatz steigt dann von 65 € auf rund <strong>77 €</strong>. Der Stundensatz-Rechner berechnet den gesetzlichen Beitrag automatisch.</p>
 
 <h2 class="serif" id="stunden">Wie viele Stunden kann ich wirklich abrechnen?</h2>
 <p>Weniger als die meisten denken. Neben Urlaub, Feiertagen und Krankheit fällt Arbeit an, die dir niemand bezahlt: Akquise, Angebote, E-Mails, Buchhaltung, Weiterbildung. Realistisch sind oft <strong>50 bis 70 % abrechenbare Zeit</strong>. Wie stark das den Preis verändert, zeigt die Tabelle (gleiche Annahmen wie oben):</p>
@@ -238,18 +256,18 @@ ss_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 
 <h2 class="serif" id="fehler">Die 5 häufigsten Fehler</h2>
 <ol><li><strong>Den Angestellten-Stundenlohn als Maßstab nehmen.</strong> Arbeitgeber zahlen Sozialabgaben, Urlaub und Lohnfortzahlung mit – als Selbstständiger trägst du alles selbst.</li>
-<li><strong>Alle Arbeitsstunden als abrechenbar rechnen.</strong> Wer mit 100 % kalkuliert, verdient bei realistischen 60 % fast 40 % weniger als geplant.</li>
-<li><strong>Kranken- und Pflegeversicherung vergessen.</strong> Sie ist für viele Selbstständige einer der größten Fixkosten-Posten.</li>
-<li><strong>Keine Steuern einplanen.</strong> Die Einkommensteuer wird erst nach Jahresende fällig – und trifft dann ohne Rücklage hart.</li>
+<li><strong>Alle Arbeitsstunden als abrechenbar rechnen.</strong> Wer mit 100 % kalkuliert, aber realistisch nur 60 % abrechnen kann, macht 40 % weniger Umsatz als geplant – der Gewinn sinkt noch stärker, weil Kosten und Versicherungen gleich bleiben.</li>
+<li><strong>Kranken- und Pflegeversicherung vergessen.</strong> Sie gehört zum privaten Bedarf und ist für viele Selbstständige einer der größten Posten – bei gesetzlicher Versicherung wächst sie mit dem Gewinn.</li>
+<li><strong>Keine Steuern einplanen.</strong> Die Einkommensteuer wird mit dem Steuerbescheid nachgezahlt; danach setzt das Finanzamt meist vierteljährliche Vorauszahlungen fest (10. März, Juni, September, Dezember; § 37 EStG). Ohne Rücklage trifft das doppelt: Nachzahlung fürs Vorjahr plus Vorauszahlungen fürs laufende Jahr.</li>
 <li><strong>Keinen Puffer einrechnen.</strong> Flauten, kranke Kinder oder ein ausgefallener Kunde passieren in jedem Jahr.</li></ol>
 
 <h2 class="serif" id="tagessatz">Tagessatz und Projektpreis</h2>
-<p><strong>Tagessatz = Stundensatz × Stunden pro Tag.</strong> Bei 64,95 € und 8 Stunden sind das rund 520 € pro Tag. Für Projektpreise schätzt du die Stunden pro Arbeitsschritt, addierst einen Puffer für Unvorhergesehenes (z. B. 15 %) und multiplizierst mit deinem Stundensatz: 23 geschätzte Stunden × 1,15 × 64,95 € ≈ 1.718 €.</p>
+<p><strong>Tagessatz = Stundensatz × Arbeitsstunden pro Tag.</strong> Bei 64,95 € und 8 Stunden sind das rund 520 € pro abgerechnetem Tag. Die unbezahlte Zeit für Akquise und Verwaltung steckt schon im Stundensatz, weil er mit 60 % abrechenbarer Zeit kalkuliert ist. Für Projektpreise schätzt du die Stunden pro Arbeitsschritt, addierst einen Puffer für Unvorhergesehenes (z. B. 15 %) und multiplizierst mit deinem Stundensatz: 23 geschätzte Stunden × 1,15 × 64,95 € ≈ 1.718 €.</p>
 
 <h2 class="serif" id="ku">Stundensatz und Kleinunternehmerregelung</h2>
-<p>Ein realistischer Stundensatz führt schnell zu einem Jahresumsatz über <strong>25.000 €</strong> – im Beispiel sind es knapp 64.000 €. Wer diese Grenze überschreitet, ist im Folgejahr kein Kleinunternehmer mehr und muss Umsatzsteuer zusätzlich zum Preis berechnen. Mehr dazu: <a href="kleinunternehmerregelung-grenzen.html">Kleinunternehmerregelung 2026 – die Grenzen einfach erklärt</a> und der <a href="grenzen-check.html">kostenlose Grenzen-Check</a>.</p>
+<p>Ein realistischer Stundensatz führt schnell zu einem Jahresumsatz über <strong>25.000 €</strong> – im Beispiel sind es knapp 64.000 €. Wer diese Grenze überschreitet, ist im Folgejahr kein Kleinunternehmer mehr und muss Umsatzsteuer zusätzlich zum Preis berechnen. Im <strong>Gründungsjahr</strong> gilt die 25.000-€-Grenze schon für das laufende Jahr: Wird sie überschritten, endet die Regelung sofort. Und unabhängig davon endet sie in jedem Jahr sofort, sobald der Umsatz <strong>100.000 €</strong> überschreitet. Mehr dazu: <a href="kleinunternehmerregelung-grenzen.html">Kleinunternehmerregelung 2026 – die Grenzen einfach erklärt</a> und der <a href="grenzen-check.html">kostenlose Grenzen-Check</a>.</p>
 
-<div class="cta"><h3>Deinen Stundensatz mit eigenen Zahlen berechnen</h3><p>Der Stundensatz-Rechner ist eine Excel-Vorlage: Werte eintragen, Stunden- und Tagessatz ablesen – mit Aufschlüsselung, Szenario-Tabelle und Projekt-Kalkulation für Angebote.</p><a class="btn" href="stundensatz.html">Stundensatz-Rechner ansehen</a></div>
+<div class="cta"><h3>Deinen Stundensatz mit eigenen Zahlen berechnen</h3><p>Der Stundensatz-Rechner ist eine Excel-Vorlage: Werte eintragen, Stunden- und Tagessatz ablesen – gesetzliche oder private Krankenversicherung wählbar, mit Aufschlüsselung, Szenario-Tabelle und Projekt-Kalkulation für Angebote.</p><a class="btn" href="stundensatz.html">Stundensatz-Rechner ansehen</a></div>
 
 <h2 class="serif" id="faq">Häufige Fragen</h2>
 <div class="faq" style="max-width:none">{faq_html(SS_FAQ)}</div>
@@ -281,14 +299,14 @@ open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 > Excel-Vorlagen und Ratgeber für Selbstständige und Kleinunternehmer in Deutschland (Stand 2026). Betreiber: Felix Merklinger-Lötzsch, Aßlar.
 
 ## Ratgeber
-- [Kleinunternehmerregelung 2026: Umsatzgrenzen einfach erklärt](https://solovorlagen.de/kleinunternehmerregelung-grenzen.html): 25.000 € Vorjahr, 100.000 € laufendes Jahr (netto), sofortiges Ende bei Überschreiten, Gründungsjahr ohne Hochrechnung, Rechnungshinweis, E-Rechnung.
-- [Stundensatz berechnen als Selbstständiger](https://solovorlagen.de/stundensatz-berechnen.html): Formel, Rechenbeispiel (2.500 € netto ≈ 65 €/Stunde), abrechenbare Stunden, typische Fehler.
+- [Kleinunternehmerregelung 2026: Umsatzgrenzen einfach erklärt](https://solovorlagen.de/kleinunternehmerregelung-grenzen.html): 25.000 € Vorjahr, 100.000 € laufendes Jahr (netto), sofortiges Ende bei Überschreiten, Gründungsjahr 25.000 € ohne Hochrechnung, Rechnungshinweis, E-Rechnung.
+- [Stundensatz berechnen als Selbstständiger](https://solovorlagen.de/stundensatz-berechnen.html): Formel, Rechenbeispiel (2.500 € netto ≈ 65 €/Stunde bei privater KV, mit gesetzlicher KV rund 77 €), abrechenbare Stunden, typische Fehler.
 
 ## Werkzeuge
 - [Umsatzgrenzen-Check 2026](https://solovorlagen.de/grenzen-check.html): kostenloser Online-Rechner zur Kleinunternehmergrenze.
-- [Rechnungstext-Generator für Kleinunternehmer](https://solovorlagen.de/rechnungstext-kleinunternehmer.html): Hinweis nach § 19 UStG zum Kopieren, Pflichtangaben nach § 34a UStDV (Rechnungsnummer nicht Pflicht), Kleinbetragsrechnung bis 250 €.
-- [GWG-Rechner 2026](https://solovorlagen.de/gwg-rechner.html): Sofortabzug bis 250 €/800 € netto, Sammelposten 250,01–1.000 € (5 × 20 %), Computer/Software Nutzungsdauer 1 Jahr, lineare AfA monatsgenau; Kleinunternehmer setzen brutto ab, Grenze gilt netto.
-- [Fahrtkosten-Rechner 2026](https://solovorlagen.de/fahrtkosten-rechner.html): betriebliche Fahrten 0,30 €/km (Motorrad 0,20 €), Entfernungspauschale 0,38 € ab dem 1. km, Höchstbetrag 4.500 € (nicht bei eigenem Pkw).
+- [Rechnungstext-Generator für Kleinunternehmer](https://solovorlagen.de/rechnungstext-kleinunternehmer.html): Hinweis „Steuerfreie Kleinunternehmerleistung gemäß § 19 Abs. 1 UStG“ zum Kopieren, Pflichtangaben nach § 34a UStDV (Rechnungsnummer nicht Pflicht), Kleinbetragsrechnung bis 250 €.
+- [GWG-Rechner 2026](https://solovorlagen.de/gwg-rechner.html): Sofortabzug bis 250 €/800 € netto, Sammelposten 250,01–1.000 € (5 × 20 %), Computer/Software Nutzungsdauer 1 Jahr (außer bei Sammelposten), lineare AfA monatsgenau; Kleinunternehmer setzen brutto ab, Grenze gilt netto.
+- [Fahrtkosten-Rechner 2026](https://solovorlagen.de/fahrtkosten-rechner.html): betriebliche Fahrten 0,30 €/km (Motorrad 0,20 €), Entfernungspauschale 0,38 € je vollem km ab dem 1. km, Höchstbetrag 4.500 € (nicht bei eigenem Pkw, bei Motorrad immer); nur für Fahrzeuge im Privatvermögen.
 
 ## Vorlagen
 - [Kleinunternehmer-Cockpit](https://solovorlagen.de/cockpit.html), [Rechnungs-Generator](https://solovorlagen.de/rechnung.html), [Stundensatz-Rechner](https://solovorlagen.de/stundensatz.html), [Fahrtenbuch](https://solovorlagen.de/fahrtenbuch.html), [AfA-Rechner](https://solovorlagen.de/afa.html), [Paket](https://solovorlagen.de/paket.html)

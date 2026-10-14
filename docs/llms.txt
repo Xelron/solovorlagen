@@ -2,14 +2,14 @@
 > Excel-Vorlagen und Ratgeber für Selbstständige und Kleinunternehmer in Deutschland (Stand 2026). Betreiber: Felix Merklinger-Lötzsch, Aßlar.
 
 ## Ratgeber
-- [Kleinunternehmerregelung 2026: Umsatzgrenzen einfach erklärt](https://solovorlagen.de/kleinunternehmerregelung-grenzen.html): 25.000 € Vorjahr, 100.000 € laufendes Jahr (netto), sofortiges Ende bei Überschreiten, Gründungsjahr ohne Hochrechnung, Rechnungshinweis, E-Rechnung.
-- [Stundensatz berechnen als Selbstständiger](https://solovorlagen.de/stundensatz-berechnen.html): Formel, Rechenbeispiel (2.500 € netto ≈ 65 €/Stunde), abrechenbare Stunden, typische Fehler.
+- [Kleinunternehmerregelung 2026: Umsatzgrenzen einfach erklärt](https://solovorlagen.de/kleinunternehmerregelung-grenzen.html): 25.000 € Vorjahr, 100.000 € laufendes Jahr (netto), sofortiges Ende bei Überschreiten, Gründungsjahr 25.000 € ohne Hochrechnung, Rechnungshinweis, E-Rechnung.
+- [Stundensatz berechnen als Selbstständiger](https://solovorlagen.de/stundensatz-berechnen.html): Formel, Rechenbeispiel (2.500 € netto ≈ 65 €/Stunde bei privater KV, mit gesetzlicher KV rund 77 €), abrechenbare Stunden, typische Fehler.
 
 ## Werkzeuge
 - [Umsatzgrenzen-Check 2026](https://solovorlagen.de/grenzen-check.html): kostenloser Online-Rechner zur Kleinunternehmergrenze.
-- [Rechnungstext-Generator für Kleinunternehmer](https://solovorlagen.de/rechnungstext-kleinunternehmer.html): Hinweis nach § 19 UStG zum Kopieren, Pflichtangaben nach § 34a UStDV (Rechnungsnummer nicht Pflicht), Kleinbetragsrechnung bis 250 €.
-- [GWG-Rechner 2026](https://solovorlagen.de/gwg-rechner.html): Sofortabzug bis 250 €/800 € netto, Sammelposten 250,01–1.000 € (5 × 20 %), Computer/Software Nutzungsdauer 1 Jahr, lineare AfA monatsgenau; Kleinunternehmer setzen brutto ab, Grenze gilt netto.
-- [Fahrtkosten-Rechner 2026](https://solovorlagen.de/fahrtkosten-rechner.html): betriebliche Fahrten 0,30 €/km (Motorrad 0,20 €), Entfernungspauschale 0,38 € ab dem 1. km, Höchstbetrag 4.500 € (nicht bei eigenem Pkw).
+- [Rechnungstext-Generator für Kleinunternehmer](https://solovorlagen.de/rechnungstext-kleinunternehmer.html): Hinweis „Steuerfreie Kleinunternehmerleistung gemäß § 19 Abs. 1 UStG“ zum Kopieren, Pflichtangaben nach § 34a UStDV (Rechnungsnummer nicht Pflicht), Kleinbetragsrechnung bis 250 €.
+- [GWG-Rechner 2026](https://solovorlagen.de/gwg-rechner.html): Sofortabzug bis 250 €/800 € netto, Sammelposten 250,01–1.000 € (5 × 20 %), Computer/Software Nutzungsdauer 1 Jahr (außer bei Sammelposten), lineare AfA monatsgenau; Kleinunternehmer setzen brutto ab, Grenze gilt netto.
+- [Fahrtkosten-Rechner 2026](https://solovorlagen.de/fahrtkosten-rechner.html): betriebliche Fahrten 0,30 €/km (Motorrad 0,20 €), Entfernungspauschale 0,38 € je vollem km ab dem 1. km, Höchstbetrag 4.500 € (nicht bei eigenem Pkw, bei Motorrad immer); nur für Fahrzeuge im Privatvermögen.
 
 ## Vorlagen
 - [Kleinunternehmer-Cockpit](https://solovorlagen.de/cockpit.html), [Rechnungs-Generator](https://solovorlagen.de/rechnung.html), [Stundensatz-Rechner](https://solovorlagen.de/stundensatz.html), [Fahrtenbuch](https://solovorlagen.de/fahrtenbuch.html), [AfA-Rechner](https://solovorlagen.de/afa.html), [Paket](https://solovorlagen.de/paket.html)

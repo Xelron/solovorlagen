@@ -1,5 +1,6 @@
 # RSS-Feeds für Pinterest-Autopublish (ein Feed pro Board). Einträge in src/feeds.json.
 # Neue Pins: Eintrag in feeds.json ergänzen (id eindeutig, link auf solovorlagen.de, image = Pin-Bild 1000x1500),
+# date = geplanter Veröffentlichungszeitpunkt (UTC, ISO). Der Workflow .github/workflows/feeds.yml baut täglich neu.
 # python3 src/gen_site.py, committen, pushen. Pinterest holt neue Einträge täglich ab.
 import json, os, html as _h, datetime as _dt, email.utils as _eu
 _HERE=os.path.dirname(os.path.abspath(__file__)); _OUT=os.path.join(_HERE,"..","docs")
@@ -7,7 +8,9 @@ FEEDS={"kleinunternehmer-tipps":"Kleinunternehmer Tipps","preise-und-geld":"Selb
 _items=json.load(open(os.path.join(_HERE,"feeds.json"),encoding="utf-8"))
 os.makedirs(os.path.join(_OUT,"feeds"),exist_ok=True)
 for slug,board in FEEDS.items():
-    its=sorted([i for i in _items if i["board"]==board],key=lambda i:i["date"],reverse=True)
+    _now=_dt.datetime.now(_dt.timezone.utc).replace(tzinfo=None)
+    # nur fällige Einträge (date <= jetzt) – so lassen sich Pins vorausplanen; der tägliche GitHub-Workflow baut die Feeds neu
+    its=sorted([i for i in _items if i["board"]==board and _dt.datetime.fromisoformat(i["date"])<=_now],key=lambda i:i["date"],reverse=True)
     x=['<?xml version="1.0" encoding="UTF-8"?>','<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom">','<channel>',
        f'<title>Solovorlagen – {_h.escape(board)}</title>','<link>https://solovorlagen.de/</link>',
        f'<atom:link href="https://solovorlagen.de/feeds/{slug}.xml" rel="self" type="application/rss+xml"/>',

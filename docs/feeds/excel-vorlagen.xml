@@ -6,14 +6,5 @@
 <atom:link href="https://solovorlagen.de/feeds/excel-vorlagen.xml" rel="self" type="application/rss+xml"/>
 <description>Excel-Vorlagen für Selbstständige: Tipps, Rechner und Vorlagen für Selbstständige und Kleinunternehmer.</description>
 <language>de-de</language>
-<item>
-<title>Rechnungen als Kleinunternehmer – Excel-Vorlage mit allen Pflichtangaben</title>
-<link>https://solovorlagen.de/rechnung.html</link>
-<guid isPermaLink="false">solovorlagen-pin-19</guid>
-<pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
-<description>Rechnungs-Generator für Kleinunternehmer: Rechnungen mit allen Pflichtangaben nach § 34a UStDV und Hinweis auf die Steuerbefreiung, Kundenliste, Rechnungsbuch mit offenen Posten und fertige Zahlungserinnerung. Excel &amp; Google Sheets.</description>
-<enclosure url="https://solovorlagen.de/pins/pin-19.jpg" length="141629" type="image/jpeg"/>
-<media:content url="https://solovorlagen.de/pins/pin-19.jpg" medium="image" type="image/jpeg" width="1000" height="1500"/>
-</item>
 </channel>
 </rss>

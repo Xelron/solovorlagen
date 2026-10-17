@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Solovorlagen – Kleinunternehmer Tipps</title>
+<link>https://solovorlagen.de/</link>
+<atom:link href="https://solovorlagen.de/feeds/kleinunternehmer-tipps.xml" rel="self" type="application/rss+xml"/>
+<description>Kleinunternehmer Tipps: Tipps, Rechner und Vorlagen für Selbstständige und Kleinunternehmer.</description>
+<language>de-de</language>
+<item>
+<title>Rechnung als Kleinunternehmer? – Diesen Satz brauchst du</title>
+<link>https://solovorlagen.de/rechnungstext-kleinunternehmer.html#hinweis</link>
+<guid isPermaLink="false">solovorlagen-pin-13</guid>
+<pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
+<description>Jede Kleinunternehmer-Rechnung braucht einen Hinweis auf die Steuerbefreiung, z. B. „Steuerfreie Kleinunternehmerleistung gemäß § 19 Abs. 1 UStG.“ Formulierungen zum Kopieren plus Pflichtangaben-Check nach § 34a UStDV – kostenlos und ohne Anmeldung.</description>
+<enclosure url="https://solovorlagen.de/pins/pin-13.jpg" length="104087" type="image/jpeg"/>
+<media:content url="https://solovorlagen.de/pins/pin-13.jpg" medium="image" type="image/jpeg" width="1000" height="1500"/>
+</item>
+<item>
+<title>Pflichtangaben-Check – für Kleinunternehmer-Rechnungen</title>
+<link>https://solovorlagen.de/rechnungstext-kleinunternehmer.html#pflichtangaben</link>
+<guid isPermaLink="false">solovorlagen-pin-14</guid>
+<pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
+<description>Name, Anschrift, Steuernummer, Datum, Leistung, Betrag und § 19-Hinweis: Der kostenlose Rechnungstext-Generator prüft deine Kleinunternehmer-Rechnung nach § 34a UStDV und erstellt den fertigen Text. Rechnungsnummer? Nicht Pflicht – aber empfohlen.</description>
+<enclosure url="https://solovorlagen.de/pins/pin-14.jpg" length="90148" type="image/jpeg"/>
+<media:content url="https://solovorlagen.de/pins/pin-14.jpg" medium="image" type="image/jpeg" width="1000" height="1500"/>
+</item>
+</channel>
+</rss>

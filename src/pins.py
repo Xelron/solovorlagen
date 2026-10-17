@@ -29,7 +29,7 @@ P=[
 ]
 P2=[
 ("Rechnung als Kleinunternehmer?","Diesen Satz brauchst du","Hinweis-Text zum Kopieren – kostenlos","quote","rechnungstext-kleinunternehmer.html","Kleinunternehmer Tipps",
- "Jede Kleinunternehmer-Rechnung braucht einen Hinweis auf § 19 UStG, z. B. „Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.“ Drei Formulierungen zum Kopieren plus Pflichtangaben-Check nach § 34a UStDV – kostenlos und ohne Anmeldung.","rechnung kleinunternehmer, paragraph 19 ustg, rechnung schreiben, kleinunternehmerregelung, selbstständig"),
+ "Jede Kleinunternehmer-Rechnung braucht einen Hinweis auf die Steuerbefreiung, z. B. „Steuerfreie Kleinunternehmerleistung gemäß § 19 Abs. 1 UStG.“ Formulierungen zum Kopieren plus Pflichtangaben-Check nach § 34a UStDV – kostenlos und ohne Anmeldung.","rechnung kleinunternehmer, paragraph 19 ustg, rechnung schreiben, kleinunternehmerregelung, selbstständig"),
 ("Pflichtangaben-Check","für Kleinunternehmer-Rechnungen","Fehlt etwas? Der Generator zeigt es sofort","checks","rechnungstext-kleinunternehmer.html","Kleinunternehmer Tipps",
  "Name, Anschrift, Steuernummer, Datum, Leistung, Betrag und § 19-Hinweis: Der kostenlose Rechnungstext-Generator prüft deine Kleinunternehmer-Rechnung nach § 34a UStDV und erstellt den fertigen Text. Rechnungsnummer? Nicht Pflicht – aber empfohlen.","rechnung pflichtangaben, kleinunternehmer rechnung vorlage, rechnungsnummer, gründer tipps, freelancer"),
 ("Laptop gekauft?","Sofort absetzen – egal wie teuer","Computer & Software: Nutzungsdauer 1 Jahr","laptop","gwg-rechner.html","Selbstständig: Preise & Geld",
@@ -40,6 +40,10 @@ P2=[
  "Fahrten zum Kunden mit dem Privatauto? 0,30 € je gefahrenem Kilometer sind Betriebsausgabe. 250 km im Monat ergeben 900 € im Jahr. Der kostenlose Fahrtkosten-Rechner 2026 rechnet es für dich aus.","fahrtkosten absetzen, kilometerpauschale 2026, dienstfahrt, selbstständig steuern, betriebsausgaben"),
 ("Entfernungspauschale 2026","Jetzt 0,38 € ab dem 1. Kilometer","Was sich für Selbstständige ändert",None,"fahrtkosten-rechner.html","Selbstständig: Preise & Geld",
  "Seit 2026 gilt die Entfernungspauschale von 0,38 € schon ab dem ersten Kilometer. Für Selbstständige zählt sie beim Weg zur eigenen Betriebsstätte – alle anderen betrieblichen Fahrten laufen mit 0,30 € je km. Kostenloser Rechner.","entfernungspauschale 2026, pendlerpauschale, fahrtkosten, selbstständig, steuern 2026"),
+]
+P3=[
+("Rechnungen als Kleinunternehmer","Excel-Vorlage mit allen Pflichtangaben","Rechnungsbuch · offene Posten · Zahlungserinnerung","img/rechnung-01.jpg","rechnung.html","Excel-Vorlagen für Selbstständige",
+ "Rechnungs-Generator für Kleinunternehmer: Rechnungen mit allen Pflichtangaben nach § 34a UStDV und Hinweis auf die Steuerbefreiung, Kundenliste, Rechnungsbuch mit offenen Posten und fertige Zahlungserinnerung. Excel & Google Sheets.","rechnungsvorlage kleinunternehmer, rechnung excel, rechnung schreiben, zahlungserinnerung, selbstständig"),
 ]
 CSS="""*{box-sizing:border-box}body{margin:0;width:1000px;height:1500px;font-family:'DejaVu Sans',Arial,sans-serif}
 .p{width:1000px;height:1500px;padding:80px 72px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
@@ -58,7 +62,7 @@ def render(i,t):
     elif extra=="rate":
         mid=f'<div style="background:rgba(255,255,255,.12);border-radius:28px;padding:40px"><div style="font-size:30px;color:{mut};font-weight:700">DEIN STUNDENSATZ</div><div class=serif style="font-size:150px;color:{fg};line-height:1.1">65 €</div><div style="font-size:32px;color:{mut}">Tagessatz ≈ 520 €</div></div>'
     elif extra=="quote":
-        mid=f'<div style="background:#fff;border-radius:28px;padding:44px;border-left:16px solid {acc}"><div class=serif style="font-size:52px;line-height:1.25;color:#1F3A5F">„Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.“</div><div style="margin-top:22px;font-size:30px;color:#5A6573;font-weight:700">KOPIEREN · EINFÜGEN · FERTIG</div></div>'
+        mid=f'<div style="background:#fff;border-radius:28px;padding:44px;border-left:16px solid {acc}"><div class=serif style="font-size:48px;line-height:1.25;color:#1F3A5F">„Steuerfreie Kleinunternehmer&shy;leistung gemäß § 19 Abs. 1 UStG.“</div><div style="margin-top:22px;font-size:30px;color:#5A6573;font-weight:700">KOPIEREN · EINFÜGEN · FERTIG</div></div>'
     elif extra=="checks":
         mid='<div style="background:#fff;border-radius:28px;padding:34px 40px">'+"".join(f'<div style="display:flex;gap:22px;align-items:center;font-size:36px;color:#1B2430;padding:10px 0"><span style="width:46px;height:46px;border-radius:50%;background:{b};color:{c};display:inline-flex;align-items:center;justify-content:center;font-weight:700">{m}</span>{l}</div>' for b,c,m,l in [("#D4EDDA","#0F5132","✓","Name & Anschrift"),("#D4EDDA","#0F5132","✓","Steuernummer"),("#D4EDDA","#0F5132","✓","Datum & Leistung"),("#FFF3CD","#664D03","!","Hinweis § 19 UStG"),("#E3E8EE","#5A6573","–","Rechnungsnummer (optional)")])+'</div>'
     elif extra=="laptop":
@@ -77,7 +81,7 @@ def render(i,t):
     return h
 import sys
 BATCH=int(sys.argv[1]) if len(sys.argv)>1 else 2
-LST,OFF,START,CSVN={1:(P,0,datetime.date(2026,10,16),"pinterest-pins.csv"),2:(P2,12,datetime.date(2026,10,17),"pinterest-pins-2.csv")}[BATCH]
+LST,OFF,START,CSVN={1:(P,0,datetime.date(2026,10,16),"pinterest-pins.csv"),2:(P2,12,datetime.date(2026,10,17),"pinterest-pins-2.csv"),3:(P3,18,datetime.date(2026,10,18),"pinterest-pins-3.csv")}[BATCH]
 ROOT=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..")
 with sync_playwright() as p:
     b=p.chromium.launch(); pg=b.new_page(viewport={'width':1000,'height':1500})

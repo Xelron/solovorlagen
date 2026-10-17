@@ -311,4 +311,5 @@ open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 ## Vorlagen
 - [Kleinunternehmer-Cockpit](https://solovorlagen.de/cockpit.html), [Rechnungs-Generator](https://solovorlagen.de/rechnung.html), [Stundensatz-Rechner](https://solovorlagen.de/stundensatz.html), [Fahrtenbuch](https://solovorlagen.de/fahrtenbuch.html), [AfA-Rechner](https://solovorlagen.de/afa.html), [Paket](https://solovorlagen.de/paket.html)
 """)
+exec(open(os.path.join(HERE,"feeds.py")).read())
 print("content ok")

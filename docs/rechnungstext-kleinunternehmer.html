@@ -13,6 +13,11 @@
 <meta property="og:url" content="https://solovorlagen.de/rechnungstext-kleinunternehmer.html">
 <meta property="og:locale" content="de_DE">
 <meta name="p:domain_verify" content="6619a1c3e96181cb258971813ee2eca4"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:image" content="https://solovorlagen.de/img/bundle-01.jpg">
+<meta name="theme-color" content="#1F3A5F">
 <style>
 .article{max-width:760px}.article h2{margin-top:44px;font-size:clamp(24px,3.4vw,30px)}.article h3{margin-top:28px;font-size:19px}
 .article p,.article li{font-size:17px;color:var(--ink)}.article li{margin-bottom:6px}
@@ -23,8 +28,8 @@
 .cta{background:var(--navy);color:#fff;border-radius:14px;padding:24px;margin:32px 0}.cta h3{color:#fff;margin:0 0 8px}.cta p{color:#dbe6f0;margin:0 0 16px}
 .src{font-size:15px}.toc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 24px}.toc li{font-size:16px}
 .calc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 12px 32px rgba(31,58,95,.08)}
-.calc label{display:block;font-weight:600;margin:14px 0 6px}.calc input[type=text],.calc input[type=date]{width:100%;font-size:18px;padding:12px 14px;border:1px solid #C9D2DC;border-radius:10px;background:#FFFDF2}
-.calc input[type=date]{-webkit-appearance:none;appearance:none;display:block;min-width:0;max-width:100%;min-height:52px;line-height:1.4;text-align:left;color:inherit;font-family:inherit}
+.calc label{display:block;font-weight:600;margin:14px 0 6px}.calc input[type=text],.calc input[type=date]{width:100%;height:54px;font-size:18px;padding:12px 14px;border:1px solid #C9D2DC;border-radius:10px;background:#FFFDF2}
+.calc input[type=date]{-webkit-appearance:none;appearance:none;display:block;min-width:0;max-width:100%;line-height:1.4;text-align:left;color:inherit;font-family:inherit}
 .calc input[type=date]::-webkit-date-and-time-value{text-align:left}
 .calc input[type=date]::-webkit-calendar-picker-indicator{margin-left:auto}
 .calc .chk{display:flex;gap:10px;align-items:center;font-weight:600;margin-top:16px}.calc .chk input{width:22px;height:22px}
@@ -36,7 +41,8 @@
 </style><style>
 .calc select,.calc textarea{width:100%;font-size:17px;padding:12px 14px;border:1px solid #C9D2DC;border-radius:10px;background:#FFFDF2;font-family:inherit}
 .calc textarea{min-height:72px;resize:vertical}
-.calc .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.calc .row2>div{min-width:0}
+.calc .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.calc .row2>div{min-width:0;display:flex;flex-direction:column;justify-content:flex-end}
+.radios{display:grid;gap:8px;margin-top:4px}.radios label{display:flex;gap:10px;align-items:flex-start;font-weight:500;margin:0;background:#FFFDF2;border:1px solid #C9D2DC;border-radius:10px;padding:12px 14px;cursor:pointer;line-height:1.4}.radios input{margin-top:3px;flex:none;width:18px;height:18px}.radios label:has(input:checked){border-color:var(--navy);box-shadow:0 0 0 1px var(--navy)}
 @media(max-width:520px){.calc .row2{grid-template-columns:1fr}}
 .seg{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}.seg label{display:flex;align-items:center;gap:6px;font-weight:500;margin:0;background:#EEF3F8;padding:8px 12px;border-radius:8px;cursor:pointer}
 .copybox{background:#F6F7F4;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0;display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
@@ -51,8 +57,8 @@
 </head>
 <body>
 <header><div class="wrap">
-<a class="brand serif" href="index.html">Solovorlagen</a>
-<nav><a href="index.html#vorlagen">Vorlagen</a><a href="paket.html">Paket</a><a href="rechner.html">Rechner</a><a href="ratgeber.html">Ratgeber</a></nav>
+<a class="brand" href="index.html" aria-label="Solovorlagen – Startseite"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1F3A5F"/><rect x="9" y="9" width="46" height="46" rx="10" fill="#F6F7F4"/><text x="27" y="46" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="36" fill="#1F3A5F">S</text><circle cx="46" cy="20" r="4" fill="#2E7D6B"/><circle cx="46" cy="32" r="4" fill="#E0A800"/><circle cx="46" cy="44" r="4" fill="#B02A37"/></svg><span class="serif">Solovorlagen</span></a>
+<nav aria-label="Hauptnavigation"><a href="index.html#vorlagen">Vorlagen</a><a href="rechner.html">Rechner</a><a href="ratgeber.html">Ratgeber</a><a class="navbuy" href="paket.html">Paket für 35 €</a></nav>
 </div></header>
 <main>
 <div class="wrap" style="padding-top:40px;padding-bottom:24px">
@@ -70,10 +76,10 @@
 <label for="st">Steuernummer, USt-IdNr. oder Kleinunternehmer-ID</label><input type="text" id="st" placeholder="z. B. 012/345/67890">
 <label for="kn">Kunde (Name / Firma)</label><input type="text" id="kn" placeholder="z. B. Muster GmbH">
 <label for="ka">Anschrift des Kunden</label><input type="text" id="ka" placeholder="Kundenstraße 5, 54321 Kundenstadt">
-<div class="row2"><div><label for="dt">Rechnungsdatum</label><input type="date" id="dt"></div><div><label for="nr">Rechnungsnummer (empfohlen)</label><input type="text" id="nr" placeholder="RE-2026-001"></div></div>
+<div class="row2"><div><label for="dt">Rechnungsdatum</label><input type="date" id="dt"></div><div><label for="nr">Rechnungsnr. (empfohlen)</label><input type="text" id="nr" placeholder="RE-2026-001"></div></div>
 <label for="ls">Leistung (Art und Umfang)</label><textarea id="ls" placeholder="z. B. Gestaltung Logo inkl. 2 Korrekturschleifen"></textarea>
 <div class="row2"><div><label for="ld">Leistungszeitraum (optional)</label><input type="text" id="ld" placeholder="z. B. Oktober 2026"></div><div><label for="bt">Betrag (€)</label><input type="text" id="bt" inputmode="decimal" placeholder="z. B. 480"></div></div>
-<label for="hv">Hinweis</label><select id="hv"><option>Steuerfreie Kleinunternehmerleistung gemäß § 19 Abs. 1 UStG.</option><option>Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</option><option>Als Kleinunternehmer gemäß § 19 Abs. 1 UStG steuerfrei – keine Umsatzsteuer ausgewiesen.</option></select>
+<fieldset class="radios" style="border:0;padding:0;margin:14px 0 0"><legend style="font-weight:600;margin-bottom:6px;padding:0">Hinweis auf der Rechnung</legend><label><input type="radio" name="hv" value="Steuerfreie Kleinunternehmerleistung gemäß § 19 Abs. 1 UStG." checked><span>Steuerfreie Kleinunternehmerleistung gemäß § 19 Abs. 1 UStG.</span></label><label><input type="radio" name="hv" value="Gemäß § 19 UStG wird keine Umsatzsteuer berechnet."><span>Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</span></label><label><input type="radio" name="hv" value="Als Kleinunternehmer gemäß § 19 Abs. 1 UStG steuerfrei – keine Umsatzsteuer ausgewiesen."><span>Als Kleinunternehmer gemäß § 19 Abs. 1 UStG steuerfrei – keine Umsatzsteuer ausgewiesen.</span></label></fieldset>
 <p class="hint">Alles bleibt in deinem Browser – nichts wird gespeichert oder übertragen.</p>
 <div class="res" id="res" aria-live="polite"></div>
 </form></div>
@@ -123,18 +129,20 @@ function run(){
  var L=[];if(v('sn'))L.push(v('sn'));if(v('sa'))L.push(v('sa'));if(v('st'))L.push('Steuer-Nr./USt-IdNr.: '+v('st'));L.push('');
  if(v('kn'))L.push(v('kn'));if(v('ka'))L.push(v('ka'));L.push('');
  L.push('RECHNUNG'+(v('nr')?' '+v('nr'):''));L.push('Rechnungsdatum: '+de(v('dt')));if(v('ld'))L.push('Leistungszeitraum: '+v('ld'));L.push('');
- L.push(v('ls')||'[Leistung]');L.push('');L.push('Rechnungsbetrag: '+(b!==null?eur(b):'[Betrag]'));L.push('');L.push($('hv').value);
+ L.push(v('ls')||'[Leistung]');L.push('');L.push('Rechnungsbetrag: '+(b!==null?eur(b):'[Betrag]'));L.push('');L.push(document.querySelector('input[name=hv]:checked').value);
  var txt=L.join('\n');
  out+='<div><b>Vorschau Rechnungstext</b><div class="pre" id="pv">'+esc(txt)+'</div><button type="button" class="cbtn" id="cp">Text kopieren</button></div>';
  $('res').innerHTML=out;$('cp').addEventListener('click',function(){copy(txt,$('cp'))});
 }
-['sn','sa','st','kn','ka','dt','nr','ls','ld','bt','hv'].forEach(function(i){$(i).addEventListener('input',run);$(i).addEventListener('change',run)});run();
+['sn','sa','st','kn','ka','dt','nr','ls','ld','bt'].forEach(function(i){$(i).addEventListener('input',run);$(i).addEventListener('change',run)});document.querySelectorAll('input[name=hv]').forEach(function(r){r.addEventListener('change',run)});run();
 })();
 </script>
 </main>
 <footer><div class="wrap">
-<span>© 2026 Solovorlagen · Felix Merklinger-Lötzsch</span>
-<nav><a href="rechner.html">Kostenlose Rechner</a><a href="ratgeber.html">Ratgeber</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="mailto:hallo@solovorlagen.de">hallo@solovorlagen.de</a></nav>
+<div class="fbrand"><a class="brand" href="index.html"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1F3A5F"/><rect x="9" y="9" width="46" height="46" rx="10" fill="#F6F7F4"/><text x="27" y="46" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="36" fill="#1F3A5F">S</text><circle cx="46" cy="20" r="4" fill="#2E7D6B"/><circle cx="46" cy="32" r="4" fill="#E0A800"/><circle cx="46" cy="44" r="4" fill="#B02A37"/></svg><span class="serif">Solovorlagen</span></a>
+<p>Excel-Vorlagen und kostenlose Rechner für Kleinunternehmer und Freelancer in Deutschland. Stand 2026.</p></div>
+<nav aria-label="Fußzeile"><a href="index.html#vorlagen">Vorlagen</a><a href="paket.html">Paket</a><a href="rechner.html">Kostenlose Rechner</a><a href="ratgeber.html">Ratgeber</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="mailto:hallo@solovorlagen.de">hallo@solovorlagen.de</a></nav>
+<p class="copy">© 2026 Solovorlagen · Felix Merklinger-Lötzsch</p>
 </div></footer>
 </body>
 </html>

@@ -13,37 +13,69 @@
 <meta property="og:url" content="https://solovorlagen.de/">
 <meta property="og:locale" content="de_DE">
 <meta name="p:domain_verify" content="6619a1c3e96181cb258971813ee2eca4"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:image" content="https://solovorlagen.de/img/bundle-01.jpg">
+<meta name="theme-color" content="#1F3A5F">
 
 </head>
 <body>
 <header><div class="wrap">
-<a class="brand serif" href="index.html">Solovorlagen</a>
-<nav><a href="index.html#vorlagen">Vorlagen</a><a href="paket.html">Paket</a><a href="rechner.html">Rechner</a><a href="ratgeber.html">Ratgeber</a></nav>
+<a class="brand" href="index.html" aria-label="Solovorlagen – Startseite"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1F3A5F"/><rect x="9" y="9" width="46" height="46" rx="10" fill="#F6F7F4"/><text x="27" y="46" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="36" fill="#1F3A5F">S</text><circle cx="46" cy="20" r="4" fill="#2E7D6B"/><circle cx="46" cy="32" r="4" fill="#E0A800"/><circle cx="46" cy="44" r="4" fill="#B02A37"/></svg><span class="serif">Solovorlagen</span></a>
+<nav aria-label="Hauptnavigation"><a href="index.html#vorlagen">Vorlagen</a><a href="rechner.html">Rechner</a><a href="ratgeber.html">Ratgeber</a><a class="navbuy" href="paket.html">Paket für 35 €</a></nav>
 </div></header>
 <main>
-<div class="wrap hero">
-<div>
-<p class="eyebrow">Excel-Vorlagen zum Download · Stand 2026</p>
-<h1 class="serif">Klare Zahlen für Solo-Selbstständige</h1>
-<p class="lead">Fertige Excel-Vorlagen für Kleinunternehmer und Freelancer in Deutschland: Umsatzgrenzen im Blick behalten, Rechnungen schreiben, Stundensatz kalkulieren, Fahrtkosten und Abschreibungen berechnen. Einmal kaufen, sofort herunterladen, kein Abo.</p>
-<a class="btn" href="#vorlagen">Vorlagen ansehen</a> <a class="btn" style="background:#1F3A5F" href="grenzen-check.html">Kostenloser Grenzen-Check</a>
-<p class="note">Digitale Downloads · läuft in Excel, Google Sheets und LibreOffice</p>
+<section class="banner"><div class="wrap bwrap">
+<div class="btext">
+<h1 class="serif">Klare Zahlen für Solo-Selbst&shy;ständige</h1>
+<p class="lead">Excel-Vorlagen und kostenlose Rechner für Kleinunternehmer und Freelancer in Deutschland: Umsatzgrenzen, Rechnungen, Stundensatz, Fahrtkosten und Abschreibungen – nach den Regeln von 2026.</p>
+<div class="cta2"><a class="btn" href="#vorlagen">Vorlagen ansehen</a><a class="btn ghost" href="rechner.html">Kostenlose Rechner</a></div>
+<ul class="facts"><li>Einmal kaufen, kein Abo</li><li>Download sofort nach der Zahlung</li><li>Excel, Google Sheets, LibreOffice</li></ul>
 </div>
-<div><a href="paket.html" class="bundle">
-<img src="img/bundle-01.jpg" width="1000" height="1000" alt="Selbstständigen-Paket: alle 5 Vorlagen für 35 Euro statt 70 Euro">
-</a></div>
+<div class="ampel" aria-labelledby="amh">
+<div class="sheet-head" aria-hidden="true"><span></span><span>A</span><span>B</span><span>C</span></div>
+<div class="sheet">
+<p id="amh" class="amh">Wie nah bist du an der Kleinunternehmergrenze?</p>
+<label for="amr">Dein Umsatz 2026 bisher</label>
+<div class="amrow"><input type="range" id="amr" min="0" max="110000" step="500" value="21500" aria-describedby="amout"><output id="amv" for="amr">21.500 €</output></div>
+<div class="lights" aria-hidden="true"><i class="lg"></i><i class="ly"></i><i class="lr"></i></div>
+<p id="amout" class="amout" aria-live="polite"></p>
+<p class="amnote">Vereinfacht: angenommen, dein Vorjahresumsatz lag bei höchstens 25.000 € und du hast nicht erst dieses Jahr gegründet (dann gilt schon 25.000 €). <a href="grenzen-check.html">Genau prüfen im Grenzen-Check</a></p>
 </div>
+</div>
+</div></section>
+<script>
+(function(){var r=document.getElementById('amr'),v=document.getElementById('amv'),o=document.getElementById('amout'),L=document.querySelector('.lights');
+function f(n){return n.toLocaleString('de-DE')+' €'}
+function u(){var n=+r.value;v.textContent=f(n);var c,t;
+ if(n>100000){c='r';t='Über 100.000 €: Die Kleinunternehmerregelung endet sofort.'}
+ else if(n>25000){c='y';t='Dieses Jahr noch Kleinunternehmer – aber über 25.000 € bist du es im nächsten Jahr nicht mehr.'}
+ else if(n>=20000){c='y';t='Noch '+f(25000-n)+' bis zur 25.000-€-Grenze fürs nächste Jahr.'}
+ else{c='g';t='Im grünen Bereich – noch '+f(25000-n)+' bis zur 25.000-€-Grenze.'}
+ L.className='lights on-'+c;o.textContent=t;r.style.setProperty('--p',(n/110000*100)+'%')}
+r.addEventListener('input',u);u()})();
+</script>
+<section class="rechnerband"><div class="wrap">
+<h2 class="serif">Kostenlose Rechner</h2>
+<ul class="rlist">
+<li><a href="grenzen-check.html"><b>Umsatzgrenzen-Check</b><span>Bin ich 2026 und im nächsten Jahr noch Kleinunternehmer?</span></a></li>
+<li><a href="rechnungstext-kleinunternehmer.html"><b>Rechnungstext-Generator</b><span>Hinweis nach § 19 UStG und alle Pflichtangaben prüfen</span></a></li>
+<li><a href="gwg-rechner.html"><b>GWG-Rechner</b><span>Sofort absetzen oder abschreiben?</span></a></li>
+<li><a href="fahrtkosten-rechner.html"><b>Fahrtkosten-Rechner</b><span>0,30 € je km und Entfernungspauschale 2026</span></a></li>
+</ul>
+</div></section>
 <section class="band" id="vorlagen"><div class="wrap">
 <h2 class="serif">Die Vorlagen</h2>
 <p class="sub2">Jede Vorlage löst ein konkretes Problem – und rechnet das Wichtigste automatisch.</p>
 <div class="pgrid"><a class="pcard" href="cockpit.html"><img src="img/produkt.jpg" width="1000" height="1000" alt="Produktbild Kleinunternehmer-Cockpit" loading="lazy">
-<div class="pbody"><h3>Kleinunternehmer-Cockpit</h3><p>Umsatzgrenzen-Ampel, Einnahmen, Ausgaben, EÜR</p><div class="prow"><span class="price">19 €</span><span class="more">Ansehen →</span></div></div></a><a class="pcard" href="rechnung.html"><img src="img/rechnung-01.jpg" width="1000" height="1000" alt="Produktbild Rechnungs-Generator" loading="lazy">
-<div class="pbody"><h3>Rechnungs-Generator</h3><p>Rechnungen mit Pflichtangaben, offene Posten, Mahnung</p><div class="prow"><span class="price">15 €</span><span class="more">Ansehen →</span></div></div></a><a class="pcard" href="stundensatz.html"><img src="img/stundensatz-01.jpg" width="1000" height="1000" alt="Produktbild Stundensatz-Rechner" loading="lazy">
-<div class="pbody"><h3>Stundensatz-Rechner</h3><p>Was du verlangen musst, damit es reicht</p><div class="prow"><span class="price">12 €</span><span class="more">Ansehen →</span></div></div></a><a class="pcard" href="fahrtenbuch.html"><img src="img/fahrten-01.jpg" width="1000" height="1000" alt="Produktbild Fahrtenbuch &amp; Fahrtkosten-Rechner" loading="lazy">
-<div class="pbody"><h3>Fahrtenbuch &amp; Fahrtkosten-Rechner</h3><p>Fahrtkosten-Nachweis fürs Privatfahrzeug, Sätze 2026</p><div class="prow"><span class="price">12 €</span><span class="more">Ansehen →</span></div></div></a><a class="pcard" href="afa.html"><img src="img/afa-01.jpg" width="1000" height="1000" alt="Produktbild Anlagenverzeichnis &amp; AfA-Rechner" loading="lazy">
-<div class="pbody"><h3>Anlagenverzeichnis &amp; AfA-Rechner</h3><p>Sofort absetzen oder abschreiben?</p><div class="prow"><span class="price">12 €</span><span class="more">Ansehen →</span></div></div></a>
+<div class="pbody"><h3>Kleinunternehmer-Cockpit</h3><p>Umsatzgrenzen-Ampel, Einnahmen, Ausgaben, EÜR</p><div class="prow"><span class="price">19 €</span><span class="more">Ansehen</span></div></div></a><a class="pcard" href="rechnung.html"><img src="img/rechnung-01.jpg" width="1000" height="1000" alt="Produktbild Rechnungs-Generator" loading="lazy">
+<div class="pbody"><h3>Rechnungs-Generator</h3><p>Rechnungen mit Pflichtangaben, offene Posten, Mahnung</p><div class="prow"><span class="price">15 €</span><span class="more">Ansehen</span></div></div></a><a class="pcard" href="stundensatz.html"><img src="img/stundensatz-01.jpg" width="1000" height="1000" alt="Produktbild Stundensatz-Rechner" loading="lazy">
+<div class="pbody"><h3>Stundensatz-Rechner</h3><p>Was du verlangen musst, damit es reicht</p><div class="prow"><span class="price">12 €</span><span class="more">Ansehen</span></div></div></a><a class="pcard" href="fahrtenbuch.html"><img src="img/fahrten-01.jpg" width="1000" height="1000" alt="Produktbild Fahrtenbuch &amp; Fahrtkosten-Rechner" loading="lazy">
+<div class="pbody"><h3>Fahrtenbuch &amp; Fahrtkosten-Rechner</h3><p>Fahrtkosten-Nachweis fürs Privatfahrzeug, Sätze 2026</p><div class="prow"><span class="price">12 €</span><span class="more">Ansehen</span></div></div></a><a class="pcard" href="afa.html"><img src="img/afa-01.jpg" width="1000" height="1000" alt="Produktbild Anlagenverzeichnis &amp; AfA-Rechner" loading="lazy">
+<div class="pbody"><h3>Anlagenverzeichnis &amp; AfA-Rechner</h3><p>Sofort absetzen oder abschreiben?</p><div class="prow"><span class="price">12 €</span><span class="more">Ansehen</span></div></div></a>
 <a class="pcard pbundle" href="paket.html"><div class="pbody"><p class="eyebrow" style="color:#cfe0f0">Alle 5 zusammen</p><h3 style="color:#fff;font-size:24px;hyphens:auto;overflow-wrap:break-word">Selbstständigen-Paket</h3>
-<p style="color:#dbe6f0">Alle Vorlagen in einem Download – du sparst die Hälfte.</p><div class="prow"><span class="price" style="color:#fff">35 € <s style="font-size:16px;opacity:.7">70 €</s></span><span class="more" style="color:#fff">Ansehen →</span></div></div></a>
+<p style="color:#dbe6f0">Alle Vorlagen in einem Download – du sparst die Hälfte.</p><div class="prow"><span class="price" style="color:#fff">35 € <s style="font-size:16px;opacity:.7">70 €</s></span><span class="more" style="color:#fff">Ansehen</span></div></div></a>
 </div></div></section>
 <section><div class="wrap">
 <h2 class="serif">Warum Solovorlagen?</h2>
@@ -62,8 +94,10 @@
 </div></section>
 </main>
 <footer><div class="wrap">
-<span>© 2026 Solovorlagen · Felix Merklinger-Lötzsch</span>
-<nav><a href="rechner.html">Kostenlose Rechner</a><a href="ratgeber.html">Ratgeber</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="mailto:hallo@solovorlagen.de">hallo@solovorlagen.de</a></nav>
+<div class="fbrand"><a class="brand" href="index.html"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1F3A5F"/><rect x="9" y="9" width="46" height="46" rx="10" fill="#F6F7F4"/><text x="27" y="46" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="36" fill="#1F3A5F">S</text><circle cx="46" cy="20" r="4" fill="#2E7D6B"/><circle cx="46" cy="32" r="4" fill="#E0A800"/><circle cx="46" cy="44" r="4" fill="#B02A37"/></svg><span class="serif">Solovorlagen</span></a>
+<p>Excel-Vorlagen und kostenlose Rechner für Kleinunternehmer und Freelancer in Deutschland. Stand 2026.</p></div>
+<nav aria-label="Fußzeile"><a href="index.html#vorlagen">Vorlagen</a><a href="paket.html">Paket</a><a href="rechner.html">Kostenlose Rechner</a><a href="ratgeber.html">Ratgeber</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="mailto:hallo@solovorlagen.de">hallo@solovorlagen.de</a></nav>
+<p class="copy">© 2026 Solovorlagen · Felix Merklinger-Lötzsch</p>
 </div></footer>
 </body>
 </html>

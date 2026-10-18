@@ -3,7 +3,8 @@
 TOOL_CSS = """<style>
 .calc select,.calc textarea{width:100%;font-size:17px;padding:12px 14px;border:1px solid #C9D2DC;border-radius:10px;background:#FFFDF2;font-family:inherit}
 .calc textarea{min-height:72px;resize:vertical}
-.calc .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.calc .row2>div{min-width:0}
+.calc .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.calc .row2>div{min-width:0;display:flex;flex-direction:column;justify-content:flex-end}
+.radios{display:grid;gap:8px;margin-top:4px}.radios label{display:flex;gap:10px;align-items:flex-start;font-weight:500;margin:0;background:#FFFDF2;border:1px solid #C9D2DC;border-radius:10px;padding:12px 14px;cursor:pointer;line-height:1.4}.radios input{margin-top:3px;flex:none;width:18px;height:18px}.radios label:has(input:checked){border-color:var(--navy);box-shadow:0 0 0 1px var(--navy)}
 @media(max-width:520px){.calc .row2{grid-template-columns:1fr}}
 .seg{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}.seg label{display:flex;align-items:center;gap:6px;font-weight:500;margin:0;background:#EEF3F8;padding:8px 12px;border-radius:8px;cursor:pointer}
 .copybox{background:#F6F7F4;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0;display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
@@ -68,10 +69,10 @@ rt_body = f"""<div class="wrap" style="padding-top:40px;padding-bottom:24px">
 <label for="st">Steuernummer, USt-IdNr. oder Kleinunternehmer-ID</label><input type="text" id="st" placeholder="z. B. 012/345/67890">
 <label for="kn">Kunde (Name / Firma)</label><input type="text" id="kn" placeholder="z. B. Muster GmbH">
 <label for="ka">Anschrift des Kunden</label><input type="text" id="ka" placeholder="Kundenstraße 5, 54321 Kundenstadt">
-<div class="row2"><div><label for="dt">Rechnungsdatum</label><input type="date" id="dt"></div><div><label for="nr">Rechnungsnummer (empfohlen)</label><input type="text" id="nr" placeholder="RE-2026-001"></div></div>
+<div class="row2"><div><label for="dt">Rechnungsdatum</label><input type="date" id="dt"></div><div><label for="nr">Rechnungsnr. (empfohlen)</label><input type="text" id="nr" placeholder="RE-2026-001"></div></div>
 <label for="ls">Leistung (Art und Umfang)</label><textarea id="ls" placeholder="z. B. Gestaltung Logo inkl. 2 Korrekturschleifen"></textarea>
 <div class="row2"><div><label for="ld">Leistungszeitraum (optional)</label><input type="text" id="ld" placeholder="z. B. Oktober 2026"></div><div><label for="bt">Betrag (€)</label><input type="text" id="bt" inputmode="decimal" placeholder="z. B. 480"></div></div>
-<label for="hv">Hinweis</label><select id="hv">{"".join(f'<option>{t}</option>' for t,n in RT_HINTS)}</select>
+<fieldset class="radios" style="border:0;padding:0;margin:14px 0 0"><legend style="font-weight:600;margin-bottom:6px;padding:0">Hinweis auf der Rechnung</legend>{"".join(f'<label><input type="radio" name="hv" value="{html.escape(t)}"{" checked" if i==0 else ""}><span>{t}</span></label>' for i,(t,n) in enumerate(RT_HINTS))}</fieldset>
 <p class="hint">Alles bleibt in deinem Browser – nichts wird gespeichert oder übertragen.</p>
 <div class="res" id="res" aria-live="polite"></div>
 </form></div>
@@ -112,12 +113,12 @@ function run(){
  var L=[];if(v('sn'))L.push(v('sn'));if(v('sa'))L.push(v('sa'));if(v('st'))L.push('Steuer-Nr./USt-IdNr.: '+v('st'));L.push('');
  if(v('kn'))L.push(v('kn'));if(v('ka'))L.push(v('ka'));L.push('');
  L.push('RECHNUNG'+(v('nr')?' '+v('nr'):''));L.push('Rechnungsdatum: '+de(v('dt')));if(v('ld'))L.push('Leistungszeitraum: '+v('ld'));L.push('');
- L.push(v('ls')||'[Leistung]');L.push('');L.push('Rechnungsbetrag: '+(b!==null?eur(b):'[Betrag]'));L.push('');L.push($('hv').value);
+ L.push(v('ls')||'[Leistung]');L.push('');L.push('Rechnungsbetrag: '+(b!==null?eur(b):'[Betrag]'));L.push('');L.push(document.querySelector('input[name=hv]:checked').value);
  var txt=L.join('\n');
  out+='<div><b>Vorschau Rechnungstext</b><div class="pre" id="pv">'+esc(txt)+'</div><button type="button" class="cbtn" id="cp">Text kopieren</button></div>';
  $('res').innerHTML=out;$('cp').addEventListener('click',function(){copy(txt,$('cp'))});
 }
-['sn','sa','st','kn','ka','dt','nr','ls','ld','bt','hv'].forEach(function(i){$(i).addEventListener('input',run);$(i).addEventListener('change',run)});run();
+['sn','sa','st','kn','ka','dt','nr','ls','ld','bt'].forEach(function(i){$(i).addEventListener('input',run);$(i).addEventListener('change',run)});document.querySelectorAll('input[name=hv]').forEach(function(r){r.addEventListener('change',run)});run();
 })();
 </script>"""
 tool_page("rechnungstext-kleinunternehmer.html",

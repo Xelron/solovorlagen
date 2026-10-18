@@ -1,6 +1,7 @@
 # Kostenlose Mini-Rechner – wird von content.py per exec() geladen (nutzt page, ld, faq_ld, faq_html, crumbs, sources, EXTRA_CSS, DISCL, PUB)
 
 TOOL_CSS = """<style>
+.calc select{height:54px}
 .calc select,.calc textarea{width:100%;font-size:17px;padding:12px 14px;border:1px solid #C9D2DC;border-radius:10px;background:#FFFDF2;font-family:inherit}
 .calc textarea{min-height:72px;resize:vertical}
 .calc .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.calc .row2>div{min-width:0;display:flex;flex-direction:column;justify-content:flex-end}

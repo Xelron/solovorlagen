@@ -31,6 +31,9 @@ EXTRA_CSS="""<style>
 .src{font-size:15px}.toc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 24px}.toc li{font-size:16px}
 .calc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 12px 32px rgba(31,58,95,.08)}
 .calc label{display:block;font-weight:600;margin:14px 0 6px}.calc input[type=text],.calc input[type=date]{width:100%;font-size:18px;padding:12px 14px;border:1px solid #C9D2DC;border-radius:10px;background:#FFFDF2}
+.calc input[type=date]{-webkit-appearance:none;appearance:none;display:block;min-width:0;max-width:100%;min-height:52px;line-height:1.4;text-align:left;color:inherit;font-family:inherit}
+.calc input[type=date]::-webkit-date-and-time-value{text-align:left}
+.calc input[type=date]::-webkit-calendar-picker-indicator{margin-left:auto}
 .calc .chk{display:flex;gap:10px;align-items:center;font-weight:600;margin-top:16px}.calc .chk input{width:22px;height:22px}
 .calc .hint{font-size:14px;color:var(--soft);margin:4px 0 0}
 .res{margin-top:22px;display:grid;gap:12px}.light{border-radius:12px;padding:16px 18px;font-weight:600}.light small{display:block;font-weight:400;margin-top:4px;font-size:15px}

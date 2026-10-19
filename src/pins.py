@@ -45,6 +45,15 @@ P3=[
 ("Rechnungen als Kleinunternehmer","Excel-Vorlage mit allen Pflichtangaben","Rechnungsbuch · offene Posten · Zahlungserinnerung","img/rechnung-01.jpg","rechnung.html","Excel-Vorlagen für Selbstständige",
  "Rechnungs-Generator für Kleinunternehmer: Rechnungen mit allen Pflichtangaben nach § 34a UStDV und Hinweis auf die Steuerbefreiung, Kundenliste, Rechnungsbuch mit offenen Posten und fertige Zahlungserinnerung. Excel & Google Sheets.","rechnungsvorlage kleinunternehmer, rechnung excel, rechnung schreiben, zahlungserinnerung, selbstständig"),
 ]
+P4=[
+("Wie viel Steuer zurücklegen?","Die Prozentsätze für 2026","Einkommensteuer nach Tarif – mit Rechenbeispielen","pct","steuerruecklage-berechnen.html#tabelle","Selbstständig: Preise & Geld","",""),
+("Gründer-Falle im 2. Jahr","Nachzahlung + Vorauszahlung auf einmal","So bist du vorbereitet","double","steuerruecklage-berechnen.html#gruender","Kleinunternehmer Tipps","",""),
+("Steuer-Vorauszahlungen","Diese 4 Termine solltest du kennen","Einkommensteuer nach § 37 EStG","cal","steuerruecklage-berechnen.html#vorauszahlungen","Selbstständig: Preise & Geld","",""),
+("Herbst-Check für Kleinunternehmer","Schon über 25.000 € Umsatz?","Dann bist du nächstes Jahr kein Kleinunternehmer mehr","gauge","grenzen-check.html#calc","Kleinunternehmer Tipps","",""),
+("Stundensatz-Rechner","Excel-Vorlage für Selbstständige","Gesetzlich oder privat versichert – beides wählbar","img/stundensatz-02.jpg|fit","stundensatz.html#kaufen","Excel-Vorlagen für Selbstständige","",""),
+("Vom Stundensatz zum Tagessatz","So einfach rechnest du um","Unbezahlte Zeit steckt schon im Stundensatz","day","stundensatz-berechnen.html#tagessatz","Selbstständig: Preise & Geld","",""),
+("EÜR & Steuerrücklage","Excel-Vorlage für Kleinunternehmer","Einnahmen eintragen – Gewinn und Rücklage im Blick","img/euer.jpg|fit","cockpit.html#kaufen","Excel-Vorlagen für Selbstständige","",""),
+]
 CSS="""*{box-sizing:border-box}body{margin:0;width:1000px;height:1500px;font-family:'DejaVu Sans',Arial,sans-serif}
 .p{width:1000px;height:1500px;padding:80px 72px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
 .serif{font-family:'DejaVu Serif',Georgia,serif;font-weight:700}.brand{font-size:30px;letter-spacing:.06em}
@@ -71,6 +80,21 @@ def render(i,t):
         mid='<div>'+"".join(f'<div class=light style="background:{b};color:{c};justify-content:space-between"><span>{l}</span><span>{r}</span></div>' for b,c,l,r in [("#D4EDDA","#0F5132","bis 250 €","sofort"),("#D4EDDA","#0F5132","bis 800 €","sofort (GWG)"),("#FFF3CD","#664D03","bis 1.000 €","Sammelposten"),("#F8D7DA","#842029","darüber","Abschreibung")])+'<div style="font-size:26px;color:#5A6573;margin-top:6px">Beträge netto · Stand 2026</div></div>'
     elif extra=="km":
         mid=f'<div style="background:rgba(255,255,255,.12);border-radius:28px;padding:40px"><div style="font-size:30px;color:{mut};font-weight:700">250 KM IM MONAT</div><div class=serif style="font-size:150px;color:{fg};line-height:1.1">900 €</div><div style="font-size:34px;color:{mut}">Betriebsausgaben im Jahr</div></div>'
+    elif extra=="pct":
+        mid='<div style="background:#fff;border-radius:28px;padding:36px 40px"><div style="font-size:28px;color:#5A6573;font-weight:700;margin-bottom:14px">ZU VERST. EINKOMMEN → STEUERSATZ</div>'+"".join(f'<div style="margin:16px 0"><div style="display:flex;justify-content:space-between;font-size:38px;font-weight:700;color:#1B2430"><span>{l}</span><span>{r}</span></div><div style="height:22px;background:#E3E8EE;border-radius:11px;margin-top:10px"><div style="height:22px;width:{w}%;background:{acc};border-radius:11px"></div></div></div>' for l,r,w in [("25.000 €","≈ 11 %",44),("40.000 €","≈ 18 %",72),("60.000 €","≈ 24 %",95)])+'<div style="font-size:24px;color:#5A6573;margin-top:12px">Einkommensteuer 2026 · Einzelveranlagung</div></div>'
+    elif extra=="double":
+        mid=f'<div>'+f'<div style="background:#fff;border-radius:24px;padding:30px 36px;margin-bottom:18px"><div style="font-size:28px;color:#5A6573;font-weight:700">1 · NACHZAHLUNG</div><div class=serif style="font-size:46px;color:#1F3A5F">für das Gründungsjahr</div></div>'+f'<div style="text-align:center;font-size:70px;font-weight:700;color:{acc};line-height:1">+</div>'+f'<div style="background:#fff;border-radius:24px;padding:30px 36px;margin-top:18px"><div style="font-size:28px;color:#5A6573;font-weight:700">2 · VORAUSZAHLUNGEN</div><div class=serif style="font-size:46px;color:#1F3A5F">für das laufende Jahr</div></div></div>'
+    elif extra=="cal":
+        mid='<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">'+"".join(f'<div style="background:#fff;border-radius:24px;overflow:hidden;text-align:center;box-shadow:0 12px 28px rgba(0,0,0,.12)"><div style="background:{acc};color:#fff;font-size:34px;font-weight:700;padding:14px">{m}</div><div class=serif style="font-size:110px;color:#1F3A5F;line-height:1.3">10.</div></div>' for m in ["MÄRZ","JUNI","SEPTEMBER","DEZEMBER"])+'</div>'
+    elif extra=="gauge":
+        lt=bg=='#F6F7F4'; box='#fff' if lt else 'rgba(255,255,255,.12)'; trk='#E3E8EE' if lt else 'rgba(255,255,255,.25)'
+        mid=f'<div style="background:{box};border-radius:28px;padding:40px;{"box-shadow:0 12px 32px rgba(31,58,95,.12)" if lt else ""}"><div style="display:flex;justify-content:space-between;font-size:30px;color:{mut};font-weight:700"><span>UMSATZ BISHER</span><span>GRENZE</span></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span class=serif style="font-size:96px;color:{fg}">21.800 €</span><span class=serif style="font-size:44px;color:{fg}">25.000 €</span></div><div style="height:34px;background:{trk};border-radius:17px;margin-top:18px"><div style="height:34px;width:87%;background:{acc};border-radius:17px"></div></div><div style="font-size:30px;color:{mut};margin-top:18px">87 % ausgeschöpft – was kommt bis zum 31.12. dazu?</div></div>'
+    elif extra=="day":
+        mid=f'<div style="background:#fff;border-radius:28px;padding:44px;text-align:center"><div style="display:flex;justify-content:center;align-items:center;gap:26px;font-size:64px;font-weight:700;color:#1F3A5F"><span>65 €</span><span style="color:{acc}">×</span><span>8 h</span></div><div style="height:6px;background:#E3E8EE;margin:30px 0"></div><div class=serif style="font-size:140px;color:#1F3A5F;line-height:1">520 €</div><div style="font-size:30px;color:#5A6573;margin-top:16px;font-weight:700">TAGESSATZ PRO ABGERECHNETEM TAG</div></div>'
+    elif extra and extra.startswith("img/") and extra.endswith("|fit"):
+        from PIL import Image as _I
+        fp=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","docs",extra[:-4]); px=_I.open(fp).convert("RGB").getpixel((5,5))
+        mid=f'<div class=img style="height:640px;background:rgb{px};display:flex;align-items:center;justify-content:center"><img src="data:image/jpeg;base64,{base64.b64encode(open(fp,"rb").read()).decode()}" style="height:100%;width:auto;display:block"></div>'
     elif extra and extra.startswith("img/"):
         mid=f'<div class=img style="height:620px"><img src="data:image/jpeg;base64,{base64.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","docs")+"/"+extra,"rb").read()).decode()}" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>'
     else:
@@ -81,7 +105,7 @@ def render(i,t):
     return h
 import sys
 BATCH=int(sys.argv[1]) if len(sys.argv)>1 else 2
-LST,OFF,START,CSVN={1:(P,0,datetime.date(2026,10,16),"pinterest-pins.csv"),2:(P2,12,datetime.date(2026,10,17),"pinterest-pins-2.csv"),3:(P3,18,datetime.date(2026,10,18),"pinterest-pins-3.csv")}[BATCH]
+LST,OFF,START,CSVN={1:(P,0,datetime.date(2026,10,16),"pinterest-pins.csv"),2:(P2,12,datetime.date(2026,10,17),"pinterest-pins-2.csv"),3:(P3,18,datetime.date(2026,10,18),"pinterest-pins-3.csv"),4:(P4,19,datetime.date(2026,10,25),None)}[BATCH]
 ROOT=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..")
 with sync_playwright() as p:
     b=p.chromium.launch(); pg=b.new_page(viewport={'width':1000,'height':1500})
@@ -91,6 +115,7 @@ with sync_playwright() as p:
         pg.screenshot(path=os.path.join(ROOT,"docs","pins",f"pin-{i+1+OFF:02d}.jpg"),type="jpeg",quality=85)
         print(i+1+OFF, pg.evaluate("document.querySelector('.p').scrollHeight"))
     b.close()
+if CSVN is None: sys.exit(0)  # ab Batch 4: Termine stehen in src/feeds.json, keine CSV
 with open(os.path.join(ROOT,CSVN),"w",newline="",encoding="utf-8") as f:
     w=csv.writer(f); w.writerow(["Title","Media URL","Pinterest board","Thumbnail","Description","Link","Publish date","Keywords"])
     for i,t in enumerate(LST):

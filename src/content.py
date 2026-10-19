@@ -8,9 +8,10 @@ def ld(obj): return '<script type="application/ld+json">'+_json.dumps(obj,ensure
 def faq_ld(qas): return {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in qas]}
 def faq_html(qas): return "".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q,a in qas)
 def crumbs(items): return {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":i+1,"name":n,"item":u} for i,(n,u) in enumerate(items)]}
-def article_ld(headline,desc,url):
+def article_ld(headline,desc,url,iso=None):
+    iso=iso or ISO
     return {"@context":"https://schema.org","@type":"Article","headline":headline,"description":desc,"inLanguage":"de-DE",
-            "datePublished":ISO,"dateModified":ISO,"author":AUTHOR,"publisher":PUB,"mainEntityOfPage":url}
+            "datePublished":iso,"dateModified":iso,"author":AUTHOR,"publisher":PUB,"mainEntityOfPage":url}
 SRC_KU=[("§ 19 UStG – Gesetzestext (dejure.org)","https://dejure.org/gesetze/UStG/19.html"),
 ("Deutsche Handwerks Zeitung: Kleinunternehmerregelung 2025 – BMF-Anwendungsschreiben vom 18.03.2025","https://www.deutsche-handwerks-zeitung.de/kleinunternehmerregelung-2025-anwendungsschreiben-beachten-361560/"),
 ("finanz.de: Kleinunternehmerregelung (Stand 02.10.2026)","https://www.finanz.de/business/kleinunternehmerregelung/"),
@@ -28,7 +29,7 @@ EXTRA_CSS="""<style>
 .tbl{width:100%;border-collapse:collapse;font-size:16px;margin:16px 0;background:#fff}.tbl th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px}
 .tbl td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}.tblwrap{overflow-x:auto}
 .cta{background:var(--navy);color:#fff;border-radius:14px;padding:24px;margin:32px 0}.cta h3{color:#fff;margin:0 0 8px}.cta p{color:#dbe6f0;margin:0 0 16px}
-.src{font-size:15px}.toc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 24px}.toc li{font-size:16px}
+.src{font-size:15px}@media(max-width:520px){.tbl.sm{font-size:14px}.tbl.sm th,.tbl.sm td{padding:8px 7px}}.toc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 24px}.toc li{font-size:16px}
 .calc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 12px 32px rgba(31,58,95,.08)}
 .calc label{display:block;font-weight:600;margin:14px 0 6px}.calc input[type=text],.calc input[type=date]{width:100%;height:54px;font-size:18px;padding:12px 14px;border:1px solid #C9D2DC;border-radius:10px;background:#FFFDF2}
 .calc input[type=date]{-webkit-appearance:none;appearance:none;display:block;min-width:0;max-width:100%;line-height:1.4;text-align:left;color:inherit;font-family:inherit}
@@ -279,6 +280,97 @@ ss_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 ss_head=EXTRA_CSS+ld(article_ld("Stundensatz berechnen als Selbstständiger: Formel, Beispiel und typische Fehler",ss_desc,ss_url))+ld(faq_ld(SS_FAQ))+ld(crumbs([("Solovorlagen","https://solovorlagen.de/"),("Ratgeber","https://solovorlagen.de/ratgeber.html"),("Stundensatz berechnen","https://solovorlagen.de/stundensatz-berechnen.html")]))
 page("Stundensatz berechnen als Selbstständiger: Formel + Beispiel (2026) | Solovorlagen",ss_desc,ss_body,"stundensatz-berechnen.html",ss_head)
 
+# ---------------- Ratgeber 3: Steuerrücklage ----------------
+SR_ISO="2026-10-19"; SR_STAND="19.10.2026"
+SR_BYLINE=f'<p class="byline">Von <a href="impressum.html">Felix Merklinger-Lötzsch</a>, Solovorlagen · Stand: <time datetime="{SR_ISO}">{SR_STAND}</time></p>'
+SR_FAQ=[
+("Wie viel Prozent sollte ich als Selbstständiger für die Steuer zurücklegen?","Das hängt vom zu versteuernden Einkommen ab. Nach dem Einkommensteuertarif 2026 (Einzelveranlagung) liegt die Einkommensteuer bei 25.000 Euro zu versteuerndem Einkommen bei rund 11 Prozent, bei 40.000 Euro bei 18 Prozent und bei 60.000 Euro bei knapp 24 Prozent. Wer den passenden Satz aus der Tabelle nimmt und ein paar Prozentpunkte Puffer aufschlägt, ist meist auf der sicheren Seite."),
+("Müssen Kleinunternehmer Umsatzsteuer zurücklegen?","In der Regel nicht. Kleinunternehmer nach § 19 UStG weisen keine Umsatzsteuer aus. Ausnahme: Für bestimmte Leistungen ausländischer Anbieter, etwa Werbung oder Software-Abos aus dem EU-Ausland, schulden auch sie die Umsatzsteuer selbst (Reverse-Charge, § 13b UStG). Zurücklegen müssen sie vor allem für die Einkommensteuer. Wer die Kleinunternehmerregelung verliert, muss die vereinnahmte Umsatzsteuer zusätzlich beiseitelegen, weil sie ans Finanzamt weitergeleitet wird."),
+("Wann muss ich Einkommensteuer-Vorauszahlungen leisten?","Am 10. März, 10. Juni, 10. September und 10. Dezember (§ 37 EStG). Das Finanzamt setzt sie per Bescheid fest, meist auf Basis der letzten Steuerfestsetzung. Festgesetzt werden sie nur, wenn sie mindestens 400 Euro im Jahr und mindestens 100 Euro pro Termin betragen."),
+("Warum ist das zweite Jahr der Selbstständigkeit oft so teuer?","Weil mit dem ersten Steuerbescheid zwei Zahlungen zusammenkommen können: die Nachzahlung für das Gründungsjahr und die Vorauszahlungen für das laufende Jahr. Wer im Gründungsjahr nichts zurückgelegt hat, muss dann beides aus den laufenden Einnahmen zahlen."),
+("Zahle ich als Selbstständiger auch Gewerbesteuer?","Nur Gewerbetreibende, nicht Freiberufler. Für Einzelunternehmer gilt ein Freibetrag von 24.500 Euro Gewerbeertrag. Darüber wird die Gewerbesteuer bis zum 4-Fachen des Steuermessbetrags auf die Einkommensteuer angerechnet (§ 35 EStG). Bis zu einem Hebesatz von 400 Prozent gleicht sich das rechnerisch weitgehend aus. In vielen Großstädten liegt der Hebesatz darüber; dann bleibt ein Rest, der in die Rücklage gehört."),
+("Wo sollte ich die Steuerrücklage parken?","Am besten auf einem separaten Konto, zum Beispiel einem Tagesgeldkonto, auf das du bei jedem Zahlungseingang den festen Prozentsatz überweist. So vermischt sich die Rücklage nicht mit dem Geld für laufende Ausgaben.")]
+sr_url="https://solovorlagen.de/steuerruecklage-berechnen.html"
+sr_desc="Wie viel Steuer sollten Selbstständige zurücklegen? Tabelle zum Tarif 2026, zwei Rechenbeispiele, Vorauszahlungstermine und die Gründer-Falle im zweiten Jahr."
+sr_rows=[(15000,435,"2,9","19"),(20000,1570,"7,9","25"),(25000,2850,"11,4","26"),(30000,4217,"14,1","28"),(40000,7209,"18,0","32"),(50000,10548,"21,1","35"),(60000,14233,"23,7","39")]
+sr_tbl="".join(f"<tr><td>{x:,}&nbsp;€</td><td>{e:,}&nbsp;€</td>".replace(",",".")+f"<td>{a}&nbsp;%</td><td>≈&nbsp;{g}&nbsp;%</td></tr>" for x,e,a,g in sr_rows)
+sr_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><article class="article">
+<p class="eyebrow"><a href="ratgeber.html">Ratgeber</a> · Steuern & Geld</p>
+<h1 class="serif">Steuerrücklage berechnen: Wie viel sollten Selbstständige zurücklegen?</h1>
+{SR_BYLINE}
+<div class="answer"><p><strong>Die Antwort in Kürze:</strong> Lege von jedem Gewinn den Anteil zurück, der deiner voraussichtlichen <strong>Einkommensteuer</strong> entspricht – plus einen Puffer. Nach dem Tarif 2026 sind das bei&nbsp;<strong>25.000&nbsp;€</strong> zu versteuerndem Einkommen rund&nbsp;<strong>11&nbsp;%</strong>, bei&nbsp;<strong>40.000&nbsp;€</strong> rund&nbsp;<strong>18&nbsp;%</strong> und bei&nbsp;<strong>60.000&nbsp;€</strong> knapp&nbsp;<strong>24&nbsp;%</strong> (Einzelveranlagung, ohne Kirchensteuer). Kleinunternehmer müssen in der Regel keine Umsatzsteuer zurücklegen. Wichtig für Gründer: Mit dem ersten Steuerbescheid kommen oft <strong>Nachzahlung und Vorauszahlungen gleichzeitig</strong>.</p></div>
+<nav class="toc" aria-label="Inhalt"><strong>Inhalt</strong><ol>
+<li><a href="#warum">Warum brauche ich eine Steuerrücklage?</a></li><li><a href="#tabelle">Wie viel Prozent sind es 2026?</a></li><li><a href="#beispiele">Zwei Rechenbeispiele</a></li>
+<li><a href="#vorauszahlungen">Wann werden Vorauszahlungen fällig?</a></li><li><a href="#gruender">Die Gründer-Falle im zweiten Jahr</a></li><li><a href="#weitere">Umsatzsteuer, Gewerbesteuer, Kirchensteuer</a></li>
+<li><a href="#praxis">So legst du die Rücklage praktisch an</a></li><li><a href="#faq">Häufige Fragen</a></li></ol></nav>
+
+<h2 class="serif" id="warum">Warum brauche ich als Selbstständiger eine Steuerrücklage?</h2>
+<p>Angestellten wird die Lohnsteuer jeden Monat automatisch abgezogen. Selbstständige bekommen ihre Einnahmen dagegen <strong>ohne Steuerabzug</strong> – die Einkommensteuer wird erst mit dem Steuerbescheid fällig, oft viele Monate nach Jahresende. Wer das Geld bis dahin ausgegeben hat, gerät in Zahlungsnot. Die Steuerrücklage ist deshalb nichts anderes als eine selbst organisierte „Lohnsteuer“: Von jedem Euro Gewinn wandert ein fester Anteil auf die Seite.</p>
+
+<h2 class="serif" id="tabelle">Wie viel Prozent vom Gewinn sollte ich 2026 zurücklegen?</h2>
+<p>Die Einkommensteuer richtet sich nach dem <strong>zu versteuernden Einkommen</strong> – das ist dein Gewinn abzüglich Vorsorgeaufwendungen (z. B. Kranken- und Pflegeversicherung, Altersvorsorge) und weiterer Abzüge. Die Tabelle zeigt die Einkommensteuer nach dem Tarif 2026 (§&nbsp;32a&nbsp;EStG, Grundfreibetrag 12.348&nbsp;€) für eine Einzelveranlagung:</p>
+<div class="tblwrap"><table class="tbl sm"><tr><th>Zu versteuern&shy;des Einkommen</th><th>Einkommen&shy;steuer 2026</th><th>Durch&shy;schnitt</th><th>Grenz&shy;steuer&shy;satz</th></tr>{sr_tbl}</table></div>
+<p>Der <strong>Durchschnittssteuersatz</strong> ist der Anteil, den du vom zu versteuernden Einkommen insgesamt an Steuer zahlst – er ist die Basis für deine Rücklage. Der <strong>Grenzsteuersatz</strong> zeigt, wie viel von jedem zusätzlichen Euro an Steuer geht. Einen Solidaritätszuschlag zahlen Ledige 2026 erst, wenn die Einkommensteuer über&nbsp;20.350&nbsp;€ liegt, also ab rund&nbsp;75.000&nbsp;€ zu versteuerndem Einkommen.</p>
+<p><strong>Faustregel für die Praxis:</strong> Nimm den Durchschnittssatz für dein erwartetes zu versteuerndes Einkommen und schlage ein paar Prozentpunkte Puffer auf. Weil das zu versteuernde Einkommen kleiner ist als der Gewinn, bist du damit meist auf der sicheren Seite. Bei Zusammenveranlagung mit Partner oder Partnerin oder weiteren Einkünften (etwa aus einem Angestelltenjob) kann der Satz deutlich abweichen.</p>
+
+<h2 class="serif" id="beispiele">Zwei Rechenbeispiele</h2>
+<p><strong>Lena</strong> ist Grafikdesignerin, <strong>Tom</strong> IT-Freelancer:</p>
+<div class="tblwrap"><table class="tbl sm"><tr><th></th><th>Lena</th><th>Tom</th></tr>
+<tr><td>Gewinn 2026</td><td>30.000&nbsp;€</td><td>54.000&nbsp;€</td></tr>
+<tr><td>Abzüge (Annahme: Vorsorge, Sonderausgaben)</td><td>− 6.000&nbsp;€</td><td>− 9.000&nbsp;€</td></tr>
+<tr><td><strong>Zu versteuerndes Einkommen</strong></td><td><strong>24.000&nbsp;€</strong></td><td><strong>45.000&nbsp;€</strong></td></tr>
+<tr><td>Einkommensteuer 2026</td><td>2.587&nbsp;€</td><td>8.835&nbsp;€</td></tr>
+<tr><td>Anteil am Gewinn</td><td>8,6&nbsp;%</td><td>16,4&nbsp;%</td></tr>
+<tr><td><strong>Rücklage pro Monat</strong></td><td><strong>rund&nbsp;216&nbsp;€</strong></td><td><strong>rund&nbsp;736&nbsp;€</strong></td></tr>
+<tr><td>Mit 10&nbsp;% Puffer (Anteil am Gewinn)</td><td>rund&nbsp;237&nbsp;€ (≈&nbsp;9,5&nbsp;%)</td><td>rund&nbsp;810&nbsp;€ (≈&nbsp;18&nbsp;%)</td></tr></table></div>
+<p>Beide sind freiberuflich tätig (keine Gewerbesteuer), ledig, ohne Kinder, zahlen keine Kirchensteuer und haben keine weiteren Einkünfte. Mit mehr als 25.000&nbsp;€ Umsatz sind beide <strong>keine Kleinunternehmer</strong>: Die Umsatzsteuer, die sie ihren Kunden berechnen, legen sie zusätzlich und vollständig zurück – sie ist in den Zahlen oben nicht enthalten. Die Abzüge sind vereinfachte Annahmen – wie hoch sie bei dir sind, zeigt dein letzter Steuerbescheid oder eine Steuerberatung.</p>
+
+<h2 class="serif" id="vorauszahlungen">Wann werden Einkommensteuer-Vorauszahlungen fällig?</h2>
+<p>Nach dem ersten Steuerbescheid setzt das Finanzamt in der Regel <strong>vierteljährliche Vorauszahlungen</strong> fest (§&nbsp;37&nbsp;EStG). Sie sind fällig am:</p>
+<div class="tblwrap"><table class="tbl"><tr><th>Termin</th><th>Fällig</th></tr><tr><td>1. Rate</td><td>10. März</td></tr><tr><td>2. Rate</td><td>10. Juni</td></tr><tr><td>3. Rate</td><td>10. September</td></tr><tr><td>4. Rate</td><td>10. Dezember</td></tr></table></div>
+<p>Grundlage ist meist die Steuer aus der letzten Veranlagung. Vorauszahlungen werden nur festgesetzt, wenn sie mindestens <strong>400&nbsp;€ im Jahr</strong> und mindestens <strong>100&nbsp;€ pro Termin</strong> betragen. Steigt oder sinkt dein Gewinn deutlich, kannst du beim Finanzamt eine Anpassung beantragen – und das Finanzamt kann die Vorauszahlungen von sich aus erhöhen. Mit einer Rücklage, die zu deinem tatsächlichen Gewinn passt, bist du in beiden Fällen vorbereitet.</p>
+
+<h2 class="serif" id="gruender">Die Gründer-Falle: Warum das zweite Jahr so teuer werden kann</h2>
+<p>Im Gründungsjahr fordert das Finanzamt oft noch wenig oder nichts – Vorauszahlungen richten sich nur nach deiner Schätzung im Fragebogen zur steuerlichen Erfassung. Nach der ersten Steuererklärung kommt dann alles auf einmal:</p>
+<ol><li><strong>Die Nachzahlung</strong> für das Gründungsjahr, zu zahlen innerhalb eines Monats nach Bekanntgabe des Bescheids.</li>
+<li><strong>Die Vorauszahlungen</strong> für das laufende Jahr – die Beträge für bereits verstrichene Termine werden nachgefordert, ebenfalls zahlbar innerhalb eines Monats nach dem Bescheid.</li></ol>
+<p>Beispiel: Lena gründet im Januar 2026 und gibt ihre Erklärung im Sommer 2027 ab. Im Herbst 2027 zahlt sie 2.587&nbsp;€ für 2026 nach und dazu die Vorauszahlungen für 2027. Ohne Rücklage fehlen ihr dann auf einen Schlag mehrere tausend Euro. Wer schon ab der ersten Rechnung zurücklegt, zahlt beides entspannt aus der Rücklage.</p>
+
+<h2 class="serif" id="weitere">Was ist mit Umsatzsteuer, Gewerbesteuer und Kirchensteuer?</h2>
+<h3>Umsatzsteuer</h3>
+<p><strong>Kleinunternehmer</strong> nach §&nbsp;19&nbsp;UStG weisen keine Umsatzsteuer aus und müssen dafür in der Regel nichts zurücklegen. Ausnahme: Für bestimmte Leistungen ausländischer Anbieter, etwa Werbung oder Software-Abos von Unternehmen aus dem EU-Ausland, schulden auch Kleinunternehmer die Umsatzsteuer selbst (Reverse-Charge, §&nbsp;13b&nbsp;UStG). Wer regelbesteuert ist, zum Beispiel weil der Umsatz die <a href="kleinunternehmerregelung-grenzen.html">Kleinunternehmergrenzen</a> überschritten hat, sollte die vereinnahmte Umsatzsteuer <strong>komplett</strong> beiseitelegen – sie gehört dem Finanzamt und wird mit den Voranmeldungen abgeführt (abzüglich Vorsteuer). Ob du noch unter den Grenzen bist, zeigt der <a href="grenzen-check.html">kostenlose Grenzen-Check</a>.</p>
+<h3>Gewerbesteuer</h3>
+<p>Nur Gewerbetreibende zahlen Gewerbesteuer, Freiberufler nicht. Für Einzelunternehmer gilt ein <strong>Freibetrag von 24.500&nbsp;€</strong> Gewerbeertrag (§&nbsp;11&nbsp;GewStG). Darüber wird die Gewerbesteuer bis zum 4-Fachen des Steuermessbetrags auf die Einkommensteuer angerechnet (§&nbsp;35&nbsp;EStG) – bis zu einem Hebesatz von 400&nbsp;% gleicht sich das rechnerisch weitgehend aus. In vielen Großstädten liegt der Hebesatz darüber; dann bleibt ein Rest, den du zusätzlich einplanen solltest. Die Gewerbesteuer-Vorauszahlungen (15. Februar, Mai, August, November) gehören ebenfalls in die Liquiditätsplanung.</p>
+<h3>Kirchensteuer und Solidaritätszuschlag</h3>
+<p>Kirchenmitglieder zahlen zusätzlich <strong>8&nbsp;%</strong> (Bayern, Baden-Württemberg) bzw. <strong>9&nbsp;%</strong> (übrige Länder) der Einkommensteuer. Bei Lena wären das bei&nbsp;9&nbsp;% rund&nbsp;233&nbsp;€ im Jahr. Der Solidaritätszuschlag spielt für die meisten Selbstständigen keine Rolle (siehe oben).</p>
+
+<h2 class="serif" id="praxis">So legst du die Rücklage praktisch an</h2>
+<ol><li><strong>Satz festlegen:</strong> Durchschnittssteuersatz aus der Tabelle plus Puffer – bei Abzügen wie in den Beispielen z. B. 10–12&nbsp;% vom Gewinn bei rund&nbsp;30.000&nbsp;€ und 18–20&nbsp;% bei rund&nbsp;55.000&nbsp;€. Bei geringeren Abzügen eher etwas mehr.</li>
+<li><strong>Separates Konto:</strong> Ein Tagesgeldkonto nur für Steuern, damit das Geld nicht versehentlich ausgegeben wird.</li>
+<li><strong>Bei jedem Zahlungseingang überweisen:</strong> Den festen Prozentsatz der Einnahme (nach Abzug der zugehörigen Ausgaben) sofort umbuchen – oder einmal im Monat vom Monatsgewinn.</li>
+<li><strong>Vierteljährlich prüfen:</strong> Passt der Satz noch zum Gewinn? Bei einem starken Jahr den Satz erhöhen, denn mit steigendem Gewinn steigt auch der Steuersatz.</li></ol>
+
+<div class="cta"><h3>Gewinn und Steuerrücklage automatisch im Blick</h3><p>Das Kleinunternehmer-Cockpit ist eine Excel-Vorlage: Einnahmen und Ausgaben eintragen – die Vorlage zeigt deinen Gewinn, die EÜR-Übersicht, die Umsatzgrenzen-Ampel und berechnet, welchen Anteil deines Gewinns du für die Steuer zurücklegen solltest.</p><a class="btn" href="cockpit.html">Kleinunternehmer-Cockpit ansehen</a></div>
+
+<h2 class="serif" id="faq">Häufige Fragen</h2>
+<div class="faq" style="max-width:none">{faq_html(SR_FAQ)}</div>
+
+<h2 class="serif">Quellen</h2>
+{sources([("§ 32a EStG – Einkommensteuertarif ab 2026 (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__32a.html"),
+("§ 37 EStG – Einkommensteuer-Vorauszahlung (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__37.html"),
+("§ 35 EStG – Steuerermäßigung bei Einkünften aus Gewerbebetrieb (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__35.html"),
+("§ 11 GewStG – Steuermesszahl und Freibetrag (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/gewstg/__11.html"),
+("§ 3 SolZG 1995 – Freigrenze Solidaritätszuschlag (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/solzg_1995/__3.html"),
+("TK: Solidaritätszuschlag 2026 – Freigrenze weiter erhöht","https://www.tk.de/firmenkunden/service/fachthemen/fachthema-beitraege/solidaritaetszuschlag-2075802"),
+("§ 19 UStG – Kleinunternehmer (dejure.org)","https://dejure.org/gesetze/UStG/19.html"),
+("§ 13b UStG – Leistungsempfänger als Steuerschuldner (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ustg_1980/__13b.html"),
+("§ 36 EStG – Entstehung und Tilgung der Einkommensteuer (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__36.html")])}
+<p class="note">Die Steuerbeträge sind mit der Tarifformel des §&nbsp;32a&nbsp;EStG für 2026 berechnet (Einzelveranlagung, abgerundet). Die Prozentwerte zum Grenzsteuersatz sind gerundet.</p>
+{DISCL}
+</article></div>"""
+sr_head=EXTRA_CSS+ld(article_ld("Steuerrücklage berechnen: Wie viel sollten Selbstständige zurücklegen?",sr_desc,sr_url,SR_ISO))+ld(faq_ld(SR_FAQ))+ld(crumbs([("Solovorlagen","https://solovorlagen.de/"),("Ratgeber","https://solovorlagen.de/ratgeber.html"),("Steuerrücklage berechnen","https://solovorlagen.de/steuerruecklage-berechnen.html")]))
+page("Steuerrücklage berechnen 2026: Wie viel Prozent? | Solovorlagen",sr_desc,sr_body,"steuerruecklage-berechnen.html",sr_head)
+
 exec(open(os.path.join(HERE,"tools.py")).read())
 
 # ---------------- Ratgeber-Übersicht ----------------
@@ -288,15 +380,16 @@ rg_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><div 
 <div class="grid2">
 <a class="pcard" href="kleinunternehmerregelung-grenzen.html"><div class="pbody"><h3>Kleinunternehmerregelung 2026: Die Umsatzgrenzen einfach erklärt</h3><p>25.000 € und 100.000 €, was beim Überschreiten passiert, Gründungsjahr, Rechnung und Beispiele.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 <a class="pcard" href="stundensatz-berechnen.html"><div class="pbody"><h3>Stundensatz berechnen als Selbstständiger</h3><p>Formel, Rechenbeispiel, abrechenbare Stunden und die 5 häufigsten Fehler.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
+<a class="pcard" href="steuerruecklage-berechnen.html"><div class="pbody"><h3>Steuerrücklage berechnen: Wie viel zurücklegen?</h3><p>Prozentsätze nach dem Tarif 2026, zwei Rechenbeispiele, Vorauszahlungen und die Gründer-Falle.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 </div>
 <h2 class="serif" id="rechner">Kostenlose Rechner</h2>
 <div class="grid2">{rc_cards}</div>
 </div></div>"""
-page("Ratgeber für Selbstständige & Kleinunternehmer | Solovorlagen","Ratgeber für Selbstständige: Kleinunternehmerregelung 2026, Stundensatz berechnen und kostenlose Rechner – Umsatzgrenzen-Check, Rechnungstext, GWG und Fahrtkosten.",rg_body,"ratgeber.html",EXTRA_CSS)
+page("Ratgeber für Selbstständige & Kleinunternehmer | Solovorlagen","Ratgeber für Selbstständige: Kleinunternehmerregelung 2026, Stundensatz berechnen, Steuerrücklage und kostenlose Rechner – Umsatzgrenzen-Check, Rechnungstext, GWG und Fahrtkosten.",rg_body,"ratgeber.html",EXTRA_CSS)
 
 # ---------------- sitemap, robots, llms.txt ----------------
-urls=["","rechner.html","grenzen-check.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html","kleinunternehmerregelung-grenzen.html","stundensatz-berechnen.html","ratgeber.html","paket.html","cockpit.html","rechnung.html","stundensatz.html","fahrtenbuch.html","afa.html","impressum.html","datenschutz.html"]
-open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>https://solovorlagen.de/{u}</loc><lastmod>{ISO}</lastmod></url>\n" for u in urls)+"</urlset>\n")
+urls=["","rechner.html","grenzen-check.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html","kleinunternehmerregelung-grenzen.html","stundensatz-berechnen.html","steuerruecklage-berechnen.html","ratgeber.html","paket.html","cockpit.html","rechnung.html","stundensatz.html","fahrtenbuch.html","afa.html","impressum.html","datenschutz.html"]
+open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>https://solovorlagen.de/{u}</loc><lastmod>{SR_ISO if u in ("steuerruecklage-berechnen.html","ratgeber.html") else ISO}</lastmod></url>\n" for u in urls)+"</urlset>\n")
 open(os.path.join(OUT,"robots.txt"),"w").write("User-agent: *\nAllow: /\n\nSitemap: https://solovorlagen.de/sitemap.xml\n")
 open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 > Excel-Vorlagen und Ratgeber für Selbstständige und Kleinunternehmer in Deutschland (Stand 2026). Betreiber: Felix Merklinger-Lötzsch, Aßlar.
@@ -304,6 +397,7 @@ open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 ## Ratgeber
 - [Kleinunternehmerregelung 2026: Umsatzgrenzen einfach erklärt](https://solovorlagen.de/kleinunternehmerregelung-grenzen.html): 25.000 € Vorjahr, 100.000 € laufendes Jahr (netto), sofortiges Ende bei Überschreiten, Gründungsjahr 25.000 € ohne Hochrechnung, Rechnungshinweis, E-Rechnung.
 - [Stundensatz berechnen als Selbstständiger](https://solovorlagen.de/stundensatz-berechnen.html): Formel, Rechenbeispiel (2.500 € netto ≈ 65 €/Stunde bei privater KV, mit gesetzlicher KV rund 77 €), abrechenbare Stunden, typische Fehler.
+- [Steuerrücklage berechnen](https://solovorlagen.de/steuerruecklage-berechnen.html): Einkommensteuer 2026 nach § 32a EStG (Grundfreibetrag 12.348 €; Durchschnitt ca. 11 % bei 25.000 €, 18 % bei 40.000 €, 24 % bei 60.000 € zvE, Einzelveranlagung), Vorauszahlungen 10.3./10.6./10.9./10.12., Gründer-Falle Nachzahlung + Vorauszahlung, Kleinunternehmer ohne USt-Rücklage.
 
 ## Werkzeuge
 - [Umsatzgrenzen-Check 2026](https://solovorlagen.de/grenzen-check.html): kostenloser Online-Rechner zur Kleinunternehmergrenze.

@@ -61,5 +61,68 @@
   "link": "https://solovorlagen.de/rechnung.html",
   "image": "https://solovorlagen.de/pins/pin-19.jpg",
   "date": "2026-10-21T04:00:00"
+ },
+ {
+  "id": "pin-20",
+  "board": "Selbstständig: Preise & Geld",
+  "title": "Wie viel Steuer zurücklegen? – Die Prozentsätze für 2026",
+  "description": "Wie viel sollten Selbstständige für die Einkommensteuer zurücklegen? Nach dem Tarif 2026 rund 11 % bei 25.000 €, 18 % bei 40.000 € und knapp 24 % bei 60.000 € zu versteuerndem Einkommen (Einzelveranlagung). Tabelle, Beispiele und Tipps im Ratgeber.",
+  "link": "https://solovorlagen.de/steuerruecklage-berechnen.html#tabelle",
+  "image": "https://solovorlagen.de/pins/pin-20.jpg",
+  "date": "2026-10-25T04:00:00"
+ },
+ {
+  "id": "pin-21",
+  "board": "Kleinunternehmer Tipps",
+  "title": "Gründer-Falle im 2. Jahr – Nachzahlung + Vorauszahlung auf einmal",
+  "description": "Mit dem ersten Steuerbescheid kommen oft zwei Zahlungen gleichzeitig: die Nachzahlung fürs Gründungsjahr und die Vorauszahlungen fürs laufende Jahr. Wer ab der ersten Rechnung zurücklegt, zahlt beides entspannt. So geht's.",
+  "link": "https://solovorlagen.de/steuerruecklage-berechnen.html#gruender",
+  "image": "https://solovorlagen.de/pins/pin-21.jpg",
+  "date": "2026-10-26T04:00:00"
+ },
+ {
+  "id": "pin-22",
+  "board": "Selbstständig: Preise & Geld",
+  "title": "Steuer-Vorauszahlungen – Diese 4 Termine solltest du kennen",
+  "description": "10. März, 10. Juni, 10. September, 10. Dezember: An diesen Terminen sind Einkommensteuer-Vorauszahlungen fällig. Wann das Finanzamt sie festsetzt und wie du mit einer Steuerrücklage vorbereitet bist, erklärt der Ratgeber.",
+  "link": "https://solovorlagen.de/steuerruecklage-berechnen.html#vorauszahlungen",
+  "image": "https://solovorlagen.de/pins/pin-22.jpg",
+  "date": "2026-10-27T04:00:00"
+ },
+ {
+  "id": "pin-23",
+  "board": "Kleinunternehmer Tipps",
+  "title": "Herbst-Check für Kleinunternehmer – Schon über 25.000 € Umsatz?",
+  "description": "Wer im Jahr mehr als 25.000 € Umsatz macht, ist im Folgejahr kein Kleinunternehmer mehr – im Gründungsjahr endet die Regelung sogar sofort beim Überschreiten. Jetzt im Herbst prüfen: Der kostenlose Umsatzgrenzen-Check rechnet deinen Umsatz bis Jahresende hoch – ohne Anmeldung.",
+  "link": "https://solovorlagen.de/grenzen-check.html#calc",
+  "image": "https://solovorlagen.de/pins/pin-23.jpg",
+  "date": "2026-10-28T04:00:00"
+ },
+ {
+  "id": "pin-24",
+  "board": "Excel-Vorlagen für Selbstständige",
+  "title": "Stundensatz-Rechner – Excel-Vorlage für Selbstständige",
+  "description": "Was musst du pro Stunde verlangen? Der Stundensatz-Rechner nimmt Krankenversicherung, Altersvorsorge, Steuern, Urlaub und unbezahlte Zeit mit – gesetzliche oder private KV wählbar, mit Szenarien und Projekt-Kalkulation. Excel & Google Sheets.",
+  "link": "https://solovorlagen.de/stundensatz.html#kaufen",
+  "image": "https://solovorlagen.de/pins/pin-24.jpg",
+  "date": "2026-10-29T04:00:00"
+ },
+ {
+  "id": "pin-25",
+  "board": "Selbstständig: Preise & Geld",
+  "title": "Vom Stundensatz zum Tagessatz – So einfach rechnest du um",
+  "description": "Tagessatz = Stundensatz × Arbeitsstunden pro Tag: Bei 65 € und 8 Stunden sind das 520 € pro abgerechnetem Tag. Akquise und Verwaltung sind im Stundensatz schon eingerechnet. Formel und Beispiel im Ratgeber.",
+  "link": "https://solovorlagen.de/stundensatz-berechnen.html#tagessatz",
+  "image": "https://solovorlagen.de/pins/pin-25.jpg",
+  "date": "2026-10-30T04:00:00"
+ },
+ {
+  "id": "pin-26",
+  "board": "Excel-Vorlagen für Selbstständige",
+  "title": "EÜR & Steuerrücklage – Excel-Vorlage für Kleinunternehmer",
+  "description": "Das Kleinunternehmer-Cockpit: Einnahmen und Ausgaben erfassen, EÜR-Übersicht nach 20 Kategorien, Umsatzgrenzen-Ampel und Steuerrücklage – in einer Excel-Datei. Läuft auch in Google Sheets.",
+  "link": "https://solovorlagen.de/cockpit.html#kaufen",
+  "image": "https://solovorlagen.de/pins/pin-26.jpg",
+  "date": "2026-10-31T04:00:00"
  }
 ]

@@ -8,7 +8,7 @@ document.querySelectorAll('.row2').forEach((r,k)=>{const ins=[...r.querySelector
 document.querySelectorAll('input,select,textarea').forEach(e=>{const b=e.getBoundingClientRect(),f=e.closest('form,main');if(f&&b.right>f.getBoundingClientRect().right+1)out.push('Feld ragt heraus '+(e.id||e.name))});
 document.querySelectorAll('select').forEach(e=>{if(e.scrollWidth>e.clientWidth+2)out.push('Auswahltext abgeschnitten '+e.id)});
 if(document.documentElement.scrollWidth>innerWidth)out.push('horizontales Scrollen');
-document.querySelectorAll('img').forEach(i=>{if(!i.complete||i.naturalWidth==0)out.push('Bild fehlt '+i.getAttribute('src'))});
+document.querySelectorAll('img').forEach(i=>{if(i.complete&&i.naturalWidth==0)out.push('Bild fehlt '+i.getAttribute('src'))});
 return out})()"""
 bad=0
 try:

@@ -59,7 +59,7 @@ rt_body = f"""<div class="wrap" style="padding-top:40px;padding-bottom:24px">
 <p class="eyebrow">Kostenloser Generator · Stand 2026</p>
 <h1 class="serif">Rechnung als Kleinunternehmer: Hinweis-Text &amp; Pflichtangaben-Check</h1>
 <div class="answer"><p><strong>Kurz gesagt:</strong> Auf jede Rechnung eines Kleinunternehmers gehört ein Hinweis auf die Steuerbefreiung, z.&nbsp;B. <strong>„Steuerfreie Kleinunternehmerleistung gemäß § 19 Abs. 1 UStG.“</strong> Dazu kommen nach <strong>§ 34a UStDV</strong>: Name und Anschrift von dir und deinem Kunden, deine Steuernummer (oder USt-IdNr.), das Rechnungsdatum, die Leistung und der Betrag. Eine Rechnungsnummer ist nicht vorgeschrieben, aber empfehlenswert.</p></div>
-<h2 class="serif" style="margin-top:28px">Hinweis-Text zum Kopieren</h2>
+<h2 class="serif" id="hinweis" style="margin-top:28px">Hinweis-Text zum Kopieren</h2>
 {rt_hints_html}
 </div>
 <div class="wrap" style="padding-bottom:56px"><div class="split">
@@ -78,7 +78,7 @@ rt_body = f"""<div class="wrap" style="padding-top:40px;padding-bottom:24px">
 <div class="res" id="res" aria-live="polite"></div>
 </form></div>
 <div>
-<h2 class="serif" style="margin-top:0">Pflichtangaben nach § 34a UStDV</h2>
+<h2 class="serif" id="pflichtangaben" style="margin-top:0">Pflichtangaben nach § 34a UStDV</h2>
 <div class="tblwrap"><table class="tbl"><tr><th>Angabe</th><th>Pflicht?</th></tr>
 <tr><td>Name und Anschrift von dir</td><td>Ja</td></tr>
 <tr><td>Name und Anschrift des Kunden</td><td>Ja (bis 250 € nicht)</td></tr>
@@ -169,7 +169,7 @@ gw_body = f"""<div class="wrap" style="padding-top:40px;padding-bottom:24px">
 <tr><td>250,01–800&nbsp;€</td><td>GWG-Sofortabschreibung (Verzeichnis) <em>oder</em> Sammelposten</td></tr>
 <tr><td>800,01–1.000&nbsp;€</td><td>Sammelposten (5 × 20 %) <em>oder</em> lineare AfA (bewegliche Wirtschaftsgüter: ggf. degressiv bis 30 %)</td></tr>
 <tr><td>über 1.000&nbsp;€</td><td>Lineare AfA über die Nutzungsdauer (bewegliche Wirtschaftsgüter: ggf. degressiv bis 30 %)</td></tr>
-<tr><td>Computer &amp; Software</td><td>Nutzungsdauer 1 Jahr – unabhängig vom Preis im Anschaffungsjahr voll absetzbar; außer du nutzt in diesem Jahr den Sammelposten (dann gehören Computer von 250,01–1.000&nbsp;€ netto in den Sammelposten)</td></tr></table></div>
+<tr id="computer"><td>Computer &amp; Software</td><td>Nutzungsdauer 1 Jahr – unabhängig vom Preis im Anschaffungsjahr voll absetzbar; außer du nutzt in diesem Jahr den Sammelposten (dann gehören Computer von 250,01–1.000&nbsp;€ netto in den Sammelposten)</td></tr></table></div>
 <p class="note">Grenzen immer netto prüfen (R 9b Abs. 2 EStR). Kleinunternehmer schreiben den Bruttobetrag ab (§ 9b Abs. 1 EStG).</p>
 <div class="cta"><h3>Alle Anschaffungen automatisch im Griff</h3><p>Das Anlagenverzeichnis &amp; der AfA-Rechner ordnen jede Anschaffung nach den aktuellen Grenzen ein, berechnen die Abschreibung für alle Jahre und liefern die Summe für deine EÜR.</p><a class="btn" href="afa.html">Zum AfA-Rechner (12 €)</a></div>
 </div></div></div>
@@ -250,10 +250,10 @@ fk_body = f"""<div class="wrap" style="padding-top:40px;padding-bottom:24px">
 <div class="tblwrap"><table class="tbl"><tr><th>Fahrt</th><th>Satz 2026</th></tr>
 <tr><td>Betriebliche Fahrt, Pkw</td><td>0,30&nbsp;€ je gefahrenem km</td></tr>
 <tr><td>Betriebliche Fahrt, Motorrad/Roller</td><td>0,20&nbsp;€ je gefahrenem km</td></tr>
-<tr><td>Wohnung → erste Betriebsstätte</td><td>0,38&nbsp;€ je vollem km einfache Strecke, ab km 1</td></tr>
+<tr id="entfernungspauschale"><td>Wohnung → erste Betriebsstätte</td><td>0,38&nbsp;€ je vollem km einfache Strecke, ab km 1</td></tr>
 <tr><td>Höchstbetrag Entfernungspauschale</td><td>4.500&nbsp;€/Jahr (nicht mit eigenem Pkw; bei Motorrad/Roller immer)</td></tr></table></div>
 <p class="note">Die Pauschalen gelten für Fahrzeuge im Privatvermögen. Bei mehr als 50 % betrieblicher Nutzung gehört das Fahrzeug zum Betriebsvermögen – dann zählen die tatsächlichen Kosten statt der Kilometerpauschale.</p>
-<div class="cta"><h3>Jede Fahrt sauber dokumentiert</h3><p>Der Fahrtkosten-Nachweis für dein Privatfahrzeug erfasst Datum, Ziel und Anlass, rechnen die Sätze 2026 automatisch und liefern die Jahressumme für deine Steuer.</p><a class="btn" href="fahrtenbuch.html">Zum Fahrtenbuch (12 €)</a></div>
+<div class="cta"><h3>Jede Fahrt sauber dokumentiert</h3><p>Der Fahrtkosten-Nachweis für dein Privatfahrzeug erfasst Datum, Ziel und Anlass, rechnet mit den Sätzen 2026 und liefert die Jahressumme für deine Steuer.</p><a class="btn" href="fahrtenbuch.html">Zum Fahrtenbuch (12 €)</a></div>
 </div></div></div>
 <section class="band"><div class="wrap faq">
 <h2 class="serif">Häufige Fragen zu Fahrtkosten für Selbstständige</h2>

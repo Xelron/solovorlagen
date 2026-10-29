@@ -5,6 +5,7 @@
 - [Kleinunternehmerregelung 2026: Umsatzgrenzen einfach erklärt](https://solovorlagen.de/kleinunternehmerregelung-grenzen.html): 25.000 € Vorjahr, 100.000 € laufendes Jahr (netto), sofortiges Ende bei Überschreiten, Gründungsjahr 25.000 € ohne Hochrechnung, Rechnungshinweis, E-Rechnung.
 - [Stundensatz berechnen als Selbstständiger](https://solovorlagen.de/stundensatz-berechnen.html): Formel, Rechenbeispiel (2.500 € netto ≈ 65 €/Stunde bei privater KV, mit gesetzlicher KV rund 77 €), abrechenbare Stunden, typische Fehler.
 - [Steuerrücklage berechnen](https://solovorlagen.de/steuerruecklage-berechnen.html): Einkommensteuer 2026 nach § 32a EStG (Grundfreibetrag 12.348 €; Durchschnitt ca. 11 % bei 25.000 €, 18 % bei 40.000 €, 24 % bei 60.000 € zvE, Einzelveranlagung), Vorauszahlungen 10.3./10.6./10.9./10.12., Gründer-Falle Nachzahlung + Vorauszahlung, Kleinunternehmer ohne USt-Rücklage.
+- [EÜR für Kleinunternehmer](https://solovorlagen.de/euer-kleinunternehmer.html): Einnahmen-Überschuss-Rechnung nach § 4 Abs. 3 EStG, Zufluss-/Abflussprinzip (§ 11 EStG, 10-Tage-Regel), Kleinunternehmer tragen Ausgaben brutto ein, GWG-Grenzen netto, Beispiel (21.600 € Einnahmen, 3.634 € Ausgaben, 17.966 € Gewinn), Anlage EÜR elektronisch (§ 60 Abs. 4 EStDV), Fristen 2026: 02.08.2027 bzw. 29.02.2028 mit Beratung, Belege 8 Jahre / Aufzeichnungen 10 Jahre.
 
 ## Werkzeuge
 - [Umsatzgrenzen-Check 2026](https://solovorlagen.de/grenzen-check.html): kostenloser Online-Rechner zur Kleinunternehmergrenze.

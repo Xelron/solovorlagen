@@ -101,3 +101,5 @@ footer nav a{color:var(--muted)}
 .copy{flex-basis:100%;margin:8px 0 0}
 @media (max-width:640px){header nav{gap:14px}.navbuy{padding:6px 10px}.bwrap{padding-top:40px!important;padding-bottom:48px!important}.sheet{border-left-width:20px;padding:18px}.sheet-head{grid-template-columns:20px 1fr 1fr 1fr}}
 @media (prefers-reduced-motion:reduce){.lights i,.pcard{transition:none}.pcard:hover{transform:none}}
+[id]{scroll-margin-top:96px}
+@media (max-width:640px){[id]{scroll-margin-top:170px}}

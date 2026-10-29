@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 # Zusatzseiten: Grenzen-Check, Ratgeber. Wird aus gen_site.py per exec ausgeführt (page, html, json, os, OUT verfügbar).
-import json as _json
+import json as _json, re as _re
 STAND="15.10.2026"; ISO="2026-10-15"
 AUTHOR={"@type":"Person","name":"Felix Merklinger-Lötzsch","url":"https://solovorlagen.de/impressum.html"}
 PUB={"@type":"Organization","name":"Solovorlagen","url":"https://solovorlagen.de/","logo":"https://solovorlagen.de/img/logo.png"}
 def ld(obj): return '<script type="application/ld+json">'+_json.dumps(obj,ensure_ascii=False)+'</script>'
 def faq_ld(qas): return {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in qas]}
-def faq_html(qas): return "".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q,a in qas)
+def _nb(x): return _re.sub(r"(\d) (€|%|Euro|Prozent)",lambda m:m.group(1)+" "+m.group(2),x.replace("§ ","§ "))
+def faq_html(qas): return "".join(f"<h3>{_nb(html.escape(q))}</h3><p>{_nb(html.escape(a))}</p>" for q,a in qas)
 def crumbs(items): return {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":i+1,"name":n,"item":u} for i,(n,u) in enumerate(items)]}
 def article_ld(headline,desc,url,iso=None):
     iso=iso or ISO
@@ -18,7 +19,8 @@ SRC_KU=[("§ 19 UStG – Gesetzestext (dejure.org)","https://dejure.org/gesetze/
 ("steuertipps.de: Wichtige Änderungen für Kleinunternehmer ab 2025","https://www.steuertipps.de/selbststaendigkeit/wichtige-aenderungen-fuer-kleinunternehmer-ab-2025"),
 ("§ 34a UStDV – Rechnungen von Kleinunternehmern (dejure.org)","https://dejure.org/gesetze/UStDV/34a.html"),
 ("BMF-Schreiben vom 18.03.2025 zur Sonderregelung für Kleinunternehmer (PDF-Kopie)","https://www.bistum-trier.de/export/sites/portal/unser-bistum/.galleries/dokumente/2025-03-18-sonderregelung-kleinunternehmer.pdf")]
-def sources(lst): return '<ul class="src">'+"".join(f'<li><a href="{u}" rel="noopener">{html.escape(t)}</a></li>' for t,u in lst)+'</ul>'
+def _nb(x): return _re.sub(r"(\d) (€|%|Euro|Prozent)",lambda m:m.group(1)+" "+m.group(2),x.replace("§ ","§ "))
+def sources(lst): return '<ul class="src">'+"".join(f'<li><a href="{u}" rel="noopener">{_nb(html.escape(t))}</a></li>' for t,u in lst)+'</ul>'
 BYLINE=f'<p class="byline">Von <a href="impressum.html">Felix Merklinger-Lötzsch</a>, Solovorlagen · Stand: <time datetime="{ISO}">{STAND}</time></p>'
 DISCL='<p class="note">Dieser Ratgeber erklärt die allgemeine Rechtslage verständlich und ersetzt keine Steuerberatung. Für deine konkrete Situation wende dich an eine Steuerberatung oder dein Finanzamt.</p>'
 EXTRA_CSS="""<style>
@@ -196,7 +198,7 @@ ku_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 <h3>Muss ich E-Rechnungen ausstellen?</h3>
 <p>Nein. Kleinunternehmer müssen E-Rechnungen seit 2025 <strong>empfangen</strong> können, dürfen aber weiterhin PDF- oder Papierrechnungen <strong>ausstellen</strong>.</p>
 <h3>Muss ich eine Umsatzsteuererklärung abgeben?</h3>
-<p>Seit 2025 in der Regel nicht mehr – nur noch, wenn das Finanzamt dazu auffordert. Umsatzsteuer-Voranmeldungen entfallen ebenfalls. Die Einkommensteuererklärung mit der Einnahmen-Überschuss-Rechnung (EÜR) bleibt Pflicht.</p>
+<p>Seit 2025 in der Regel nicht mehr – nur noch, wenn das Finanzamt dazu auffordert. Umsatzsteuer-Voranmeldungen entfallen ebenfalls. Die Einkommensteuererklärung mit der <a href="euer-kleinunternehmer.html">Einnahmen-Überschuss-Rechnung (EÜR)</a> bleibt Pflicht.</p>
 
 <h2 class="serif" id="verzicht">Lohnt sich der Verzicht auf die Kleinunternehmerregelung?</h2>
 <p>Du kannst freiwillig zur Regelbesteuerung wechseln, bist dann aber <strong>mindestens fünf Kalenderjahre</strong> daran gebunden (§ 19 Abs. 3 UStG). Das kann sich lohnen, wenn du vor allem Geschäftskunden hast (die sich die Umsatzsteuer als Vorsteuer zurückholen) und hohe Anschaffungen planst, bei denen du selbst Vorsteuer ziehen möchtest. Für Selbstständige mit überwiegend Privatkunden ist die Kleinunternehmerregelung meist günstiger, weil ihre Preise ohne Umsatzsteuer attraktiver sind.</p>
@@ -371,6 +373,119 @@ sr_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 sr_head=EXTRA_CSS+ld(article_ld("Steuerrücklage berechnen: Wie viel sollten Selbstständige zurücklegen?",sr_desc,sr_url,SR_ISO))+ld(faq_ld(SR_FAQ))+ld(crumbs([("Solovorlagen","https://solovorlagen.de/"),("Ratgeber","https://solovorlagen.de/ratgeber.html"),("Steuerrücklage berechnen","https://solovorlagen.de/steuerruecklage-berechnen.html")]))
 page("Steuerrücklage berechnen 2026: Wie viel Prozent? | Solovorlagen",sr_desc,sr_body,"steuerruecklage-berechnen.html",sr_head)
 
+# ---------------- Ratgeber 4: EÜR für Kleinunternehmer ----------------
+EU_ISO="2026-10-26"; EU_STAND="26.10.2026"
+EU_BYLINE=f'<p class="byline">Von <a href="impressum.html">Felix Merklinger-Lötzsch</a>, Solovorlagen · Stand: <time datetime="{EU_ISO}">{EU_STAND}</time></p>'
+EU_FAQ=[
+("Muss ich als Kleinunternehmer eine EÜR machen?","Ja. Die Kleinunternehmerregelung befreit nur von der Umsatzsteuer, nicht von der Einkommensteuer. Den Gewinn ermitteln Kleinunternehmer in der Regel mit der Einnahmen-Überschuss-Rechnung nach § 4 Abs. 3 EStG und übermitteln sie als Anlage EÜR zusammen mit der Einkommensteuererklärung."),
+("Reicht eine formlose Aufstellung statt der Anlage EÜR?","Nein. Die Einnahmen-Überschuss-Rechnung muss nach dem amtlich vorgeschriebenen Datensatz elektronisch übermittelt werden, also als Anlage EÜR, zum Beispiel über ELSTER (§ 60 Abs. 4 EStDV). Nur auf Antrag kann das Finanzamt zur Vermeidung unbilliger Härten einen Papiervordruck zulassen."),
+("Trage ich als Kleinunternehmer Ausgaben brutto oder netto ein?","Brutto. Kleinunternehmer dürfen keine Vorsteuer abziehen, deshalb ist die gezahlte Umsatzsteuer Teil der Betriebsausgabe. Auch die Einnahmen trägst du mit dem tatsächlich erhaltenen Betrag ein, in die eigene Zeile für umsatzsteuerliche Kleinunternehmer."),
+("Zählt bei der EÜR das Rechnungsdatum oder das Zahlungsdatum?","Das Zahlungsdatum. Einnahmen zählen in dem Jahr, in dem das Geld eingeht, Ausgaben in dem Jahr, in dem du sie bezahlst (§ 11 EStG). Ausnahmen sind regelmäßig wiederkehrende Zahlungen wie Miete oder Abos, die bis zu 10 Tage vor oder nach dem Jahreswechsel fällig sind und gezahlt werden: Sie zählen in dem Jahr, zu dem sie wirtschaftlich gehören. Bei Anschaffungen von Anlagegütern zählt das Jahr der Anschaffung, teure Anschaffungen werden über die Nutzungsdauer abgeschrieben."),
+("Bis wann muss ich die EÜR für 2026 abgeben?","Zusammen mit der Einkommensteuererklärung 2026. Wer sie selbst erstellt, hat bis zum 2. August 2027 Zeit, weil der 31. Juli 2027 ein Samstag ist. Mit Steuerberatung oder Lohnsteuerhilfeverein endet die Frist am 29. Februar 2028, sofern das Finanzamt die Erklärung nicht früher anfordert."),
+("Wie lange muss ich Belege aufbewahren?","Rechnungen und andere Buchungsbelege 8 Jahre, Bücher und Aufzeichnungen wie deine Einnahmen- und Ausgabenliste 10 Jahre (§ 147 Abs. 3 AO). Die Frist beginnt mit dem Ende des Kalenderjahres, in dem der Beleg entstanden bzw. die letzte Eintragung gemacht wurde.")]
+eu_url="https://solovorlagen.de/euer-kleinunternehmer.html"
+eu_desc="EÜR für Kleinunternehmer einfach erklärt: Zahlungsdatum statt Rechnungsdatum, Ausgaben brutto, Beispielrechnung, Anlage EÜR, Fristen und Belege."
+eu_rows=[("Laptop (1.200&nbsp;€ netto)","Computer: Nutzungsdauer 1 Jahr","1.428&nbsp;€"),
+("Bürostuhl (400&nbsp;€ netto)","GWG bis 800&nbsp;€ netto: sofort","476&nbsp;€"),
+("Software-Abos","12 × 30&nbsp;€","360&nbsp;€"),
+("Telefon und Internet (betrieblicher Anteil)","12 × 20&nbsp;€","240&nbsp;€"),
+("Fahrten zu Kunden mit dem Privatauto","1.800&nbsp;km × 0,30&nbsp;€","540&nbsp;€"),
+("Online-Kurs und Fachzeitschriften-Abo","im Jahr der Zahlung","290&nbsp;€"),
+("Berufshaftpflicht","im Jahr der Zahlung","180&nbsp;€"),
+("Kontoführung Geschäftskonto","im Jahr der Zahlung","120&nbsp;€")]
+eu_tbl="".join(f"<tr><td>{a}</td><td>{b}</td><td>{c}</td></tr>" for a,b,c in eu_rows)
+eu_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><article class="article">
+<p class="eyebrow"><a href="ratgeber.html">Ratgeber</a> · Steuern & Geld</p>
+<h1 class="serif">EÜR für Kleinunternehmer: So funktioniert die Einnahmen-Überschuss-Rechnung</h1>
+{EU_BYLINE}
+<div class="answer"><p><strong>Die Antwort in Kürze:</strong> Auch Kleinunternehmer müssen ihren Gewinn ermitteln – mit der <strong>Einnahmen-Überschuss-Rechnung (EÜR)</strong>: Betriebseinnahmen minus Betriebsausgaben = Gewinn. Bei Einnahmen und laufenden Ausgaben zählt das <strong>Zahlungsdatum</strong>, nicht das Rechnungsdatum. Ausgaben trägst du <strong>brutto</strong> ein, weil Kleinunternehmer keine Vorsteuer abziehen. Teure Anschaffungen werden abgeschrieben. Die EÜR wird als <strong>Anlage EÜR elektronisch</strong> mit der Einkommensteuererklärung übermittelt – für 2026 bis zum 2.&nbsp;August&nbsp;2027.</p></div>
+<nav class="toc" aria-label="Inhalt"><strong>Inhalt</strong><ol>
+<li><a href="#wer">Wer muss eine EÜR machen?</a></li><li><a href="#zahlung">Wann zählt eine Einnahme oder Ausgabe?</a></li><li><a href="#brutto">Brutto oder netto?</a></li>
+<li><a href="#ausgaben">Welche Ausgaben darf ich abziehen?</a></li><li><a href="#beispiel">Beispiel: Die EÜR einer Kleinunternehmerin</a></li><li><a href="#elster">Anlage EÜR und Fristen</a></li>
+<li><a href="#belege">Belege aufbewahren</a></li><li><a href="#fehler">Die 5 häufigsten Fehler</a></li><li><a href="#faq">Häufige Fragen</a></li></ol></nav>
+
+<h2 class="serif" id="wer">Wer muss als Kleinunternehmer eine EÜR machen?</h2>
+<p>Die Kleinunternehmerregelung nach §&nbsp;19&nbsp;UStG befreit nur von der <strong>Umsatzsteuer</strong>. Einkommensteuer zahlst du trotzdem auf deinen Gewinn – und den musst du ermitteln. Freiberufler und Gewerbetreibende, die nicht zur doppelten Buchführung verpflichtet sind, tun das mit der Einnahmen-Überschuss-Rechnung nach §&nbsp;4 Abs.&nbsp;3&nbsp;EStG. Buchführungspflichtig werden Gewerbetreibende erst ab mehr als 800.000&nbsp;€ Umsatz oder 80.000&nbsp;€ Gewinn im Jahr (§&nbsp;141&nbsp;AO; die Pflicht beginnt erst nach einer Mitteilung des Finanzamts). Für Kleinunternehmer, die als Einzelunternehmer oder Freiberufler tätig sind, ist die EÜR deshalb praktisch immer der richtige Weg. Eine GmbH oder UG muss dagegen immer bilanzieren.</p>
+<p>Das gilt auch <strong>nebenberuflich</strong>: Wer neben dem Angestelltenjob selbstständig ist und damit mehr als 410&nbsp;€ Einkünfte im Jahr erzielt, muss eine Einkommensteuererklärung abgeben (§&nbsp;46 Abs.&nbsp;2 Nr.&nbsp;1&nbsp;EStG) – mit EÜR.</p>
+
+<h2 class="serif" id="zahlung">Wann zählt eine Einnahme oder Ausgabe?</h2>
+<p>In der EÜR gilt das <strong>Zufluss- und Abflussprinzip</strong> (§&nbsp;11&nbsp;EStG): Eine Einnahme zählt in dem Jahr, in dem das Geld auf deinem Konto eingeht – eine Ausgabe in dem Jahr, in dem du sie bezahlst. Das Rechnungsdatum spielt keine Rolle.</p>
+<ul><li><strong>Beispiel:</strong> Du stellst am 15.&nbsp;Dezember 2026 eine Rechnung über 1.200&nbsp;€, dein Kunde zahlt am 8.&nbsp;Januar 2027. Die Einnahme gehört in die EÜR <strong>2027</strong>.</li>
+<li><strong>Ausnahme – die 10-Tage-Regel:</strong> Regelmäßig wiederkehrende Zahlungen wie Miete, Abos oder Versicherungsbeiträge, die kurz vor oder nach dem Jahreswechsel (bis zu 10 Tage) fällig sind <em>und</em> gezahlt werden, zählen in dem Jahr, zu dem sie wirtschaftlich gehören. Die Anfang Januar fällige, am 28.&nbsp;Dezember gezahlte Januar-Miete fürs Büro gehört also ins neue Jahr.</li>
+<li><strong>Ausnahme – Anschaffungen:</strong> Für Anlagegüter – auch geringwertige Wirtschaftsgüter und Computer – zählt das Jahr der Anschaffung (Lieferung), nicht das Jahr der Zahlung. Teure Wirtschaftsgüter, etwa ein Auto oder eine Maschine, setzt du außerdem nicht auf einmal ab, sondern über die Nutzungsdauer (siehe unten).</li></ul>
+<p>Das Zahlungsdatum ist übrigens auch für die <a href="kleinunternehmerregelung-grenzen.html">Umsatzgrenzen der Kleinunternehmerregelung</a> maßgeblich – dort zählen ebenfalls die vereinnahmten Entgelte.</p>
+
+<h2 class="serif" id="brutto">Brutto oder netto: Was ist bei Kleinunternehmern anders?</h2>
+<p>Regelbesteuerte Unternehmer behandeln Umsatzsteuer und Vorsteuer in der EÜR als eigene Posten. Bei Kleinunternehmern ist es einfacher:</p>
+<ul><li><strong>Einnahmen:</strong> Du weist keine Umsatzsteuer aus – der Betrag, den dein Kunde zahlt, ist deine Betriebseinnahme. In der Anlage EÜR gibt es dafür eine eigene Zeile für <em>Betriebseinnahmen als umsatzsteuerlicher Kleinunternehmer</em>.</li>
+<li><strong>Ausgaben:</strong> Du darfst keine Vorsteuer abziehen. Die Umsatzsteuer auf deinen Einkäufen ist deshalb Teil der Kosten – du trägst den <strong>Bruttobetrag</strong> ein (§&nbsp;9b&nbsp;EStG).</li>
+<li><strong>Grenzen für Anschaffungen:</strong> Ob etwas ein geringwertiges Wirtschaftsgut ist, prüfst du trotzdem anhand des <strong>Nettopreises</strong> – abgesetzt wird dann der Bruttobetrag. Das rechnet der <a href="gwg-rechner.html">kostenlose GWG-Rechner</a> für dich aus.</li></ul>
+
+<h2 class="serif" id="ausgaben">Welche Ausgaben darf ich als Kleinunternehmer abziehen?</h2>
+<p>Betriebsausgaben sind alle Aufwendungen, die durch deine selbstständige Tätigkeit veranlasst sind. Die wichtigsten Regeln im Überblick:</p>
+<div class="tblwrap"><table class="tbl sm"><tr><th>Ausgabe</th><th>So zählt sie in der EÜR</th></tr>
+<tr><td>Laufende Kosten (Software, Telefon, Porto, Kontogebühren, Versicherungen für den Betrieb)</td><td>Im Jahr der Zahlung voll, als Kleinunternehmer brutto</td></tr>
+<tr><td>Anschaffung bis 250&nbsp;€ netto</td><td>Im Jahr der Anschaffung voll absetzbar</td></tr>
+<tr><td>Anschaffung 250,01–800&nbsp;€ netto</td><td>Im Jahr der Anschaffung voll als GWG (in einem Verzeichnis festhalten) – oder im Sammelposten (dann einheitlich für alle Anschaffungen von 250,01–1.000&nbsp;€ netto des Jahres)</td></tr>
+<tr><td>Anschaffung über 800&nbsp;€ netto</td><td>Abschreibung über die Nutzungsdauer; bis 1.000&nbsp;€ netto alternativ Sammelposten (5 × 20&nbsp;%)</td></tr>
+<tr><td>Computer, Laptop, Software</td><td>Nutzungsdauer 1 Jahr – im Anschaffungsjahr voll absetzbar (außer im Sammelposten)</td></tr>
+<tr><td>Betriebliche Fahrten mit dem Privatauto</td><td>0,30&nbsp;€ je gefahrenem km; Weg zur ersten Betriebsstätte: 0,38&nbsp;€ je vollem Entfernungs-km (einfache Strecke)</td></tr>
+<tr><td>Arbeiten von zu Hause</td><td>Homeoffice-Pauschale 6&nbsp;€ je Tag, an dem du überwiegend zu Hause arbeitest, höchstens 1.260&nbsp;€ im Jahr – oder Arbeitszimmer, wenn es der Mittelpunkt deiner Tätigkeit ist</td></tr>
+<tr><td>Bewirtung von Geschäftspartnern</td><td>70&nbsp;% der angemessenen Kosten, mit Beleg und Angaben zu Anlass und Teilnehmern; getrennt von anderen Ausgaben aufzeichnen (§&nbsp;4 Abs.&nbsp;7&nbsp;EStG)</td></tr>
+<tr><td>Geschenke an Geschäftspartner</td><td>Nur wenn höchstens 50&nbsp;€ je Empfänger und Jahr (Freigrenze: darüber gar nicht absetzbar; bei Kleinunternehmern einschließlich Umsatzsteuer); getrennt aufzeichnen</td></tr>
+<tr><td><strong>Nicht</strong> absetzbar: Einkommensteuer, deine eigene Kranken- und Pflegeversicherung, Privatentnahmen</td><td>Gehören nicht in die EÜR. Kranken- und Pflegeversicherung und Altersvorsorge machst du als Vorsorgeaufwendungen in der Einkommensteuererklärung geltend.</td></tr></table></div>
+<p>Mehr zu Fahrten: <a href="fahrtkosten-rechner.html">Fahrtkosten-Rechner 2026</a>. Mehr zu Anschaffungen: <a href="gwg-rechner.html">GWG-Rechner</a>.</p>
+
+<h2 class="serif" id="beispiel">Beispiel: Die EÜR einer Kleinunternehmerin</h2>
+<p><strong>Mia</strong> ist selbstständige Texterin. 2025 hatte sie 19.000&nbsp;€ Umsatz, ist also 2026 Kleinunternehmerin. 2026 gehen <strong>21.600&nbsp;€</strong> Honorare auf ihrem Konto ein – damit bleibt sie unter 25.000&nbsp;€ und ist auch 2027 Kleinunternehmerin. Eine Dezember-Rechnung über 1.200&nbsp;€, die erst im Januar 2027 bezahlt wird, ist in den 21.600&nbsp;€ nicht enthalten. Ihre Ausgaben 2026, alle brutto:</p>
+<div class="tblwrap"><table class="tbl sm"><tr><th>Ausgabe</th><th>Regel</th><th>Betrag</th></tr>{eu_tbl}
+<tr><td colspan="2"><strong>Summe Betriebsausgaben</strong></td><td><strong>3.634&nbsp;€</strong></td></tr></table></div>
+<div class="tblwrap"><table class="tbl sm"><tr><th>EÜR 2026</th><th>Betrag</th></tr>
+<tr><td>Betriebseinnahmen als Kleinunternehmerin</td><td>21.600&nbsp;€</td></tr>
+<tr><td>− Betriebsausgaben</td><td>3.634&nbsp;€</td></tr>
+<tr><td><strong>= Gewinn</strong></td><td><strong>17.966&nbsp;€</strong></td></tr></table></div>
+<p>Der Laptop kostet 1.200&nbsp;€ netto, liegt also über der GWG-Grenze – als Computer hat er aber eine Nutzungsdauer von einem Jahr und ist 2026 voll absetzbar. Der Bürostuhl liegt mit 400&nbsp;€ netto unter 800&nbsp;€ und ist ebenfalls sofort absetzbar. Abgesetzt werden jeweils die Bruttobeträge. Ihre Kranken- und Pflegeversicherung und die Einkommensteuer tauchen in der EÜR nicht auf. Wie viel Mia von ihrem Gewinn für die Steuer zurücklegen sollte, zeigt der Ratgeber <a href="steuerruecklage-berechnen.html">Steuerrücklage berechnen</a>.</p>
+
+<h2 class="serif" id="elster">Wie reiche ich die EÜR ein – und bis wann?</h2>
+<p>Die EÜR wird nach amtlich vorgeschriebenem Datensatz <strong>elektronisch</strong> übermittelt (§&nbsp;60 Abs.&nbsp;4&nbsp;EStDV) – in der Praxis als <strong>Anlage EÜR</strong> über Mein ELSTER oder eine Steuersoftware, zusammen mit der Einkommensteuererklärung. Eine formlose Aufstellung reicht nicht. Nur in Härtefällen kann das Finanzamt auf Antrag einen Papiervordruck zulassen.</p>
+<div class="tblwrap"><table class="tbl"><tr><th>EÜR für</th><th>Selbst erstellt</th><th>Mit Steuerberatung</th></tr>
+<tr><td>2025</td><td>31.07.2026</td><td>01.03.2027</td></tr>
+<tr><td>2026</td><td>02.08.2027</td><td>29.02.2028</td></tr></table></div>
+<p>Fällt das Fristende auf ein Wochenende oder einen Feiertag, verschiebt es sich auf den nächsten Werktag – deshalb der 2.&nbsp;August&nbsp;2027 und der 1.&nbsp;März&nbsp;2027. Eine <strong>Umsatzsteuererklärung</strong> müssen Kleinunternehmer ab dem Steuerjahr 2025 in der Regel nicht mehr abgeben, nur noch auf Aufforderung des Finanzamts. Die Frist für 2025 ist bereits abgelaufen – wer noch nicht abgegeben hat, sollte das zügig nachholen, sonst kann ein Verspätungszuschlag festgesetzt werden.</p>
+<p><strong>Tipp:</strong> Wer seine Einnahmen und Ausgaben übers Jahr nach den Kategorien der Anlage EÜR sortiert, muss am Ende nur noch die Summen in ELSTER übertragen.</p>
+
+<h2 class="serif" id="belege">Wie lange muss ich Belege aufbewahren?</h2>
+<p>Seit 2025 gelten verkürzte Fristen (§&nbsp;147 Abs.&nbsp;3&nbsp;AO): <strong>Rechnungen und andere Buchungsbelege 8 Jahre</strong>, <strong>Bücher und Aufzeichnungen</strong> – etwa deine Einnahmen- und Ausgabenliste – <strong>10 Jahre</strong>. Die Frist beginnt jeweils mit dem Ende des Kalenderjahres, in dem der Beleg entstanden ist bzw. die letzte Eintragung gemacht wurde. Digitale Belege bewahrst du digital auf.</p>
+
+<h2 class="serif" id="fehler">Die 5 häufigsten Fehler in der EÜR</h2>
+<ol><li><strong>Rechnungsdatum statt Zahlungsdatum.</strong> Eine im Dezember geschriebene, im Januar bezahlte Rechnung gehört ins neue Jahr.</li>
+<li><strong>Ausgaben netto eintragen.</strong> Kleinunternehmer verschenken so die Umsatzsteuer, die sie selbst bezahlt haben.</li>
+<li><strong>Private Kosten in die EÜR schreiben.</strong> Einkommensteuer, die eigene Kranken- und Pflegeversicherung und Privatentnahmen sind keine Betriebsausgaben.</li>
+<li><strong>Teure Anschaffungen sofort voll absetzen.</strong> Über 800&nbsp;€ netto (außer Computer und Software) wird abgeschrieben – bis 1.000&nbsp;€ netto alternativ über den Sammelposten.</li>
+<li><strong>Belege nicht sammeln.</strong> Ohne Beleg erkennt das Finanzamt eine Ausgabe im Zweifel nicht an – am besten jeden Beleg gleich ablegen.</li></ol>
+
+<div class="cta"><h3>Einnahmen, Ausgaben und EÜR-Übersicht in einer Datei</h3><p>Das Kleinunternehmer-Cockpit ist eine Excel-Vorlage: Einnahmen mit Zahlungsdatum und Ausgaben eintragen – die EÜR-Übersicht summiert alles nach 20 Kategorien als Grundlage für die Anlage EÜR in ELSTER. Dazu Umsatzgrenzen-Ampel und Steuerrücklage. Für Abschreibungen gibt es das <a href="afa.html" style="color:#fff">Anlagenverzeichnis &amp; den AfA-Rechner</a>.</p><a class="btn" href="cockpit.html">Kleinunternehmer-Cockpit ansehen</a></div>
+
+<h2 class="serif" id="faq">Häufige Fragen</h2>
+<div class="faq" style="max-width:none">{faq_html(EU_FAQ)}</div>
+
+<h2 class="serif">Quellen</h2>
+{sources([("§ 4 EStG – Gewinnbegriff, Abs. 3 Einnahmen-Überschuss-Rechnung, Abs. 5 nicht abziehbare Betriebsausgaben (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__4.html"),
+("§ 11 EStG – Zufluss und Abfluss (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__11.html"),
+("§ 6 EStG – Bewertung, Abs. 2 GWG und Abs. 2a Sammelposten (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__6.html"),
+("§ 9b EStG – Umsatzsteuerrechtlicher Vorsteuerabzug (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__9b.html"),
+("§ 46 EStG – Veranlagung bei Bezug von Einkünften aus nichtselbständiger Arbeit (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__46.html"),
+("§ 60 EStDV – Unterlagen zur Steuererklärung (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estdv_1955/__60.html"),
+("§ 141 AO – Buchführungspflicht bestimmter Steuerpflichtiger (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ao_1977/__141.html"),
+("§ 147 AO – Ordnungsvorschriften für die Aufbewahrung von Unterlagen (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ao_1977/__147.html"),
+("§ 149 AO – Abgabe der Steuererklärungen (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ao_1977/__149.html"),
+("§ 19 UStG – Besteuerung der Kleinunternehmer (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ustg_1980/__19.html"),
+("Finanzamt Baden-Württemberg: Abgabefristen für die Jahre 2023–2027","https://finanzamt-bw.fv-bwl.de/,Lde/9361700")])}
+{DISCL}
+</article></div>"""
+eu_head=EXTRA_CSS+ld(article_ld("EÜR für Kleinunternehmer: So funktioniert die Einnahmen-Überschuss-Rechnung",eu_desc,eu_url,EU_ISO))+ld(faq_ld(EU_FAQ))+ld(crumbs([("Solovorlagen","https://solovorlagen.de/"),("Ratgeber","https://solovorlagen.de/ratgeber.html"),("EÜR für Kleinunternehmer","https://solovorlagen.de/euer-kleinunternehmer.html")]))
+page("EÜR für Kleinunternehmer: Anleitung mit Beispiel | Solovorlagen",eu_desc,eu_body,"euer-kleinunternehmer.html",eu_head)
+
 exec(open(os.path.join(HERE,"tools.py")).read())
 
 # ---------------- Ratgeber-Übersicht ----------------
@@ -381,15 +496,16 @@ rg_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><div 
 <a class="pcard" href="kleinunternehmerregelung-grenzen.html"><div class="pbody"><h3>Kleinunternehmerregelung 2026: Die Umsatzgrenzen einfach erklärt</h3><p>25.000 € und 100.000 €, was beim Überschreiten passiert, Gründungsjahr, Rechnung und Beispiele.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 <a class="pcard" href="stundensatz-berechnen.html"><div class="pbody"><h3>Stundensatz berechnen als Selbstständiger</h3><p>Formel, Rechenbeispiel, abrechenbare Stunden und die 5 häufigsten Fehler.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 <a class="pcard" href="steuerruecklage-berechnen.html"><div class="pbody"><h3>Steuerrücklage berechnen: Wie viel zurücklegen?</h3><p>Prozentsätze nach dem Tarif 2026, zwei Rechenbeispiele, Vorauszahlungen und die Gründer-Falle.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
+<a class="pcard" href="euer-kleinunternehmer.html"><div class="pbody"><h3>EÜR für Kleinunternehmer: So funktioniert die Einnahmen-Überschuss-Rechnung</h3><p>Zahlungsdatum statt Rechnungsdatum, Ausgaben brutto, was absetzbar ist, Beispielrechnung, Anlage EÜR und Fristen.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 </div>
 <h2 class="serif" id="rechner">Kostenlose Rechner</h2>
 <div class="grid2">{rc_cards}</div>
 </div></div>"""
-page("Ratgeber für Selbstständige & Kleinunternehmer | Solovorlagen","Ratgeber für Selbstständige: Kleinunternehmerregelung 2026, Stundensatz berechnen, Steuerrücklage und kostenlose Rechner – Umsatzgrenzen-Check, Rechnungstext, GWG und Fahrtkosten.",rg_body,"ratgeber.html",EXTRA_CSS)
+page("Ratgeber für Selbstständige & Kleinunternehmer | Solovorlagen","Ratgeber für Selbstständige: Kleinunternehmerregelung 2026, Stundensatz, Steuerrücklage, EÜR und kostenlose Rechner – Umsatzgrenzen-Check, Rechnungstext, GWG und Fahrtkosten.",rg_body,"ratgeber.html",EXTRA_CSS)
 
 # ---------------- sitemap, robots, llms.txt ----------------
-urls=["","rechner.html","grenzen-check.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html","kleinunternehmerregelung-grenzen.html","stundensatz-berechnen.html","steuerruecklage-berechnen.html","ratgeber.html","paket.html","cockpit.html","rechnung.html","stundensatz.html","fahrtenbuch.html","afa.html","impressum.html","datenschutz.html"]
-open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>https://solovorlagen.de/{u}</loc><lastmod>{SR_ISO if u in ("steuerruecklage-berechnen.html","ratgeber.html") else ISO}</lastmod></url>\n" for u in urls)+"</urlset>\n")
+urls=["","rechner.html","grenzen-check.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html","kleinunternehmerregelung-grenzen.html","stundensatz-berechnen.html","steuerruecklage-berechnen.html","euer-kleinunternehmer.html","ratgeber.html","paket.html","cockpit.html","rechnung.html","stundensatz.html","fahrtenbuch.html","afa.html","impressum.html","datenschutz.html"]
+open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>https://solovorlagen.de/{u}</loc><lastmod>{EU_ISO if u in ("euer-kleinunternehmer.html","ratgeber.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html") else SR_ISO if u=="steuerruecklage-berechnen.html" else ISO}</lastmod></url>\n" for u in urls)+"</urlset>\n")
 open(os.path.join(OUT,"robots.txt"),"w").write("User-agent: *\nAllow: /\n\nSitemap: https://solovorlagen.de/sitemap.xml\n")
 open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 > Excel-Vorlagen und Ratgeber für Selbstständige und Kleinunternehmer in Deutschland (Stand 2026). Betreiber: Felix Merklinger-Lötzsch, Aßlar.
@@ -398,6 +514,7 @@ open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 - [Kleinunternehmerregelung 2026: Umsatzgrenzen einfach erklärt](https://solovorlagen.de/kleinunternehmerregelung-grenzen.html): 25.000 € Vorjahr, 100.000 € laufendes Jahr (netto), sofortiges Ende bei Überschreiten, Gründungsjahr 25.000 € ohne Hochrechnung, Rechnungshinweis, E-Rechnung.
 - [Stundensatz berechnen als Selbstständiger](https://solovorlagen.de/stundensatz-berechnen.html): Formel, Rechenbeispiel (2.500 € netto ≈ 65 €/Stunde bei privater KV, mit gesetzlicher KV rund 77 €), abrechenbare Stunden, typische Fehler.
 - [Steuerrücklage berechnen](https://solovorlagen.de/steuerruecklage-berechnen.html): Einkommensteuer 2026 nach § 32a EStG (Grundfreibetrag 12.348 €; Durchschnitt ca. 11 % bei 25.000 €, 18 % bei 40.000 €, 24 % bei 60.000 € zvE, Einzelveranlagung), Vorauszahlungen 10.3./10.6./10.9./10.12., Gründer-Falle Nachzahlung + Vorauszahlung, Kleinunternehmer ohne USt-Rücklage.
+- [EÜR für Kleinunternehmer](https://solovorlagen.de/euer-kleinunternehmer.html): Einnahmen-Überschuss-Rechnung nach § 4 Abs. 3 EStG, Zufluss-/Abflussprinzip (§ 11 EStG, 10-Tage-Regel), Kleinunternehmer tragen Ausgaben brutto ein, GWG-Grenzen netto, Beispiel (21.600 € Einnahmen, 3.634 € Ausgaben, 17.966 € Gewinn), Anlage EÜR elektronisch (§ 60 Abs. 4 EStDV), Fristen 2026: 02.08.2027 bzw. 29.02.2028 mit Beratung, Belege 8 Jahre / Aufzeichnungen 10 Jahre.
 
 ## Werkzeuge
 - [Umsatzgrenzen-Check 2026](https://solovorlagen.de/grenzen-check.html): kostenloser Online-Rechner zur Kleinunternehmergrenze.

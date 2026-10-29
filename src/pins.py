@@ -54,6 +54,15 @@ P4=[
 ("Vom Stundensatz zum Tagessatz","So einfach rechnest du um","Unbezahlte Zeit steckt schon im Stundensatz","day","stundensatz-berechnen.html#tagessatz","Selbstständig: Preise & Geld","",""),
 ("EÜR & Steuerrücklage","Excel-Vorlage für Kleinunternehmer","Einnahmen eintragen – Gewinn und Rücklage im Blick","img/euer.jpg|fit","cockpit.html#kaufen","Excel-Vorlagen für Selbstständige","",""),
 ]
+P5=[
+("EÜR für Kleinunternehmer","Einnahmen − Ausgaben = Gewinn","So funktioniert's – mit Beispielrechnung","euer","euer-kleinunternehmer.html#beispiel","Kleinunternehmer Tipps","",""),
+("Rechnung im Dezember, Geld im Januar?","Dann zählt die Einnahme im neuen Jahr","Das Zahlungsdatum entscheidet in der EÜR","zufluss","euer-kleinunternehmer.html#zahlung","Kleinunternehmer Tipps","",""),
+("Brutto oder netto?","Kleinunternehmer setzen Ausgaben brutto ab","Denn es gibt keinen Vorsteuerabzug","brutto","euer-kleinunternehmer.html#brutto","Selbstständig: Preise & Geld","",""),
+("Fahrtenbuch für dein Privatauto","Excel-Vorlage mit den Sätzen 2026","Jahressumme der Fahrtkosten für die EÜR","img/fahrten-03.jpg|fit","fahrtenbuch.html#kaufen","Excel-Vorlagen für Selbstständige","",""),
+("Abschreibungen im Griff","Anlagenverzeichnis & AfA-Rechner","GWG, Computer, lineare AfA – mit Jahressumme","img/afa-02.jpg|fit","afa.html#kaufen","Excel-Vorlagen für Selbstständige","",""),
+("Gerade erst gegründet?","Dann liegt die Grenze bei 25.000 €","Kleinunternehmerregelung: keine Hochrechnung aufs volle Jahr","found","kleinunternehmerregelung-grenzen.html#gruendung","Kleinunternehmer Tipps","",""),
+("Wie viele Stunden kannst du abrechnen?","Oft nur rund 1.000 im Jahr","Darum muss dein Stundensatz höher sein","hours","stundensatz-berechnen.html#stunden","Selbstständig: Preise & Geld","",""),
+]
 CSS="""*{box-sizing:border-box}body{margin:0;width:1000px;height:1500px;font-family:'DejaVu Sans',Arial,sans-serif}
 .p{width:1000px;height:1500px;padding:80px 72px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
 .serif{font-family:'DejaVu Serif',Georgia,serif;font-weight:700}.brand{font-size:30px;letter-spacing:.06em}
@@ -91,6 +100,17 @@ def render(i,t):
         mid=f'<div style="background:{box};border-radius:28px;padding:40px;{"box-shadow:0 12px 32px rgba(31,58,95,.12)" if lt else ""}"><div style="display:flex;justify-content:space-between;font-size:30px;color:{mut};font-weight:700"><span>UMSATZ BISHER</span><span>GRENZE</span></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span class=serif style="font-size:96px;color:{fg}">21.800 €</span><span class=serif style="font-size:44px;color:{fg}">25.000 €</span></div><div style="height:34px;background:{trk};border-radius:17px;margin-top:18px"><div style="height:34px;width:87%;background:{acc};border-radius:17px"></div></div><div style="font-size:30px;color:{mut};margin-top:18px">87 % ausgeschöpft – was kommt bis zum 31.12. dazu?</div></div>'
     elif extra=="day":
         mid=f'<div style="background:#fff;border-radius:28px;padding:44px;text-align:center"><div style="display:flex;justify-content:center;align-items:center;gap:26px;font-size:64px;font-weight:700;color:#1F3A5F"><span>65 €</span><span style="color:{acc}">×</span><span>8 h</span></div><div style="height:6px;background:#E3E8EE;margin:30px 0"></div><div class=serif style="font-size:140px;color:#1F3A5F;line-height:1">520 €</div><div style="font-size:30px;color:#5A6573;margin-top:16px;font-weight:700">TAGESSATZ PRO ABGERECHNETEM TAG</div></div>'
+    elif extra=="euer":
+        mid='<div style="background:#fff;border-radius:28px;padding:40px 44px">'+"".join(f'<div style="display:flex;justify-content:space-between;font-size:40px;color:#1B2430;padding:14px 0;border-bottom:2px solid #E3E8EE"><span>{l}</span><span style="font-weight:700">{r}</span></div>' for l,r in [("Einnahmen","21.600 €"),("− Ausgaben","3.634 €")])+f'<div style="display:flex;justify-content:space-between;align-items:baseline;padding-top:22px"><span class=serif style="font-size:46px;color:#1F3A5F">= Gewinn</span><span class=serif style="font-size:76px;color:#2E7D6B">17.966 €</span></div><div style="font-size:26px;color:#5A6573;margin-top:12px">Beispiel: Kleinunternehmerin, EÜR 2026</div></div>'
+    elif extra=="zufluss":
+        card=lambda m,d,l,c,b: f'<div style="flex:1;background:#fff;border-radius:24px;overflow:hidden;text-align:center;box-shadow:0 12px 28px rgba(0,0,0,.14)"><div style="background:{c};color:#fff;font-size:30px;font-weight:700;padding:12px">{m}</div><div class=serif style="font-size:96px;color:#1F3A5F;line-height:1.25">{d}</div><div style="font-size:30px;font-weight:700;color:#1B2430;padding:0 10px 10px">{l}</div><div style="font-size:26px;color:#5A6573;padding:0 10px 22px">{b}</div></div>'
+        mid='<div style="display:flex;gap:26px;align-items:center">'+card("DEZ 2026","15.","Rechnung","#5A6573","zählt noch nicht")+f'<div style="font-size:70px;font-weight:700;color:{acc}">→</div>'+card("JAN 2027","8.","Zahlung ✓","#2E7D6B","EÜR 2027")+'</div>'
+    elif extra=="brutto":
+        mid='<div style="background:#fff;border-radius:28px;padding:40px 44px;box-shadow:0 12px 32px rgba(31,58,95,.12)"><div style="font-size:28px;color:#5A6573;font-weight:700;margin-bottom:10px">BELEG: BÜROSTUHL</div>'+"".join(f'<div style="display:flex;justify-content:space-between;font-size:38px;color:#1B2430;padding:10px 0"><span>{l}</span><span>{r}</span></div>' for l,r in [("Netto","400,00 €"),("+ 19 % USt","76,00 €")])+'<div style="display:flex;justify-content:space-between;align-items:baseline;border-top:3px solid #1F3A5F;margin-top:10px;padding-top:18px"><span class=serif style="font-size:44px;color:#1F3A5F">Absetzbar</span><span class=serif style="font-size:72px;color:#2E7D6B">476,00 €</span></div><div style="font-size:26px;color:#5A6573;margin-top:12px">GWG-Grenze netto geprüft (400 € ≤ 800 €)</div></div>'
+    elif extra=="found":
+        mid='<div>'+"".join(f'<div style="background:#fff;border-radius:24px;padding:30px 36px;margin-bottom:20px;border-left:16px solid {c}"><div style="font-size:28px;color:#5A6573;font-weight:700">{t}</div><div class=serif style="font-size:64px;color:#1F3A5F">{v}</div><div style="font-size:30px;color:#1B2430">{d}</div></div>' for t,v,d,c in [("GRÜNDUNGSJAHR","25.000 €","im laufenden Jahr – sonst endet die Regelung sofort","#E0A800"),("AB DEM FOLGEJAHR","Vorjahr zählt","Vorjahresumsatz höchstens 25.000 €, laufendes Jahr höchstens 100.000 €","#2E7D6B")])+'</div>'
+    elif extra=="hours":
+        mid=f'<div style="background:rgba(255,255,255,.12);border-radius:28px;padding:36px 40px">'+"".join(f'<div style="display:flex;justify-content:space-between;font-size:36px;color:{fg};padding:9px 0"><span>{l}</span><span style="font-weight:700">{r}</span></div>' for l,r in [("52 Wochen × 5 Tage","260"),("− Urlaub, Feiertage, Krankheit, Fortbildung","55"),("= Arbeitstage","205"),("× 8 Stunden × 60 % abrechenbar","")])+f'<div style="display:flex;justify-content:space-between;align-items:baseline;border-top:3px solid {mut};margin-top:12px;padding-top:16px"><span class=serif style="font-size:44px;color:{fg}">Abrechenbar</span><span class=serif style="font-size:84px;color:{acc}">984 h</span></div></div>'
     elif extra and extra.startswith("img/") and extra.endswith("|fit"):
         from PIL import Image as _I
         fp=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","docs",extra[:-4]); px=_I.open(fp).convert("RGB").getpixel((5,5))
@@ -105,7 +125,7 @@ def render(i,t):
     return h
 import sys
 BATCH=int(sys.argv[1]) if len(sys.argv)>1 else 2
-LST,OFF,START,CSVN={1:(P,0,datetime.date(2026,10,16),"pinterest-pins.csv"),2:(P2,12,datetime.date(2026,10,17),"pinterest-pins-2.csv"),3:(P3,18,datetime.date(2026,10,18),"pinterest-pins-3.csv"),4:(P4,19,datetime.date(2026,10,25),None)}[BATCH]
+LST,OFF,START,CSVN={1:(P,0,datetime.date(2026,10,16),"pinterest-pins.csv"),2:(P2,12,datetime.date(2026,10,17),"pinterest-pins-2.csv"),3:(P3,18,datetime.date(2026,10,18),"pinterest-pins-3.csv"),4:(P4,19,datetime.date(2026,10,25),None),5:(P5,26,datetime.date(2026,11,1),None)}[BATCH]
 ROOT=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..")
 with sync_playwright() as p:
     b=p.chromium.launch(); pg=b.new_page(viewport={'width':1000,'height':1500})

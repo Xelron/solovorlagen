@@ -124,5 +124,68 @@
   "link": "https://solovorlagen.de/cockpit.html#kaufen",
   "image": "https://solovorlagen.de/pins/pin-26.jpg",
   "date": "2026-10-31T04:00:00"
+ },
+ {
+  "id": "pin-27",
+  "board": "Kleinunternehmer Tipps",
+  "title": "EÜR für Kleinunternehmer – Einnahmen minus Ausgaben = Gewinn",
+  "description": "Auch Kleinunternehmer ermitteln ihren Gewinn mit der Einnahmen-Überschuss-Rechnung: Es zählt das Zahlungsdatum, Ausgaben werden brutto eingetragen, teure Anschaffungen abgeschrieben. Mit Beispielrechnung, Fristen und den häufigsten Fehlern im Ratgeber.",
+  "link": "https://solovorlagen.de/euer-kleinunternehmer.html#beispiel",
+  "image": "https://solovorlagen.de/pins/pin-27.jpg",
+  "date": "2026-11-01T04:00:00"
+ },
+ {
+  "id": "pin-28",
+  "board": "Kleinunternehmer Tipps",
+  "title": "Rechnung im Dezember, Geld im Januar? – Dann zählt die Einnahme im neuen Jahr",
+  "description": "In der EÜR entscheidet das Zahlungsdatum, nicht das Rechnungsdatum (§ 11 EStG). Eine Rechnung vom Dezember, die im Januar bezahlt wird, gehört in die EÜR des neuen Jahres. Ausnahmen wie die 10-Tage-Regel erklärt der Ratgeber.",
+  "link": "https://solovorlagen.de/euer-kleinunternehmer.html#zahlung",
+  "image": "https://solovorlagen.de/pins/pin-28.jpg",
+  "date": "2026-11-02T04:00:00"
+ },
+ {
+  "id": "pin-29",
+  "board": "Selbstständig: Preise & Geld",
+  "title": "Brutto oder netto? – Kleinunternehmer setzen Ausgaben brutto ab",
+  "description": "Kleinunternehmer dürfen keine Vorsteuer abziehen – deshalb ist die gezahlte Umsatzsteuer Teil der Betriebsausgabe. Ein Bürostuhl für 400 € netto zählt mit 476 € in der EÜR. Die GWG-Grenze prüfst du trotzdem netto. So geht's.",
+  "link": "https://solovorlagen.de/euer-kleinunternehmer.html#brutto",
+  "image": "https://solovorlagen.de/pins/pin-29.jpg",
+  "date": "2026-11-03T04:00:00"
+ },
+ {
+  "id": "pin-30",
+  "board": "Excel-Vorlagen für Selbstständige",
+  "title": "Fahrtenbuch für dein Privatauto – Excel-Vorlage mit den Sätzen 2026",
+  "description": "Fahrtkosten-Nachweis für betriebliche Fahrten mit dem Privatfahrzeug: Datum, Start, Ziel, Zweck und km-Stand erfassen, 0,30 € je km und 0,38 € Entfernungspauschale je vollem Entfernungs-km rechnen lassen, Warnung bei Lücken im km-Stand und Jahressumme für die EÜR. Excel & Google Sheets.",
+  "link": "https://solovorlagen.de/fahrtenbuch.html#kaufen",
+  "image": "https://solovorlagen.de/pins/pin-30.jpg",
+  "date": "2026-11-04T04:00:00"
+ },
+ {
+  "id": "pin-31",
+  "board": "Excel-Vorlagen für Selbstständige",
+  "title": "Abschreibungen im Griff – Anlagenverzeichnis & AfA-Rechner",
+  "description": "Laptop, Schreibtisch, Kamera: Die Excel-Vorlage ordnet jede Anschaffung nach den Grenzen 2026 ein – Sofortabzug, GWG, Computer mit 1 Jahr Nutzungsdauer oder lineare AfA – und rechnet monatsgenau mit Restbuchwert. Summe für die EÜR inklusive.",
+  "link": "https://solovorlagen.de/afa.html#kaufen",
+  "image": "https://solovorlagen.de/pins/pin-31.jpg",
+  "date": "2026-11-05T04:00:00"
+ },
+ {
+  "id": "pin-32",
+  "board": "Kleinunternehmer Tipps",
+  "title": "Gerade erst gegründet? – Dann liegt die Grenze bei 25.000 €",
+  "description": "Im Gründungsjahr darf der Umsatz 25.000 € nicht überschreiten – sonst endet die Kleinunternehmerregelung sofort. Eine Hochrechnung aufs volle Jahr gibt es seit 2025 nicht mehr. Ab dem Folgejahr zählt der Vorjahresumsatz. Alle Grenzen und Beispiele im Ratgeber.",
+  "link": "https://solovorlagen.de/kleinunternehmerregelung-grenzen.html#gruendung",
+  "image": "https://solovorlagen.de/pins/pin-32.jpg",
+  "date": "2026-11-06T04:00:00"
+ },
+ {
+  "id": "pin-33",
+  "board": "Selbstständig: Preise & Geld",
+  "title": "Wie viele Stunden kannst du abrechnen? – Oft nur rund 1.000 im Jahr",
+  "description": "260 Tage minus Urlaub, Feiertage, Krankheit und Fortbildung ergeben rund 205 Arbeitstage. Bei 8 Stunden und 60 % abrechenbarer Zeit bleiben 984 Stunden im Jahr – deshalb muss der Stundensatz höher sein, als viele denken.",
+  "link": "https://solovorlagen.de/stundensatz-berechnen.html#stunden",
+  "image": "https://solovorlagen.de/pins/pin-33.jpg",
+  "date": "2026-11-07T04:00:00"
  }
 ]

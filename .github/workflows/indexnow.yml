@@ -1,0 +1,24 @@
+name: Seiten bei Suchmaschinen melden (IndexNow)
+on:
+  push:
+    branches: [main]
+    paths: ["docs/**.html", "docs/sitemap.xml"]
+  workflow_dispatch: {}
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: URLs aus der Sitemap an IndexNow senden
+        run: |
+          sleep 90   # GitHub Pages erst ausliefern lassen
+          python3 - <<'PY'
+          import json, re, urllib.request
+          urls = re.findall(r"<loc>([^<]+)</loc>", open("docs/sitemap.xml").read())
+          body = json.dumps({"host": "solovorlagen.de", "key": "a2a11b617778c949fcc88222be86d0e1",
+                             "keyLocation": "https://solovorlagen.de/a2a11b617778c949fcc88222be86d0e1.txt", "urlList": urls}).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
+                                       headers={"Content-Type": "application/json; charset=utf-8"})
+          r = urllib.request.urlopen(req, timeout=30)
+          print("IndexNow:", r.status, len(urls), "URLs")
+          PY

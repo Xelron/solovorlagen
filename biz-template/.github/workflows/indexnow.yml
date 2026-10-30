@@ -1,0 +1,30 @@
+name: Seiten bei Suchmaschinen melden (IndexNow)
+on:
+  push:
+    branches: [main]
+    paths: ["docs/**.html", "docs/sitemap.xml"]
+  workflow_dispatch: {}
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: URLs aus der Sitemap an IndexNow senden (Domain und Schlüssel aus config.json)
+        run: |
+          sleep 90   # GitHub Pages erst ausliefern lassen
+          python3 - <<'PY'
+          import json, os, re, sys, urllib.request
+          cfg = json.load(open("config.json", encoding="utf-8"))
+          host = cfg["brand"]["domain"].strip().lower().removeprefix("https://").removeprefix("http://").strip("/")
+          key = (cfg.get("indexnow_key") or "").strip()
+          if not key or host.endswith("example.com"):
+              print("IndexNow übersprungen: kein Schlüssel oder Beispiel-Domain in config.json"); sys.exit(0)
+          if not os.path.exists(f"docs/{key}.txt"):
+              print(f"FEHLER: docs/{key}.txt fehlt – python3 src/gen_site.py ausführen und committen"); sys.exit(1)
+          urls = re.findall(r"<loc>([^<]+)</loc>", open("docs/sitemap.xml", encoding="utf-8").read())
+          body = json.dumps({"host": host, "key": key, "keyLocation": f"https://{host}/{key}.txt", "urlList": urls}).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
+                                       headers={"Content-Type": "application/json; charset=utf-8"})
+          r = urllib.request.urlopen(req, timeout=30)
+          print("IndexNow:", r.status, len(urls), "URLs")
+          PY

@@ -1,0 +1,22 @@
+[
+ {
+  "id": "pin-01",
+  "board": "BEISPIEL Tipps",
+  "title": "BEISPIEL: So ist ein Ratgeber aufgebaut",
+  "description": "BEISPIEL-PIN: Kurzantwort, Abschnitte, FAQ und Quellen – so sieht ein Artikel in der Vorlage aus.",
+  "link": "beispiel-ratgeber.html#bausteine",
+  "image": "pins/pin-01.jpg",
+  "date": "2026-10-30T07:00:00",
+  "pin": {"h1": "So ist ein Ratgeber aufgebaut", "h2": "Kurzantwort · FAQ · Quellen", "sub": "BEISPIEL-PIN aus der Vorlage"}
+ },
+ {
+  "id": "pin-02",
+  "board": "BEISPIEL Vorlagen",
+  "title": "BEISPIEL: Starter-Vorlage",
+  "description": "BEISPIEL-PIN mit Produktbild – dieser Eintrag ist auf ein Datum in der Zukunft geplant und erscheint erst dann im Feed.",
+  "link": "starter-vorlage.html",
+  "image": "pins/pin-02.jpg",
+  "date": "2030-01-01T07:00:00",
+  "pin": {"h1": "Starter-Vorlage", "h2": "Einmal kaufen, sofort nutzen", "sub": "BEISPIEL-PIN mit Produkt", "style": "price", "value": "19 €", "label": "EINMALIG"}
+ }
+]

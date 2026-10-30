@@ -1,0 +1,236 @@
+{
+  "_hinweis": "Alles Markenspezifische steht hier. Werte mit [[...]] sind Platzhalter und MUESSEN vor dem Livegang vom Inhaber ersetzt werden (gen_site.py warnt, solange welche uebrig sind).",
+  "brand": {
+    "name": "Musterbusiness",
+    "domain": "example.com",
+    "claim": "Digitale Vorlagen, die dir Arbeit abnehmen",
+    "description": "BEISPIEL-Beschreibung: Digitale Vorlagen und kostenlose Online-Werkzeuge für [[ZIELGRUPPE]]. Einmal kaufen, sofort herunterladen.",
+    "footer_text": "BEISPIEL: Digitale Vorlagen und kostenlose Werkzeuge für [[ZIELGRUPPE]].",
+    "lang": "de",
+    "locale": "de_DE",
+    "copyright_year": 2026
+  },
+  "colors": {
+    "ink": "#1B2430",
+    "primary": "#2B3A67",
+    "accent": "#C8553D",
+    "accent_dark": "#A4432F",
+    "muted": "#3A4654",
+    "soft": "#5A6573",
+    "bg": "#F7F5F0",
+    "surface": "#FFFFFF",
+    "line": "#E4E1DA",
+    "on_primary": "#FFFFFF",
+    "on_primary_muted": "#D6DCEB",
+    "input_bg": "#FFFDF4",
+    "focus": "#E9B44C"
+  },
+  "fonts": {
+    "heading": "Georgia, 'Times New Roman', serif",
+    "body": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "logo": {
+    "letter": "M",
+    "bg": "#2B3A67",
+    "inner": "#F7F5F0",
+    "fg": "#2B3A67",
+    "dots": [
+      "#C8553D",
+      "#E9B44C",
+      "#5B8E7D"
+    ]
+  },
+  "operator": {
+    "name": "[[NAME DES INHABERS]]",
+    "company": "",
+    "street": "[[STRASSE UND HAUSNUMMER]]",
+    "zip_city": "[[PLZ ORT]]",
+    "country": "Deutschland",
+    "email": "[[E-MAIL-ADRESSE]]",
+    "phone": "",
+    "vat_id": "",
+    "supervisory_authority": "[[DATENSCHUTZ-AUFSICHTSBEHOERDE DES BUNDESLANDS, MIT ANSCHRIFT]]"
+  },
+  "legal_stand": "Oktober 2026",
+  "checkout": {
+    "provider": "Digistore24",
+    "provider_address": "Digistore24 GmbH, St.-Godehard-Straße 32, 31139 Hildesheim",
+    "privacy_url": "https://www.digistore24.com/page/privacy/1/de",
+    "reseller": true,
+    "buy_label": "Jetzt kaufen",
+    "soon_label": "Bald verfügbar",
+    "note": "Digitales Produkt · Download-Link direkt nach dem Kauf · Einmalzahlung, kein Abo",
+    "payment_note": "Sichere Zahlung und Rechnung über Digistore24. Preis inkl. gesetzlicher MwSt., sofern anfallend."
+  },
+  "nav": [
+    {
+      "label": "Produkte",
+      "href": "index.html#produkte"
+    },
+    {
+      "label": "Rechner",
+      "href": "rechner.html"
+    },
+    {
+      "label": "Ratgeber",
+      "href": "ratgeber.html"
+    }
+  ],
+  "nav_cta": {
+    "label": "Startpaket ansehen",
+    "href": "starter-vorlage.html"
+  },
+  "home": {
+    "title": "Musterbusiness – Digitale Vorlagen für [[ZIELGRUPPE]]",
+    "meta_description": "BEISPIEL: Digitale Vorlagen und kostenlose Rechner für [[ZIELGRUPPE]]. Sofort-Download, kein Abo.",
+    "h1": "Weniger Kleinkram, mehr Zeit fürs Wesentliche",
+    "lead": "BEISPIEL-TEXT: Digitale Vorlagen und kostenlose Online-Rechner, die [[ZIELGRUPPE]] Zeit sparen. Hier steht in zwei Sätzen, welches Problem dein Business löst.",
+    "cta_primary": {
+      "label": "Produkte ansehen",
+      "href": "#produkte"
+    },
+    "cta_secondary": {
+      "label": "Kostenlose Rechner",
+      "href": "rechner.html"
+    },
+    "facts": [
+      "Einmal kaufen, kein Abo",
+      "Download sofort nach der Zahlung",
+      "Ohne Anmeldung testen"
+    ],
+    "hero_product": "starter-vorlage",
+    "products_title": "Die Produkte",
+    "products_sub": "Jedes Produkt löst ein konkretes Problem.",
+    "why_title": "Warum Musterbusiness?",
+    "why": [
+      [
+        "Echte Probleme",
+        "BEISPIEL: Jedes Produkt beantwortet eine Frage, die sich deine Zielgruppe wirklich stellt."
+      ],
+      [
+        "Sofort einsatzbereit",
+        "BEISPIEL: Ausfüllen, fertig. Jede Vorlage hat eine Anleitung und Beispielwerte."
+      ],
+      [
+        "Kein Abo",
+        "BEISPIEL: Einmal kaufen, dauerhaft nutzen. Deine Daten bleiben bei dir."
+      ]
+    ]
+  },
+  "faq_title": "Häufige Fragen",
+  "faq": [
+    [
+      "Wie bekomme ich die Datei?",
+      "Direkt nach der Zahlung über den Download-Link auf der Bestätigungsseite und zusätzlich per E-Mail."
+    ],
+    [
+      "Welche Programme brauche ich?",
+      "BEISPIEL: Hier steht, womit die Produkte funktionieren (z. B. Excel, Google Sheets, PDF-Reader)."
+    ],
+    [
+      "Ich habe eine Frage.",
+      "Schreib eine E-Mail an die Adresse im Impressum."
+    ]
+  ],
+  "product_defaults": {
+    "type": "Digitales Produkt zum Herunterladen. Kein Versand, keine Installation, kein Abo.",
+    "format": "BEISPIEL: ZIP-Datei mit Vorlage und PDF-Kurzanleitung, Sprache Deutsch.",
+    "delivery": "Download-Link sofort nach der Zahlung, zusätzlich per E-Mail",
+    "audience": "[[ZIELGRUPPE]]",
+    "currency": "EUR",
+    "title_suffix": "Vorlage"
+  },
+  "products": [
+    {
+      "slug": "starter-vorlage",
+      "name": "Starter-Vorlage",
+      "short": "BEISPIEL: Kurzbeschreibung für die Produktkarte",
+      "price": 19,
+      "compare_price": null,
+      "checkout_url": "",
+      "image": "",
+      "shots": [],
+      "eyebrow": "BEISPIEL · Vorlage zum Download",
+      "h1": "BEISPIEL: Die Überschrift nennt das Problem, das das Produkt löst",
+      "lead": "BEISPIEL-TEXT: Zwei bis drei Sätze, was das Produkt kann, für wen es ist und warum es Zeit oder Geld spart. Konkret bleiben, keine Superlative.",
+      "content": "BEISPIEL: 3 Tabellenblätter: Start, Eingabe, Auswertung",
+      "features": [
+        [
+          "Funktion 1",
+          "BEISPIEL: Was die Funktion macht und welchen Nutzen sie hat."
+        ],
+        [
+          "Funktion 2",
+          "BEISPIEL: Was die Funktion macht und welchen Nutzen sie hat."
+        ],
+        [
+          "Funktion 3",
+          "BEISPIEL: Was die Funktion macht und welchen Nutzen sie hat."
+        ]
+      ],
+      "faq": [
+        [
+          "BEISPIEL: Produktspezifische Frage?",
+          "BEISPIEL: Antwort in ein bis zwei Sätzen."
+        ]
+      ]
+    },
+    {
+      "slug": "profi-vorlage",
+      "name": "Profi-Vorlage",
+      "short": "BEISPIEL: Die erweiterte Variante mit mehr Funktionen",
+      "price": 29,
+      "compare_price": null,
+      "checkout_url": "",
+      "image": "",
+      "shots": [],
+      "eyebrow": "BEISPIEL · Vorlage zum Download",
+      "h1": "BEISPIEL: Zweites Produkt mit eigener Überschrift",
+      "lead": "BEISPIEL-TEXT: Beschreibung des zweiten Produkts. Checkout-URL leer lassen, solange das Produkt beim Zahlungsanbieter noch nicht angelegt ist – dann erscheint „Bald verfügbar“.",
+      "content": "BEISPIEL: 5 Tabellenblätter",
+      "features": [
+        [
+          "Alles aus der Starter-Vorlage",
+          "BEISPIEL: Plus erweiterte Auswertungen."
+        ],
+        [
+          "Funktion 2",
+          "BEISPIEL: Was die Funktion macht und welchen Nutzen sie hat."
+        ]
+      ],
+      "faq": []
+    }
+  ],
+  "ratgeber": {
+    "title": "Ratgeber",
+    "h1": "Ratgeber für [[ZIELGRUPPE]]",
+    "lead": "BEISPIEL: Verständliche Antworten auf die Fragen, die sich deine Zielgruppe wirklich stellt – mit Beispielen und Quellen.",
+    "disclaimer": "Dieser Ratgeber gibt allgemeine Informationen und ersetzt keine individuelle Beratung."
+  },
+  "rechner": {
+    "title": "Kostenlose Rechner",
+    "h1": "Kostenlose Rechner",
+    "lead": "BEISPIEL: Schnelle Antworten direkt im Browser – nichts wird gespeichert.",
+    "app_category": "UtilitiesApplication"
+  },
+  "pinterest": {
+    "domain_verify": "",
+    "boards": [
+      {
+        "slug": "tipps",
+        "name": "BEISPIEL Tipps",
+        "description": "Tipps und Rechner für [[ZIELGRUPPE]]."
+      },
+      {
+        "slug": "vorlagen",
+        "name": "BEISPIEL Vorlagen",
+        "description": "Digitale Vorlagen für [[ZIELGRUPPE]]."
+      }
+    ]
+  },
+  "seo": {
+    "og_image": "",
+    "theme_color": ""
+  },
+  "indexnow_key": ""
+}

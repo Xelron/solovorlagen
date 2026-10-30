@@ -61,6 +61,29 @@ def buy(p,cls="btn",label=None):
     return f'<span class="{cls} soon" aria-disabled="true">Bald verfügbar</span>'
 CSS=open(os.path.join(HERE,"style.css")).read()
 open(os.path.join(OUT,"style.css"),"w").write(CSS)
+import re as _re_img
+def _webp_variants():
+    # WebP-Varianten (1000 und 500 px) der Produktbilder; ohne Pillow (z. B. im Feed-Workflow) wird nur verlinkt, was schon existiert
+    try:
+        from PIL import Image as _I
+    except Exception:
+        return
+    d=os.path.join(OUT,"img")
+    for f in os.listdir(d):
+        if not f.endswith(".jpg"): continue
+        src=os.path.join(d,f); b=src[:-4]
+        for suf,w in (("",1000),("-500",500)):
+            dst=b+suf+".webp"
+            if os.path.exists(dst) and os.path.getmtime(dst)>=os.path.getmtime(src): continue
+            im=_I.open(src).convert("RGB"); im.thumbnail((w,w)); im.save(dst,"WEBP",quality=80,method=6)
+_webp_variants()
+def _pic(h):
+    def r(m):
+        tag,name=m.group(0),m.group(1)
+        if not (os.path.exists(os.path.join(OUT,"img",name+".webp")) and os.path.exists(os.path.join(OUT,"img",name+"-500.webp"))): return tag
+        sizes="(max-width:640px) 100vw, 460px" if "heroimg" in tag else "(max-width:640px) 100vw, 360px"
+        return f'<picture><source type="image/webp" srcset="img/{name}-500.webp 500w, img/{name}.webp 1000w" sizes="{sizes}">{tag}</picture>'
+    return _re_img.sub(r'<img [^>]*src="img/([\w-]+)\.jpg"[^>]*>',r,h)
 def page(title,desc,body,path,head=""):
     h=f"""<!doctype html>
 <html lang="de">
@@ -101,7 +124,7 @@ def page(title,desc,body,path,head=""):
 </body>
 </html>
 """
-    open(os.path.join(OUT,path),"w").write(h)
+    open(os.path.join(OUT,path),"w").write(_pic(h))
 FAQ="""<section class="band"><div class="wrap faq">
 <h2 class="serif">Häufige Fragen</h2>
 <h3>Wie bekomme ich die Datei?</h3><p>Direkt nach der Zahlung über den Download-Link auf der Bestätigungsseite und zusätzlich per E-Mail von Digistore24.</p>

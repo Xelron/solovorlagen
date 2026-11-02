@@ -430,7 +430,7 @@ eu_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 <tr><td>Anschaffung über 800&nbsp;€ netto</td><td>Abschreibung über die Nutzungsdauer; bis 1.000&nbsp;€ netto alternativ Sammelposten (5 × 20&nbsp;%)</td></tr>
 <tr><td>Computer, Laptop, Software</td><td>Nutzungsdauer 1 Jahr – im Anschaffungsjahr voll absetzbar (außer im Sammelposten)</td></tr>
 <tr><td>Betriebliche Fahrten mit dem Privatauto</td><td>0,30&nbsp;€ je gefahrenem km; Weg zur ersten Betriebsstätte: 0,38&nbsp;€ je vollem Entfernungs-km (einfache Strecke)</td></tr>
-<tr><td>Arbeiten von zu Hause</td><td>Homeoffice-Pauschale 6&nbsp;€ je Tag, an dem du überwiegend zu Hause arbeitest, höchstens 1.260&nbsp;€ im Jahr – oder Arbeitszimmer, wenn es der Mittelpunkt deiner Tätigkeit ist</td></tr>
+<tr><td>Arbeiten von zu Hause</td><td><a href="homeoffice-pauschale-selbststaendige.html">Homeoffice-Pauschale</a> 6&nbsp;€ je Tag, an dem du überwiegend zu Hause arbeitest, höchstens 1.260&nbsp;€ im Jahr – oder Arbeitszimmer, wenn es der Mittelpunkt deiner Tätigkeit ist</td></tr>
 <tr><td>Bewirtung von Geschäftspartnern</td><td>70&nbsp;% der angemessenen Kosten, mit Beleg und Angaben zu Anlass und Teilnehmern; getrennt von anderen Ausgaben aufzeichnen (§&nbsp;4 Abs.&nbsp;7&nbsp;EStG)</td></tr>
 <tr><td>Geschenke an Geschäftspartner</td><td>Nur wenn höchstens 50&nbsp;€ je Empfänger und Jahr (Freigrenze: darüber gar nicht absetzbar; bei Kleinunternehmern einschließlich Umsatzsteuer); getrennt aufzeichnen</td></tr>
 <tr><td><strong>Nicht</strong> absetzbar: Einkommensteuer, deine eigene Kranken- und Pflegeversicherung, Privatentnahmen</td><td>Gehören nicht in die EÜR. Kranken- und Pflegeversicherung und Altersvorsorge machst du als Vorsorgeaufwendungen in der Einkommensteuererklärung geltend.</td></tr></table></div>
@@ -486,6 +486,89 @@ eu_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 eu_head=EXTRA_CSS+ld(article_ld("EÜR für Kleinunternehmer: So funktioniert die Einnahmen-Überschuss-Rechnung",eu_desc,eu_url,EU_ISO))+ld(faq_ld(EU_FAQ))+ld(crumbs([("Solovorlagen","https://solovorlagen.de/"),("Ratgeber","https://solovorlagen.de/ratgeber.html"),("EÜR für Kleinunternehmer","https://solovorlagen.de/euer-kleinunternehmer.html")]))
 page("EÜR für Kleinunternehmer: Anleitung mit Beispiel | Solovorlagen",eu_desc,eu_body,"euer-kleinunternehmer.html",eu_head)
 
+# ---------------- Ratgeber 5: Homeoffice-Pauschale für Selbstständige ----------------
+HO_ISO="2026-11-02"; HO_STAND="02.11.2026"
+HO_BYLINE=f'<p class="byline">Von <a href="impressum.html">Felix Merklinger-Lötzsch</a>, Solovorlagen · Stand: <time datetime="{HO_ISO}">{HO_STAND}</time></p>'
+HO_FAQ=[
+("Wie hoch ist die Homeoffice-Pauschale 2026?","6 Euro für jeden Tag, an dem du überwiegend zu Hause arbeitest, höchstens 1.260 Euro im Jahr. Das entspricht 210 Homeoffice-Tagen. Die Werte gelten seit 2023 unverändert (§ 4 Abs. 5 Satz 1 Nr. 6c EStG)."),
+("Können Selbstständige und Kleinunternehmer die Homeoffice-Pauschale absetzen?","Ja. Selbstständige setzen die Homeoffice-Pauschale als Betriebsausgabe in ihrer Einnahmen-Überschuss-Rechnung ab. Das gilt auch für Kleinunternehmer: Die Kleinunternehmerregelung betrifft nur die Umsatzsteuer, die Pauschale mindert den Gewinn und damit die Einkommensteuer."),
+("Brauche ich für die Homeoffice-Pauschale ein eigenes Arbeitszimmer?","Nein. Ein Schreibtisch im Wohnzimmer oder eine Arbeitsecke reicht. Entscheidend ist nur, dass du an dem Tag überwiegend zu Hause arbeitest und keine erste Betriebsstätte außerhalb der Wohnung aufsuchst."),
+("Zählt ein Tag mit Kundentermin als Homeoffice-Tag?","Ja, wenn du an dem Tag trotzdem mehr als die Hälfte deiner Arbeitszeit zu Hause arbeitest. Steht dir dauerhaft kein anderer Arbeitsplatz zur Verfügung, zählen auch Tage, an denen du überwiegend beim Kunden arbeitest – sofern du an dem Tag zumindest teilweise auch zu Hause arbeitest, etwa zur Vor- oder Nachbereitung. Die Fahrtkosten zum Kunden setzt du zusätzlich ab."),
+("Bekomme ich die Pauschale doppelt, wenn ich angestellt und nebenberuflich selbstständig bin?","Nein. Die 6 Euro gibt es pro Tag nur einmal, auch wenn du an diesem Tag für beide Tätigkeiten zu Hause arbeitest, und der Höchstbetrag von 1.260 Euro gilt für alle Tätigkeiten zusammen. Fährst du an einem Tag ins Büro deines Arbeitgebers, gibt es für diesen Tag in der Regel keine Pauschale."),
+("Zählt die Homeoffice-Pauschale bei der Kleinunternehmergrenze mit?","Nein. Für die Umsatzgrenzen von 25.000 Euro und 100.000 Euro zählen nur deine Umsätze. Die Homeoffice-Pauschale ist eine Ausgabe und senkt nur deinen Gewinn."),
+("Muss ich meine Homeoffice-Tage nachweisen?","Belege für einzelne Kosten brauchst du nicht. Die Tage solltest du aber aufzeichnen und auf Nachfrage glaubhaft machen können, zum Beispiel mit einem Kalender, in dem Homeoffice-Tage und Termine außer Haus stehen.")]
+ho_url="https://solovorlagen.de/homeoffice-pauschale-selbststaendige.html"
+ho_desc="Homeoffice-Pauschale 2026 für Selbstständige: 6 € je Tag, bis 1.260 € als Betriebsausgabe. Voraussetzungen, Kundentermine, Arbeitszimmer und Beispiel."
+ho_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><article class="article">
+<p class="eyebrow"><a href="ratgeber.html">Ratgeber</a> · Steuern & Geld</p>
+<h1 class="serif">Homeoffice-Pauschale 2026 für Selbstständige: 6&nbsp;€ pro Tag absetzen</h1>
+{HO_BYLINE}
+<div class="answer" id="antwort"><p><strong>Die Antwort in Kürze:</strong> Auch Selbstständige und Kleinunternehmer können die <strong>Homeoffice-Pauschale</strong> als Betriebsausgabe absetzen: <strong>6&nbsp;€ für jeden Tag</strong>, an dem du überwiegend zu Hause arbeitest, höchstens <strong>1.260&nbsp;€ im Jahr</strong> (210&nbsp;Tage). Ein eigenes Arbeitszimmer ist dafür nicht nötig. Hast du dauerhaft keinen anderen Arbeitsplatz, zählen auch Tage, an denen du überwiegend beim Kunden und nur zum Teil zu Hause arbeitest. Arbeitsmittel wie Laptop oder Schreibtisch und die betrieblichen Telefon- und Internetkosten setzt du zusätzlich ab.</p></div>
+<nav class="toc" aria-label="Inhalt"><strong>Inhalt</strong><ol>
+<li><a href="#hoehe">Wie hoch ist die Pauschale?</a></li><li><a href="#voraussetzungen">Welche Tage zählen?</a></li><li><a href="#kunden">Tage mit Kundenterminen</a></li>
+<li><a href="#arbeitszimmer">Pauschale oder Arbeitszimmer?</a></li><li><a href="#zusaetzlich">Was du zusätzlich absetzen kannst</a></li><li><a href="#beispiel">Beispiel: Ein Kleinunternehmer im Homeoffice</a></li>
+<li><a href="#euer">Eintrag in der EÜR</a></li><li><a href="#faq">Häufige Fragen</a></li></ol></nav>
+
+<h2 class="serif" id="hoehe">Wie hoch ist die Homeoffice-Pauschale 2026?</h2>
+<p>Die Homeoffice-Pauschale heißt im Gesetz <strong>Tagespauschale</strong> und steht in §&nbsp;4 Abs.&nbsp;5 Satz&nbsp;1 Nr.&nbsp;6c&nbsp;EStG. Sie beträgt <strong>6&nbsp;€ je Kalendertag</strong>, höchstens <strong>1.260&nbsp;€ im Jahr</strong> – das entspricht 210 Homeoffice-Tagen. Die Beträge gelten seit 2023 und sind 2026 unverändert. Für Selbstständige ist die Pauschale eine <strong>Betriebsausgabe</strong>: Sie senkt den Gewinn und damit die Einkommensteuer.</p>
+<p>Mit der Pauschale sind alle Kosten für die Arbeit in der Wohnung abgegolten, also etwa anteilige Miete, Strom und Heizung. Einzelne Belege dafür brauchst du nicht.</p>
+
+<h2 class="serif" id="voraussetzungen">Welche Tage zählen als Homeoffice-Tag?</h2>
+<p>Ein Tag zählt, wenn zwei Bedingungen erfüllt sind:</p>
+<ul><li><strong>Überwiegend zu Hause:</strong> Du arbeitest an diesem Tag mehr als die Hälfte deiner tatsächlichen Arbeitszeit in deiner Wohnung. Ein Schreibtisch im Wohnzimmer oder eine Arbeitsecke genügt.</li>
+<li><strong>Keine erste Betriebsstätte aufgesucht:</strong> Du fährst an diesem Tag nicht in ein eigenes Büro, eine Praxis oder Werkstatt außerhalb der Wohnung. Für den Weg dorthin gibt es stattdessen die Entfernungspauschale von 0,38&nbsp;€ je Entfernungskilometer (<a href="fahrtkosten-rechner.html#entfernungspauschale">Fahrtkosten-Rechner</a>).</li></ul>
+<p>Bist du außerdem angestellt, gilt die Pauschale für alle Tätigkeiten zusammen: Die 6&nbsp;€ gibt es pro Tag <strong>nur einmal</strong>, und die 1.260&nbsp;€ sind der Höchstbetrag für alle Tätigkeiten. Fährst du an einem Tag ins Büro deines Arbeitgebers (erste Tätigkeitsstätte), gibt es für diesen Tag in der Regel keine Pauschale.</p>
+
+<h2 class="serif" id="kunden">Zählen Tage mit Kundenterminen?</h2>
+<p>Ja, in zwei Fällen:</p>
+<ul><li><strong>Du arbeitest trotzdem überwiegend zu Hause.</strong> Ein zweistündiger Kundentermin an einem Tag mit acht Stunden Arbeit ist kein Problem – sechs Stunden zu Hause sind mehr als die Hälfte.</li>
+<li><strong>Du hast dauerhaft keinen anderen Arbeitsplatz.</strong> Dann darfst du die Pauschale auch für Tage ansetzen, an denen du überwiegend auswärts arbeitest, zum Beispiel beim Kunden – vorausgesetzt, du arbeitest an dem Tag <strong>zumindest teilweise auch zu Hause</strong>, etwa für die Vor- oder Nachbereitung (§&nbsp;4 Abs.&nbsp;5 Satz&nbsp;1 Nr.&nbsp;6c Satz&nbsp;2&nbsp;EStG). Ein Tag, an dem du gar nicht zu Hause arbeitest, zählt nicht. Als anderer Arbeitsplatz gilt jeder Platz, an dem du büromäßig arbeiten kannst – etwa ein eigenes Büro oder ein fester Schreibtisch im Coworking-Space, den du jederzeit nutzen kannst.</li></ul>
+<p>Die Fahrten zum Kunden setzt du in beiden Fällen <strong>zusätzlich</strong> ab: mit dem Privatauto 0,30&nbsp;€ je gefahrenem Kilometer.</p>
+
+<h2 class="serif" id="arbeitszimmer">Homeoffice-Pauschale oder Arbeitszimmer?</h2>
+<p>Ein häusliches Arbeitszimmer kannst du nur absetzen, wenn es den <strong>Mittelpunkt deiner gesamten betrieblichen und beruflichen Tätigkeit</strong> bildet – also dort die inhaltlich wichtigsten Arbeiten stattfinden. Das trifft zum Beispiel oft auf Übersetzer, Texterinnen oder Programmierer zu, die fast nur am Schreibtisch arbeiten.</p>
+<div class="tblwrap"><table class="tbl sm"><tr><th></th><th>Homeoffice-Pauschale</th><th>Häusliches Arbeitszimmer</th></tr>
+<tr><td>Raum</td><td>Arbeitsecke genügt</td><td>Eigener abgeschlossener Raum, fast nur betrieblich genutzt</td></tr>
+<tr><td>Voraussetzung</td><td>Tag überwiegend zu Hause gearbeitet, keine erste Betriebsstätte aufgesucht</td><td>Mittelpunkt der gesamten betrieblichen und beruflichen Tätigkeit</td></tr>
+<tr><td>Abzug</td><td>6&nbsp;€ je Tag, höchstens 1.260&nbsp;€ im Jahr</td><td>Tatsächliche Kosten (anteilige Miete, Nebenkosten, Strom, Ausstattung) oder Jahrespauschale 1.260&nbsp;€</td></tr>
+<tr><td>Nachweis</td><td>Homeoffice-Tage aufzeichnen</td><td>Kosten belegen und gesondert aufzeichnen; bei der Jahrespauschale nicht nötig</td></tr></table></div>
+<p>Beides gleichzeitig geht nicht: Für Zeiträume, in denen du ein Arbeitszimmer absetzt, gibt es keine Tagespauschale. Die <strong>Jahrespauschale</strong> von 1.260&nbsp;€ fürs Arbeitszimmer gibt es unabhängig von der Zahl der Tage, sie sinkt aber um ein Zwölftel für jeden vollen Monat, in dem das Arbeitszimmer nicht der Mittelpunkt ist. Sind deine tatsächlichen Kosten höher, kannst du stattdessen diese absetzen. Als Kleinunternehmer setzt du dabei die Bruttobeträge an, weil du keine Vorsteuer abziehst.</p>
+
+<h2 class="serif" id="zusaetzlich">Was kann ich zusätzlich zur Pauschale absetzen?</h2>
+<ul><li><strong>Arbeitsmittel:</strong> Laptop, Monitor, Drucker, Schreibtisch oder Bürostuhl sind mit der Pauschale nicht abgegolten. Computer und Software sind im Jahr der Anschaffung voll absetzbar (außer im Sammelposten), andere Anschaffungen bis 800&nbsp;€ netto als geringwertiges Wirtschaftsgut – das prüft der <a href="gwg-rechner.html">GWG-Rechner</a>.</li>
+<li><strong>Telefon und Internet:</strong> den betrieblichen Anteil deiner Kosten.</li>
+<li><strong>Fahrtkosten:</strong> Fahrten zu Kunden mit 0,30&nbsp;€ je gefahrenem Kilometer – auch an Tagen, für die du die Pauschale ansetzt.</li></ul>
+
+<h2 class="serif" id="beispiel">Beispiel: Ein Kleinunternehmer im Homeoffice</h2>
+<p><strong>Jonas</strong> ist freiberuflicher Übersetzer und Dolmetscher. 2025 hatte er 22.000&nbsp;€ Umsatz, ist also 2026 Kleinunternehmer; für 2026 rechnet er mit rund 23.500&nbsp;€ – weil er auch damit unter 25.000&nbsp;€ bleibt, ist er 2027 ebenfalls Kleinunternehmer. Er arbeitet am Schreibtisch im Wohnzimmer und hat kein Büro und keinen Coworking-Platz. 2026 arbeitet er an 220 Tagen:</p>
+<div class="tblwrap"><table class="tbl sm"><tr><th>Arbeitstage 2026</th><th>Tage</th><th>Pauschale</th></tr>
+<tr><td>Überwiegend zu Hause übersetzt</td><td>185</td><td>185 × 6&nbsp;€ = 1.110&nbsp;€</td></tr>
+<tr><td>Überwiegend beim Kunden gedolmetscht, Vor- und Nachbereitung zu Hause (kein anderer Arbeitsplatz)</td><td>35</td><td>35 × 6&nbsp;€ = 210&nbsp;€</td></tr>
+<tr><td>Zusammen</td><td>220</td><td>1.320&nbsp;€</td></tr>
+<tr><td colspan="2"><strong>Abziehbar (Höchstbetrag)</strong></td><td><strong>1.260&nbsp;€</strong></td></tr></table></div>
+<p>Weil Jonas dauerhaft keinen anderen Arbeitsplatz hat und an diesen Tagen auch zu Hause arbeitet, zählen auch die 35 Tage beim Kunden. Er erreicht damit den Höchstbetrag von <strong>1.260&nbsp;€</strong>. Zusätzlich setzt er die Fahrten zu den Kunden ab: 35 Tage × 50&nbsp;km hin und zurück = 1.750&nbsp;km × 0,30&nbsp;€ = <strong>525&nbsp;€</strong>.</p>
+<p><strong>Variante:</strong> Hätte Jonas einen festen Schreibtisch in einem Coworking-Space, den er jederzeit nutzen kann, zählten nur die 185 Tage, an denen er überwiegend zu Hause arbeitet: 185 × 6&nbsp;€ = <strong>1.110&nbsp;€</strong>. Die Kosten für den Coworking-Platz wären dann eigene Betriebsausgaben.</p>
+<p>Wie viel Steuer die Pauschale spart, hängt vom persönlichen Grenzsteuersatz ab: Bei 25&nbsp;% bringen 1.260&nbsp;€ weniger Gewinn 315&nbsp;€ weniger Einkommensteuer. An den Umsatzgrenzen der <a href="kleinunternehmerregelung-grenzen.html">Kleinunternehmerregelung</a> ändert die Pauschale nichts – dort zählen nur deine Umsätze.</p>
+
+<h2 class="serif" id="euer">Wie trage ich die Homeoffice-Pauschale in die EÜR ein?</h2>
+<p>Selbstständige tragen die Pauschale als Betriebsausgabe in die <a href="euer-kleinunternehmer.html">Einnahmen-Überschuss-Rechnung</a> ein, die sie als Anlage EÜR mit der Einkommensteuererklärung übermitteln. Weil kein Geld fließt, gibt es keinen Beleg – halte stattdessen fest, an welchen Tagen du überwiegend zu Hause gearbeitet hast und an welchen Tagen du beim Kunden warst. Ein einfacher Kalender reicht. Die Pauschale gilt pro Person: Arbeiten zwei Selbstständige in derselben Wohnung, kann jeder sie für seine eigenen Homeoffice-Tage ansetzen.</p>
+
+<div class="cta"><h3>Alle Betriebsausgaben an einem Ort</h3><p>Das Kleinunternehmer-Cockpit ist eine Excel-Vorlage: Einnahmen mit Zahlungsdatum und Ausgaben eintragen – die EÜR-Übersicht summiert alles nach 20 Kategorien als Grundlage für die Anlage EÜR in ELSTER. Dazu Umsatzgrenzen-Ampel und Steuerrücklage. Für Fahrten zum Kunden gibt es das <a href="fahrtenbuch.html" style="color:#fff">Fahrtenbuch mit Fahrtkosten-Rechner</a>.</p><a class="btn" href="cockpit.html">Kleinunternehmer-Cockpit ansehen</a></div>
+
+<h2 class="serif" id="faq">Häufige Fragen</h2>
+<div class="faq" style="max-width:none">{faq_html(HO_FAQ)}</div>
+
+<h2 class="serif">Quellen</h2>
+{sources([("§ 4 EStG – Abs. 5 Satz 1 Nr. 6b (Arbeitszimmer) und Nr. 6c (Tagespauschale) (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__4.html"),
+("BMF-Schreiben vom 15.08.2023 – Betätigung in der häuslichen Wohnung: Arbeitszimmer und Tagespauschale (Amtliches Lohnsteuer-Handbuch 2026, Anhang 19 I)","https://lsth.bundesfinanzministerium.de/lsth/2026/B-Anhaenge/Anhang-19/I/inhalt.html"),
+("§ 9 EStG – Werbungskosten, Abs. 5 entsprechende Anwendung für Arbeitnehmer (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__9.html"),
+("§ 9b EStG – Umsatzsteuerrechtlicher Vorsteuerabzug (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__9b.html"),
+("§ 19 UStG – Besteuerung der Kleinunternehmer (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ustg_1980/__19.html")])}
+{DISCL}
+</article></div>"""
+ho_head=EXTRA_CSS+ld(article_ld("Homeoffice-Pauschale 2026 für Selbstständige: 6 € pro Tag absetzen",ho_desc,ho_url,HO_ISO))+ld(faq_ld(HO_FAQ))+ld(crumbs([("Solovorlagen","https://solovorlagen.de/"),("Ratgeber","https://solovorlagen.de/ratgeber.html"),("Homeoffice-Pauschale für Selbstständige","https://solovorlagen.de/homeoffice-pauschale-selbststaendige.html")]))
+page("Homeoffice-Pauschale 2026 für Selbstständige | Solovorlagen",ho_desc,ho_body,"homeoffice-pauschale-selbststaendige.html",ho_head)
+
 exec(open(os.path.join(HERE,"tools.py")).read())
 
 # ---------------- Ratgeber-Übersicht ----------------
@@ -497,15 +580,16 @@ rg_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><div 
 <a class="pcard" href="stundensatz-berechnen.html"><div class="pbody"><h3>Stundensatz berechnen als Selbstständiger</h3><p>Formel, Rechenbeispiel, abrechenbare Stunden und die 5 häufigsten Fehler.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 <a class="pcard" href="steuerruecklage-berechnen.html"><div class="pbody"><h3>Steuerrücklage berechnen: Wie viel zurücklegen?</h3><p>Prozentsätze nach dem Tarif 2026, zwei Rechenbeispiele, Vorauszahlungen und die Gründer-Falle.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 <a class="pcard" href="euer-kleinunternehmer.html"><div class="pbody"><h3>EÜR für Kleinunternehmer: So funktioniert die Einnahmen-Überschuss-Rechnung</h3><p>Zahlungsdatum statt Rechnungsdatum, Ausgaben brutto, was absetzbar ist, Beispielrechnung, Anlage EÜR und Fristen.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
+<a class="pcard" href="homeoffice-pauschale-selbststaendige.html"><div class="pbody"><h3>Homeoffice-Pauschale 2026 für Selbstständige</h3><p>6 € je Tag bis 1.260 €, welche Tage zählen, Kundentermine, Arbeitszimmer und Beispielrechnung.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 </div>
 <h2 class="serif" id="rechner">Kostenlose Rechner</h2>
 <div class="grid2">{rc_cards}</div>
 </div></div>"""
-page("Ratgeber für Selbstständige & Kleinunternehmer | Solovorlagen","Ratgeber für Selbstständige: Kleinunternehmerregelung 2026, Stundensatz, Steuerrücklage, EÜR und kostenlose Rechner – Umsatzgrenzen-Check, Rechnungstext, GWG und Fahrtkosten.",rg_body,"ratgeber.html",EXTRA_CSS)
+page("Ratgeber für Selbstständige & Kleinunternehmer | Solovorlagen","Ratgeber für Selbstständige: Kleinunternehmerregelung 2026, Stundensatz, Steuerrücklage, EÜR, Homeoffice-Pauschale und kostenlose Rechner – Umsatzgrenzen-Check, Rechnungstext, GWG und Fahrtkosten.",rg_body,"ratgeber.html",EXTRA_CSS)
 
 # ---------------- sitemap, robots, llms.txt ----------------
-urls=["","rechner.html","grenzen-check.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html","kleinunternehmerregelung-grenzen.html","stundensatz-berechnen.html","steuerruecklage-berechnen.html","euer-kleinunternehmer.html","ratgeber.html","paket.html","cockpit.html","rechnung.html","stundensatz.html","fahrtenbuch.html","afa.html"]
-open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>https://solovorlagen.de/{u}</loc><lastmod>{EU_ISO if u in ("euer-kleinunternehmer.html","ratgeber.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html") else SR_ISO if u=="steuerruecklage-berechnen.html" else ISO}</lastmod></url>\n" for u in urls)+"</urlset>\n")
+urls=["","rechner.html","grenzen-check.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html","kleinunternehmerregelung-grenzen.html","stundensatz-berechnen.html","steuerruecklage-berechnen.html","euer-kleinunternehmer.html","homeoffice-pauschale-selbststaendige.html","ratgeber.html","paket.html","cockpit.html","rechnung.html","stundensatz.html","fahrtenbuch.html","afa.html"]
+open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>https://solovorlagen.de/{u}</loc><lastmod>{HO_ISO if u in ("homeoffice-pauschale-selbststaendige.html","ratgeber.html","euer-kleinunternehmer.html") else EU_ISO if u in ("rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html") else SR_ISO if u=="steuerruecklage-berechnen.html" else ISO}</lastmod></url>\n" for u in urls)+"</urlset>\n")
 open(os.path.join(OUT,"robots.txt"),"w").write("User-agent: *\nAllow: /\n\nSitemap: https://solovorlagen.de/sitemap.xml\n")
 open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 > Excel-Vorlagen und Ratgeber für Selbstständige und Kleinunternehmer in Deutschland (Stand 2026). Betreiber: Felix Merklinger-Lötzsch, Aßlar.
@@ -515,6 +599,7 @@ open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 - [Stundensatz berechnen als Selbstständiger](https://solovorlagen.de/stundensatz-berechnen.html): Formel, Rechenbeispiel (2.500 € netto ≈ 65 €/Stunde bei privater KV, mit gesetzlicher KV rund 77 €), abrechenbare Stunden, typische Fehler.
 - [Steuerrücklage berechnen](https://solovorlagen.de/steuerruecklage-berechnen.html): Einkommensteuer 2026 nach § 32a EStG (Grundfreibetrag 12.348 €; Durchschnitt ca. 11 % bei 25.000 €, 18 % bei 40.000 €, 24 % bei 60.000 € zvE, Einzelveranlagung), Vorauszahlungen 10.3./10.6./10.9./10.12., Gründer-Falle Nachzahlung + Vorauszahlung, Kleinunternehmer ohne USt-Rücklage.
 - [EÜR für Kleinunternehmer](https://solovorlagen.de/euer-kleinunternehmer.html): Einnahmen-Überschuss-Rechnung nach § 4 Abs. 3 EStG, Zufluss-/Abflussprinzip (§ 11 EStG, 10-Tage-Regel), Kleinunternehmer tragen Ausgaben brutto ein, GWG-Grenzen netto, Beispiel (21.600 € Einnahmen, 3.634 € Ausgaben, 17.966 € Gewinn), Anlage EÜR elektronisch (§ 60 Abs. 4 EStDV), Fristen 2026: 02.08.2027 bzw. 29.02.2028 mit Beratung, Belege 8 Jahre / Aufzeichnungen 10 Jahre.
+- [Homeoffice-Pauschale 2026 für Selbstständige](https://solovorlagen.de/homeoffice-pauschale-selbststaendige.html): Tagespauschale 6 € je Tag, höchstens 1.260 € (210 Tage), § 4 Abs. 5 Satz 1 Nr. 6c EStG, Betriebsausgabe in der EÜR, kein Arbeitszimmer nötig, Tage überwiegend zu Hause ohne Aufsuchen der ersten Betriebsstätte; ohne anderen Arbeitsplatz auch Tage überwiegend beim Kunden, wenn zum Teil zu Hause gearbeitet wird; pro Tag nur einmal, Höchstbetrag für alle Tätigkeiten; Arbeitszimmer nur als Mittelpunkt (tatsächliche Kosten oder Jahrespauschale 1.260 €), nicht kombinierbar; Arbeitsmittel, Telefon/Internet und Fahrtkosten zusätzlich; Beispiel Kleinunternehmer 220 Tage → 1.260 €.
 
 ## Werkzeuge
 - [Umsatzgrenzen-Check 2026](https://solovorlagen.de/grenzen-check.html): kostenloser Online-Rechner zur Kleinunternehmergrenze.

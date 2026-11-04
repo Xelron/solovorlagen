@@ -138,7 +138,7 @@ def card(p):
 <div class="pbody"><h3>{html.escape(p['name'])}</h3><p>{html.escape(p['short'])}</p><div class="prow"><span class="price">{p['price']}</span><span class="more">Ansehen</span></div></div></a>"""
 # ---- index
 singles=[p for p in P if p["slug"]!="paket"]
-idx=f"""<section class="banner"><div class="wrap bwrap">
+idx=f"""<section class="banner"><picture class="bphoto"><source type="image/webp" srcset="img/foto/hero-800.webp 800w, img/foto/hero-1600.webp 1600w" sizes="100vw"><img src="img/foto/hero.jpg" width="1600" height="1200" alt="Selbstständiger am Schreibtisch im Homeoffice" fetchpriority="high"></picture><div class="wrap bwrap">
 <div class="btext">
 <h1 class="serif">Klare Zahlen für Solo-Selbst&shy;ständige</h1>
 <p class="lead">Excel-Vorlagen und kostenlose Rechner für Kleinunternehmer und Freelancer in Deutschland: Umsatzgrenzen, Rechnungen, Stundensatz, Fahrtkosten und Abschreibungen – nach den Regeln von 2026.</p>
@@ -184,13 +184,18 @@ r.addEventListener('input',u);u()}})();
 <a class="pcard pbundle" href="paket.html"><div class="pbody"><p class="eyebrow" style="color:#cfe0f0">Alle 5 zusammen</p><h3 style="color:#fff;font-size:24px;hyphens:auto;overflow-wrap:break-word">Selbstständigen-Paket</h3>
 <p style="color:#dbe6f0">Alle Vorlagen in einem Download – du sparst die Hälfte.</p><div class="prow"><span class="price" style="color:#fff">35 € <s style="font-size:16px;opacity:.7">70 €</s></span><span class="more" style="color:#fff">Ansehen</span></div></div></a>
 </div></div></section>
-<section><div class="wrap">
-<h2 class="serif">Warum Solovorlagen?</h2>
-<div class="grid3">
-<div class="feat"><h3>Echte Probleme</h3><p>Jede Vorlage beantwortet eine Frage, die sich Selbstständige wirklich stellen – vom Stundensatz bis zur Abschreibung.</p></div>
-<div class="feat"><h3>Sofort einsatzbereit</h3><p>Gelbe Felder ausfüllen, fertig. Jede Vorlage hat ein Startblatt mit Anleitung und Beispielwerten.</p></div>
-<div class="feat"><h3>Kein Abo</h3><p>Einmal kaufen, dauerhaft nutzen. Deine Daten bleiben in deiner eigenen Datei.</p></div>
-</div></div></section>
+<section class="about"><div class="wrap duo">
+<div class="duo-img"><picture><source type="image/webp" srcset="img/foto/laptop-800.webp 800w, img/foto/laptop-1600.webp 1600w" sizes="(max-width:800px) 100vw, 540px"><img src="img/foto/laptop.jpg" width="1600" height="1068" alt="Mann arbeitet am Laptop an einem Holztisch" loading="lazy"></picture></div>
+<div class="duo-txt"><h2 class="serif">Für Leute, die allein arbeiten</h2>
+<p>Wer solo selbstständig ist, macht die Zahlen nebenbei: abends die Rechnung, am Monatsende die Belege, im Frühjahr die Steuererklärung. Die Vorlagen nehmen dir die Rechnerei ab und zeigen, worauf es nach den Regeln von 2026 ankommt.</p>
+<p>Solovorlagen ist ein kleines Angebot von Felix Merklinger-Lötzsch aus Aßlar in Hessen. Grenzwerte und Sätze stützen sich auf Gesetzestexte und Schreiben des Bundesfinanzministeriums; die Quellen stehen in den Ratgebern.</p>
+<h3>Warum Solovorlagen?</h3>
+<ol class="why">
+<li><b>Echte Probleme</b> Jede Vorlage beantwortet eine Frage, die sich Selbstständige wirklich stellen – vom Stundensatz bis zur Abschreibung.</li>
+<li><b>Sofort einsatzbereit</b> Gelbe Felder ausfüllen, fertig. Jede Vorlage hat ein Startblatt mit Anleitung und Beispielwerten.</li>
+<li><b>Kein Abo</b> Einmal kaufen, dauerhaft nutzen. Deine Daten bleiben in deiner eigenen Datei.</li>
+</ol></div>
+</div></section>
 {FAQ}"""
 page("Solovorlagen – Excel-Vorlagen für Selbstständige & Kleinunternehmer","Excel-Vorlagen für Kleinunternehmer und Freelancer: Umsatzgrenzen-Ampel, Rechnungs-Generator, Stundensatz-Rechner, Fahrtenbuch, AfA-Rechner. Sofort-Download, kein Abo.",idx,"index.html")
 # ---- product pages

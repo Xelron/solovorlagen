@@ -228,7 +228,7 @@ for p in P:
 {f'<div class="shots">{shots}</div>' if shots else ''}</div>
 {'<p class="note" style="margin-top:12px">Screenshots mit Beispieldaten.</p>' if shots else ''}
 </div></section>
-{f'<section><div class="wrap"><h2 class="serif">Was die Vorlage kann</h2><div class="grid2">{feats}</div></div></section>' if feats else ''}
+{f'<section id="funktionen"><div class="wrap"><h2 class="serif">Was die Vorlage kann</h2><div class="grid2">{feats}</div></div></section>' if feats else ''}
 {extra}
 {FAQ}
 <section id="kaufen" class="band"><div class="wrap buy">

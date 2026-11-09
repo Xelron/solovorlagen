@@ -406,7 +406,7 @@ eu_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 
 <h2 class="serif" id="wer">Wer muss als Kleinunternehmer eine EÜR machen?</h2>
 <p>Die Kleinunternehmerregelung nach §&nbsp;19&nbsp;UStG befreit nur von der <strong>Umsatzsteuer</strong>. Einkommensteuer zahlst du trotzdem auf deinen Gewinn – und den musst du ermitteln. Freiberufler und Gewerbetreibende, die nicht zur doppelten Buchführung verpflichtet sind, tun das mit der Einnahmen-Überschuss-Rechnung nach §&nbsp;4 Abs.&nbsp;3&nbsp;EStG. Buchführungspflichtig werden Gewerbetreibende erst ab mehr als 800.000&nbsp;€ Umsatz oder 80.000&nbsp;€ Gewinn im Jahr (§&nbsp;141&nbsp;AO; die Pflicht beginnt erst nach einer Mitteilung des Finanzamts). Für Kleinunternehmer, die als Einzelunternehmer oder Freiberufler tätig sind, ist die EÜR deshalb praktisch immer der richtige Weg. Eine GmbH oder UG muss dagegen immer bilanzieren.</p>
-<p>Das gilt auch <strong>nebenberuflich</strong>: Wer neben dem Angestelltenjob selbstständig ist und damit mehr als 410&nbsp;€ Einkünfte im Jahr erzielt, muss eine Einkommensteuererklärung abgeben (§&nbsp;46 Abs.&nbsp;2 Nr.&nbsp;1&nbsp;EStG) – mit EÜR.</p>
+<p>Das gilt auch <strong>nebenberuflich</strong>: Wer neben dem Angestelltenjob selbstständig ist und damit mehr als 410&nbsp;€ Einkünfte im Jahr erzielt, muss eine Einkommensteuererklärung abgeben (§&nbsp;46 Abs.&nbsp;2 Nr.&nbsp;1&nbsp;EStG) – mit EÜR. Wie du ein <a href="nebengewerbe-anmelden.html">Nebengewerbe anmeldest</a>, steht in einem eigenen Ratgeber.</p>
 
 <h2 class="serif" id="zahlung">Wann zählt eine Einnahme oder Ausgabe?</h2>
 <p>In der EÜR gilt das <strong>Zufluss- und Abflussprinzip</strong> (§&nbsp;11&nbsp;EStG): Eine Einnahme zählt in dem Jahr, in dem das Geld auf deinem Konto eingeht – eine Ausgabe in dem Jahr, in dem du sie bezahlst. Das Rechnungsdatum spielt keine Rolle.</p>
@@ -569,6 +569,111 @@ ho_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 ho_head=EXTRA_CSS+ld(article_ld("Homeoffice-Pauschale 2026 für Selbstständige: 6 € pro Tag absetzen",ho_desc,ho_url,HO_ISO))+ld(faq_ld(HO_FAQ))+ld(crumbs([("Solovorlagen","https://solovorlagen.de/"),("Ratgeber","https://solovorlagen.de/ratgeber.html"),("Homeoffice-Pauschale für Selbstständige","https://solovorlagen.de/homeoffice-pauschale-selbststaendige.html")]))
 page("Homeoffice-Pauschale 2026 für Selbstständige | Solovorlagen",ho_desc,ho_body,"homeoffice-pauschale-selbststaendige.html",ho_head)
 
+# ---------------- Ratgeber 6: Nebengewerbe anmelden ----------------
+NG_ISO="2026-11-09"; NG_STAND="09.11.2026"
+NG_BYLINE=f'<p class="byline">Von <a href="impressum.html">Felix Merklinger-Lötzsch</a>, Solovorlagen · Stand: <time datetime="{NG_ISO}">{NG_STAND}</time></p>'
+NG_FAQ=[
+("Wo melde ich ein Nebengewerbe an?","Beim Gewerbeamt (Ordnungsamt) der Gemeinde, in der du dein Gewerbe betreibst – in vielen Gemeinden auch online. Es gibt kein eigenes Formular für Nebengewerbe: Du füllst die normale Gewerbeanmeldung aus. Freiberufler melden sich nicht beim Gewerbeamt, sondern nur beim Finanzamt."),
+("Was kostet es, ein Nebengewerbe anzumelden?","Die Gebühr legt die Gemeinde fest, meist liegt sie zwischen etwa 15 und 65 Euro. Die Anmeldung einer freiberuflichen Tätigkeit beim Finanzamt ist kostenlos."),
+("Bis wann muss ich das Nebengewerbe anmelden?","Die Gewerbeanzeige muss gleichzeitig mit dem Beginn erfolgen (§ 14 GewO), also spätestens am ersten Tag. Wer sie nicht oder zu spät erstattet, handelt ordnungswidrig; möglich ist ein Bußgeld bis 1.000 Euro. Den Fragebogen zur steuerlichen Erfassung schickst du innerhalb eines Monats nach Beginn an das Finanzamt."),
+("Kann ich mit einem Nebengewerbe Kleinunternehmer sein?","Ja. Im Gründungsjahr darf dein Umsatz 25.000 Euro nicht überschreiten, ab dem Folgejahr gilt: Vorjahr höchstens 25.000 Euro und laufendes Jahr höchstens 100.000 Euro. Es zählen die Umsätze aller deiner selbstständigen Tätigkeiten zusammen, dein Gehalt aus dem Angestelltenjob zählt nicht mit."),
+("Ab wann muss ich für ein Nebengewerbe eine Steuererklärung abgeben?","Wenn du als Angestellter neben deinem Gehalt mehr als 410 Euro Einkünfte im Jahr hast, zum Beispiel Gewinn aus dem Nebengewerbe (§ 46 Abs. 2 Nr. 1 EStG). Dann gehört auch die Anlage EÜR dazu. Liegen deine Einkünfte ohne Lohnsteuerabzug insgesamt bei höchstens 410 Euro, fällt darauf im Ergebnis keine Einkommensteuer an; bis 820 Euro wird die Steuer gemildert (Härteausgleich)."),
+("Muss ich für ein Nebengewerbe Gewerbesteuer zahlen?","Erst wenn der Gewerbeertrag den Freibetrag von 24.500 Euro im Jahr übersteigt (§ 11 GewStG). Bei den meisten Nebengewerben fällt deshalb keine Gewerbesteuer an. Den IHK-Beitrag zahlst du nicht, solange dein Gewerbeertrag höchstens 5.200 Euro beträgt und du nicht im Handelsregister eingetragen bist."),
+("Zahle ich mit Nebengewerbe mehr Krankenversicherung?","Wer als Angestellter gesetzlich pflichtversichert ist und das Gewerbe nebenberuflich betreibt, bleibt in der Regel über den Job versichert; auf den Gewinn aus dem Nebengewerbe fallen keine zusätzlichen Kassenbeiträge an, solange keine Rente oder Versorgungsbezüge bezogen werden. Freiwillig gesetzlich Versicherte zahlen dagegen auch auf den Gewinn Beiträge.")]
+ng_url="https://solovorlagen.de/nebengewerbe-anmelden.html"
+ng_desc="Nebengewerbe anmelden 2026: Gewerbeamt, Fragebogen ans Finanzamt, Kosten, Kleinunternehmerregelung, Steuern und Krankenversicherung – mit Beispiel."
+ng_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><article class="article">
+<p class="eyebrow"><a href="ratgeber.html">Ratgeber</a> · Gründen & Anmelden</p>
+<h1 class="serif">Nebengewerbe anmelden 2026: Ablauf, Kosten und Steuern</h1>
+{NG_BYLINE}
+<div class="answer" id="antwort"><p><strong>Die Antwort in Kürze:</strong> Ein Nebengewerbe meldest du wie jedes Gewerbe beim <strong>Gewerbeamt</strong> deiner Gemeinde an – spätestens zum Start, die Gebühr liegt meist bei etwa <strong>15 bis 65&nbsp;€</strong>. Danach schickst du innerhalb eines Monats den <strong>Fragebogen zur steuerlichen Erfassung</strong> über ELSTER ans Finanzamt und kannst dort die <strong>Kleinunternehmerregelung</strong> wählen. Freiberufler melden sich nur beim Finanzamt. Der Gewinn wird zusammen mit deinem Gehalt versteuert: Ab mehr als <strong>410&nbsp;€</strong> Gewinn im Jahr musst du eine Steuererklärung abgeben. Gewerbesteuer fällt erst an, wenn der Gewerbeertrag <strong>24.500&nbsp;€</strong> übersteigt.</p></div>
+<nav class="toc" aria-label="Inhalt"><strong>Inhalt</strong><ol>
+<li><a href="#schritte">Anmeldung Schritt für Schritt</a></li><li><a href="#freiberuflich">Gewerbe oder freiberuflich?</a></li><li><a href="#kosten">Was kostet die Anmeldung?</a></li>
+<li><a href="#kleinunternehmer">Nebengewerbe als Kleinunternehmer</a></li><li><a href="#grenzen">Steuern und Beiträge: 4 wichtige Grenzen</a></li><li><a href="#versicherung">Krankenversicherung und Rente</a></li>
+<li><a href="#arbeitgeber">Muss der Arbeitgeber zustimmen?</a></li><li><a href="#beispiel">Beispiel: Mias Vintage-Shop</a></li><li><a href="#faq">Häufige Fragen</a></li></ol></nav>
+
+<h2 class="serif" id="schritte">Wie melde ich ein Nebengewerbe an?</h2>
+<p>Ein Nebengewerbe ist rechtlich ein ganz normales Gewerbe – nur betreibst du es neben deinem Hauptjob. Es gibt kein eigenes Formular und keine eigene Rechtsform. So gehst du vor:</p>
+<ol><li><strong>Klären, ob du überhaupt ein Gewerbe hast.</strong> Freiberufliche Tätigkeiten wie Übersetzen oder Unterrichten brauchen keine Gewerbeanmeldung (siehe <a href="#freiberuflich">nächster Abschnitt</a>). Für manche Gewerbe brauchst du vorher eine Erlaubnis oder Eintragung, etwa für zulassungspflichtige Handwerke oder als Makler.</li>
+<li><strong>Arbeitsvertrag prüfen.</strong> Steht dort, dass du Nebentätigkeiten anzeigen musst, informierst du deinen Arbeitgeber (mehr <a href="#arbeitgeber">unten</a>).</li>
+<li><strong>Gewerbe beim Gewerbeamt anmelden.</strong> Die Anzeige muss <strong>gleichzeitig mit dem Beginn</strong> erfolgen (§&nbsp;14&nbsp;GewO). In vielen Gemeinden geht das online, sonst vor Ort mit Personalausweis. Das Gewerbeamt informiert unter anderem das Finanzamt und die IHK bzw. Handwerkskammer.</li>
+<li><strong>Fragebogen zur steuerlichen Erfassung ausfüllen.</strong> Innerhalb eines Monats nach Beginn übermittelst du ihn elektronisch über <strong>Mein ELSTER</strong> (§&nbsp;138 Abs.&nbsp;1b und 4&nbsp;AO). Dort schätzt du Umsatz und Gewinn für dieses und das nächste Jahr und entscheidest dich für oder gegen die Kleinunternehmerregelung. Danach bekommst du deine Steuernummer.</li>
+<li><strong>Buchhaltung einrichten.</strong> Ab der ersten Einnahme zeichnest du Einnahmen und Ausgaben auf – sie sind die Grundlage für deine <a href="euer-kleinunternehmer.html">Einnahmen-Überschuss-Rechnung</a>. Lege außerdem einen Teil jedes Gewinns für die Steuer zurück.</li></ol>
+<p>Wer die Gewerbeanzeige nicht, falsch oder zu spät erstattet, handelt ordnungswidrig; das Bußgeld kann bis zu <strong>1.000&nbsp;€</strong> betragen (§&nbsp;146 Abs.&nbsp;2 Nr.&nbsp;2 und Abs.&nbsp;3&nbsp;GewO).</p>
+
+<h2 class="serif" id="freiberuflich">Gewerbe oder freiberuflich – muss ich zum Gewerbeamt?</h2>
+<p>Nur Gewerbetreibende melden sich beim Gewerbeamt. <strong>Freiberufler</strong> im Sinne von §&nbsp;18&nbsp;EStG zeigen die Aufnahme ihrer Tätigkeit nur beim Finanzamt an – ebenfalls mit dem Fragebogen zur steuerlichen Erfassung (§&nbsp;138 Abs.&nbsp;1&nbsp;AO). Sie zahlen keine Gewerbesteuer und sind nicht Mitglied der IHK.</p>
+<div class="tblwrap"><table class="tbl sm"><tr><th>Typisch Gewerbe</th><th>Typisch freiberuflich</th></tr>
+<tr><td>Online-Shop, Verkauf auf Etsy oder eBay mit Gewinnabsicht</td><td>Übersetzen, Dolmetschen, Journalismus</td></tr>
+<tr><td>Handwerk, Hausmeister- und Reinigungsservice</td><td>Unterrichten, Nachhilfe, Coaching mit Lehrcharakter</td></tr>
+<tr><td>Handel und Vermittlung, Social-Media-Betreuung</td><td>Künstlerische und schriftstellerische Tätigkeit</td></tr></table></div>
+<p>Die Grenze ist nicht immer eindeutig: Grafikdesign kann zum Beispiel künstlerisch und damit freiberuflich oder gewerblich sein, und Coaching kann je nach Ausgestaltung auch gewerblich sein. Im Zweifel entscheidet das Finanzamt anhand deiner Angaben im Fragebogen.</p>
+
+<h2 class="serif" id="kosten">Was kostet die Anmeldung?</h2>
+<p>Die Gebühr für die Gewerbeanmeldung legt jede Gemeinde selbst fest; meist liegt sie zwischen etwa <strong>15 und 65&nbsp;€</strong>, in kleinen Gemeinden eher am unteren Ende. Der Fragebogen ans Finanzamt ist kostenlos. Laufende Pflichtkosten gibt es bei einem kleinen Nebengewerbe oft keine: Den <strong>IHK-Beitrag</strong> zahlst du nicht, solange du nicht im Handelsregister eingetragen bist und dein Gewerbeertrag höchstens <strong>5.200&nbsp;€</strong> im Jahr beträgt (§&nbsp;3 Abs.&nbsp;3&nbsp;IHKG). Gründer, die in den fünf Jahren davor keine gewerblichen oder selbstständigen Einkünfte hatten, sind im Gründungsjahr und im Jahr danach sogar bis 25.000&nbsp;€ Gewerbeertrag beitragsfrei. Gehörst du als Handwerker zur Handwerkskammer, gelten deren eigene Beitragsregeln. Ein eigenes Geschäftskonto ist für Einzelunternehmer nicht vorgeschrieben, macht die Buchhaltung aber deutlich übersichtlicher.</p>
+
+<h2 class="serif" id="kleinunternehmer">Kann ich mit einem Nebengewerbe Kleinunternehmer sein?</h2>
+<p>Ja – und für die meisten Nebengewerbe ist das der Normalfall. Als Kleinunternehmer nach §&nbsp;19&nbsp;UStG weist du keine Umsatzsteuer auf deinen Rechnungen aus und gibst keine Umsatzsteuer-Voranmeldungen ab. Es gelten dieselben Grenzen wie für alle Kleinunternehmer:</p>
+<ul><li><strong>Im Gründungsjahr:</strong> Der Umsatz darf <strong>25.000&nbsp;€</strong> nicht überschreiten – sonst endet die Regelung sofort. Eine Hochrechnung aufs volle Jahr gibt es nicht.</li>
+<li><strong>Ab dem Folgejahr:</strong> Umsatz im Vorjahr höchstens <strong>25.000&nbsp;€</strong> und im laufenden Jahr höchstens <strong>100.000&nbsp;€</strong>.</li></ul>
+<p>Wichtig: Die Grenzen gelten <strong>pro Person</strong>. Hast du mehrere selbstständige Tätigkeiten, zählen ihre Umsätze zusammen. Dein <strong>Gehalt</strong> aus dem Angestelltenjob ist dagegen kein Umsatz und zählt nicht mit. Alle Details stehen im Ratgeber zur <a href="kleinunternehmerregelung-grenzen.html">Kleinunternehmerregelung 2026</a>; wo du gerade stehst, zeigt der kostenlose <a href="grenzen-check.html">Umsatzgrenzen-Check</a>. Auf jede Rechnung gehört ein Hinweis auf die Steuerbefreiung – fertige Formulierungen gibt es im <a href="rechnungstext-kleinunternehmer.html">Rechnungstext-Generator</a>.</p>
+
+<h2 class="serif" id="grenzen">Welche Steuern und Beiträge fallen an? 4 wichtige Grenzen</h2>
+<div class="tblwrap"><table class="tbl sm"><tr><th>Grenze</th><th>Was sie bedeutet</th></tr>
+<tr><td><strong>410&nbsp;€</strong> Einkünfte neben dem Gehalt</td><td>Darüber musst du als Angestellter eine Einkommensteuererklärung abgeben (§&nbsp;46 Abs.&nbsp;2 Nr.&nbsp;1&nbsp;EStG). Bis 410&nbsp;€ fällt darauf im Ergebnis keine Einkommensteuer an, bis 820&nbsp;€ wird die Steuer gemildert (Härteausgleich, §&nbsp;46 Abs.&nbsp;3&nbsp;EStG, §&nbsp;70&nbsp;EStDV).</td></tr>
+<tr><td><strong>5.200&nbsp;€</strong> Gewerbeertrag</td><td>Bis hierhin kein IHK-Beitrag, wenn du nicht im Handelsregister eingetragen bist (§&nbsp;3 Abs.&nbsp;3&nbsp;IHKG).</td></tr>
+<tr><td><strong>24.500&nbsp;€</strong> Gewerbeertrag</td><td>Freibetrag bei der Gewerbesteuer (§&nbsp;11&nbsp;GewStG). Erst was darüber liegt, wird besteuert – und größtenteils auf die Einkommensteuer angerechnet (§&nbsp;35&nbsp;EStG).</td></tr>
+<tr><td><strong>25.000&nbsp;€</strong> Umsatz</td><td>Kleinunternehmergrenze für das Gründungsjahr und für den Vorjahresumsatz (§&nbsp;19&nbsp;UStG).</td></tr></table></div>
+<p>Bei der 410-€-Grenze zählt die Summe deiner Einkünfte ohne Lohnsteuerabzug – beim Nebengewerbe also dein <strong>Gewinn</strong> (Einnahmen minus Betriebsausgaben, nicht der Umsatz), dazu etwa Mieteinkünfte. Der Gewerbeertrag entspricht bei kleinen Nebengewerben meist ungefähr dem Gewinn.</p>
+<h3>Wie wird der Gewinn versteuert?</h3>
+<p>Der Gewinn aus dem Nebengewerbe wird zu deinem Gehalt addiert und mit deinem <strong>persönlichen Steuersatz</strong> versteuert. Weil auf dein Gehalt schon Lohnsteuer einbehalten wurde, führt der zusätzliche Gewinn meist zu einer <strong>Nachzahlung</strong>. Ist sie hoch genug, setzt das Finanzamt außerdem vierteljährliche Vorauszahlungen fest. Wie du eine Rücklage anlegst, erklärt der Ratgeber <a href="steuerruecklage-berechnen.html">Steuerrücklage berechnen</a>. Neben einem Gehalt rechnest du dabei nicht mit dem Durchschnitts-, sondern mit deinem <strong>Grenzsteuersatz</strong>, denn der Zusatzgewinn wird obendrauf besteuert.</p>
+
+<h2 class="serif" id="versicherung">Krankenversicherung und Rente: Was ändert sich?</h2>
+<ul><li><strong>Gesetzlich pflichtversicherte Angestellte:</strong> Du bleibst über deinen Job versichert, solange die Selbstständigkeit nicht hauptberuflich ist (§&nbsp;5 Abs.&nbsp;5 SGB&nbsp;V). Wer mehr als 20 Stunden pro Woche angestellt ist und mehr als die Hälfte der monatlichen Bezugsgröße verdient, gilt nach den Grundsätzen der Krankenkassen in der Regel nicht als hauptberuflich selbstständig – anders kann es sein, wenn du für das Gewerbe regelmäßig Mitarbeiter beschäftigst. Auf den Gewinn aus dem Nebengewerbe fallen dann keine zusätzlichen Kassenbeiträge an – außer du beziehst daneben eine Rente oder Versorgungsbezüge (§&nbsp;226 SGB&nbsp;V).</li>
+<li><strong>Freiwillig gesetzlich Versicherte</strong> (z.&nbsp;B. mit Gehalt über der Versicherungspflichtgrenze): Die Beiträge richten sich nach allen Einnahmen, also auch nach dem Gewinn aus dem Nebengewerbe – bis zur Beitragsbemessungsgrenze.</li>
+<li><strong>Privat Versicherte:</strong> Der Beitrag hängt nicht vom Einkommen ab, das Nebengewerbe ändert daran nichts.</li>
+<li><strong>Familienversicherte</strong>, etwa Studierende oder Ehepartner ohne eigenes Einkommen, verlieren die Familienversicherung, wenn ihr Einkommen eine Grenze übersteigt oder sie hauptberuflich selbstständig sind (§&nbsp;10 SGB&nbsp;V). Sprich in diesem Fall vorher mit deiner Krankenkasse.</li></ul>
+<p><strong>Rentenversicherung:</strong> Die meisten Selbstständigen sind nicht rentenversicherungspflichtig. Ausnahmen regelt §&nbsp;2 SGB&nbsp;VI, unter anderem für selbstständige Lehrkräfte ohne eigene Angestellte, in die Handwerksrolle eingetragene Handwerker und Selbstständige, die auf Dauer im Wesentlichen nur für einen Auftraggeber arbeiten und keine Angestellten haben. Das gilt auch nebenberuflich; versicherungsfrei bleibt nur eine geringfügige selbstständige Tätigkeit (§&nbsp;5 Abs.&nbsp;2 SGB&nbsp;VI). Wer nebenbei etwa Nachhilfe gibt, sollte das mit der Deutschen Rentenversicherung klären.</p>
+
+<h2 class="serif" id="arbeitgeber">Muss mein Arbeitgeber zustimmen?</h2>
+<p>Eine Nebentätigkeit ist grundsätzlich erlaubt. Viele Arbeits- und Tarifverträge verlangen aber, dass du sie <strong>vorher anzeigst</strong> oder genehmigen lässt – schau deshalb in deinen Vertrag. Untersagen darf der Arbeitgeber das Nebengewerbe in der Regel nur, wenn seine berechtigten Interessen beeinträchtigt sind, etwa weil du ihm Konkurrenz machst oder deine Arbeitsleistung leidet. Beamtinnen und Beamte brauchen für die meisten Nebentätigkeiten eine Genehmigung ihres Dienstherrn.</p>
+
+<h2 class="serif" id="beispiel">Beispiel: Mias Vintage-Shop</h2>
+<p><strong>Mia</strong> ist in Vollzeit als Bürokauffrau angestellt und gesetzlich pflichtversichert. Am 2.&nbsp;März&nbsp;2026 startet sie nebenbei einen Online-Shop, in dem sie angekaufte Vintage-Kleidung weiterverkauft. Sie meldet das Gewerbe am selben Tag online an (Gebühr in ihrer Gemeinde: 26&nbsp;€), schickt im März den Fragebogen über ELSTER und wählt die Kleinunternehmerregelung. Ihre Zahlen für 2026:</p>
+<div class="tblwrap"><table class="tbl sm"><tr><th>2026</th><th>Betrag</th><th>Folge</th></tr>
+<tr><td>Umsatz (März bis Dezember)</td><td>8.400&nbsp;€</td><td>Unter 25.000&nbsp;€: 2026 Klein&shy;unternehmerin, 2027 ebenfalls (bei höchstens 100.000&nbsp;€ Umsatz 2027)</td></tr>
+<tr><td>Betriebs&shy;ausgaben (Wareneinkauf, Verpackung, Porto, Shop-Gebühren, Anmeldegebühr)</td><td>−&nbsp;5.100&nbsp;€</td><td>als Klein&shy;unternehmerin brutto angesetzt</td></tr>
+<tr><td><strong>Gewinn</strong></td><td><strong>3.300&nbsp;€</strong></td><td>Über 410&nbsp;€: Steuer&shy;erklärung mit Anlage EÜR ist Pflicht</td></tr>
+<tr><td>Gewerbe&shy;ertrag (hier gleich Gewinn)</td><td>3.300&nbsp;€</td><td>Unter 24.500&nbsp;€: keine Gewerbe&shy;steuer; unter 5.200&nbsp;€: kein IHK-Beitrag</td></tr></table></div>
+<p>Die 3.300&nbsp;€ Gewinn werden zu Mias Gehalt addiert. Liegt ihr persönlicher Grenzsteuersatz bei 30&nbsp;%, zahlt sie für 2026 rund <strong>1.000&nbsp;€ Einkommensteuer</strong> nach (ohne Kirchensteuer) – Geld, das sie am besten schon übers Jahr zurücklegt. Zusätzliche Krankenkassenbeiträge zahlt sie nicht, weil sie über ihren Vollzeitjob pflichtversichert ist, keine Mitarbeiter beschäftigt und keine Rente bezieht.</p>
+
+<div class="cta"><h3>Umsatz, Ausgaben und Grenzen im Blick</h3><p>Das Kleinunternehmer-Cockpit ist eine Excel-Vorlage: Einnahmen mit Zahlungsdatum und Ausgaben eintragen – die Umsatzgrenzen-Ampel zeigt, wo du stehst, mit einem Schalter auch für das Gründungsjahr. Dazu Gewinn, EÜR-Übersicht nach 20 Kategorien als Grundlage für die Anlage EÜR und die Steuerrücklage.</p><a class="btn" href="cockpit.html">Kleinunternehmer-Cockpit ansehen</a></div>
+
+<h2 class="serif" id="faq">Häufige Fragen</h2>
+<div class="faq" style="max-width:none">{faq_html(NG_FAQ)}</div>
+
+<h2 class="serif">Quellen</h2>
+{sources([("§ 14 GewO – Anzeigepflicht (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/gewo/__14.html"),
+("§ 146 GewO – Verletzung sonstiger Vorschriften, Bußgeld (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/gewo/__146.html"),
+("§ 138 AO – Anzeigen über die Erwerbstätigkeit (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ao_1977/__138.html"),
+("§ 18 EStG – Selbständige Arbeit (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__18.html"),
+("§ 46 EStG – Veranlagung bei Bezug von Einkünften aus nichtselbständiger Arbeit (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__46.html"),
+("§ 70 EStDV – Ausgleich von Härten in bestimmten Fällen (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estdv_1955/__70.html"),
+("§ 11 GewStG – Steuermesszahl und Freibetrag (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/gewstg/__11.html"),
+("§ 35 EStG – Steuerermäßigung bei Einkünften aus Gewerbebetrieb (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__35.html"),
+("§ 3 IHKG – Beitragsfreistellung (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ihkg/__3.html"),
+("§ 19 UStG – Besteuerung der Kleinunternehmer (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ustg_1980/__19.html"),
+("§ 5 SGB V – Versicherungspflicht, Abs. 5 hauptberuflich Selbständige (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/sgb_5/__5.html"),
+("§ 10 SGB V – Familienversicherung (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/sgb_5/__10.html"),
+("§ 226 SGB V – Beitragspflichtige Einnahmen versicherungspflichtig Beschäftigter (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/sgb_5/__226.html"),
+("GKV-Spitzenverband: Grundsätzliche Hinweise zum Begriff der hauptberuflich selbstständigen Erwerbstätigkeit (20.03.2019)","https://www.informationsportal.de/wp-content/uploads/document__5294__12-grundsaetzliche-hinweise-hauptberuflichkeit.pdf"),
+("§ 2 SGB VI – Selbständig Tätige (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/sgb_6/__2.html"),
+("selbststaendigkeit.de: Gewerbe anmelden – Kosten im Überblick","https://selbststaendigkeit.de/gewerbe-anmelden/gewerbe-anmelden-kosten/")])}
+{DISCL}
+</article></div>"""
+ng_head=EXTRA_CSS+ld(article_ld("Nebengewerbe anmelden 2026: Ablauf, Kosten und Steuern",ng_desc,ng_url,NG_ISO))+ld(faq_ld(NG_FAQ))+ld(crumbs([("Solovorlagen","https://solovorlagen.de/"),("Ratgeber","https://solovorlagen.de/ratgeber.html"),("Nebengewerbe anmelden","https://solovorlagen.de/nebengewerbe-anmelden.html")]))
+page("Nebengewerbe anmelden 2026: Kosten & Steuern | Solovorlagen",ng_desc,ng_body,"nebengewerbe-anmelden.html",ng_head)
+
 exec(open(os.path.join(HERE,"tools.py")).read())
 
 # ---------------- Ratgeber-Übersicht ----------------
@@ -581,15 +686,16 @@ rg_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><div 
 <a class="pcard" href="steuerruecklage-berechnen.html"><div class="pbody"><h3>Steuerrücklage berechnen: Wie viel zurücklegen?</h3><p>Prozentsätze nach dem Tarif 2026, zwei Rechenbeispiele, Vorauszahlungen und die Gründer-Falle.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 <a class="pcard" href="euer-kleinunternehmer.html"><div class="pbody"><h3>EÜR für Kleinunternehmer: So funktioniert die Einnahmen-Überschuss-Rechnung</h3><p>Zahlungsdatum statt Rechnungsdatum, Ausgaben brutto, was absetzbar ist, Beispielrechnung, Anlage EÜR und Fristen.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 <a class="pcard" href="homeoffice-pauschale-selbststaendige.html"><div class="pbody"><h3>Homeoffice-Pauschale 2026 für Selbstständige</h3><p>6 € je Tag bis 1.260 €, welche Tage zählen, Kundentermine, Arbeitszimmer und Beispielrechnung.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
+<a class="pcard" href="nebengewerbe-anmelden.html"><div class="pbody"><h3>Nebengewerbe anmelden 2026: Ablauf, Kosten und Steuern</h3><p>Gewerbeamt und Fragebogen, Gewerbe oder freiberuflich, Kleinunternehmerregelung, 410-€-Grenze, Krankenversicherung und Beispiel.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 </div>
 <h2 class="serif" id="rechner">Kostenlose Rechner</h2>
 <div class="grid2">{rc_cards}</div>
 </div></div>"""
-page("Ratgeber für Selbstständige & Kleinunternehmer | Solovorlagen","Ratgeber für Selbstständige: Kleinunternehmerregelung 2026, Stundensatz, Steuerrücklage, EÜR, Homeoffice-Pauschale und kostenlose Rechner – Umsatzgrenzen-Check, Rechnungstext, GWG und Fahrtkosten.",rg_body,"ratgeber.html",EXTRA_CSS)
+page("Ratgeber für Selbstständige & Kleinunternehmer | Solovorlagen","Ratgeber für Selbstständige: Kleinunternehmerregelung 2026, Nebengewerbe, Stundensatz, Steuerrücklage, EÜR, Homeoffice-Pauschale und kostenlose Rechner – Umsatzgrenzen-Check, Rechnungstext, GWG und Fahrtkosten.",rg_body,"ratgeber.html",EXTRA_CSS)
 
 # ---------------- sitemap, robots, llms.txt ----------------
-urls=["","rechner.html","grenzen-check.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html","kleinunternehmerregelung-grenzen.html","stundensatz-berechnen.html","steuerruecklage-berechnen.html","euer-kleinunternehmer.html","homeoffice-pauschale-selbststaendige.html","ratgeber.html","paket.html","cockpit.html","rechnung.html","stundensatz.html","fahrtenbuch.html","afa.html"]
-open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>https://solovorlagen.de/{u}</loc><lastmod>{HO_ISO if u in ("homeoffice-pauschale-selbststaendige.html","ratgeber.html","euer-kleinunternehmer.html") else EU_ISO if u in ("rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html") else SR_ISO if u=="steuerruecklage-berechnen.html" else ISO}</lastmod></url>\n" for u in urls)+"</urlset>\n")
+urls=["","rechner.html","grenzen-check.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html","kleinunternehmerregelung-grenzen.html","stundensatz-berechnen.html","steuerruecklage-berechnen.html","euer-kleinunternehmer.html","homeoffice-pauschale-selbststaendige.html","nebengewerbe-anmelden.html","ratgeber.html","paket.html","cockpit.html","rechnung.html","stundensatz.html","fahrtenbuch.html","afa.html"]
+open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>https://solovorlagen.de/{u}</loc><lastmod>{NG_ISO if u in ("nebengewerbe-anmelden.html","ratgeber.html","euer-kleinunternehmer.html") else HO_ISO if u=="homeoffice-pauschale-selbststaendige.html" else EU_ISO if u in ("rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html") else SR_ISO if u=="steuerruecklage-berechnen.html" else ISO}</lastmod></url>\n" for u in urls)+"</urlset>\n")
 open(os.path.join(OUT,"robots.txt"),"w").write("User-agent: *\nAllow: /\n\nSitemap: https://solovorlagen.de/sitemap.xml\n")
 open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 > Excel-Vorlagen und Ratgeber für Selbstständige und Kleinunternehmer in Deutschland (Stand 2026). Betreiber: Felix Merklinger-Lötzsch, Aßlar.
@@ -600,6 +706,7 @@ open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 - [Steuerrücklage berechnen](https://solovorlagen.de/steuerruecklage-berechnen.html): Einkommensteuer 2026 nach § 32a EStG (Grundfreibetrag 12.348 €; Durchschnitt ca. 11 % bei 25.000 €, 18 % bei 40.000 €, 24 % bei 60.000 € zvE, Einzelveranlagung), Vorauszahlungen 10.3./10.6./10.9./10.12., Gründer-Falle Nachzahlung + Vorauszahlung, Kleinunternehmer ohne USt-Rücklage.
 - [EÜR für Kleinunternehmer](https://solovorlagen.de/euer-kleinunternehmer.html): Einnahmen-Überschuss-Rechnung nach § 4 Abs. 3 EStG, Zufluss-/Abflussprinzip (§ 11 EStG, 10-Tage-Regel), Kleinunternehmer tragen Ausgaben brutto ein, GWG-Grenzen netto, Beispiel (21.600 € Einnahmen, 3.634 € Ausgaben, 17.966 € Gewinn), Anlage EÜR elektronisch (§ 60 Abs. 4 EStDV), Fristen 2026: 02.08.2027 bzw. 29.02.2028 mit Beratung, Belege 8 Jahre / Aufzeichnungen 10 Jahre.
 - [Homeoffice-Pauschale 2026 für Selbstständige](https://solovorlagen.de/homeoffice-pauschale-selbststaendige.html): Tagespauschale 6 € je Tag, höchstens 1.260 € (210 Tage), § 4 Abs. 5 Satz 1 Nr. 6c EStG, Betriebsausgabe in der EÜR, kein Arbeitszimmer nötig, Tage überwiegend zu Hause ohne Aufsuchen der ersten Betriebsstätte; ohne anderen Arbeitsplatz auch Tage überwiegend beim Kunden, wenn zum Teil zu Hause gearbeitet wird; pro Tag nur einmal, Höchstbetrag für alle Tätigkeiten; Arbeitszimmer nur als Mittelpunkt (tatsächliche Kosten oder Jahrespauschale 1.260 €), nicht kombinierbar; Arbeitsmittel, Telefon/Internet und Fahrtkosten zusätzlich; Beispiel Kleinunternehmer 220 Tage → 1.260 €.
+- [Nebengewerbe anmelden 2026](https://solovorlagen.de/nebengewerbe-anmelden.html): Gewerbeanzeige beim Gewerbeamt gleichzeitig mit Beginn (§ 14 GewO, Bußgeld bis 1.000 €), Gebühr je nach Gemeinde meist ca. 15–65 €, Fragebogen zur steuerlichen Erfassung über ELSTER innerhalb eines Monats (§ 138 AO), Freiberufler nur beim Finanzamt; Kleinunternehmerregelung möglich (Grenzen pro Person, Gehalt zählt nicht); Steuererklärungspflicht ab mehr als 410 € Nebeneinkünften (§ 46 EStG, Härteausgleich bis 820 €), IHK-beitragsfrei bis 5.200 € Gewerbeertrag, Gewerbesteuer-Freibetrag 24.500 €; GKV-Pflichtversicherte: keine Beiträge auf den Nebengewinn (§ 226 SGB V), freiwillig Versicherte schon; Beispiel Vintage-Shop 8.400 € Umsatz, 3.300 € Gewinn.
 
 ## Werkzeuge
 - [Umsatzgrenzen-Check 2026](https://solovorlagen.de/grenzen-check.html): kostenloser Online-Rechner zur Kleinunternehmergrenze.

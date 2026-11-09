@@ -72,6 +72,15 @@ P6=[
 ("Wer hat noch nicht bezahlt?","Rechnungsbuch mit offenen Posten","Rechnungs-Generator mit Zahlungserinnerung","img/rechnung-03.jpg|fit","rechnung.html#kaufen","Excel-Vorlagen für Selbstständige","",""),
 ("5 Excel-Vorlagen","für Selbstständige in einem Paket","Digitaler Download – sofort nach der Zahlung","pkg","paket.html#kaufen","Excel-Vorlagen für Selbstständige","",""),
 ]
+P7=[
+("Nebengewerbe anmelden","Die 3 wichtigsten Schritte","Freiberufler melden sich nur beim Finanzamt","steps3","nebengewerbe-anmelden.html#schritte","Kleinunternehmer Tipps","",""),
+("Stundensatz zu niedrig?","Die 5 häufigsten Fehler","Und warum dein Preis höher sein muss","fehler5","stundensatz-berechnen.html#fehler","Selbstständig: Preise & Geld","",""),
+("Nebengewerbe: 4 Zahlen","die du kennen solltest","Steuererklärung, IHK, Gewerbesteuer, Kleinunternehmer","nums4","nebengewerbe-anmelden.html#grenzen","Selbstständig: Preise & Geld","",""),
+("EÜR 2026: Bis wann?","Abgabe bis 2. August 2027","Mit Steuerberatung bis 29. Februar 2028","frist","euer-kleinunternehmer.html#elster","Kleinunternehmer Tipps","",""),
+("Gewerbe oder freiberuflich?","Wer zum Gewerbeamt muss","Freiberufler melden sich nur beim Finanzamt","gvf","nebengewerbe-anmelden.html#freiberuflich","Kleinunternehmer Tipps","",""),
+("Kleinunternehmer-Cockpit","Umsatzgrenzen-Ampel, Einnahmen, Gewinn","Excel-Vorlage für Kleinunternehmer","img/cockpit.jpg|fit","cockpit.html#funktionen","Excel-Vorlagen für Selbstständige","",""),
+("Steuerrücklage in 4 Schritten","Damit der Steuerbescheid kein Schreck wird","Einfach umsetzbar – ab der ersten Rechnung","rl4","steuerruecklage-berechnen.html#praxis","Selbstständig: Preise & Geld","",""),
+]
 CSS="""*{box-sizing:border-box}body{margin:0;width:1000px;height:1500px;font-family:'DejaVu Sans',Arial,sans-serif}
 .p{width:1000px;height:1500px;padding:80px 72px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
 .serif{font-family:'DejaVu Serif',Georgia,serif;font-weight:700}.brand{font-size:30px;letter-spacing:.06em}
@@ -135,6 +144,23 @@ def render(i,t):
     elif extra=="pkg":
         items=["Kleinunternehmer-Cockpit","Rechnungs-Generator","Stundensatz-Rechner","Fahrtenbuch & Fahrtkosten","Anlagenverzeichnis & AfA"]
         mid=f'<div style="background:#fff;border-radius:28px;padding:34px 40px;box-shadow:0 12px 32px rgba(31,58,95,.12)">'+"".join(f'<div style="display:flex;gap:22px;align-items:center;font-size:38px;color:#1B2430;padding:11px 0"><span style="width:50px;height:50px;border-radius:14px;background:#1F3A5F;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:30px">{k+1}</span>{t}</div>' for k,t in enumerate(items))+'<div style="display:flex;justify-content:space-between;align-items:baseline;border-top:3px solid #1F3A5F;margin-top:16px;padding-top:18px"><span style="font-size:34px;color:#5A6573">einzeln 70 €</span><span class=serif style="font-size:72px;color:#2E7D6B">35 €</span></div></div>'
+    elif extra=="steps3":
+        st=[("1","Gewerbeamt","Anmeldung zum Start – meist ca. 15–65 €"),("2","Finanzamt","Fragebogen über ELSTER innerhalb eines Monats"),("3","Buchhaltung","Einnahmen und Ausgaben ab dem ersten Euro")]
+        mid='<div>'+"".join(f'<div style="display:flex;gap:28px;align-items:center;background:#fff;border-radius:24px;padding:26px 32px;margin-bottom:20px;box-shadow:0 10px 26px rgba(31,58,95,.12)"><span class=serif style="flex:none;width:92px;height:92px;border-radius:50%;background:#2E7D6B;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:52px">{n}</span><div><div class=serif style="font-size:46px;color:#1F3A5F">{t}</div><div style="font-size:30px;color:#3A4654;margin-top:4px">{d}</div></div></div>' for n,t,d in st)+'</div>'
+    elif extra=="fehler5":
+        it=["Angestellten-Lohn als Maßstab","Alle Stunden als abrechenbar","Krankenversicherung vergessen","Keine Steuern eingeplant","Kein Puffer für Flauten"]
+        mid='<div style="background:#fff;border-radius:28px;padding:30px 40px">'+"".join(f'<div style="display:flex;gap:24px;align-items:center;font-size:38px;color:#1B2430;padding:13px 0;{"border-top:2px solid #E3E8EE" if k else ""}"><span style="flex:none;width:52px;height:52px;border-radius:50%;background:#F8D7DA;color:#842029;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:32px">✕</span>{t}</div>' for k,t in enumerate(it))+'</div>'
+    elif extra=="nums4":
+        it=[("410 €","Einkünfte neben dem Gehalt","darüber Steuererklärung"),("5.200 €","Gewerbeertrag","ohne HR-Eintrag kein IHK-Beitrag"),("24.500 €","Gewerbeertrag","Gewerbesteuer-Freibetrag"),("25.000 €","Umsatz Vorjahr","Kleinunternehmergrenze (Gründer: lfd. Jahr)")]
+        mid='<div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">'+"".join(f'<div style="background:#fff;border-radius:24px;padding:26px 26px 28px"><div class=serif style="font-size:62px;color:#1F3A5F;white-space:nowrap">{a}</div><div style="font-size:27px;color:#5A6573;font-weight:700;margin-top:6px">{b}</div><div style="font-size:30px;color:#1B2430;margin-top:6px">{c}</div></div>' for a,b,c in it)+'</div>'
+    elif extra=="frist":
+        mid='<div style="display:flex;gap:26px">'+"".join(f'<div style="flex:1;background:#fff;border-radius:24px;overflow:hidden;text-align:center;box-shadow:0 12px 28px rgba(31,58,95,.14)"><div style="background:{c};color:#fff;font-size:30px;font-weight:700;padding:14px">{h}</div><div class=serif style="font-size:120px;color:#1F3A5F;line-height:1.2">{d}</div><div style="font-size:34px;font-weight:700;color:#1B2430">{m}</div><div style="font-size:28px;color:#5A6573;padding:8px 14px 26px">{t}</div></div>' for h,d,m,t,c in [("SELBST ERSTELLT","2.","AUGUST 2027","31.07. ist ein Samstag","#2E7D6B"),("MIT BERATUNG","29.","FEBRUAR 2028","Schaltjahr","#1F3A5F")])+'</div><div style="font-size:30px;color:#3A4654;margin-top:22px">Anlage EÜR elektronisch über ELSTER, zusammen mit der Einkommensteuererklärung</div>'
+    elif extra=="gvf":
+        col=lambda h,c,items,f: f'<div style="flex:1;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.14)"><div style="background:{c};color:#fff;font-size:32px;font-weight:700;padding:16px 24px">{h}</div>'+"".join(f'<div style="font-size:32px;color:#1B2430;padding:14px 24px;border-bottom:2px solid #E3E8EE">{x}</div>' for x in items)+f'<div style="font-size:28px;color:#5A6573;font-weight:700;padding:16px 24px">{f}</div></div>'
+        mid='<div style="display:flex;gap:24px">'+col("GEWERBE","#E0A800",["Online-Shop","Handwerk","Reinigungsservice"],"→ Gewerbeamt + Finanzamt")+col("FREIBERUFLICH","#1F3A5F",["Übersetzen","Unterrichten","Journalismus"],"→ nur Finanzamt")+'</div>'
+    elif extra=="rl4":
+        st=[("Satz festlegen","Durchschnittssteuersatz plus Puffer"),("Extra-Konto","Tagesgeld nur für Steuern"),("Sofort umbuchen","bei jedem Zahlungseingang"),("Vierteljährlich prüfen","passt der Satz zum Gewinn?")]
+        mid='<div style="background:#fff;border-radius:28px;padding:30px 40px;box-shadow:0 12px 32px rgba(31,58,95,.12)">'+"".join(f'<div style="display:flex;gap:26px;align-items:center;padding:16px 0;{"border-top:2px solid #E3E8EE" if k else ""}"><span class=serif style="flex:none;width:70px;height:70px;border-radius:18px;background:#1F3A5F;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:40px">{k+1}</span><div><div class=serif style="font-size:42px;color:#1F3A5F">{t}</div><div style="font-size:30px;color:#5A6573">{d}</div></div></div>' for k,(t,d) in enumerate(st))+'</div>'
     elif extra and extra.startswith("img/") and extra.endswith("|fit"):
         from PIL import Image as _I
         fp=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","docs",extra[:-4]); px=_I.open(fp).convert("RGB").getpixel((5,5))
@@ -149,7 +175,7 @@ def render(i,t):
     return h
 import sys
 BATCH=int(sys.argv[1]) if len(sys.argv)>1 else 2
-LST,OFF,START,CSVN={1:(P,0,datetime.date(2026,10,16),"pinterest-pins.csv"),2:(P2,12,datetime.date(2026,10,17),"pinterest-pins-2.csv"),3:(P3,18,datetime.date(2026,10,18),"pinterest-pins-3.csv"),4:(P4,19,datetime.date(2026,10,25),None),5:(P5,26,datetime.date(2026,11,1),None),6:(P6,33,datetime.date(2026,11,8),None)}[BATCH]
+LST,OFF,START,CSVN={1:(P,0,datetime.date(2026,10,16),"pinterest-pins.csv"),2:(P2,12,datetime.date(2026,10,17),"pinterest-pins-2.csv"),3:(P3,18,datetime.date(2026,10,18),"pinterest-pins-3.csv"),4:(P4,19,datetime.date(2026,10,25),None),5:(P5,26,datetime.date(2026,11,1),None),6:(P6,33,datetime.date(2026,11,8),None),7:(P7,40,datetime.date(2026,11,15),None)}[BATCH]
 ROOT=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..")
 with sync_playwright() as p:
     b=p.chromium.launch(); pg=b.new_page(viewport={'width':1000,'height':1500})

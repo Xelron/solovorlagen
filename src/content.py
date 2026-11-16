@@ -196,7 +196,7 @@ ku_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 <h3>Was muss auf die Rechnung?</h3>
 <p>Kleinunternehmer-Rechnungen müssen nach § 34a UStDV mindestens enthalten: den vollständigen Namen und die Anschrift von dir und deinem Kunden, deine Steuernummer oder USt-IdNr., das Ausstellungsdatum, Menge und Art der Lieferung bzw. Art und Umfang der Leistung, den Gesamtbetrag und einen Hinweis darauf, dass die Steuerbefreiung für Kleinunternehmer gilt, z. B. <em>„Steuerfreie Kleinunternehmerleistung gemäß § 19 Abs. 1 UStG.“</em> Verbreitet ist auch <em>„Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.“</em> Fertige Formulierungen zum Kopieren gibt es im <a href="rechnungstext-kleinunternehmer.html">Rechnungstext-Generator</a>. Rechnungsnummer und Leistungszeitraum sind für Kleinunternehmer nicht vorgeschrieben, für die eigene Buchhaltung aber sehr empfehlenswert.</p>
 <h3>Muss ich E-Rechnungen ausstellen?</h3>
-<p>Nein. Kleinunternehmer müssen E-Rechnungen seit 2025 <strong>empfangen</strong> können, dürfen aber weiterhin PDF- oder Papierrechnungen <strong>ausstellen</strong>.</p>
+<p>Nein. Kleinunternehmer müssen E-Rechnungen seit 2025 <strong>empfangen</strong> können, dürfen aber weiterhin PDF- oder Papierrechnungen <strong>ausstellen</strong> – auch ab 2027 und 2028. Zeitplan, Aufbewahrung und Beispiel im Ratgeber <a href="e-rechnung-kleinunternehmer.html">E-Rechnung für Kleinunternehmer</a>.</p>
 <h3>Muss ich eine Umsatzsteuererklärung abgeben?</h3>
 <p>Seit 2025 in der Regel nicht mehr – nur noch, wenn das Finanzamt dazu auffordert. Umsatzsteuer-Voranmeldungen entfallen ebenfalls. Die Einkommensteuererklärung mit der <a href="euer-kleinunternehmer.html">Einnahmen-Überschuss-Rechnung (EÜR)</a> bleibt Pflicht.</p>
 
@@ -674,6 +674,95 @@ ng_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 ng_head=EXTRA_CSS+ld(article_ld("Nebengewerbe anmelden 2026: Ablauf, Kosten und Steuern",ng_desc,ng_url,NG_ISO))+ld(faq_ld(NG_FAQ))+ld(crumbs([("Solovorlagen","https://solovorlagen.de/"),("Ratgeber","https://solovorlagen.de/ratgeber.html"),("Nebengewerbe anmelden","https://solovorlagen.de/nebengewerbe-anmelden.html")]))
 page("Nebengewerbe anmelden 2026: Kosten & Steuern | Solovorlagen",ng_desc,ng_body,"nebengewerbe-anmelden.html",ng_head)
 
+# ---------------- Ratgeber: E-Rechnung für Kleinunternehmer ----------------
+ER_ISO="2026-11-16"; ER_STAND="16.11.2026"
+ER_BYLINE=f'<p class="byline">Von <a href="impressum.html">Felix Merklinger-Lötzsch</a>, Solovorlagen · Stand: <time datetime="{ER_ISO}">{ER_STAND}</time></p>'
+ER_FAQ=[
+("Müssen Kleinunternehmer E-Rechnungen ausstellen?","Nein. Rechnungen von Kleinunternehmern dürfen nach § 34a UStDV stets als sonstige Rechnung übermittelt werden, also auf Papier oder zum Beispiel als PDF. Diese Ausnahme ist nicht befristet und gilt auch ab 2027 und 2028, solange du Kleinunternehmer bist."),
+("Müssen Kleinunternehmer E-Rechnungen empfangen können?","Ja. Seit dem 1. Januar 2025 müssen alle Unternehmer im Inland E-Rechnungen empfangen können, auch Kleinunternehmer. Dafür reicht ein E-Mail-Postfach; ein eigenes Postfach nur für E-Rechnungen ist nicht nötig. Du brauchst aber ein Programm, mit dem du die Datei lesbar anzeigen kannst."),
+("Ist eine PDF-Rechnung eine E-Rechnung?","Nein. Eine E-Rechnung ist eine Rechnung in einem strukturierten elektronischen Format, das sich maschinell verarbeiten lässt, zum Beispiel XRechnung oder ZUGFeRD ab Version 2.0.1 (außer den Profilen MINIMUM und BASIC-WL). Eine einfache PDF-Datei ist eine sonstige Rechnung."),
+("Wie lange muss ich E-Rechnungen aufbewahren?","Acht Jahre, gerechnet ab dem Ende des Kalenderjahres, in dem die Rechnung ausgestellt wurde (§ 14b UStG). Aufzubewahren ist mindestens der strukturierte Teil, also die XML-Daten, in unveränderter Form. Ein Ausdruck allein reicht nicht."),
+("Was gilt, wenn ich kein Kleinunternehmer mehr bin?","Dann gelten die allgemeinen Regeln: 2027 darfst du Geschäftskunden im Inland weiter Papier- oder PDF-Rechnungen schicken, wenn dein Gesamtumsatz im Vorjahr höchstens 800.000 Euro betrug. Ab 2028 musst du inländischen Geschäftskunden E-Rechnungen ausstellen. Ausgenommen bleiben zum Beispiel Kleinbetragsrechnungen bis 250 Euro."),
+("Brauchen Privatkunden eine E-Rechnung?","Nein. Die E-Rechnungspflicht betrifft nur Leistungen an andere Unternehmer für deren Unternehmen. Privatkunden bekommen weiter Papier- oder PDF-Rechnungen; eine E-Rechnung darfst du ihnen nur mit ihrer Zustimmung schicken."),
+("Darf ich als Kleinunternehmer freiwillig E-Rechnungen schreiben?","Ja. Auch dann gehören die Pflichtangaben nach § 34a UStDV und der Hinweis auf die Steuerbefreiung für Kleinunternehmer in die Rechnung. Privatkunden müssen einer E-Rechnung zustimmen.")]
+er_url="https://solovorlagen.de/e-rechnung-kleinunternehmer.html"
+er_desc="E-Rechnung für Kleinunternehmer: Ausstellen ist keine Pflicht, Empfangen schon. Zeitplan 2025–2028, PDF oder XRechnung, Aufbewahrung und Beispiel."
+er_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><article class="article">
+<p class="eyebrow"><a href="ratgeber.html">Ratgeber</a> · Rechnungen</p>
+<h1 class="serif">E-Rechnung für Kleinunternehmer: Was 2027 und 2028 gilt</h1>
+{ER_BYLINE}
+<div class="answer" id="antwort"><p><strong>Die Antwort in Kürze:</strong> Als Kleinunternehmer musst du <strong>keine E-Rechnungen ausstellen</strong> – weder 2027 noch 2028. Deine Rechnungen darfst du weiter auf Papier oder als PDF verschicken (§&nbsp;34a&nbsp;UStDV). <strong>Empfangen</strong> können musst du E-Rechnungen aber schon seit dem 1.&nbsp;Januar&nbsp;2025; dafür reicht ein E-Mail-Postfach. Erhaltene E-Rechnungen bewahrst du <strong>acht Jahre</strong> im Originalformat auf. Erst wenn du kein Kleinunternehmer mehr bist, kann die Pflicht zum Ausstellen greifen – für Geschäftskunden im Inland spätestens ab 2028.</p></div>
+<nav class="toc" aria-label="Inhalt"><strong>Inhalt</strong><ol>
+<li><a href="#was">Was ist eine E-Rechnung?</a></li><li><a href="#ausstellen">Muss ich E-Rechnungen ausstellen?</a></li><li><a href="#empfangen">E-Rechnungen empfangen</a></li>
+<li><a href="#zeitplan">Zeitplan 2025 bis 2028</a></li><li><a href="#grenze">Wenn du kein Kleinunternehmer mehr bist</a></li><li><a href="#aufbewahren">E-Rechnungen aufbewahren</a></li>
+<li><a href="#beispiel">Beispiel: Saras Übersetzungsbüro</a></li><li><a href="#faq">Häufige Fragen</a></li></ol></nav>
+
+<h2 class="serif" id="was">Was ist eine E-Rechnung – und was nicht?</h2>
+<p>Seit 2025 unterscheidet das Umsatzsteuergesetz zwei Arten von Rechnungen (§&nbsp;14&nbsp;Abs.&nbsp;1&nbsp;UStG):</p>
+<ul><li><strong>E-Rechnung:</strong> eine Rechnung in einem <strong>strukturierten elektronischen Format</strong>, das ein Programm automatisch auslesen kann und das der europäischen Norm EN&nbsp;16931 entspricht. Typische Formate sind <strong>XRechnung</strong> (reine XML-Datei) und <strong>ZUGFeRD</strong> ab Version 2.0.1 (PDF mit eingebetteter XML-Datei; die Profile MINIMUM und BASIC-WL reichen nicht).</li>
+<li><strong>Sonstige Rechnung:</strong> alles andere – also die Rechnung auf Papier und auch die normale <strong>PDF-Datei</strong> per E-Mail. Eine PDF-Rechnung ist also keine E-Rechnung im Sinne des Gesetzes, auch wenn sie elektronisch verschickt wird.</li></ul>
+<p>Für eine sonstige Rechnung, die du elektronisch – etwa als PDF – verschickst, braucht es die Zustimmung des Empfängers. Eine besondere Form ist dafür nicht vorgeschrieben; in der Praxis genügt es, wenn dein Kunde die PDF-Rechnung annimmt.</p>
+
+<h2 class="serif" id="ausstellen">Muss ich als Kleinunternehmer E-Rechnungen ausstellen?</h2>
+<p>Nein. §&nbsp;34a&nbsp;UStDV regelt ausdrücklich, dass Rechnungen von Kleinunternehmern <strong>stets als sonstige Rechnung</strong> übermittelt werden dürfen – abweichend von der E-Rechnungspflicht in §&nbsp;14&nbsp;Abs.&nbsp;2&nbsp;UStG. Diese Ausnahme ist nicht befristet: Sie gilt 2027, 2028 und danach, solange du die Kleinunternehmerregelung nutzt. Das gilt auch dann, wenn dein Kunde ein Unternehmen ist.</p>
+<p>An den Pflichtangaben ändert sich nichts. Auf jede Kleinunternehmer-Rechnung gehören Name und Anschrift von dir und deinem Kunden, deine Steuernummer, USt-IdNr. oder Kleinunternehmer-Identifikationsnummer, das Ausstellungsdatum, die Leistung, der Betrag und der Hinweis auf die Steuerbefreiung, zum Beispiel <em>„Steuerfreie Kleinunternehmerleistung gemäß §&nbsp;19&nbsp;Abs.&nbsp;1&nbsp;UStG.“</em> Fertige Formulierungen und einen Pflichtangaben-Check gibt es im kostenlosen <a href="rechnungstext-kleinunternehmer.html">Rechnungstext-Generator</a>.</p>
+<p>Freiwillig darfst du E-Rechnungen schreiben, zum Beispiel wenn ein großer Geschäftskunde darum bittet. Privatkunden müssen einer E-Rechnung allerdings zustimmen – für sie ist eine Papier- oder PDF-Rechnung ohnehin praktischer.</p>
+
+<h2 class="serif" id="empfangen">Muss ich E-Rechnungen empfangen können?</h2>
+<p>Ja. Seit dem <strong>1.&nbsp;Januar&nbsp;2025</strong> müssen alle Unternehmer im Inland E-Rechnungen empfangen können – eine Übergangsfrist gibt es dafür nicht, und die Kleinunternehmerregelung ändert daran nichts. Inländische Geschäftspartner dürfen dir E-Rechnungen in der Regel schicken, ohne vorher zu fragen – annehmen musst du sie.</p>
+<ul><li><strong>Postfach:</strong> Ein normales E-Mail-Postfach reicht. Ein eigenes Postfach nur für E-Rechnungen ist nicht nötig.</li>
+<li><strong>Lesen:</strong> Eine XRechnung ist eine XML-Datei, die ohne passendes Programm kaum lesbar ist. Du brauchst deshalb einen Viewer, der sie als Rechnung anzeigt – viele Buchhaltungsprogramme können das, es gibt auch kostenlose Anzeigeprogramme.</li>
+<li><strong>Vorsteuer spielt keine Rolle:</strong> Als Kleinunternehmer ziehst du keine Vorsteuer ab. Für deine <a href="euer-kleinunternehmer.html">Einnahmen-Überschuss-Rechnung</a> setzt du den Bruttobetrag als Betriebsausgabe an – egal, ob die Rechnung als E-Rechnung oder als PDF kommt.</li></ul>
+
+<h2 class="serif" id="zeitplan">Zeitplan: Was gilt 2025, 2027 und 2028?</h2>
+<p>Die E-Rechnungspflicht betrifft nur Rechnungen an andere Unternehmer im Inland. Sie wird in Stufen eingeführt (§&nbsp;27&nbsp;Abs.&nbsp;38&nbsp;UStG):</p>
+<div class="tblwrap"><table class="tbl sm"><tr><th>Zeitraum</th><th>Was für Rechnungen an Geschäftskunden gilt</th></tr>
+<tr><td><strong>seit 1.1.2025</strong></td><td>Alle Unternehmer müssen E-Rechnungen empfangen können. Ausstellen dürfen sie weiter Papier- und PDF-Rechnungen.</td></tr>
+<tr><td><strong>2027</strong></td><td>E-Rechnung Pflicht bei mehr als 800.000&nbsp;€ Gesamtumsatz im Vorjahr; darunter Papier und PDF weiter erlaubt.</td></tr>
+<tr><td><strong>ab 2028</strong></td><td>E-Rechnung Pflicht für alle Rechnungen an inländische Geschäftskunden – außer z.&nbsp;B. Kleinbetragsrechnungen bis 250&nbsp;€.</td></tr>
+<tr><td><strong>Klein&shy;unternehmer</strong></td><td>Empfangen seit 2025 Pflicht; Ausstellen auf Papier oder als PDF bleibt in allen Jahren erlaubt.</td></tr></table></div>
+<p>Rechnungen an <strong>Privatkunden</strong> sind von der E-Rechnungspflicht nicht betroffen – das gilt für alle Unternehmer.</p>
+
+<h2 class="serif" id="grenze">Was gilt, wenn du kein Kleinunternehmer mehr bist?</h2>
+<p>Die Ausnahme hängt an deinem Status als Kleinunternehmer. Den verlierst du, wenn dein Umsatz im Vorjahr über <strong>25.000&nbsp;€</strong> lag oder du im laufenden Jahr <strong>100.000&nbsp;€</strong> überschreitest – Details im Ratgeber zur <a href="kleinunternehmerregelung-grenzen.html">Kleinunternehmerregelung</a>. Danach gilt für Rechnungen an inländische Geschäftskunden:</p>
+<ul><li><strong>2027:</strong> Lag dein Gesamtumsatz 2026 bei höchstens 800.000&nbsp;€, darfst du weiter Papier- oder PDF-Rechnungen schicken. Für ehemalige Kleinunternehmer ist das praktisch immer der Fall.</li>
+<li><strong>Ab 2028:</strong> Du musst Geschäftskunden im Inland E-Rechnungen ausstellen. Ausgenommen bleiben Kleinbetragsrechnungen bis 250&nbsp;€ (brutto) und Fahrausweise.</li></ul>
+<p>Liegst du 2026 knapp unter 25.000&nbsp;€ Umsatz, lohnt sich deshalb ein Blick nach vorn: Wer 2027 über die Grenze kommt, ist 2028 kein Kleinunternehmer mehr und braucht dann für Geschäftskunden eine Software, die E-Rechnungen erzeugen kann. Wo du gerade stehst, zeigt der kostenlose <a href="grenzen-check.html">Umsatzgrenzen-Check</a>.</p>
+
+<h2 class="serif" id="aufbewahren">Wie bewahre ich E-Rechnungen auf?</h2>
+<p>Rechnungen bewahrst du <strong>acht Jahre</strong> auf; die Frist beginnt mit dem Ende des Kalenderjahres, in dem die Rechnung ausgestellt wurde (§&nbsp;14b&nbsp;Abs.&nbsp;1&nbsp;UStG). Eine im Jahr 2026 ausgestellte Rechnung darfst du also frühestens nach dem 31.&nbsp;Dezember&nbsp;2034 löschen.</p>
+<ul><li>Aufzubewahren ist mindestens der <strong>strukturierte Teil</strong> der E-Rechnung, also die XML-Daten, und zwar <strong>unverändert</strong>. Ein Ausdruck oder ein Screenshot allein reicht nicht.</li>
+<li>Bei ZUGFeRD-Rechnungen sind die XML-Daten maßgeblich. Am einfachsten bewahrst du die komplette Datei so auf, wie du sie bekommen hast.</li>
+<li>Praktisch: ein fester Ordner pro Jahr, Dateien nicht umbenennen oder bearbeiten, regelmäßig sichern.</li></ul>
+
+<h2 class="serif" id="beispiel">Beispiel: Saras Übersetzungsbüro</h2>
+<p><strong>Sara</strong> übersetzt freiberuflich Texte für Agenturen und Privatkunden. 2025 hatte sie 18.000&nbsp;€ Umsatz, für 2026 rechnet sie mit 22.500&nbsp;€. Damit ist sie 2026 und auch 2027 Kleinunternehmerin (solange sie 2027 nicht über 100.000&nbsp;€ kommt).</p>
+<div class="tblwrap"><table class="tbl sm"><tr><th>Situation</th><th>Was gilt</th></tr>
+<tr><td>Sara schreibt 2027 einer Agentur eine Rechnung über 1.200&nbsp;€</td><td>PDF per E-Mail erlaubt – mit Hinweis auf §&nbsp;19&nbsp;UStG, ohne Umsatzsteuer</td></tr>
+<tr><td>Sara übersetzt eine Urkunde für eine Privatkundin</td><td>Papier- oder PDF-Rechnung; keine E-Rechnung nötig</td></tr>
+<tr><td>Ihr Software-Anbieter schickt ihr eine XRechnung</td><td>Sara muss sie annehmen und die XML-Datei acht Jahre unverändert aufbewahren</td></tr>
+<tr><td>Sara macht 2027 überraschend 31.000&nbsp;€ Umsatz</td><td>2028 ist sie keine Kleinunternehmerin mehr: Sie weist Umsatzsteuer aus und stellt Agenturen E-Rechnungen aus</td></tr></table></div>
+<p>Für Sara heißt das: Bis Ende 2027 ändert sich bei ihren eigenen Rechnungen nichts. Sie sollte aber ihren Umsatz im Blick behalten, damit sie rechtzeitig weiß, ob sie 2028 eine E-Rechnungs-Software braucht.</p>
+
+<div class="cta"><h3>Rechnungen als Kleinunternehmer – ohne E-Rechnungs-Software</h3><p>Der Rechnungs-Generator ist eine Excel-Vorlage für Kleinunternehmer: Rechnungen mit allen Pflichtangaben nach §&nbsp;34a&nbsp;UStDV und dem Hinweis auf die Steuerbefreiung, druckfertig – zum Drucken oder über Excel als PDF speichern. Dazu Kundenliste, Rechnungsbuch mit offenen Posten und eine fertige Zahlungserinnerung. E-Rechnungen im XML-Format erstellt er nicht – die brauchst du als Kleinunternehmer auch nicht.</p><a class="btn" href="rechnung.html">Rechnungs-Generator ansehen (15&nbsp;€)</a></div>
+
+<h2 class="serif" id="faq">Häufige Fragen</h2>
+<div class="faq" style="max-width:none">{faq_html(ER_FAQ)}</div>
+
+<h2 class="serif">Quellen</h2>
+{sources([("§ 14 UStG – Ausstellung von Rechnungen (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ustg_1980/__14.html"),
+("§ 14b UStG – Aufbewahrung von Rechnungen (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ustg_1980/__14b.html"),
+("§ 27 UStG – Allgemeine Übergangsvorschriften, Abs. 38 (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ustg_1980/__27.html"),
+("§ 34a UStDV – Rechnungen von Kleinunternehmern (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ustdv_1980/__34a.html"),
+("§ 33 UStDV – Rechnungen über Kleinbeträge (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ustdv_1980/__33.html"),
+("§ 19 UStG – Besteuerung der Kleinunternehmer (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ustg_1980/__19.html"),
+("BMF-Schreiben vom 15.10.2025: Einführung der obligatorischen E-Rechnung (PDF)","https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Steuerarten/Umsatzsteuer/Umsatzsteuer-Anwendungserlass/2025-10-15-einfuehrung-obligatorische-e-rechnung.pdf?__blob=publicationFile&v=3"),
+("BMF: Fragen und Antworten zur E-Rechnung","https://www.bundesfinanzministerium.de/Content/DE/FAQ/e-rechnung.html")])}
+{DISCL}
+</article></div>"""
+er_head=EXTRA_CSS+ld(article_ld("E-Rechnung für Kleinunternehmer: Was 2027 und 2028 gilt",er_desc,er_url,ER_ISO))+ld(faq_ld(ER_FAQ))+ld(crumbs([("Solovorlagen","https://solovorlagen.de/"),("Ratgeber","https://solovorlagen.de/ratgeber.html"),("E-Rechnung für Kleinunternehmer","https://solovorlagen.de/e-rechnung-kleinunternehmer.html")]))
+page("E-Rechnung für Kleinunternehmer 2027: Was gilt? | Solovorlagen",er_desc,er_body,"e-rechnung-kleinunternehmer.html",er_head)
+
 exec(open(os.path.join(HERE,"tools.py")).read())
 
 # ---------------- Ratgeber-Übersicht ----------------
@@ -687,15 +776,16 @@ rg_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><div 
 <a class="pcard" href="euer-kleinunternehmer.html"><div class="pbody"><h3>EÜR für Kleinunternehmer: So funktioniert die Einnahmen-Überschuss-Rechnung</h3><p>Zahlungsdatum statt Rechnungsdatum, Ausgaben brutto, was absetzbar ist, Beispielrechnung, Anlage EÜR und Fristen.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 <a class="pcard" href="homeoffice-pauschale-selbststaendige.html"><div class="pbody"><h3>Homeoffice-Pauschale 2026 für Selbstständige</h3><p>6 € je Tag bis 1.260 €, welche Tage zählen, Kundentermine, Arbeitszimmer und Beispielrechnung.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 <a class="pcard" href="nebengewerbe-anmelden.html"><div class="pbody"><h3>Nebengewerbe anmelden 2026: Ablauf, Kosten und Steuern</h3><p>Gewerbeamt und Fragebogen, Gewerbe oder freiberuflich, Kleinunternehmerregelung, 410-€-Grenze, Krankenversicherung und Beispiel.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
+<a class="pcard" href="e-rechnung-kleinunternehmer.html"><div class="pbody"><h3>E-Rechnung für Kleinunternehmer: Was 2027 und 2028 gilt</h3><p>Ausstellen keine Pflicht, Empfangen schon: PDF oder XRechnung, Zeitplan bis 2028, Aufbewahrung und Beispiel.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 </div>
 <h2 class="serif" id="rechner">Kostenlose Rechner</h2>
 <div class="grid2">{rc_cards}</div>
 </div></div>"""
-page("Ratgeber für Selbstständige & Kleinunternehmer | Solovorlagen","Ratgeber für Selbstständige: Kleinunternehmerregelung 2026, Nebengewerbe, Stundensatz, Steuerrücklage, EÜR, Homeoffice-Pauschale und kostenlose Rechner – Umsatzgrenzen-Check, Rechnungstext, GWG und Fahrtkosten.",rg_body,"ratgeber.html",EXTRA_CSS)
+page("Ratgeber für Selbstständige & Kleinunternehmer | Solovorlagen","Ratgeber für Selbstständige: Kleinunternehmerregelung 2026, Nebengewerbe, Stundensatz, Steuerrücklage, EÜR, E-Rechnung, Homeoffice-Pauschale und kostenlose Rechner – Umsatzgrenzen-Check, Rechnungstext, GWG und Fahrtkosten.",rg_body,"ratgeber.html",EXTRA_CSS)
 
 # ---------------- sitemap, robots, llms.txt ----------------
-urls=["","rechner.html","grenzen-check.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html","kleinunternehmerregelung-grenzen.html","stundensatz-berechnen.html","steuerruecklage-berechnen.html","euer-kleinunternehmer.html","homeoffice-pauschale-selbststaendige.html","nebengewerbe-anmelden.html","ratgeber.html","paket.html","cockpit.html","rechnung.html","stundensatz.html","fahrtenbuch.html","afa.html"]
-open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>https://solovorlagen.de/{u}</loc><lastmod>{NG_ISO if u in ("nebengewerbe-anmelden.html","ratgeber.html","euer-kleinunternehmer.html") else HO_ISO if u=="homeoffice-pauschale-selbststaendige.html" else EU_ISO if u in ("rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html") else SR_ISO if u=="steuerruecklage-berechnen.html" else ISO}</lastmod></url>\n" for u in urls)+"</urlset>\n")
+urls=["","rechner.html","grenzen-check.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html","kleinunternehmerregelung-grenzen.html","stundensatz-berechnen.html","steuerruecklage-berechnen.html","euer-kleinunternehmer.html","homeoffice-pauschale-selbststaendige.html","nebengewerbe-anmelden.html","e-rechnung-kleinunternehmer.html","ratgeber.html","paket.html","cockpit.html","rechnung.html","stundensatz.html","fahrtenbuch.html","afa.html"]
+open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>https://solovorlagen.de/{u}</loc><lastmod>{ER_ISO if u in ("e-rechnung-kleinunternehmer.html","ratgeber.html","kleinunternehmerregelung-grenzen.html") else NG_ISO if u in ("nebengewerbe-anmelden.html","euer-kleinunternehmer.html") else HO_ISO if u=="homeoffice-pauschale-selbststaendige.html" else EU_ISO if u in ("rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html") else SR_ISO if u=="steuerruecklage-berechnen.html" else ISO}</lastmod></url>\n" for u in urls)+"</urlset>\n")
 open(os.path.join(OUT,"robots.txt"),"w").write("User-agent: *\nAllow: /\n\nSitemap: https://solovorlagen.de/sitemap.xml\n")
 open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 > Excel-Vorlagen und Ratgeber für Selbstständige und Kleinunternehmer in Deutschland (Stand 2026). Betreiber: Felix Merklinger-Lötzsch, Aßlar.
@@ -707,6 +797,7 @@ open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 - [EÜR für Kleinunternehmer](https://solovorlagen.de/euer-kleinunternehmer.html): Einnahmen-Überschuss-Rechnung nach § 4 Abs. 3 EStG, Zufluss-/Abflussprinzip (§ 11 EStG, 10-Tage-Regel), Kleinunternehmer tragen Ausgaben brutto ein, GWG-Grenzen netto, Beispiel (21.600 € Einnahmen, 3.634 € Ausgaben, 17.966 € Gewinn), Anlage EÜR elektronisch (§ 60 Abs. 4 EStDV), Fristen 2026: 02.08.2027 bzw. 29.02.2028 mit Beratung, Belege 8 Jahre / Aufzeichnungen 10 Jahre.
 - [Homeoffice-Pauschale 2026 für Selbstständige](https://solovorlagen.de/homeoffice-pauschale-selbststaendige.html): Tagespauschale 6 € je Tag, höchstens 1.260 € (210 Tage), § 4 Abs. 5 Satz 1 Nr. 6c EStG, Betriebsausgabe in der EÜR, kein Arbeitszimmer nötig, Tage überwiegend zu Hause ohne Aufsuchen der ersten Betriebsstätte; ohne anderen Arbeitsplatz auch Tage überwiegend beim Kunden, wenn zum Teil zu Hause gearbeitet wird; pro Tag nur einmal, Höchstbetrag für alle Tätigkeiten; Arbeitszimmer nur als Mittelpunkt (tatsächliche Kosten oder Jahrespauschale 1.260 €), nicht kombinierbar; Arbeitsmittel, Telefon/Internet und Fahrtkosten zusätzlich; Beispiel Kleinunternehmer 220 Tage → 1.260 €.
 - [Nebengewerbe anmelden 2026](https://solovorlagen.de/nebengewerbe-anmelden.html): Gewerbeanzeige beim Gewerbeamt gleichzeitig mit Beginn (§ 14 GewO, Bußgeld bis 1.000 €), Gebühr je nach Gemeinde meist ca. 15–65 €, Fragebogen zur steuerlichen Erfassung über ELSTER innerhalb eines Monats (§ 138 AO), Freiberufler nur beim Finanzamt; Kleinunternehmerregelung möglich (Grenzen pro Person, Gehalt zählt nicht); Steuererklärungspflicht ab mehr als 410 € Nebeneinkünften (§ 46 EStG, Härteausgleich bis 820 €), IHK-beitragsfrei bis 5.200 € Gewerbeertrag, Gewerbesteuer-Freibetrag 24.500 €; GKV-Pflichtversicherte: keine Beiträge auf den Nebengewinn (§ 226 SGB V), freiwillig Versicherte schon; Beispiel Vintage-Shop 8.400 € Umsatz, 3.300 € Gewinn.
+- [E-Rechnung für Kleinunternehmer](https://solovorlagen.de/e-rechnung-kleinunternehmer.html): Kleinunternehmer müssen keine E-Rechnungen ausstellen (§ 34a UStDV: stets sonstige Rechnung erlaubt, unbefristet), müssen sie aber seit 1.1.2025 empfangen können (E-Mail-Postfach reicht); E-Rechnung = strukturiertes Format nach EN 16931 (XRechnung, ZUGFeRD ab 2.0.1 außer MINIMUM/BASIC-WL), PDF = sonstige Rechnung; Zeitplan § 27 Abs. 38 UStG: 2027 Pflicht bei Vorjahresumsatz über 800.000 €, ab 2028 für alle B2B im Inland (Ausnahme Kleinbetragsrechnungen bis 250 €); Privatkunden nicht betroffen; Aufbewahrung 8 Jahre (§ 14b UStG), strukturierter Teil unverändert; Beispiel Übersetzerin 22.500 € Umsatz.
 
 ## Werkzeuge
 - [Umsatzgrenzen-Check 2026](https://solovorlagen.de/grenzen-check.html): kostenloser Online-Rechner zur Kleinunternehmergrenze.

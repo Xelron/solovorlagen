@@ -163,7 +163,7 @@ gw_body = f"""<div class="wrap" style="padding-top:40px;padding-bottom:24px">
 <div class="res" id="res" aria-live="polite"></div>
 </form></div>
 <div>
-<h2 class="serif" style="margin-top:0">Die Grenzen 2026 auf einen Blick</h2>
+<h2 class="serif" id="grenzen" style="margin-top:0">Die Grenzen 2026 auf einen Blick</h2>
 <div class="tblwrap"><table class="tbl"><tr><th>Netto-Preis</th><th>Möglichkeiten</th></tr>
 <tr><td>bis 250&nbsp;€</td><td>Sofort als Betriebsausgabe, keine Aufzeichnung</td></tr>
 <tr><td>250,01–800&nbsp;€</td><td>GWG-Sofortabschreibung (Verzeichnis) <em>oder</em> Sammelposten</td></tr>

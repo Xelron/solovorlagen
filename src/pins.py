@@ -81,6 +81,15 @@ P7=[
 ("Kleinunternehmer-Cockpit","Umsatzgrenzen-Ampel, Einnahmen, Gewinn","Excel-Vorlage für Kleinunternehmer","img/cockpit.jpg|fit","cockpit.html#funktionen","Excel-Vorlagen für Selbstständige","",""),
 ("Steuerrücklage in 4 Schritten","Damit der Steuerbescheid kein Schreck wird","Einfach umsetzbar – ab der ersten Rechnung","rl4","steuerruecklage-berechnen.html#praxis","Selbstständig: Preise & Geld","",""),
 ]
+P8=[
+("E-Rechnung als Kleinunternehmer?","Ausstellen: nein. Empfangen: ja.","Auch 2027 und 2028 – § 34a UStDV","erjn","e-rechnung-kleinunternehmer.html#antwort","Kleinunternehmer Tipps","",""),
+("Im Dezember angeschafft?","GWG bis 800 € trotzdem voll absetzbar","Keine Kürzung nach Monaten – anders als bei der AfA","dez","gwg-rechner.html#grenzen","Selbstständig: Preise & Geld","",""),
+("E-Rechnung: Was wann gilt","Der Zeitplan bis 2028","Für Kleinunternehmer bleibt PDF erlaubt","erzeit","e-rechnung-kleinunternehmer.html#zeitplan","Kleinunternehmer Tipps","",""),
+("Fahrtenbuch-Vorlage","Fahrtkosten fürs Privatauto automatisch","0,30 € je km · 0,38 € Entfernungspauschale","img/fahrten-02.jpg|fit","fahrtenbuch.html#funktionen","Excel-Vorlagen für Selbstständige","",""),
+("Kleinunternehmer 2027?","Dein Umsatz 2026 entscheidet","Die Grenze fürs Folgejahr: 25.000 €","ku27","kleinunternehmerregelung-grenzen.html#beispiele","Kleinunternehmer Tipps","",""),
+("XRechnung bekommen?","Die XML-Datei 8 Jahre aufbewahren","Ein Ausdruck allein reicht nicht","erarch","e-rechnung-kleinunternehmer.html#aufbewahren","Kleinunternehmer Tipps","",""),
+("Rechnungs-Generator für Kleinunternehmer","Pflichtangaben, Rechnungsbuch, offene Posten","PDF bleibt für Kleinunternehmer erlaubt","img/rechnung-02.jpg|fit","rechnung.html#funktionen","Excel-Vorlagen für Selbstständige","",""),
+]
 CSS="""*{box-sizing:border-box}body{margin:0;width:1000px;height:1500px;font-family:'DejaVu Sans',Arial,sans-serif}
 .p{width:1000px;height:1500px;padding:80px 72px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
 .serif{font-family:'DejaVu Serif',Georgia,serif;font-weight:700}.brand{font-size:30px;letter-spacing:.06em}
@@ -161,6 +170,21 @@ def render(i,t):
     elif extra=="rl4":
         st=[("Satz festlegen","Durchschnittssteuersatz plus Puffer"),("Extra-Konto","Tagesgeld nur für Steuern"),("Sofort umbuchen","bei jedem Zahlungseingang"),("Vierteljährlich prüfen","passt der Satz zum Gewinn?")]
         mid='<div style="background:#fff;border-radius:28px;padding:30px 40px;box-shadow:0 12px 32px rgba(31,58,95,.12)">'+"".join(f'<div style="display:flex;gap:26px;align-items:center;padding:16px 0;{"border-top:2px solid #E3E8EE" if k else ""}"><span class=serif style="flex:none;width:70px;height:70px;border-radius:18px;background:#1F3A5F;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:40px">{k+1}</span><div><div class=serif style="font-size:42px;color:#1F3A5F">{t}</div><div style="font-size:30px;color:#5A6573">{d}</div></div></div>' for k,(t,d) in enumerate(st))+'</div>'
+    elif extra=="erjn":
+        card=lambda h,m,mb,mc,t,d: f'<div style="display:flex;gap:28px;align-items:center;background:#fff;border-radius:24px;padding:30px 34px;margin-bottom:22px;box-shadow:0 10px 26px rgba(0,0,0,.14)"><span style="flex:none;width:96px;height:96px;border-radius:50%;background:{mb};color:{mc};display:inline-flex;align-items:center;justify-content:center;font-size:56px;font-weight:700">{m}</span><div><div style="font-size:28px;color:#5A6573;font-weight:700">{h}</div><div class=serif style="font-size:50px;color:#1F3A5F">{t}</div><div style="font-size:30px;color:#3A4654;margin-top:4px">{d}</div></div></div>'
+        mid='<div>'+card("E-RECHNUNG AUSSTELLEN","✕","#F8D7DA","#842029","Keine Pflicht","Papier und PDF bleiben erlaubt")+card("E-RECHNUNG EMPFANGEN","✓","#D4EDDA","#0F5132","Pflicht seit 2025","Ein E-Mail-Postfach reicht")+'</div>'
+    elif extra=="dez":
+        rows=[("bis 800 € (GWG)","voller Betrag","#D4EDDA","#0F5132"),("Sammelposten","volles Fünftel","#FFF3CD","#664D03"),("darüber: AfA","nur 1/12 der Jahresrate","#F8D7DA","#842029")]
+        mid=f'<div style="background:{"#fff" if bg=="#F6F7F4" else "rgba(255,255,255,.12)"};border-radius:28px;padding:34px 38px"><div style="font-size:28px;color:{mut};font-weight:700;margin-bottom:16px">ANSCHAFFUNG IM DEZEMBER · ABZUG 2026</div>'+"".join(f'<div class=light style="background:{b};color:{c};justify-content:space-between;font-size:32px;white-space:nowrap"><span>{l}</span><span>{r}</span></div>' for l,r,b,c in rows)+f'<div style="font-size:23px;color:{mut};margin-top:8px;white-space:nowrap">Grenzen netto · Ausnahme: Computer &amp; Software voll absetzbar</div></div>'
+    elif extra=="erzeit":
+        rows=[("2025","Alle Unternehmer müssen E&#8209;Rechnungen empfangen können"),("2027","Ausstellen Pflicht bei mehr als 800.000 € Vorjahresumsatz"),("2028","Pflicht für Rechnungen über 250 € (brutto) an Unternehmen im Inland")]
+        mid='<div style="background:#fff;border-radius:28px;padding:30px 38px;box-shadow:0 12px 32px rgba(31,58,95,.12)">'+"".join(f'<div style="display:flex;gap:28px;align-items:center;padding:18px 0;{"border-top:2px solid #E3E8EE" if k else ""}"><span class=serif style="flex:none;width:150px;font-size:58px;color:#1F3A5F">{y}</span><span style="font-size:33px;color:#1B2430">{t}</span></div>' for k,(y,t) in enumerate(rows))+'<div style="background:#D4EDDA;color:#0F5132;border-radius:18px;padding:22px 26px;margin-top:14px;font-size:33px;font-weight:700">Kleinunternehmer: Papier und PDF bleiben erlaubt</div></div>'
+    elif extra=="ku27":
+        card=lambda h,v,d,c: f'<div style="background:#fff;border-radius:24px;padding:30px 36px;margin-bottom:22px;border-left:16px solid {c};box-shadow:0 10px 26px rgba(0,0,0,.14)"><div style="font-size:28px;color:#5A6573;font-weight:700">{h}</div><div class=serif style="font-size:52px;color:#1F3A5F">{v}</div><div style="font-size:30px;color:#1B2430;margin-top:4px">{d}</div></div>'
+        mid='<div>'+card("UMSATZ 2026 BIS 25.000 €","2027 Kleinunternehmer","wenn du 2027 nicht über 100.000 € kommst","#2E7D6B")+card("UMSATZ 2026 ÜBER 25.000 €","2027 Regelbesteuerung","Umsatzsteuer ab dem 1. Januar 2027 ausweisen","#E0A800")+'</div>'
+    elif extra=="erarch":
+        it=[("✓","#D4EDDA","#0F5132","Originaldatei unverändert speichern"),("✓","#D4EDDA","#0F5132","Ordner pro Jahr, regelmäßig sichern"),("✓","#D4EDDA","#0F5132","Rechnung 2026: bis Ende 2034"),("✕","#F8D7DA","#842029","Nur ausdrucken oder Screenshot")]
+        mid=f'<div style="background:#fff;border-radius:28px;padding:30px 38px;box-shadow:0 12px 32px rgba(31,58,95,.12)"><div style="display:flex;gap:22px;align-items:center;margin-bottom:12px"><span style="flex:none;width:84px;height:104px;border-radius:12px;background:#1F3A5F;color:#fff;display:inline-flex;align-items:flex-end;justify-content:center;font-size:24px;font-weight:700;padding-bottom:14px">XML</span><span class=serif style="font-size:44px;color:#1F3A5F">rechnung.xml</span></div>'+"".join(f'<div style="display:flex;gap:22px;align-items:center;font-size:34px;color:#1B2430;padding:12px 0;border-top:2px solid #E3E8EE"><span style="flex:none;width:50px;height:50px;border-radius:50%;background:{b};color:{c};display:inline-flex;align-items:center;justify-content:center;font-weight:700">{m}</span>{t}</div>' for m,b,c,t in it)+'</div>'
     elif extra and extra.startswith("img/") and extra.endswith("|fit"):
         from PIL import Image as _I
         fp=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","docs",extra[:-4]); px=_I.open(fp).convert("RGB").getpixel((5,5))
@@ -175,7 +199,7 @@ def render(i,t):
     return h
 import sys
 BATCH=int(sys.argv[1]) if len(sys.argv)>1 else 2
-LST,OFF,START,CSVN={1:(P,0,datetime.date(2026,10,16),"pinterest-pins.csv"),2:(P2,12,datetime.date(2026,10,17),"pinterest-pins-2.csv"),3:(P3,18,datetime.date(2026,10,18),"pinterest-pins-3.csv"),4:(P4,19,datetime.date(2026,10,25),None),5:(P5,26,datetime.date(2026,11,1),None),6:(P6,33,datetime.date(2026,11,8),None),7:(P7,40,datetime.date(2026,11,15),None)}[BATCH]
+LST,OFF,START,CSVN={1:(P,0,datetime.date(2026,10,16),"pinterest-pins.csv"),2:(P2,12,datetime.date(2026,10,17),"pinterest-pins-2.csv"),3:(P3,18,datetime.date(2026,10,18),"pinterest-pins-3.csv"),4:(P4,19,datetime.date(2026,10,25),None),5:(P5,26,datetime.date(2026,11,1),None),6:(P6,33,datetime.date(2026,11,8),None),7:(P7,40,datetime.date(2026,11,15),None),8:(P8,47,datetime.date(2026,11,22),None)}[BATCH]
 ROOT=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..")
 with sync_playwright() as p:
     b=p.chromium.launch(); pg=b.new_page(viewport={'width':1000,'height':1500})

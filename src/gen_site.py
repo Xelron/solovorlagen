@@ -222,7 +222,7 @@ for p in P:
 </div>
 <div><img class="heroimg" src="img/{p['img']}" width="1000" height="1000" alt="Produktbild {html.escape(p['name'])}"></div>
 </div>
-<section class="band"><div class="wrap">
+<section class="band" id="inhalt"><div class="wrap">
 <h2 class="serif">Das bekommst du</h2>
 <div class="split"><div><table class="spec">{tbl}</table></div>
 {f'<div class="shots">{shots}</div>' if shots else ''}</div>

@@ -90,6 +90,15 @@ P8=[
 ("XRechnung bekommen?","Die XML-Datei 8 Jahre aufbewahren","Ein Ausdruck allein reicht nicht","erarch","e-rechnung-kleinunternehmer.html#aufbewahren","Kleinunternehmer Tipps","",""),
 ("Rechnungs-Generator für Kleinunternehmer","Pflichtangaben, Rechnungsbuch, offene Posten","PDF bleibt für Kleinunternehmer erlaubt","img/rechnung-02.jpg|fit","rechnung.html#funktionen","Excel-Vorlagen für Selbstständige","",""),
 ]
+P9=[
+("Jahresende-Checkliste 2026","7 Punkte vor dem 31.&nbsp;Dezember","Für Kleinunternehmer und Selbstständige","jcheck","jahresende-checkliste-kleinunternehmer.html#checkliste","Kleinunternehmer Tipps","",""),
+("Kleinunternehmer-Cockpit","Jeder Monat auf einen Blick","Einnahmen, Ausgaben, Umsatz kumuliert","img/monate.jpg|fit","cockpit.html#inhalt","Excel-Vorlagen für Selbstständige","",""),
+("Ausgaben vorziehen?","Im Dezember bezahlt zählt meist für 2026","Ausnahme: die 10-Tage-Regel","vorzieh","jahresende-checkliste-kleinunternehmer.html#ausgaben","Selbstständig: Preise & Geld","",""),
+("Zählt heute als Homeoffice-Tag?","2 Bedingungen – 6 € je Tag","Höchstens 1.260 € im Jahr","ho2","homeoffice-pauschale-selbststaendige.html#voraussetzungen","Kleinunternehmer Tipps","",""),
+("Alte Belege aussortieren?","Ab 2027 dürfen Belege bis 2018 weg","8 Jahre für Rechnungen und Quittungen","beleg","jahresende-checkliste-kleinunternehmer.html#aufbewahrung","Kleinunternehmer Tipps","",""),
+("Stundensatz-Rechner","Was musst du pro Stunde verlangen?","Excel-Vorlage für Selbstständige","img/stundensatz-01.jpg|fit","stundensatz.html#funktionen","Excel-Vorlagen für Selbstständige","",""),
+("Die Stundensatz-Formel","Umsatzziel ÷ abrechenbare Stunden","Mit Steuern, Versicherungen und Puffer","formel","stundensatz-berechnen.html#formel","Selbstständig: Preise & Geld","",""),
+]
 CSS="""*{box-sizing:border-box}body{margin:0;width:1000px;height:1500px;font-family:'DejaVu Sans',Arial,sans-serif}
 .p{width:1000px;height:1500px;padding:80px 72px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
 .serif{font-family:'DejaVu Serif',Georgia,serif;font-weight:700}.brand{font-size:30px;letter-spacing:.06em}
@@ -185,6 +194,21 @@ def render(i,t):
     elif extra=="erarch":
         it=[("✓","#D4EDDA","#0F5132","Originaldatei unverändert speichern"),("✓","#D4EDDA","#0F5132","Ordner pro Jahr, regelmäßig sichern"),("✓","#D4EDDA","#0F5132","Rechnung 2026: bis Ende 2034"),("✕","#F8D7DA","#842029","Nur ausdrucken oder Screenshot")]
         mid=f'<div style="background:#fff;border-radius:28px;padding:30px 38px;box-shadow:0 12px 32px rgba(31,58,95,.12)"><div style="display:flex;gap:22px;align-items:center;margin-bottom:12px"><span style="flex:none;width:84px;height:104px;border-radius:12px;background:#1F3A5F;color:#fff;display:inline-flex;align-items:flex-end;justify-content:center;font-size:24px;font-weight:700;padding-bottom:14px">XML</span><span class=serif style="font-size:44px;color:#1F3A5F">rechnung.xml</span></div>'+"".join(f'<div style="display:flex;gap:22px;align-items:center;font-size:34px;color:#1B2430;padding:12px 0;border-top:2px solid #E3E8EE"><span style="flex:none;width:50px;height:50px;border-radius:50%;background:{b};color:{c};display:inline-flex;align-items:center;justify-content:center;font-weight:700">{m}</span>{t}</div>' for m,b,c,t in it)+'</div>'
+    elif extra=="jcheck":
+        it=["Umsatz 2026 prüfen","Offene Rechnungen schreiben","Ausgaben planen","Anschaffungen prüfen","Vorauszahlung 10.12.","Homeoffice & Fahrten","Belege ordnen"]
+        mid='<div style="background:#fff;border-radius:28px;padding:22px 40px">'+"".join(f'<div style="display:flex;gap:24px;align-items:center;font-size:36px;color:#1B2430;padding:11px 0;{"border-top:2px solid #E3E8EE" if k else ""}"><span style="flex:none;width:50px;height:50px;border-radius:12px;background:#D4EDDA;color:#0F5132;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:32px">✓</span>{t}</div>' for k,t in enumerate(it))+'</div>'
+    elif extra=="vorzieh":
+        row=lambda l,d,r,b,c: f'<div style="display:flex;justify-content:space-between;align-items:center;gap:20px;background:#fff;border-radius:22px;padding:24px 30px;margin-bottom:18px;box-shadow:0 10px 26px rgba(0,0,0,.14)"><div><div class=serif style="font-size:40px;color:#1F3A5F">{l}</div><div style="font-size:28px;color:#5A6573">{d}</div></div><span style="flex:none;background:{b};color:{c};border-radius:16px;padding:14px 22px;font-size:34px;font-weight:700">{r}</span></div>'
+        mid='<div>'+row("Software-Abo 2027","bezahlt am 15.12.2026","2026 ✓","#D4EDDA","#0F5132")+row("Bürostuhl (GWG)","geliefert und bezahlt am 20.12.","2026 ✓","#D4EDDA","#0F5132")+row("Januarmiete","fällig 1.1., bezahlt 28.12.","2027","#FFF3CD","#664D03")+'</div>'
+    elif extra=="ho2":
+        card=lambda n,t,d: f'<div style="display:flex;gap:28px;align-items:center;background:#fff;border-radius:24px;padding:28px 32px;margin-bottom:22px;box-shadow:0 10px 26px rgba(0,0,0,.14)"><span class=serif style="flex:none;width:92px;height:92px;border-radius:50%;background:#2E7D6B;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:52px">{n}</span><div><div class=serif style="font-size:44px;color:#1F3A5F">{t}</div><div style="font-size:30px;color:#3A4654;margin-top:4px">{d}</div></div></div>'
+        mid='<div>'+card("1","Überwiegend zu Hause","mehr als die Hälfte der Arbeitszeit")+card("2","Keine Betriebsstätte","nicht ins eigene Büro gefahren")+'</div>'
+    elif extra=="beleg":
+        lt=bg=='#F6F7F4'
+        rows=[("Rechnungen, Quittungen","8 Jahre","2018 und früher"),("Aufzeichnungen, Einnahmenliste","10 Jahre","2016 und früher"),("Geschäftsbriefe","6 Jahre","2020 und früher")]
+        mid='<div style="background:#fff;border-radius:28px;padding:30px 38px;box-shadow:0 12px 32px rgba(31,58,95,.12)"><div style="font-size:28px;color:#5A6573;font-weight:700;margin-bottom:8px">AB 1.1.2027 VERNICHTEN</div>'+"".join(f'<div style="padding:16px 0;border-top:2px solid #E3E8EE"><div style="display:flex;justify-content:space-between;font-size:34px;color:#1B2430"><span>{a}</span><b>{b}</b></div><div class=serif style="font-size:46px;color:#2E7D6B">{c}</div></div>' for a,b,c in rows)+'<div style="font-size:24px;color:#5A6573;margin-top:8px">Ausnahme z. B.: Kaufbelege für Anschaffungen, die du noch abschreibst</div></div>'
+    elif extra=="formel":
+        mid=f'<div style="background:rgba(255,255,255,.12);border-radius:28px;padding:40px 44px;text-align:center"><div class=serif style="font-size:48px;color:{fg}">Umsatzziel pro Jahr</div><div style="height:6px;background:{acc};margin:22px 40px;border-radius:3px"></div><div class=serif style="font-size:48px;color:{fg}">abrechenbare Stunden</div><div style="font-size:32px;color:{mut};margin-top:30px">Beispiel: 63.910 € ÷ 984 h</div><div class=serif style="font-size:110px;color:{acc};line-height:1.15">≈ 65 €</div></div>'
     elif extra and extra.startswith("img/") and extra.endswith("|fit"):
         from PIL import Image as _I
         fp=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","docs",extra[:-4]); px=_I.open(fp).convert("RGB").getpixel((5,5))
@@ -199,7 +223,7 @@ def render(i,t):
     return h
 import sys
 BATCH=int(sys.argv[1]) if len(sys.argv)>1 else 2
-LST,OFF,START,CSVN={1:(P,0,datetime.date(2026,10,16),"pinterest-pins.csv"),2:(P2,12,datetime.date(2026,10,17),"pinterest-pins-2.csv"),3:(P3,18,datetime.date(2026,10,18),"pinterest-pins-3.csv"),4:(P4,19,datetime.date(2026,10,25),None),5:(P5,26,datetime.date(2026,11,1),None),6:(P6,33,datetime.date(2026,11,8),None),7:(P7,40,datetime.date(2026,11,15),None),8:(P8,47,datetime.date(2026,11,22),None)}[BATCH]
+LST,OFF,START,CSVN={1:(P,0,datetime.date(2026,10,16),"pinterest-pins.csv"),2:(P2,12,datetime.date(2026,10,17),"pinterest-pins-2.csv"),3:(P3,18,datetime.date(2026,10,18),"pinterest-pins-3.csv"),4:(P4,19,datetime.date(2026,10,25),None),5:(P5,26,datetime.date(2026,11,1),None),6:(P6,33,datetime.date(2026,11,8),None),7:(P7,40,datetime.date(2026,11,15),None),8:(P8,47,datetime.date(2026,11,22),None),9:(P9,54,datetime.date(2026,11,29),None)}[BATCH]
 ROOT=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..")
 with sync_playwright() as p:
     b=p.chromium.launch(); pg=b.new_page(viewport={'width':1000,'height':1500})

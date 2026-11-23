@@ -413,7 +413,7 @@ eu_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 <ul><li><strong>Beispiel:</strong> Du stellst am 15.&nbsp;Dezember 2026 eine Rechnung über 1.200&nbsp;€, dein Kunde zahlt am 8.&nbsp;Januar 2027. Die Einnahme gehört in die EÜR <strong>2027</strong>.</li>
 <li><strong>Ausnahme – die 10-Tage-Regel:</strong> Regelmäßig wiederkehrende Zahlungen wie Miete, Abos oder Versicherungsbeiträge, die kurz vor oder nach dem Jahreswechsel (bis zu 10 Tage) fällig sind <em>und</em> gezahlt werden, zählen in dem Jahr, zu dem sie wirtschaftlich gehören. Die Anfang Januar fällige, am 28.&nbsp;Dezember gezahlte Januar-Miete fürs Büro gehört also ins neue Jahr.</li>
 <li><strong>Ausnahme – Anschaffungen:</strong> Für Anlagegüter – auch geringwertige Wirtschaftsgüter und Computer – zählt das Jahr der Anschaffung (Lieferung), nicht das Jahr der Zahlung. Teure Wirtschaftsgüter, etwa ein Auto oder eine Maschine, setzt du außerdem nicht auf einmal ab, sondern über die Nutzungsdauer (siehe unten).</li></ul>
-<p>Das Zahlungsdatum ist übrigens auch für die <a href="kleinunternehmerregelung-grenzen.html">Umsatzgrenzen der Kleinunternehmerregelung</a> maßgeblich – dort zählen ebenfalls die vereinnahmten Entgelte.</p>
+<p>Das Zahlungsdatum ist übrigens auch für die <a href="kleinunternehmerregelung-grenzen.html">Umsatzgrenzen der Kleinunternehmerregelung</a> maßgeblich – dort zählen ebenfalls die vereinnahmten Entgelte. Was du vor dem Jahreswechsel prüfen solltest, steht in der <a href="jahresende-checkliste-kleinunternehmer.html">Jahresende-Checkliste</a>.</p>
 
 <h2 class="serif" id="brutto">Brutto oder netto: Was ist bei Kleinunternehmern anders?</h2>
 <p>Regelbesteuerte Unternehmer behandeln Umsatzsteuer und Vorsteuer in der EÜR als eigene Posten. Bei Kleinunternehmern ist es einfacher:</p>
@@ -763,6 +763,114 @@ er_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><arti
 er_head=EXTRA_CSS+ld(article_ld("E-Rechnung für Kleinunternehmer: Was 2027 und 2028 gilt",er_desc,er_url,ER_ISO))+ld(faq_ld(ER_FAQ))+ld(crumbs([("Solovorlagen","https://solovorlagen.de/"),("Ratgeber","https://solovorlagen.de/ratgeber.html"),("E-Rechnung für Kleinunternehmer","https://solovorlagen.de/e-rechnung-kleinunternehmer.html")]))
 page("E-Rechnung für Kleinunternehmer 2027: Was gilt? | Solovorlagen",er_desc,er_body,"e-rechnung-kleinunternehmer.html",er_head)
 
+# ---------------- Ratgeber: Jahresende-Checkliste ----------------
+JE_ISO="2026-11-23"; JE_STAND="23.11.2026"
+JE_BYLINE=f'<p class="byline">Von <a href="impressum.html">Felix Merklinger-Lötzsch</a>, Solovorlagen · Stand: <time datetime="{JE_ISO}">{JE_STAND}</time></p>'
+JE_FAQ=[
+("Zählt eine Rechnung vom Dezember, die erst im Januar bezahlt wird, für 2026 oder 2027?","Für 2027. In der Einnahmen-Überschuss-Rechnung zählt das Zahlungsdatum (§ 11 EStG), nicht das Rechnungsdatum. Auch für die Umsatzgrenzen der Kleinunternehmerregelung wird der Umsatz nach vereinnahmten Entgelten berechnet (§ 19 Abs. 2 UStG), also nach dem Geldeingang."),
+("Lohnt es sich, Ausgaben noch im Dezember zu bezahlen?","Für eine Ausgabe, die du ohnehin brauchst, kann es sich lohnen: Was du 2026 bezahlst, mindert in der Regel den Gewinn 2026. Ausnahme sind regelmäßig wiederkehrende Ausgaben wie Miete, die innerhalb von 10 Tagen vor oder nach dem Jahreswechsel fällig sind und gezahlt werden; sie zählen in dem Jahr, zu dem sie wirtschaftlich gehören. Eine Ausgabe nur wegen der Steuer lohnt sich nicht, weil du nur den Steueranteil sparst."),
+("Kann ich eine Anschaffung im Dezember voll absetzen?","Geringwertige Wirtschaftsgüter bis 800 Euro netto ja, und zwar unabhängig vom Monat. Computer und Software kannst du dank der Nutzungsdauer von einem Jahr ebenfalls im Anschaffungsjahr voll absetzen; bildest du in diesem Jahr einen Sammelposten, gehören Computer von 250,01 bis 1.000 Euro netto allerdings dort hinein. Entscheidend ist jeweils, dass du die Sache noch 2026 geliefert bekommst – das Zahlungsdatum allein reicht bei Anschaffungen nicht. Teurere Anschaffungen, die linear abgeschrieben werden, bringen für Dezember nur ein Zwölftel der Jahresabschreibung."),
+("Welche Belege darf ich ab dem 1. Januar 2027 vernichten?","Buchungsbelege wie Rechnungen und Quittungen aus dem Jahr 2018 und früher, weil für sie seit 2025 eine Frist von acht Jahren gilt. Bücher und Aufzeichnungen, zum Beispiel deine Einnahmen- und Ausgabenliste, bewahrst du zehn Jahre auf; ab 2027 dürfen die aus dem Jahr 2016 und früher weg. Das gilt nicht, solange die Unterlagen für Steuern von Bedeutung sind, deren Festsetzungsfrist noch läuft – etwa Kaufbelege für Anschaffungen, die du noch abschreibst."),
+("Bin ich 2027 noch Kleinunternehmer?","Ja, wenn dein Umsatz 2026 höchstens 25.000 Euro betragen hat und du 2027 nicht über 100.000 Euro kommst. Liegt dein Umsatz 2026 über 25.000 Euro, gilt ab dem 1. Januar 2027 die Regelbesteuerung, und du weist auf deinen Rechnungen Umsatzsteuer aus."),
+("Wann ist die letzte Einkommensteuer-Vorauszahlung 2026 fällig?","Am 10. Dezember 2026, sofern das Finanzamt Vorauszahlungen für dich festgesetzt hat (§ 37 EStG). Die Höhe steht in deinem letzten Steuerbescheid oder einem gesonderten Vorauszahlungsbescheid.")]
+je_url="https://solovorlagen.de/jahresende-checkliste-kleinunternehmer.html"
+je_desc="Jahresende-Checkliste 2026 für Kleinunternehmer: Umsatzgrenze prüfen, Ausgaben vorziehen, Anschaffungen im Dezember, Vorauszahlung und alte Belege."
+je_rows=[("Laptop für 1.190&nbsp;€ (1.000&nbsp;€ netto)","Computer: Nutzungsdauer 1 Jahr","1.190,00&nbsp;€"),
+("Stativ und Speicherkarten für 476&nbsp;€ (400&nbsp;€ netto)","GWG bis 800&nbsp;€ netto: voller Betrag","476,00&nbsp;€"),
+("Objektiv für 2.380&nbsp;€ (2.000&nbsp;€ netto)","lineare AfA über 7 Jahre, 1/12 für Dezember","28,33&nbsp;€"),
+("Bildbearbeitungs-Abo für 2027, bezahlt am 15.12.","Zahlungsdatum zählt","240,00&nbsp;€"),
+("Studiomiete Januar 2027 (300&nbsp;€), fällig 1.1., bezahlt am 28.12.","10-Tage-Regel: gehört zu 2027","0,00&nbsp;€")]
+je_tbl="".join(f"<tr><td>{a}</td><td>{b}</td><td>{c}</td></tr>" for a,b,c in je_rows)
+je_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><article class="article">
+<p class="eyebrow"><a href="ratgeber.html">Ratgeber</a> · Steuern & Fristen</p>
+<h1 class="serif">Jahresende-Checkliste 2026 für Selbstständige und Kleinunternehmer</h1>
+{JE_BYLINE}
+<div class="answer" id="antwort"><p><strong>Die Antwort in Kürze:</strong> Vor dem 31.&nbsp;Dezember lohnen sich sieben Punkte: <strong>Umsatz 2026 prüfen</strong> (über 25.000&nbsp;€ bist du 2027 kein Kleinunternehmer mehr), offene Rechnungen schreiben, geplante Ausgaben und Anschaffungen gezielt vor oder nach dem Jahreswechsel bezahlen, die <strong>Vorauszahlung am 10.&nbsp;Dezember</strong> einplanen, Homeoffice-Tage und Fahrten zusammentragen und Belege ordnen. Für deine Einnahmen-Überschuss-Rechnung zählt dabei fast immer das <strong>Zahlungsdatum</strong> – nicht das Rechnungsdatum.</p></div>
+<nav class="toc" aria-label="Inhalt"><strong>Inhalt</strong><ol>
+<li><a href="#checkliste">Die Checkliste auf einen Blick</a></li><li><a href="#umsatz">Umsatz 2026 prüfen</a></li><li><a href="#rechnungen">Offene Rechnungen</a></li>
+<li><a href="#ausgaben">Ausgaben vorziehen?</a></li><li><a href="#anschaffungen">Anschaffungen im Dezember</a></li><li><a href="#steuern">Vorauszahlung und Rücklage</a></li>
+<li><a href="#nachweise">Homeoffice-Tage und Fahrten</a></li><li><a href="#aufbewahrung">Belege ordnen und aussortieren</a></li><li><a href="#beispiel">Beispiel: Miras Fotostudio</a></li><li><a href="#faq">Häufige Fragen</a></li></ol></nav>
+
+<h2 class="serif" id="checkliste">Die Checkliste auf einen Blick</h2>
+<div class="tblwrap"><table class="tbl sm"><tr><th>Was</th><th>Warum</th></tr>
+<tr><td><strong>1. Umsatz 2026 prüfen</strong></td><td>Er entscheidet, ob du 2027 Kleinunternehmer bleibst.</td></tr>
+<tr><td><strong>2. Offene Rechnungen schreiben</strong></td><td>Für die EÜR zählt der Geldeingang – Zahlungen im Januar gehören zu 2027.</td></tr>
+<tr><td><strong>3. Ausgaben planen</strong></td><td>Im Dezember bezahlt heißt meist: Betriebsausgabe 2026.</td></tr>
+<tr><td><strong>4. Anschaffungen prüfen</strong></td><td>GWG bis 800&nbsp;€ netto voll absetzbar, teurere Dinge nur anteilig.</td></tr>
+<tr><td><strong>5. Vorauszahlung einplanen</strong></td><td>Einkommensteuer-Vorauszahlung am 10.&nbsp;Dezember, Rücklage prüfen.</td></tr>
+<tr><td><strong>6. Nachweise sammeln</strong></td><td>Homeoffice-Tage und Fahrten fürs ganze Jahr zusammentragen.</td></tr>
+<tr><td><strong>7. Belege ordnen</strong></td><td>Ab 1.1.2027 dürfen Belege aus 2018 und früher weg – mit Ausnahmen.</td></tr></table></div>
+
+<h2 class="serif" id="umsatz">1. Wie viel Umsatz hast du 2026 gemacht?</h2>
+<p>Als Kleinunternehmer ist das die wichtigste Zahl zum Jahresende. Du bleibst <strong>2027 Kleinunternehmer</strong>, wenn dein Umsatz 2026 <strong>höchstens 25.000&nbsp;€</strong> betragen hat und du 2027 nicht über 100.000&nbsp;€ kommst (§&nbsp;19&nbsp;Abs.&nbsp;1&nbsp;UStG). Liegst du 2026 auch nur knapp darüber, gilt ab dem <strong>1.&nbsp;Januar&nbsp;2027</strong> die Regelbesteuerung: Du weist Umsatzsteuer auf deinen Rechnungen aus und gibst Umsatzsteuer-Voranmeldungen ab.</p>
+<ul><li><strong>Was zählt:</strong> der Gesamtumsatz nach vereinnahmten Entgelten (§&nbsp;19&nbsp;Abs.&nbsp;2&nbsp;UStG) – also das Geld, das 2026 tatsächlich eingegangen ist, auch Anzahlungen.</li>
+<li><strong>Was nicht zählt:</strong> zum Beispiel der Verkauf deines alten Laptops, den du im Betrieb genutzt hast – Umsätze mit Wirtschaftsgütern des Anlagevermögens bleiben außen vor.</li>
+<li><strong>Gründungsjahr:</strong> Hast du 2026 gegründet, gilt die 25.000-€-Grenze schon im laufenden Jahr – wer sie überschreitet, ist ab diesem Umsatz kein Kleinunternehmer mehr.</li></ul>
+<p>Wo du gerade stehst, zeigt der kostenlose <a href="grenzen-check.html">Umsatzgrenzen-Check</a>. Alle Regeln und Beispiele stehen im Ratgeber <a href="kleinunternehmerregelung-grenzen.html">Kleinunternehmerregelung 2026</a>.</p>
+
+<h2 class="serif" id="rechnungen">2. Sind alle Rechnungen für 2026 geschrieben?</h2>
+<p>Schreib Rechnungen für erledigte Aufträge zeitnah und prüfe, welche noch offen sind. In der <a href="euer-kleinunternehmer.html">Einnahmen-Überschuss-Rechnung</a> zählt eine Einnahme in dem Jahr, in dem das Geld eingeht (§&nbsp;11&nbsp;Abs.&nbsp;1&nbsp;EStG): Eine Rechnung vom 15.&nbsp;Dezember, die am 8.&nbsp;Januar bezahlt wird, ist eine Einnahme 2027 – und zählt auch erst 2027 für die Umsatzgrenze.</p>
+<p>Überfällige Rechnungen solltest du vor den Feiertagen freundlich anmahnen. Das Geld ist dir ohnehin geschuldet, und eine offene Forderung aus 2026 wird nicht dadurch kleiner, dass sie erst im Februar bezahlt wird.</p>
+
+<h2 class="serif" id="ausgaben">3. Lohnt es sich, Ausgaben vorzuziehen?</h2>
+<p>Für die EÜR gilt auch bei Ausgaben das Zahlungsdatum: Was du bis zum 31.&nbsp;Dezember bezahlst, ist in der Regel eine <strong>Betriebsausgabe 2026</strong> (§&nbsp;11&nbsp;Abs.&nbsp;2&nbsp;EStG) – auch wenn die Leistung erst 2027 genutzt wird, etwa ein Software-Jahresabo. Wer 2026 einen hohen Gewinn hat, kann geplante Ausgaben deshalb noch im Dezember bezahlen.</p>
+<ul><li><strong>Ausnahme – die 10-Tage-Regel:</strong> Regelmäßig wiederkehrende Zahlungen wie Miete, Versicherungsbeiträge oder Abos, die bis zu 10 Tage vor oder nach dem Jahreswechsel fällig sind <em>und</em> gezahlt werden, zählen in dem Jahr, zu dem sie wirtschaftlich gehören. Die Januarmiete, die am 1.&nbsp;Januar fällig ist und am 28.&nbsp;Dezember überwiesen wird, bleibt also eine Ausgabe 2027.</li>
+<li><strong>Anschaffungen zählen ab Lieferung:</strong> Für Anlagegüter – auch geringwertige Wirtschaftsgüter und Computer – zählt das Jahr der Anschaffung, also der Lieferung, nicht das Jahr der Zahlung. Ein im Dezember bezahlter Bürostuhl, der erst im Januar kommt, gehört zu 2027.</li>
+<li><strong>Nicht nur wegen der Steuer kaufen:</strong> Eine Ausgabe spart nur den Steueranteil. Wer 100&nbsp;€ ausgibt, hat danach weniger Geld als vorher – auch wenn der Gewinn sinkt.</li>
+<li><strong>Kleinunternehmer:</strong> Du setzt Ausgaben brutto an, also inklusive Umsatzsteuer, weil du keine Vorsteuer abziehst.</li></ul>
+
+<h2 class="serif" id="anschaffungen">4. Was gilt für Anschaffungen im Dezember?</h2>
+<p>Bei Anschaffungen kommt es darauf an, ob du sie sofort absetzen darfst oder abschreiben musst. Maßgeblich ist das Jahr der <strong>Lieferung</strong>: Was bis zum 31.&nbsp;Dezember bei dir ankommt, ist 2026 angeschafft. Die Grenzen gelten immer <strong>netto</strong>; Kleinunternehmer setzen den Bruttobetrag ab.</p>
+<div class="tblwrap"><table class="tbl sm"><tr><th>Anschaffung im Dezember 2026</th><th>Abzug 2026</th></tr>
+<tr><td>bis 800&nbsp;€ netto (geringwertiges Wirtschaftsgut)</td><td><strong>voller Betrag</strong> – keine Kürzung nach Monaten (ohne Sammelposten)</td></tr>
+<tr><td>Computer, Laptop, Software</td><td><strong>voller Betrag</strong> dank 1 Jahr Nutzungsdauer – bei Sammelposten 2026 gehören Computer von 250,01 bis 1.000&nbsp;€ netto dort hinein</td></tr>
+<tr><td>250,01 bis 1.000&nbsp;€ netto im Sammelposten</td><td>ein volles Fünftel</td></tr>
+<tr><td>darüber: lineare Abschreibung</td><td>nur <strong>1/12</strong> der Jahresrate (§&nbsp;7&nbsp;Abs.&nbsp;1&nbsp;Satz&nbsp;4&nbsp;EStG)</td></tr></table></div>
+<p>Wer sich für den Sammelposten entscheidet, muss ihn für alle Anschaffungen von 250,01 bis 1.000&nbsp;€ netto in diesem Jahr nutzen. Ob sich eine Anschaffung sofort absetzen lässt, rechnet der kostenlose <a href="gwg-rechner.html">GWG- und AfA-Rechner</a> in Sekunden aus.</p>
+<p>Für teurere bewegliche Anschaffungen gibt es unter bestimmten Voraussetzungen Alternativen zur linearen Abschreibung: die degressive AfA (bis 30&nbsp;% im Jahr, für Anschaffungen vom 1.&nbsp;Juli&nbsp;2025 bis 31.&nbsp;Dezember&nbsp;2027, im ersten Jahr ebenfalls nur anteilig) oder eine Sonderabschreibung nach §&nbsp;7g&nbsp;EStG. Ob sich das für dich lohnt, klärst du am besten mit einer Steuerberatung.</p>
+
+<h2 class="serif" id="steuern">5. Vorauszahlung am 10.&nbsp;Dezember und Steuerrücklage</h2>
+<p>Hat das Finanzamt Einkommensteuer-Vorauszahlungen für dich festgesetzt, ist die letzte Rate für 2026 am <strong>10.&nbsp;Dezember&nbsp;2026</strong> fällig (§&nbsp;37&nbsp;Abs.&nbsp;1&nbsp;EStG). Die Höhe steht in deinem Steuer- oder Vorauszahlungsbescheid.</p>
+<p>Prüf außerdem deine Rücklage: Hat dein Gewinn 2026 deutlich über dem Wert gelegen, mit dem das Finanzamt gerechnet hat, folgt mit dem Steuerbescheid eine Nachzahlung. Wie viel Prozent du zurücklegen solltest, steht im Ratgeber <a href="steuerruecklage-berechnen.html">Steuerrücklage berechnen</a>.</p>
+
+<h2 class="serif" id="nachweise">6. Homeoffice-Tage und Fahrten zusammentragen</h2>
+<ul><li><strong>Homeoffice:</strong> Für jeden Tag, an dem du überwiegend zu Hause arbeitest und keine erste Betriebsstätte aufsuchst, kannst du 6&nbsp;€ absetzen, höchstens 1.260&nbsp;€ im Jahr. Zähl die Tage jetzt, solange dein Kalender noch frisch ist – Details im Ratgeber <a href="homeoffice-pauschale-selbststaendige.html">Homeoffice-Pauschale 2026</a>.</li>
+<li><strong>Fahrten:</strong> Betriebliche Fahrten mit dem Privatauto setzt du mit 0,30&nbsp;€ je gefahrenem Kilometer ab, Fahrten zu einer eigenen Betriebsstätte mit 0,38&nbsp;€ je Entfernungskilometer. Ergänze fehlende Fahrten aus Kalender und Rechnungen; der <a href="fahrtkosten-rechner.html">Fahrtkosten-Rechner</a> rechnet die Summen aus.</li></ul>
+
+<h2 class="serif" id="aufbewahrung">7. Belege ordnen – und was ab 2027 weg darf</h2>
+<p>Sortier die Belege 2026 vollständig, solange du dich noch an jede Ausgabe erinnerst. Gleichzeitig kannst du alte Unterlagen aussortieren. Die Frist beginnt mit dem Ende des Kalenderjahres, in dem der Beleg entstanden ist (§&nbsp;147&nbsp;Abs.&nbsp;4&nbsp;AO):</p>
+<div class="tblwrap"><table class="tbl sm"><tr><th>Unterlage</th><th>Frist</th><th>Ab 1.1.2027 vernichten</th></tr>
+<tr><td>Buchungsbelege (Rechnungen, Quittungen, Kontoauszüge)</td><td>8 Jahre</td><td>2018 und früher</td></tr>
+<tr><td>Bücher und Aufzeichnungen (z.&nbsp;B. Einnahmen- und Ausgabenliste)</td><td>10 Jahre</td><td>2016 und früher</td></tr>
+<tr><td>Empfangene und versendete Geschäftsbriefe</td><td>6 Jahre</td><td>2020 und früher</td></tr></table></div>
+<p>Die kürzere Frist von acht Jahren für Buchungsbelege gilt seit 2025 (§&nbsp;147&nbsp;Abs.&nbsp;3&nbsp;AO). Wichtig: Die Frist läuft nicht ab, solange die Unterlagen für Steuern von Bedeutung sind, deren Festsetzungsfrist noch nicht abgelaufen ist. Das betrifft vor allem <strong>Kaufbelege für Anschaffungen, die du noch abschreibst</strong> – eine 2018 gekaufte Kamera mit 7 Jahren Nutzungsdauer wird noch 2024 abgeschrieben, und für 2024 läuft die Festsetzungsfrist noch –, aber auch Unterlagen zu einem noch offenen Steuerbescheid oder einer laufenden Prüfung. Im Zweifel bewahrst du länger auf.</p>
+
+<h2 class="serif" id="beispiel">Beispiel: Miras Fotostudio</h2>
+<p><strong>Mira</strong> ist selbstständige Fotografin und seit 2024 Kleinunternehmerin. 2025 hatte sie 19.500&nbsp;€ Umsatz. Bis Ende November 2026 sind 21.900&nbsp;€ eingegangen, zwei Rechnungen über zusammen 1.600&nbsp;€ sind noch offen. Zahlen beide Kunden im Dezember, kommt sie auf <strong>23.500&nbsp;€</strong> und bleibt 2027 Kleinunternehmerin. Gingen im Dezember zusätzlich mehr als 1.500&nbsp;€ ein, läge sie über 25.000&nbsp;€ – dann müsste sie ab Januar 2027 Umsatzsteuer berechnen.</p>
+<p>Im Dezember plant Mira diese Ausgaben; alle Anschaffungen werden noch im Dezember geliefert (als Kleinunternehmerin setzt sie die Bruttobeträge an, die Grenzen prüft sie netto; einen Sammelposten bildet sie 2026 nicht):</p>
+<div class="tblwrap"><table class="tbl sm"><tr><th>Ausgabe</th><th>Regel</th><th>Abzug 2026</th></tr>{je_tbl}
+<tr><td><strong>Summe Betriebsausgaben 2026</strong></td><td></td><td><strong>1.934,33&nbsp;€</strong></td></tr></table></div>
+<p>Das Objektiv kostet 2.380&nbsp;€ ÷ 7 Jahre = 340&nbsp;€ Abschreibung pro Jahr; für Dezember sind es 340&nbsp;€ ÷ 12 = 28,33&nbsp;€. Den Rest schreibt Mira in den folgenden Jahren ab. Die Studiomiete für Januar setzt sie erst 2027 an.</p>
+
+<div class="cta"><h3>Jede Anschaffung richtig einordnen</h3><p>Das Anlagenverzeichnis &amp; der AfA-Rechner ist eine Excel-Vorlage: Anschaffung eintragen – die Vorlage ordnet sie nach den Grenzen 2026 ein (Sofortabzug, GWG oder lineare AfA, Sammelposten wählbar), berücksichtigt die 1-Jahres-Regel für Computer, rechnet monatsgenau mit Restbuchwert zum 31.12. und schreibt bei Kleinunternehmern den Bruttobetrag ab.</p><a class="btn" href="afa.html">AfA-Rechner ansehen (12&nbsp;€)</a></div>
+
+<h2 class="serif" id="faq">Häufige Fragen</h2>
+<div class="faq" style="max-width:none">{faq_html(JE_FAQ)}</div>
+
+<h2 class="serif">Quellen</h2>
+{sources([("§ 19 UStG – Besteuerung der Kleinunternehmer (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ustg_1980/__19.html"),
+("§ 11 EStG – Zufluss und Abfluss (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__11.html"),
+("§ 6 EStG – Bewertung, Abs. 2 und 2a: GWG und Sammelposten (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__6.html"),
+("§ 7 EStG – Absetzung für Abnutzung (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__7.html"),
+("§ 37 EStG – Einkommensteuer-Vorauszahlung (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/estg/__37.html"),
+("§ 147 AO – Ordnungsvorschriften für die Aufbewahrung von Unterlagen (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/ao_1977/__147.html"),
+("Art. 97 § 19a EGAO – Übergangsregelung Aufbewahrungsfristen (gesetze-im-internet.de)","https://www.gesetze-im-internet.de/aoeg_1977/art_97__19a.html"),
+("BMF-Schreiben vom 22.02.2022: Nutzungsdauer von Computerhardware und Software (Amtliches Einkommensteuer-Handbuch)","https://esth.bundesfinanzministerium.de/esth/2024/C-Anhaenge/Anhang-01/V/anhang-1-V.html")])}
+{DISCL}
+</article></div>"""
+je_head=EXTRA_CSS+ld(article_ld("Jahresende-Checkliste 2026 für Selbstständige und Kleinunternehmer",je_desc,je_url,JE_ISO))+ld(faq_ld(JE_FAQ))+ld(crumbs([("Solovorlagen","https://solovorlagen.de/"),("Ratgeber","https://solovorlagen.de/ratgeber.html"),("Jahresende-Checkliste 2026","https://solovorlagen.de/jahresende-checkliste-kleinunternehmer.html")]))
+page("Jahresende 2026: Checkliste für Kleinunternehmer | Solovorlagen",je_desc,je_body,"jahresende-checkliste-kleinunternehmer.html",je_head)
+
 exec(open(os.path.join(HERE,"tools.py")).read())
 
 # ---------------- Ratgeber-Übersicht ----------------
@@ -777,15 +885,16 @@ rg_body=f"""<div class="wrap" style="padding-top:40px;padding-bottom:64px"><div 
 <a class="pcard" href="homeoffice-pauschale-selbststaendige.html"><div class="pbody"><h3>Homeoffice-Pauschale 2026 für Selbstständige</h3><p>6 € je Tag bis 1.260 €, welche Tage zählen, Kundentermine, Arbeitszimmer und Beispielrechnung.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 <a class="pcard" href="nebengewerbe-anmelden.html"><div class="pbody"><h3>Nebengewerbe anmelden 2026: Ablauf, Kosten und Steuern</h3><p>Gewerbeamt und Fragebogen, Gewerbe oder freiberuflich, Kleinunternehmerregelung, 410-€-Grenze, Krankenversicherung und Beispiel.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 <a class="pcard" href="e-rechnung-kleinunternehmer.html"><div class="pbody"><h3>E-Rechnung für Kleinunternehmer: Was 2027 und 2028 gilt</h3><p>Ausstellen keine Pflicht, Empfangen schon: PDF oder XRechnung, Zeitplan bis 2028, Aufbewahrung und Beispiel.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
+<a class="pcard" href="jahresende-checkliste-kleinunternehmer.html"><div class="pbody"><h3>Jahresende-Checkliste 2026 für Selbstständige und Kleinunternehmer</h3><p>Umsatzgrenze prüfen, Ausgaben vorziehen, Anschaffungen im Dezember, Vorauszahlung und welche Belege ab 2027 weg dürfen.</p><div class="prow"><span class="more">Lesen →</span></div></div></a>
 </div>
 <h2 class="serif" id="rechner">Kostenlose Rechner</h2>
 <div class="grid2">{rc_cards}</div>
 </div></div>"""
-page("Ratgeber für Selbstständige & Kleinunternehmer | Solovorlagen","Ratgeber für Selbstständige: Kleinunternehmerregelung 2026, Nebengewerbe, Stundensatz, Steuerrücklage, EÜR, E-Rechnung, Homeoffice-Pauschale und kostenlose Rechner – Umsatzgrenzen-Check, Rechnungstext, GWG und Fahrtkosten.",rg_body,"ratgeber.html",EXTRA_CSS)
+page("Ratgeber für Selbstständige & Kleinunternehmer | Solovorlagen","Ratgeber für Selbstständige: Kleinunternehmerregelung 2026, Nebengewerbe, Stundensatz, Steuerrücklage, EÜR, E-Rechnung, Homeoffice-Pauschale, Jahresende-Checkliste und kostenlose Rechner – Umsatzgrenzen-Check, Rechnungstext, GWG und Fahrtkosten.",rg_body,"ratgeber.html",EXTRA_CSS)
 
 # ---------------- sitemap, robots, llms.txt ----------------
-urls=["","rechner.html","grenzen-check.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html","kleinunternehmerregelung-grenzen.html","stundensatz-berechnen.html","steuerruecklage-berechnen.html","euer-kleinunternehmer.html","homeoffice-pauschale-selbststaendige.html","nebengewerbe-anmelden.html","e-rechnung-kleinunternehmer.html","ratgeber.html","paket.html","cockpit.html","rechnung.html","stundensatz.html","fahrtenbuch.html","afa.html"]
-open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>https://solovorlagen.de/{u}</loc><lastmod>{ER_ISO if u in ("e-rechnung-kleinunternehmer.html","ratgeber.html","kleinunternehmerregelung-grenzen.html") else NG_ISO if u in ("nebengewerbe-anmelden.html","euer-kleinunternehmer.html") else HO_ISO if u=="homeoffice-pauschale-selbststaendige.html" else EU_ISO if u in ("rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html") else SR_ISO if u=="steuerruecklage-berechnen.html" else ISO}</lastmod></url>\n" for u in urls)+"</urlset>\n")
+urls=["","rechner.html","grenzen-check.html","rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html","kleinunternehmerregelung-grenzen.html","stundensatz-berechnen.html","steuerruecklage-berechnen.html","euer-kleinunternehmer.html","homeoffice-pauschale-selbststaendige.html","nebengewerbe-anmelden.html","e-rechnung-kleinunternehmer.html","jahresende-checkliste-kleinunternehmer.html","ratgeber.html","paket.html","cockpit.html","rechnung.html","stundensatz.html","fahrtenbuch.html","afa.html"]
+open(os.path.join(OUT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>https://solovorlagen.de/{u}</loc><lastmod>{JE_ISO if u in ("jahresende-checkliste-kleinunternehmer.html","ratgeber.html") else ER_ISO if u in ("e-rechnung-kleinunternehmer.html","kleinunternehmerregelung-grenzen.html") else NG_ISO if u in ("nebengewerbe-anmelden.html","euer-kleinunternehmer.html") else HO_ISO if u=="homeoffice-pauschale-selbststaendige.html" else EU_ISO if u in ("rechnungstext-kleinunternehmer.html","gwg-rechner.html","fahrtkosten-rechner.html") else SR_ISO if u=="steuerruecklage-berechnen.html" else ISO}</lastmod></url>\n" for u in urls)+"</urlset>\n")
 open(os.path.join(OUT,"robots.txt"),"w").write("User-agent: *\nAllow: /\n\nSitemap: https://solovorlagen.de/sitemap.xml\n")
 open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 > Excel-Vorlagen und Ratgeber für Selbstständige und Kleinunternehmer in Deutschland (Stand 2026). Betreiber: Felix Merklinger-Lötzsch, Aßlar.
@@ -798,6 +907,7 @@ open(os.path.join(OUT,"llms.txt"),"w").write("""# Solovorlagen
 - [Homeoffice-Pauschale 2026 für Selbstständige](https://solovorlagen.de/homeoffice-pauschale-selbststaendige.html): Tagespauschale 6 € je Tag, höchstens 1.260 € (210 Tage), § 4 Abs. 5 Satz 1 Nr. 6c EStG, Betriebsausgabe in der EÜR, kein Arbeitszimmer nötig, Tage überwiegend zu Hause ohne Aufsuchen der ersten Betriebsstätte; ohne anderen Arbeitsplatz auch Tage überwiegend beim Kunden, wenn zum Teil zu Hause gearbeitet wird; pro Tag nur einmal, Höchstbetrag für alle Tätigkeiten; Arbeitszimmer nur als Mittelpunkt (tatsächliche Kosten oder Jahrespauschale 1.260 €), nicht kombinierbar; Arbeitsmittel, Telefon/Internet und Fahrtkosten zusätzlich; Beispiel Kleinunternehmer 220 Tage → 1.260 €.
 - [Nebengewerbe anmelden 2026](https://solovorlagen.de/nebengewerbe-anmelden.html): Gewerbeanzeige beim Gewerbeamt gleichzeitig mit Beginn (§ 14 GewO, Bußgeld bis 1.000 €), Gebühr je nach Gemeinde meist ca. 15–65 €, Fragebogen zur steuerlichen Erfassung über ELSTER innerhalb eines Monats (§ 138 AO), Freiberufler nur beim Finanzamt; Kleinunternehmerregelung möglich (Grenzen pro Person, Gehalt zählt nicht); Steuererklärungspflicht ab mehr als 410 € Nebeneinkünften (§ 46 EStG, Härteausgleich bis 820 €), IHK-beitragsfrei bis 5.200 € Gewerbeertrag, Gewerbesteuer-Freibetrag 24.500 €; GKV-Pflichtversicherte: keine Beiträge auf den Nebengewinn (§ 226 SGB V), freiwillig Versicherte schon; Beispiel Vintage-Shop 8.400 € Umsatz, 3.300 € Gewinn.
 - [E-Rechnung für Kleinunternehmer](https://solovorlagen.de/e-rechnung-kleinunternehmer.html): Kleinunternehmer müssen keine E-Rechnungen ausstellen (§ 34a UStDV: stets sonstige Rechnung erlaubt, unbefristet), müssen sie aber seit 1.1.2025 empfangen können (E-Mail-Postfach reicht); E-Rechnung = strukturiertes Format nach EN 16931 (XRechnung, ZUGFeRD ab 2.0.1 außer MINIMUM/BASIC-WL), PDF = sonstige Rechnung; Zeitplan § 27 Abs. 38 UStG: 2027 Pflicht bei Vorjahresumsatz über 800.000 €, ab 2028 für alle B2B im Inland (Ausnahme Kleinbetragsrechnungen bis 250 €); Privatkunden nicht betroffen; Aufbewahrung 8 Jahre (§ 14b UStG), strukturierter Teil unverändert; Beispiel Übersetzerin 22.500 € Umsatz.
+- [Jahresende-Checkliste 2026 für Kleinunternehmer](https://solovorlagen.de/jahresende-checkliste-kleinunternehmer.html): Umsatz 2026 nach vereinnahmten Entgelten prüfen (über 25.000 € → ab 1.1.2027 Regelbesteuerung, § 19 UStG; Anlagevermögen-Verkäufe zählen nicht); EÜR nach Zahlungsdatum (§ 11 EStG), Ausgaben im Dezember bezahlt = Betriebsausgabe 2026, Ausnahme 10-Tage-Regel für regelmäßig wiederkehrende Zahlungen; Anschaffungen im Dezember: GWG bis 800 € netto voll, Computer/Software voll (bei Sammelposten Computer 250,01–1.000 € netto dort), Jahr der Lieferung zählt, lineare AfA nur 1/12 (§ 7 Abs. 1 Satz 4 EStG); ESt-Vorauszahlung 10.12. (§ 37 EStG); Homeoffice 6 €/Tag max. 1.260 €, Fahrten 0,30 €/km bzw. 0,38 €; Aufbewahrung § 147 AO: Buchungsbelege 8 Jahre (ab 1.1.2027 vernichtbar: 2018 und früher), Aufzeichnungen 10 Jahre (2016 und früher), Geschäftsbriefe 6 Jahre (2020 und früher), nicht solange für Steuern mit offener Festsetzungsfrist von Bedeutung (z. B. Kaufbelege noch abgeschriebener Anlagegüter); Beispiel Fotografin 23.500 € Umsatz, Dezember-Ausgaben 1.934,33 €.
 
 ## Werkzeuge
 - [Umsatzgrenzen-Check 2026](https://solovorlagen.de/grenzen-check.html): kostenloser Online-Rechner zur Kleinunternehmergrenze.
